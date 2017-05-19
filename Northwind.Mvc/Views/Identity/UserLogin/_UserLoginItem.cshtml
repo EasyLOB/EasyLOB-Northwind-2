@@ -1,0 +1,99 @@
+@model UserLoginItemModel
+
+@{
+    string CSHTML = "_UserLoginItem.cshtml";
+    string userText = Model.UserLogin == null ? "" : (Model.UserLogin.UserLookupText ?? "");
+}
+
+<div id="Item_UserLogin">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "UserLogin_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "UserLogin_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "UserLogin_Item_IsSave")
+    @Html.HiddenFor(model => model.MasterUserId, new { id = "UserLogin_Item_MasterUserId" })
+
+    @{Html.EJ().Tab("Tab_UserLogin")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_UserLogin")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_UserLogin_UserLogin").Text(UserLoginResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
+                
+                <div id="Group_UserLogin_LoginProvider" class="@AppDefaults.CssClassGroup @UserLogin.DataProfile.EditWidthCSSFor("LoginProvider")">
+                    @Html.LabelFor(model => model.UserLogin.LoginProvider, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserLogin.LoginProvider, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserLogin_LoginProvider" } })
+                    @* @Html.ValidationMessageFor(model => model.UserLogin.LoginProvider, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_UserLogin_ProviderKey" class="@AppDefaults.CssClassGroup @UserLogin.DataProfile.EditWidthCSSFor("ProviderKey")">
+                    @Html.LabelFor(model => model.UserLogin.ProviderKey, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserLogin.ProviderKey, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserLogin_ProviderKey" } })
+                    @* @Html.ValidationMessageFor(model => model.UserLogin.ProviderKey, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_UserLogin_UserId" class="@AppDefaults.CssClassGroup @UserLogin.DataProfile.EditWidthCSSFor("UserLookupText")">
+                    @Html.LabelFor(model => model.UserLogin.UserId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserLogin.UserId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserLogin_UserId" } })
+                    @{
+                        Html.RenderAction("Lookup", "User", new
+                        {
+                            Text = userText,
+                            ValueId = "UserLogin_UserId"
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.UserLogin.UserId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_UserLogin"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserLogin.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_UserLogin_LoginProvider").hide();
+                $("#Group_UserLogin_ProviderKey").hide();
+                $("#Group_UserLogin_UserId").hide();
+            }
+
+            // Associations (FK)
+            // User
+            if (model.MasterUserId != null) {
+                $("#UserLogin_UserId").val(model.MasterUserId);
+                $("#Group_UserLogin_UserId").hide();
+            }
+
+            zOnItemView(model, dataProfile);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });
+
+    function itemActive_Tab_UserLogin(args) {
+        zTabDictionaryWrite("UserLogin", args.model.selectedItemIndex);
+
+        try {
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_UserLogin", exception));
+        }
+    }
+</script>

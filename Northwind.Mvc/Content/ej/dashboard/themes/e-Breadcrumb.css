@@ -1,0 +1,99 @@
+﻿@font-face {
+	
+font-family: 'ejDashboardViewerIconFont';	
+src:url('../fonts/ejDashboardViewerIconFont.eot?bfgft8');	
+src:url('../fonts/ejDashboardViewerIconFont.eot?bfgft8#iefix') format('embedded-opentype'),		
+url('../fonts/ejDashboardViewerIconFont.ttf?bfgft8') format('truetype'),		
+url('../fonts/ejDashboardViewerIconFont.woff?bfgft8') format('woff'),		
+url('../fonts/ejDashboardViewerIconFont.svg?bfgft8#ejDashboardViewerIconFont') format('svg');	
+font-weight: normal;
+font-style: normal;
+
+}
+.e-dashboardbreadcrumb-drillIconForward{       
+    font-family: 'ejDashboardViewerIconFont';
+	vertical-align:middle;
+    font-style:normal;
+	font-size:9px;
+	display:inline-block;  	
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.e-dashboardbreadcrumb-drillIconForward::before {
+   content: "\e819";
+}
+.e-dashboardbreadcrumb-drillIconBackward{       
+   font-family: 'ejDashboardViewerIconFont';
+   vertical-align:middle;
+    font-style:normal;
+	font-size:9px;
+	display:inline-block;  
+	cursor: pointer;
+	padding-top: 1px;
+    padding-left: 2px;
+    padding-right: 2px;    
+    margin-left: 4px;
+    margin-right:2px;  
+}
+.e-dashboardbreadcrumb-drillIconBackward:before {
+   content: "\e81a";
+}
+.e-dashboardbreadcrumb-drillIconBackward-focused{          
+    display: inline-block;
+	border: 1px solid lightgray;
+    cursor: pointer;    
+    background-color: whitesmoke;
+    border-radius: 2px;
+}
+.e-dashboardbreadcrumb-drill{       
+       display:inline-block;      
+       cursor: pointer;
+       color: #2C83EB;
+       text-overflow:ellipsis;
+	   vertical-align:middle;
+       white-space:nowrap;	   
+       overflow:hidden;
+       font-size:11px;
+       font-family:'Roboto';
+}
+.e-dashboardbreadcrumb-drill:hover{       
+       text-decoration:underline;
+}
+.e-dashboardbreadcrumb-dropDown{                          
+       font-size:12px;
+       font-family:'Roboto';
+	   background:white;	   	 
+	   Color:black;	   
+	   border:1px solid lightgray;	   
+       margin-top:5px;	
+       box-shadow:1px 1px 5px 1px	lightgray; 
+       z-index:2;	   
+}
+.e-dashboardbreadcrumb-dropDown ul li{
+	text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+	color: black;	
+    margin:0px;	
+	border-radius:2px;
+	
+}
+.e-dashboardbreadcrumb-dropDown ul li:hover{
+	color: white;		
+    cursor:default;	
+	background:#3B99FC;		
+}
+.e-dashboardbreadcrumb-dropDown ul{					 
+	margin:0px;
+	padding:5px;	
+}
+.e-dashboardbreadcrumb-tooltip{
+    padding:5px;
+    background-color:#fff;
+    box-shadow:0 1px 4px rgba(0,0,0,.15);
+    border:1px solid rgba(0,0,0,.15);
+    display:none;
+    position:absolute;
+    z-index:1010;
+    font-size:13px;
+}

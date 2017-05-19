@@ -1,0 +1,274 @@
+﻿body {
+}
+div#groupingBarPivot{
+    text-align: left;
+    border: solid 1px #c8c8c8;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+	background: #ecedee;
+}
+
+.e-pivotgrid .values .pivotButton, .e-pivotgrid .drag .pivotButton, .e-pivotgrid .columns .pivotButton, .e-pivotgrid .rows .pivotButton{
+	background:#fff !important;
+    border-radius: 2px;
+}
+.e-pivotgrid .pivotButton .e-btn.e-select{
+background:#fff;
+}
+.e-pivotgrid .filter:before{
+content:"\e901";
+}
+.e-pivotgrid .filter,.e-pivotgrid .sorting{
+display:inline-block !important;
+}
+.e-pivotgrid .filter.filtered:before{
+content:"\e900";
+color:#179bd7;
+}
+.e-pivotgrid .sorting:before{
+content:"\e903";
+}
+.e-pivotgrid .sorting.descending:before{
+content:"\e902";
+}
+.e-pivotgrid .valueColumn,.e-pivotgrid .grpRow{
+background:#ecedee !important;
+}
+.e-pivotgrid .filter.e-icon:before, .e-pivotgrid .sorting.e-icon:before, .e-pivotgrid .removeBtn.e-icon:before{
+    width: auto;   
+}
+.e-close.e-icon:before{
+	bottom: 2px !important;
+    right: 2px;
+	position:relative;
+	width: auto;
+}
+.e-pivotgrid .e-table {
+    width: 100% !important;
+	font-family:Roboto !important;
+}
+.pGridTooltip {
+font-family:Roboto !important;
+}
+.e-pivotgrid .collapse::before {
+	margin-top:8px !important;
+}
+.e-pivotgrid .expand, .e-pivotgrid .collapse {
+	color:black;
+}
+  .e-pivotgrid .summary {
+            font-weight: bold !important;
+			background-color:rgba(221,221,221,0.3) !important;			
+   }
+   .e-pivotgrid td, .e-pivotgrid th {
+            height: 16px !important;
+   }
+        /*.colheader {
+            text-align: center !important;
+        }*/
+	.e-pivotgrid .rowheader {		
+		vertical-align:top !important;
+	}
+	.e-pivotgrid .rowheader:hover{
+		background-color:#77A7FB !important;
+	}
+	.e-pivotgrid .colheader:hover{
+		background-color:#77A7FB !important;
+	}
+  .e-pivotgrid .calc {
+            text-align: right !important;
+   }
+   .e-pivotgrid .colheader {
+            padding: 6px 8px 6px 2px !important;
+   }
+.e-pivotgrid .selected { 
+  background: #179bd7 !important; 
+  color: #ffffff; 
+}
+/*Below styles are related to pivotgrid Grouping Bar latest source changes.*/
+.e-pivotgrid .memberEditorDiv {
+  height: 256px;
+  margin-top: 5px;
+  border: 1px solid #c8c8c8;
+}
+.e-pivotgrid .editorTreeView {
+  margin-top: 7px;
+  height: 245px !important;
+}
+.e-pivotgrid .dialogOKBtn {
+  width: 69px;
+  margin-left: 83px;
+}
+.e-pivotgrid .dialogCancelBtn {
+  width: 69px;
+  margin-left: 10px;
+}
+.e-pivotgrid .e-treeview .e-text {
+  min-height: 20px;
+  border: 1px solid transparent;
+  font-family: Segoe UI;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: move;
+  color: #333333;
+}
+.e-pivotgrid .pivotButton {
+  color: #686969;
+  border-color: #c8c8c8;
+}
+.e-pivotgrid .pivotButton .e-btn.e-select {
+  border: none;
+  color: #686969;
+  border-color: #c8c8c8;
+}
+.e-pivotgrid .pivotButton .e-btn.e-select:hover {
+  border: none;
+  border-color: #c8c8c8;
+  color: #282827;
+}
+.e-pivotgrid .pivotButton .e-btn.e-select:hover {
+  background: #86cbea;
+}
+.e-pivotgrid .pivotButton.e-btn.e-select {
+  border: none;
+}
+.e-pivotgrid .drag {
+  color: white;
+  font-family: 'Segoe UI';
+  font-size: 14px;
+  font-weight: bold;
+  /*color: #5c5c5c;*/
+  padding: 9px 0px 9px 0px;
+  background: #179bd7;
+  /*background: @pager-default-bg-color;*/
+  border: 1px solid #c8c8c8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.e-pivotgrid .pivotButton.e-btn .e-icon {
+  padding: 0px;
+}
+.e-pivotgrid .values,
+.e-pivotgrid .columns,
+.e-pivotgrid .rows,
+.e-pivotgrid .emptyRows {
+  font-family: 'Segoe UI';
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 0px 5px 0px;
+  /*background: @groupingBar-bg-color;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.e-pivotgrid .values {
+  border-right: 1px solid #c8c8c8;
+}
+.e-pivotgrid .emptyRows {
+  background: #179bd7;
+  border: 1px solid #c8c8c8;
+}
+.e-pivotgrid .valueColumn {
+  background: #179bd7;
+  height: auto;
+  border-left: 1px solid #c8c8c8;
+}
+.e-pivotgrid .values .pivotButton,
+.e-pivotgrid .drag .pivotButton,
+.e-pivotgrid .columns .pivotButton,
+.e-pivotgrid .rows .pivotButton {
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: #ececec;
+}
+.e-pivotgrid .values .pivotButton:hover,
+.e-pivotgrid .drag .pivotButton:hover,
+.e-pivotgrid .columns .pivotButton:hover,
+.e-pivotgrid .rows .pivotButton:hover {
+  background: #86cbea;
+}
+.e-pivotgrid .pivotButton,
+.e-pivotgrid .rows,
+.e-pivotgrid .valueColumn,
+.e-pivotgrid .values,
+.e-pivotgrid .columns {
+  display: inline-block !important;
+  vertical-align: top;
+}
+.e-pivotgrid .e-btn {
+  vertical-align: auto;
+}
+.e-pivotgrid .drag .e-btn,
+.e-pivotgrid .drag .e-btn div {
+  vertical-align: initial;
+}
+.e-pivotgrid .drag .pivotButton {
+  vertical-align: top;
+  line-height: 0;
+}
+.e-pivotgrid .rows {
+  padding-bottom: 4px;
+  display: table-cell;
+  vertical-align: bottom;
+  height: 100%;
+  width: 100%;
+  min-height: 24px;
+}
+.e-pivotgrid .values {
+  min-height: 24px;
+}
+.e-pivotgrid .columns {
+  min-height: 24px;
+}
+.dashboardPivotGridControl .e-icon:before,.dashboardPivotGridControl .e-rte-toolbar-icon:before,.dashboardPivotGridControl .e-bgcolor-icon:before,.dashboardPivotGridControl .e-fontcolor-icon:before,.dashboardPivotGridControl .e-rte-footericon:before, .dashboardPivotGridControl .e-rte-resize:before{
+width:auto !important;
+}
+.e-pivotgrid .rows .pivotButton,
+.e-pivotgrid .values .pivotButton,
+.e-pivotgrid .columns .pivotButton,
+.e-pivotgrid .drag .pivotButton {
+  vertical-align: bottom;
+}
+.e-pivotgrid .pivotButton {
+  margin-left: 5px;
+}
+.e-pivotgrid .grpRow {
+  background: #179bd7;
+  vertical-align: bottom;
+  text-align: left;
+}
+.e-pivotgrid .pivotButton {
+  border: 1px solid #c8c8c8 !important;
+  padding: 0px !important;
+}
+.e-pivotgrid .pivotButton:hover {
+  border: 1px solid #c8c8c8 !important;
+}
+.e-pivotgrid th.grpRow {
+  padding: 10px 2px 0 0px !important;
+}
+.e-pivotgrid .e-btn {
+  font-size: 13px;
+}
+th.rowheader.hyperlinkHeaderCell {
+    color: #0000EE;
+}
+th.summary.hyperlinkHeaderCell{
+	color: #0000EE;
+}
+th.colheader.hyperlinkHeaderCell {
+    color: #0000EE;
+}
+span.cellValue.hyperlinkHeaderCell{
+	color: #0000EE;
+}
+/*waiting popup changes*/
+.e-waitpopup-pane {
+        background-color: transparent !important;
+	}
+.e-waitpopup-pane .e-image {
+    background-color: transparent;
+    background-image: url(../dashboard-themes/light/images/loader_blue.GIF);
+}

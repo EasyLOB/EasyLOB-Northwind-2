@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../../../fonts/Roboto-Regular.ttf') format('opentype');
+}
+
+.e-input, .e-tooltip, .e-btn, .e-time-popup, .e-datepicker.e-calendar, .e-menu, .e-uploadbox .e-file-name-txt, .e-uploadbox .e-selectpart, .e-uploadbox .e-uploadbtn, .e-waitpopup-pane .e-text, .e-tagcloud, .e-toolbar, .e-progressbar, .e-scale .e-tick .tick-value, .e-datetime-popup .e-dt-button, .e-grid, .e-ejinputtext, .e-pager, .e-fileexplorer,.e-grid td
+{
+font-family:Roboto !important;
+}
+
+::-webkit-scrollbar
+{
+  width: 6px;  /* for vertical scrollbars */
+  height: 6px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track,::-webkit-scrollbar-track-piece
+{
+  background: rgba(0, 0, 0, 0.05);
+}
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 5px;
+  /*   border-radius: 10px; */
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); 
+}

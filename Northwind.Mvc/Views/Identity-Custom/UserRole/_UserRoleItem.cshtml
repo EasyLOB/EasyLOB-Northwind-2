@@ -1,0 +1,107 @@
+@model UserRoleItemModel
+
+@{
+    string CSHTML = "_UserRoleItem.cshtml";
+    string roleText = Model.UserRole == null ? "" : (Model.UserRole.RoleLookupText ?? "");
+    string userText = Model.UserRole == null ? "" : (Model.UserRole.UserLookupText ?? "");
+}
+
+<div id="Item_UserRole">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "UserRole_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "UserRole_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "UserRole_Item_IsSave")
+    @Html.HiddenFor(model => model.MasterRoleId, new { id = "UserRole_Item_MasterRoleId" })
+    @Html.HiddenFor(model => model.MasterUserId, new { id = "UserRole_Item_MasterUserId" })
+
+    @{Html.EJ().Tab("Tab_UserRole")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_UserRole")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_UserRole_UserRole").Text(UserRoleResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
+                
+                <div id="Group_UserRole_UserId" class="@AppDefaults.CssClassGroup @UserRole.DataProfile.EditWidthCSSFor("UserLookupText")">
+                    @Html.LabelFor(model => model.UserRole.UserId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserRole.UserId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserRole_UserId" } })
+                    @{
+                        Html.RenderAction("Lookup", "User", new
+                        {
+                            Text = userText,
+                            ValueId = "UserRole_UserId"
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.UserRole.UserId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_UserRole_RoleId" class="@AppDefaults.CssClassGroup @UserRole.DataProfile.EditWidthCSSFor("RoleLookupText")">
+                    @Html.LabelFor(model => model.UserRole.RoleId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserRole.RoleId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserRole_RoleId" } })
+                    @{
+                        Html.RenderAction("Lookup", "Role", new
+                        {
+                            Text = roleText,
+                            ValueId = "UserRole_RoleId"
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.UserRole.RoleId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_UserRole"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserRole.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+
+            // !?!
+            //if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            //    $("#Group_UserRole_UserId").hide();
+            //    $("#Group_UserRole_RoleId").hide();
+            //}
+
+            // Associations (FK)
+            // Role
+            if (model.MasterRoleId != null) {
+                $("#UserRole_RoleId").val(model.MasterRoleId);
+                $("#Group_UserRole_RoleId").hide();
+            }
+            // User
+            if (model.MasterUserId != null) {
+                $("#UserRole_UserId").val(model.MasterUserId);
+                $("#Group_UserRole_UserId").hide();
+            }
+
+            zOnItemView(model, dataProfile);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });
+
+    function itemActive_Tab_UserRole(args) {
+        zTabDictionaryWrite("UserRole", args.model.selectedItemIndex);
+
+        try {
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_UserRole", exception));
+        }
+    }
+</script>

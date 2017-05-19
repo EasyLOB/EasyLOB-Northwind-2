@@ -1,0 +1,244 @@
+@model AuditTrailConfigurationCollectionModel
+
+@{
+    string CSHTML = "_AuditTrailConfigurationCollection.cshtml";
+
+    string query = "";
+}
+
+<div id="Collection_AuditTrailConfiguration">
+    @(Html.EJ().Grid<AuditTrailConfiguration>("Grid_AuditTrailConfiguration")
+        //.Datasource(datasource => datasource
+        //    .Adaptor(AdaptorType.UrlAdaptor)
+        //    .URL(Url.Action("DataSource", "AuditTrailConfiguration"))
+        //)
+        .Query(query)
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowReordering()
+        //.AllowResizeToFit()
+        .AllowResizing()
+        //.AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .AllowTextWrap()
+        .TextWrapSettings(wrap =>
+        {
+            wrap.WrapMode(WrapMode.Both);
+        })
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_AuditTrailConfiguration")
+            .ActionFailure("actionFailure_Grid_AuditTrailConfiguration")
+            .Load("load_Grid_AuditTrailConfiguration")
+            .ToolbarClick("toolbarClick_Grid_AuditTrailConfiguration")
+        )
+        .Columns(column =>
+        {
+            column.Field("Id")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(AuditTrailConfigurationResources.PropertyId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("Id"))
+                .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("Id"))
+                .Add();
+            column.Field("Domain")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailConfigurationResources.PropertyDomain)
+                .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("Domain"))
+                .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("Domain"))
+                .Add();
+            column.Field("Entity")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailConfigurationResources.PropertyEntity)
+                .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("Entity"))
+                .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("Entity"))
+                .Add();
+            column.Field("LogMode")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailConfigurationResources.PropertyLogMode)
+                .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("LogMode"))
+                .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("LogMode"))
+                .Add();
+            column.Field("LogOperations")
+                .EditType(EditingType.String)
+                .HeaderText(AuditTrailConfigurationResources.PropertyLogOperations)
+                .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("LogOperations"))
+                .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("LogOperations"))
+                .Add();
+        })
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+            .AllowEditOnDblClick(false)
+        )
+        //.EnablePersistence()
+        .IsResponsive(true)
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(AppDefaults.SyncfusionRecordsForFiltering)
+        )
+        //.Mappers(map => map
+        //    .ExportToExcelAction(Url.Content("~/AuditTrailConfiguration/ExportToExcel"))
+        //    .ExportToPdfAction(Url.Content("~/AuditTrailConfiguration/ExportToPdf"))
+        //    .ExportToWordAction(Url.Content("~/AuditTrailConfiguration/ExportToWord"))
+        //)
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        @*
+        .SearchSettings(search =>
+        {
+            search.Fields(field =>
+            {
+                field.Add("Id");
+                field.Add("Domain");
+                field.Add("Entity");
+                field.Add("LogOperations");
+                field.Add("LogMode");
+            });
+        })
+        *@
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Grid_AuditTrailConfiguration_Toolbar" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                //items.AddTool(ToolBarItems.ExcelExport);
+                //items.AddTool(ToolBarItems.PdfExport);
+                //items.AddTool(ToolBarItems.WordExport);
+            })
+        )
+    )
+</div>
+
+<script type="text/x-jsrender" id="Grid_AuditTrailConfiguration_Toolbar">
+    <div id="Grid_AuditTrailConfiguration_Toolbar_Refresh" class="e-toolbaricons e-icon e-reload" title="@PresentationResources.Refresh"></div>
+    <div id="Grid_AuditTrailConfiguration_Toolbar_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            ej.widget.init($("#Collection_AuditTrailConfiguration"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(AuditTrailConfiguration.DataProfile));
+
+            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "AuditTrailConfiguration")");
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });
+
+    function actionBegin_Grid_AuditTrailConfiguration(args) {
+        try {
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+
+            // Associations (FK)
+            var url = "";
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {
+                    case "searching":
+                        // Search
+                        zSearchDictionaryWrite("AuditTrailConfiguration", args.keyValue);
+                        break;
+                    case "add":
+                        // Create
+                        if (model.ActivityOperations.IsCreate) {
+                            $("#ZAjax").load("@(Url.Action("Create", "AuditTrailConfiguration", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.ActivityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Read", "AuditTrailConfiguration", null, Request.Url.Scheme))?Id=" + String(data.Id) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                    case "beginedit":
+                        // Update
+                        if (model.ActivityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Update", "AuditTrailConfiguration", null, Request.Url.Scheme))?Id=" + String(data.Id) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.ActivityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Delete", "AuditTrailConfiguration", null, Request.Url.Scheme))?Id=" + String(data.Id) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionBegin_Grid_AuditTrailConfiguration", exception));
+        }
+    }
+
+    function actionFailure_Grid_AuditTrailConfiguration(args) {
+        try {
+            zAlert(args.error.responseText);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionFailure_Grid_AuditTrailConfiguration", exception));
+        }
+    }
+
+    function load_Grid_AuditTrailConfiguration(args) {
+        try {
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "load_Grid_AuditTrailConfiguration", exception));
+        }
+    }
+
+    function toolbarClick_Grid_AuditTrailConfiguration(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var ejGrid = zGrid("Grid_AuditTrailConfiguration");
+
+            if (toolbar.prop("id") == "Grid_AuditTrailConfiguration_Toolbar_Refresh") {
+                ejGrid.refreshContent();
+            } else if (toolbar.prop("id") == "Grid_AuditTrailConfiguration_Toolbar_Read") {
+                var records = ejGrid.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_AuditTrailConfiguration(args)
+                }
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "toolbarClick_Grid_AuditTrailConfiguration", exception));
+        }
+    }
+</script>

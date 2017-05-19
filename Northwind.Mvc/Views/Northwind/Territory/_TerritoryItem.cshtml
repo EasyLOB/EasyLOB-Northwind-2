@@ -1,0 +1,111 @@
+﻿@model TerritoryItemModel
+
+@{
+    string CSHTML = "_TerritoryItem.cshtml";
+    string regionText = Model.Territory == null ? "" : (Model.Territory.RegionLookupText ?? "");
+}
+
+<div id="Item_Territory">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "Territory_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "Territory_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "Territory_Item_IsSave")
+    @Html.HiddenFor(model => model.MasterRegionId, new { id = "Territory_Item_MasterRegionId" })
+
+    @{Html.EJ().Tab("Tab_Territory")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_Territory")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Territory_Territory").Text(TerritoryResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
+                
+                <div id="Group_Territory_TerritoryId" class="@AppDefaults.CssClassGroup @Territory.DataProfile.EditWidthCSSFor("TerritoryId")">
+                    @Html.LabelFor(model => model.Territory.TerritoryId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Territory.TerritoryId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Territory_TerritoryId" } })
+                    @* @Html.ValidationMessageFor(model => model.Territory.TerritoryId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_Territory_TerritoryDescription" class="@AppDefaults.CssClassGroup @Territory.DataProfile.EditWidthCSSFor("TerritoryDescription")">
+                    @Html.LabelFor(model => model.Territory.TerritoryDescription, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Territory.TerritoryDescription, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Territory_TerritoryDescription" } })
+                    @* @Html.ValidationMessageFor(model => model.Territory.TerritoryDescription, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_Territory_RegionId" class="@AppDefaults.CssClassGroup @Territory.DataProfile.EditWidthCSSFor("RegionLookupText")">
+                    @Html.LabelFor(model => model.Territory.RegionId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Territory.RegionId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Territory_RegionId" } })
+                    @{
+                        Html.RenderAction("Lookup", "Region", new
+                        {
+                            Text = regionText,
+                            ValueId = "Territory_RegionId"
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.Territory.RegionId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+            data.Add().ID("TabSheet_Territory_EmployeeTerritories").Text(EmployeeTerritoryResources.EntityPlural).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">    
+                <div id="Ajax_Territory_EmployeeTerritories"></div>
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_Territory"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Territory.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "EmployeeTerritories")) {
+                // EmployeeTerritories
+                zUrlDictionaryWrite("EmployeeTerritory", "@Context.Request.Url.AbsoluteUri");
+                ajaxUrl = "@(Html.Raw(Url.Action("Search", "EmployeeTerritory", new { MasterControllerAction = Model.ControllerAction, MasterTerritoryId = Model.Territory.TerritoryId })))";
+                zAjaxLoadSync("Ajax_Territory_EmployeeTerritories", ajaxUrl);
+            }
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_Territory_TerritoryId").hide();
+            }
+
+            // Associations (FK)
+            // Region
+            if (model.MasterRegionId != null) {
+                $("#Territory_RegionId").val(model.MasterRegionId);
+                $("#Group_Territory_RegionId").hide();            
+            }
+
+            zOnItemView(model, dataProfile);        
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });    
+
+    function itemActive_Tab_Territory(args) {
+        zTabDictionaryWrite("Territory", args.model.selectedItemIndex);
+
+        try {
+            switch(args.model.selectedItemIndex) {
+                case 1:
+                    zGridDataSource("Grid_EmployeeTerritory", "@Url.Action("DataSource", "EmployeeTerritory")");
+                    break;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_Territory", exception));
+        }
+    }
+</script>

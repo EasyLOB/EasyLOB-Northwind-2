@@ -1,0 +1,106 @@
+﻿@model EmployeeTerritoryItemModel
+
+@{
+    string CSHTML = "_EmployeeTerritoryItem.cshtml";
+    string employeeText = Model.EmployeeTerritory == null ? "" : (Model.EmployeeTerritory.EmployeeLookupText ?? "");
+    string territoryText = Model.EmployeeTerritory == null ? "" : (Model.EmployeeTerritory.TerritoryLookupText ?? "");
+}
+
+<div id="Item_EmployeeTerritory">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "EmployeeTerritory_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "EmployeeTerritory_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "EmployeeTerritory_Item_IsSave")
+    @Html.HiddenFor(model => model.MasterEmployeeId, new { id = "EmployeeTerritory_Item_MasterEmployeeId" })
+    @Html.HiddenFor(model => model.MasterTerritoryId, new { id = "EmployeeTerritory_Item_MasterTerritoryId" })
+
+    @{Html.EJ().Tab("Tab_EmployeeTerritory")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_EmployeeTerritory")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_EmployeeTerritory_EmployeeTerritory").Text(EmployeeTerritoryResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
+                
+                <div id="Group_EmployeeTerritory_EmployeeId" class="@AppDefaults.CssClassGroup @EmployeeTerritory.DataProfile.EditWidthCSSFor("EmployeeLookupText")">
+                    @Html.LabelFor(model => model.EmployeeTerritory.EmployeeId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.EmployeeTerritory.EmployeeId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "EmployeeTerritory_EmployeeId" } })
+                    @{
+                        Html.RenderAction("Lookup", "Employee", new
+                        {
+                            Text = employeeText,
+                            ValueId = "EmployeeTerritory_EmployeeId"
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.EmployeeTerritory.EmployeeId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_EmployeeTerritory_TerritoryId" class="@AppDefaults.CssClassGroup @EmployeeTerritory.DataProfile.EditWidthCSSFor("TerritoryLookupText")">
+                    @Html.LabelFor(model => model.EmployeeTerritory.TerritoryId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.EmployeeTerritory.TerritoryId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "EmployeeTerritory_TerritoryId" } })
+                    @{
+                        Html.RenderAction("Lookup", "Territory", new
+                        {
+                            Text = territoryText,
+                            ValueId = "EmployeeTerritory_TerritoryId"
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.EmployeeTerritory.TerritoryId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_EmployeeTerritory"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(EmployeeTerritory.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_EmployeeTerritory_EmployeeId").hide();
+                $("#Group_EmployeeTerritory_TerritoryId").hide();
+            }
+
+            // Associations (FK)
+            // Employee
+            if (model.MasterEmployeeId != null) {
+                $("#EmployeeTerritory_EmployeeId").val(model.MasterEmployeeId);
+                $("#Group_EmployeeTerritory_EmployeeId").hide();            
+            }
+            // Territory
+            if (model.MasterTerritoryId != null) {
+                $("#EmployeeTerritory_TerritoryId").val(model.MasterTerritoryId);
+                $("#Group_EmployeeTerritory_TerritoryId").hide();            
+            }
+
+            zOnItemView(model, dataProfile);        
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });    
+
+    function itemActive_Tab_EmployeeTerritory(args) {
+        zTabDictionaryWrite("EmployeeTerritory", args.model.selectedItemIndex);
+
+        try {
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_EmployeeTerritory", exception));
+        }
+    }
+</script>

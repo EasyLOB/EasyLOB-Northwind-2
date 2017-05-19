@@ -1,0 +1,282 @@
+﻿@model CustomerCollectionModel
+
+@{
+    string CSHTML = "_CustomerCollection.cshtml";
+
+    string query = "";
+}
+
+<div id="Collection_Customer">
+    @(Html.EJ().Grid<Customer>("Grid_Customer")
+        //.Datasource(datasource => datasource
+        //    .Adaptor(AdaptorType.UrlAdaptor)
+        //    .URL(Url.Action("DataSource", "Customer"))
+        //)
+        .Query(query)        
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowReordering()
+        //.AllowResizeToFit()
+        .AllowResizing()
+        //.AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .AllowTextWrap()
+        .TextWrapSettings(wrap =>
+        {
+            wrap.WrapMode(WrapMode.Both);
+        })                    
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_Customer")
+            .ActionFailure("actionFailure_Grid_Customer")
+            .Load("load_Grid_Customer")
+            .ToolbarClick("toolbarClick_Grid_Customer")
+        )
+        .Columns(column =>
+        {
+            column.Field("CustomerId")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyCustomerId)
+                .IsPrimaryKey(true)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("CustomerId"))
+                .Width(Customer.DataProfile.GridWidthFor("CustomerId"))
+                .Add();
+            column.Field("CompanyName")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyCompanyName)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("CompanyName"))
+                .Width(Customer.DataProfile.GridWidthFor("CompanyName"))
+                .Add();
+            column.Field("ContactName")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyContactName)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("ContactName"))
+                .Width(Customer.DataProfile.GridWidthFor("ContactName"))
+                .Add();
+            column.Field("ContactTitle")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyContactTitle)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("ContactTitle"))
+                .Width(Customer.DataProfile.GridWidthFor("ContactTitle"))
+                .Add();
+            column.Field("Address")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyAddress)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("Address"))
+                .Width(Customer.DataProfile.GridWidthFor("Address"))
+                .Add();
+            column.Field("City")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyCity)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("City"))
+                .Width(Customer.DataProfile.GridWidthFor("City"))
+                .Add();
+            column.Field("Region")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyRegion)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("Region"))
+                .Width(Customer.DataProfile.GridWidthFor("Region"))
+                .Add();
+            column.Field("PostalCode")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyPostalCode)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("PostalCode"))
+                .Width(Customer.DataProfile.GridWidthFor("PostalCode"))
+                .Add();
+            column.Field("Country")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyCountry)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("Country"))
+                .Width(Customer.DataProfile.GridWidthFor("Country"))
+                .Add();
+            column.Field("Phone")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyPhone)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("Phone"))
+                .Width(Customer.DataProfile.GridWidthFor("Phone"))
+                .Add();
+            column.Field("Fax")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerResources.PropertyFax)
+                .Visible(Customer.DataProfile.IsGridVisibleFor("Fax"))
+                .Width(Customer.DataProfile.GridWidthFor("Fax"))
+                .Add();
+        })
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+            .AllowEditOnDblClick(false)
+        )
+        //.EnablePersistence()
+        .IsResponsive()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(AppDefaults.SyncfusionRecordsForFiltering)
+        )
+        //.Mappers(map => map
+        //    .ExportToExcelAction(Url.Content("~/Customer/ExportToExcel"))
+        //    .ExportToPdfAction(Url.Content("~/Customer/ExportToPdf"))
+        //    .ExportToWordAction(Url.Content("~/Customer/ExportToWord"))
+        //)
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        @*
+        .SearchSettings(search =>
+        {
+            search.Fields(field =>
+            {
+                field.Add("CustomerId");
+                field.Add("CompanyName");
+                field.Add("ContactName");
+                field.Add("ContactTitle");
+                field.Add("Address");
+                field.Add("City");
+                field.Add("Region");
+                field.Add("PostalCode");
+                field.Add("Country");
+                field.Add("Phone");
+                field.Add("Fax");
+            });
+        })
+        *@
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Grid_Customer_Toolbar" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                //items.AddTool(ToolBarItems.ExcelExport);
+                //items.AddTool(ToolBarItems.PdfExport);
+                //items.AddTool(ToolBarItems.WordExport);
+            })
+        )
+    )
+</div>
+
+<script type="text/x-jsrender" id="Grid_Customer_Toolbar">
+    <div id="Grid_Customer_Toolbar_Refresh" class="e-toolbaricons e-icon e-reload" title="@PresentationResources.Refresh"></div>
+    <div id="Grid_Customer_Toolbar_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            ej.widget.init($("#Collection_Customer"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Customer.DataProfile));
+
+            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Customer")");
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }                
+    });
+    
+    function actionBegin_Grid_Customer(args) {
+        try {
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+    
+            // Associations (FK)
+            var url = "";
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {
+                    case "searching":
+                        // Search
+                        zSearchDictionaryWrite("Customer", args.keyValue);
+                        break;
+                    case "add":
+                        // Create
+                        if (model.ActivityOperations.IsCreate) {
+                            $("#ZAjax").load("@(Url.Action("Create", "Customer", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.ActivityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Read", "Customer", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;                        
+                    case "beginedit":
+                        // Update
+                        if (model.ActivityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Update", "Customer", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.ActivityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Delete", "Customer", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionBegin_Grid_Customer", exception));
+        }            
+    }
+    
+    function actionFailure_Grid_Customer(args) {
+        try {
+            zAlert(args.error.responseText);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionFailure_Grid_Customer", exception));
+        }
+    }    
+
+    function load_Grid_Customer(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "load_Grid_Customer", exception));
+        }
+    }
+
+    function toolbarClick_Grid_Customer(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var ejGrid = $("#Grid_Customer").data("ejGrid");
+
+            if (toolbar.prop("id") == "Grid_Customer_Toolbar_Refresh") {
+                ejGrid.refreshContent();
+            } else if (toolbar.prop("id") == "Grid_Customer_Toolbar_Read") {
+                var records = ejGrid.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_Customer(args)
+                }
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "toolbarClick_Grid_Customer", exception));
+        }
+    }
+</script>

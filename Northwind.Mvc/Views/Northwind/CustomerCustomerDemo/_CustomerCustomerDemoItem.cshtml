@@ -1,0 +1,106 @@
+﻿@model CustomerCustomerDemoItemModel
+
+@{
+    string CSHTML = "_CustomerCustomerDemoItem.cshtml";
+    string customerDemographicText = Model.CustomerCustomerDemo == null ? "" : (Model.CustomerCustomerDemo.CustomerDemographicLookupText ?? "");
+    string customerText = Model.CustomerCustomerDemo == null ? "" : (Model.CustomerCustomerDemo.CustomerLookupText ?? "");
+}
+
+<div id="Item_CustomerCustomerDemo">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "CustomerCustomerDemo_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "CustomerCustomerDemo_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "CustomerCustomerDemo_Item_IsSave")
+    @Html.HiddenFor(model => model.MasterCustomerTypeId, new { id = "CustomerCustomerDemo_Item_MasterCustomerTypeId" })
+    @Html.HiddenFor(model => model.MasterCustomerId, new { id = "CustomerCustomerDemo_Item_MasterCustomerId" })
+
+    @{Html.EJ().Tab("Tab_CustomerCustomerDemo")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_CustomerCustomerDemo")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_CustomerCustomerDemo_CustomerCustomerDemo").Text(CustomerCustomerDemoResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
+                
+                <div id="Group_CustomerCustomerDemo_CustomerId" class="@AppDefaults.CssClassGroup @CustomerCustomerDemo.DataProfile.EditWidthCSSFor("CustomerLookupText")">
+                    @Html.LabelFor(model => model.CustomerCustomerDemo.CustomerId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.CustomerCustomerDemo.CustomerId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "CustomerCustomerDemo_CustomerId" } })
+                    @{
+                        Html.RenderAction("Lookup", "Customer", new
+                        {
+                            Text = customerText,
+                            ValueId = "CustomerCustomerDemo_CustomerId"
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.CustomerCustomerDemo.CustomerId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_CustomerCustomerDemo_CustomerTypeId" class="@AppDefaults.CssClassGroup @CustomerCustomerDemo.DataProfile.EditWidthCSSFor("CustomerDemographicLookupText")">
+                    @Html.LabelFor(model => model.CustomerCustomerDemo.CustomerTypeId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.CustomerCustomerDemo.CustomerTypeId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "CustomerCustomerDemo_CustomerTypeId" } })
+                    @{
+                        Html.RenderAction("Lookup", "CustomerDemographic", new
+                        {
+                            Text = customerDemographicText,
+                            ValueId = "CustomerCustomerDemo_CustomerTypeId"
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.CustomerCustomerDemo.CustomerTypeId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_CustomerCustomerDemo"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(CustomerCustomerDemo.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_CustomerCustomerDemo_CustomerId").hide();
+                $("#Group_CustomerCustomerDemo_CustomerTypeId").hide();
+            }
+
+            // Associations (FK)
+            // CustomerDemographic
+            if (model.MasterCustomerTypeId != null) {
+                $("#CustomerCustomerDemo_CustomerTypeId").val(model.MasterCustomerTypeId);
+                $("#Group_CustomerCustomerDemo_CustomerTypeId").hide();            
+            }
+            // Customer
+            if (model.MasterCustomerId != null) {
+                $("#CustomerCustomerDemo_CustomerId").val(model.MasterCustomerId);
+                $("#Group_CustomerCustomerDemo_CustomerId").hide();            
+            }
+
+            zOnItemView(model, dataProfile);        
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });    
+
+    function itemActive_Tab_CustomerCustomerDemo(args) {
+        zTabDictionaryWrite("CustomerCustomerDemo", args.model.selectedItemIndex);
+
+        try {
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_CustomerCustomerDemo", exception));
+        }
+    }
+</script>

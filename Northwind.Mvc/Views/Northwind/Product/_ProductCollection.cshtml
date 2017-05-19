@@ -1,0 +1,321 @@
+﻿@model ProductCollectionModel
+
+@{
+    string CSHTML = "_ProductCollection.cshtml";
+
+    string query = "";
+    if (Model.MasterCategoryId != null)
+    {
+        query = String.Format("ej.Query().where(\"CategoryId\", ej.FilterOperators.equal, {0})", Model.MasterCategoryId);
+    }
+    else if (Model.MasterSupplierId != null)
+    {
+        query = String.Format("ej.Query().where(\"SupplierId\", ej.FilterOperators.equal, {0})", Model.MasterSupplierId);
+    }
+}
+
+<div id="Collection_Product">
+    @(Html.EJ().Grid<Product>("Grid_Product")
+        //.Datasource(datasource => datasource
+        //    .Adaptor(AdaptorType.UrlAdaptor)
+        //    .URL(Url.Action("DataSource", "Product"))
+        //)
+        .Query(query)        
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowReordering()
+        //.AllowResizeToFit()
+        .AllowResizing()
+        //.AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .AllowTextWrap()
+        .TextWrapSettings(wrap =>
+        {
+            wrap.WrapMode(WrapMode.Both);
+        })                    
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_Product")
+            .ActionFailure("actionFailure_Grid_Product")
+            .Load("load_Grid_Product")
+            .ToolbarClick("toolbarClick_Grid_Product")
+        )
+        .Columns(column =>
+        {
+            column.Field("ProductId")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(ProductResources.PropertyProductId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(Product.DataProfile.IsGridVisibleFor("ProductId"))
+                .Width(Product.DataProfile.GridWidthFor("ProductId"))
+                .Add();
+            column.Field("ProductName")
+                .EditType(EditingType.String)
+                .HeaderText(ProductResources.PropertyProductName)
+                .Visible(Product.DataProfile.IsGridVisibleFor("ProductName"))
+                .Width(Product.DataProfile.GridWidthFor("ProductName"))
+                .Add();
+            column.Field("SupplierId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(ProductResources.PropertySupplierId)
+                .TextAlign(TextAlign.Right)
+                .Visible(Product.DataProfile.IsGridVisibleFor("SupplierId"))
+                .Width(Product.DataProfile.GridWidthFor("SupplierId"))
+                .Add();
+            column.Field("SupplierLookupText")
+                .AllowEditing(false)
+                .HeaderText(SupplierResources.EntitySingular)
+                .Visible(Product.DataProfile.IsGridVisibleFor("SupplierLookupText"))
+                .Width(Product.DataProfile.GridWidthFor("SupplierLookupText"))
+                .Add();
+            column.Field("CategoryId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(ProductResources.PropertyCategoryId)
+                .TextAlign(TextAlign.Right)
+                .Visible(Product.DataProfile.IsGridVisibleFor("CategoryId"))
+                .Width(Product.DataProfile.GridWidthFor("CategoryId"))
+                .Add();
+            column.Field("CategoryLookupText")
+                .AllowEditing(false)
+                .HeaderText(CategoryResources.EntitySingular)
+                .Visible(Product.DataProfile.IsGridVisibleFor("CategoryLookupText"))
+                .Width(Product.DataProfile.GridWidthFor("CategoryLookupText"))
+                .Add();
+            column.Field("QuantityPerUnit")
+                .EditType(EditingType.String)
+                .HeaderText(ProductResources.PropertyQuantityPerUnit)
+                .Visible(Product.DataProfile.IsGridVisibleFor("QuantityPerUnit"))
+                .Width(Product.DataProfile.GridWidthFor("QuantityPerUnit"))
+                .Add();
+            column.Field("UnitPrice")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Float)
+                .HeaderText(ProductResources.PropertyUnitPrice)
+                .TextAlign(TextAlign.Right)
+                .Visible(Product.DataProfile.IsGridVisibleFor("UnitPrice"))
+                .Width(Product.DataProfile.GridWidthFor("UnitPrice"))
+                .Add();
+            column.Field("UnitsInStock")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(ProductResources.PropertyUnitsInStock)
+                .TextAlign(TextAlign.Right)
+                .Visible(Product.DataProfile.IsGridVisibleFor("UnitsInStock"))
+                .Width(Product.DataProfile.GridWidthFor("UnitsInStock"))
+                .Add();
+            column.Field("UnitsOnOrder")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(ProductResources.PropertyUnitsOnOrder)
+                .TextAlign(TextAlign.Right)
+                .Visible(Product.DataProfile.IsGridVisibleFor("UnitsOnOrder"))
+                .Width(Product.DataProfile.GridWidthFor("UnitsOnOrder"))
+                .Add();
+            column.Field("ReorderLevel")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(ProductResources.PropertyReorderLevel)
+                .TextAlign(TextAlign.Right)
+                .Visible(Product.DataProfile.IsGridVisibleFor("ReorderLevel"))
+                .Width(Product.DataProfile.GridWidthFor("ReorderLevel"))
+                .Add();
+            column.Field("Discontinued")
+                .EditType(EditingType.Boolean)
+                .HeaderText(ProductResources.PropertyDiscontinued)
+                .Visible(Product.DataProfile.IsGridVisibleFor("Discontinued"))
+                .Width(Product.DataProfile.GridWidthFor("Discontinued"))
+                .Add();
+        })
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+            .AllowEditOnDblClick(false)
+        )
+        //.EnablePersistence()
+        .IsResponsive()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(AppDefaults.SyncfusionRecordsForFiltering)
+        )
+        //.Mappers(map => map
+        //    .ExportToExcelAction(Url.Content("~/Product/ExportToExcel"))
+        //    .ExportToPdfAction(Url.Content("~/Product/ExportToPdf"))
+        //    .ExportToWordAction(Url.Content("~/Product/ExportToWord"))
+        //)
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        @*
+        .SearchSettings(search =>
+        {
+            search.Fields(field =>
+            {
+                field.Add("ProductId");
+                field.Add("ProductName");
+                //field.Add("SupplierId");
+                field.Add("SupplierLookupText");
+                //field.Add("CategoryId");
+                field.Add("CategoryLookupText");
+                field.Add("QuantityPerUnit");
+                //field.Add("UnitPrice");
+                //field.Add("UnitsInStock");
+                //field.Add("UnitsOnOrder");
+                //field.Add("ReorderLevel");
+                //field.Add("Discontinued");
+            });
+        })
+        *@
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Grid_Product_Toolbar" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                //items.AddTool(ToolBarItems.ExcelExport);
+                //items.AddTool(ToolBarItems.PdfExport);
+                //items.AddTool(ToolBarItems.WordExport);
+            })
+        )
+    )
+</div>
+
+<script type="text/x-jsrender" id="Grid_Product_Toolbar">
+    <div id="Grid_Product_Toolbar_Refresh" class="e-toolbaricons e-icon e-reload" title="@PresentationResources.Refresh"></div>
+    <div id="Grid_Product_Toolbar_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            ej.widget.init($("#Collection_Product"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Product.DataProfile));
+
+            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Product")");
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }                
+    });
+    
+    function actionBegin_Grid_Product(args) {
+        try {
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+    
+            // Associations (FK)
+            var url = "";
+            // Category
+            if (model.MasterCategoryId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterCategoryId=" + String(model.MasterCategoryId);
+            }
+            // Supplier
+            if (model.MasterSupplierId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterSupplierId=" + String(model.MasterSupplierId);
+            }
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {
+                    case "searching":
+                        // Search
+                        zSearchDictionaryWrite("Product", args.keyValue);
+                        break;
+                    case "add":
+                        // Create
+                        if (model.ActivityOperations.IsCreate) {
+                            $("#ZAjax").load("@(Url.Action("Create", "Product", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.ActivityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Read", "Product", null, Request.Url.Scheme))?ProductId=" + String(data.ProductId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;                        
+                    case "beginedit":
+                        // Update
+                        if (model.ActivityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Update", "Product", null, Request.Url.Scheme))?ProductId=" + String(data.ProductId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.ActivityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Delete", "Product", null, Request.Url.Scheme))?ProductId=" + String(data.ProductId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionBegin_Grid_Product", exception));
+        }            
+    }
+    
+    function actionFailure_Grid_Product(args) {
+        try {
+            zAlert(args.error.responseText);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionFailure_Grid_Product", exception));
+        }
+    }    
+
+    function load_Grid_Product(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "load_Grid_Product", exception));
+        }
+    }
+
+    function toolbarClick_Grid_Product(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var ejGrid = $("#Grid_Product").data("ejGrid");
+
+            if (toolbar.prop("id") == "Grid_Product_Toolbar_Refresh") {
+                ejGrid.refreshContent();
+            } else if (toolbar.prop("id") == "Grid_Product_Toolbar_Read") {
+                var records = ejGrid.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_Product(args)
+                }
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "toolbarClick_Grid_Product", exception));
+        }
+    }
+</script>

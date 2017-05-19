@@ -1,0 +1,115 @@
+@model ActivityRoleItemModel
+
+@{
+    string CSHTML = "_ActivityRoleItem.cshtml";
+    string activityText = Model.ActivityRole == null ? "" : (Model.ActivityRole.ActivityLookupText ?? "");
+    string roleText = Model.ActivityRole.RoleName; // !?!
+}
+
+<div id="Item_ActivityRole">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "ActivityRole_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "ActivityRole_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "ActivityRole_Item_IsSave")
+    @Html.HiddenFor(model => model.MasterActivityId, new { id = "ActivityRole_Item_MasterActivityId" })
+
+    @{Html.EJ().Tab("Tab_ActivityRole")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_ActivityRole")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_ActivityRole_ActivityRole").Text(ActivityRoleResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">         
+                
+                <div id="Group_ActivityRole_ActivityId" class="@AppDefaults.CssClassGroup @ActivityRole.DataProfile.EditWidthCSSFor("ActivityId")">
+                    @Html.LabelFor(model => model.ActivityRole.ActivityId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.ActivityRole.ActivityId, new { id = "ActivityRole_ActivityId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @{
+                        Html.RenderAction("Lookup", "Activity", new
+                        {
+                            Text = activityText,
+                            ValueId = "ActivityRole_ActivityId"
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.ActivityRole.ActivityId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+                @* !?! *@
+                <div id="Group_ActivityRole_RoleName" class="@AppDefaults.CssClassGroup col-md-4">
+                    @Html.LabelFor(model => model.ActivityRole.RoleName, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.ActivityRole.RoleName, new { id = "ActivityRole_RoleName", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
+                    @{
+                        Html.RenderAction("Lookup", "Role", new
+                        {
+                            Text = roleText,
+                            ValueId = "ActivityRole_RoleName",
+                            Elements = new List<LookupModelElement>() {
+                                new LookupModelElement("ActivityRole_RoleName", "Name")
+                            }
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.ActivityRole.RoleName, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+                <div id="Group_ActivityRole_Operations" class="@AppDefaults.CssClassGroup @ActivityRole.DataProfile.EditWidthCSSFor("Operations")">
+                    @Html.LabelFor(model => model.ActivityRole.Operations, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.ActivityRole.Operations, new { id = "ActivityRole_Operations", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                    @* @Html.ValidationMessageFor(model => model.ActivityRole.Operations, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_ActivityRole"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(ActivityRole.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_ActivityRole_ActivityId").hide();
+                $("#Group_ActivityRole_RoleName").hide();
+            }
+
+            // Associations (FK)
+            // Activity
+            if (model.MasterActivityId != null) {
+                $("#ActivityRole_ActivityId").val(model.MasterActivityId);
+                $("#Group_ActivityRole_ActivityId").hide();
+            }
+            // Role
+            if (model.MasterRoleName != null) {
+                $("#ActivityRole_RoleName").val(model.MasterRoleName);
+                $("#Group_ActivityRole_RoleName").hide();
+            }
+
+            zOnItemView(model, dataProfile);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });
+
+    function itemActive_Tab_ActivityRole(args) {
+        zTabDictionaryWrite("ActivityRole", args.model.selectedItemIndex);
+
+        try {
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_ActivityRole", exception));
+        }
+    }
+</script>

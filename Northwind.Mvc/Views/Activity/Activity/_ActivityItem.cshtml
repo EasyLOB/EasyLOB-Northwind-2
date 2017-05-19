@@ -1,0 +1,91 @@
+@model ActivityItemModel
+
+@{
+    string CSHTML = "_ActivityItem.cshtml";
+}
+
+<div id="Item_Activity">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "Activity_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "Activity_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "Activity_Item_IsSave")
+
+    @{Html.EJ().Tab("Tab_Activity")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_Activity")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Activity_Activity").Text(ActivityResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
+                
+                <div id="Group_Activity_Id" class="@AppDefaults.CssClassGroup @Activity.DataProfile.EditWidthCSSFor("Id")">
+                    @Html.LabelFor(model => model.Activity.Id, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Activity.Id, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Activity_Id" } })
+                    @* @Html.ValidationMessageFor(model => model.Activity.Id, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_Activity_Name" class="@AppDefaults.CssClassGroup @Activity.DataProfile.EditWidthCSSFor("Name")">
+                    @Html.LabelFor(model => model.Activity.Name, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Activity.Name, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Activity_Name" } })
+                    @* @Html.ValidationMessageFor(model => model.Activity.Name, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+            data.Add().ID("TabSheet_Activity_ActivityRoles").Text(ActivityRoleResources.EntityPlural).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">    
+                <div id="Ajax_Activity_ActivityRoles"></div>
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_Activity"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Activity.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "ActivityRoles")) {
+                // ActivityRoles
+                zUrlDictionaryWrite("ActivityRole", "@Context.Request.Url.AbsoluteUri");
+                ajaxUrl = "@(Html.Raw(Url.Action("Search", "ActivityRole", new { MasterControllerAction = Model.ControllerAction, MasterActivityId = Model.Activity.Id })))";
+                zAjaxLoadSync("Ajax_Activity_ActivityRoles", ajaxUrl);
+            }
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_Activity_Id").hide();
+            }
+
+            // Associations (FK)
+
+            zOnItemView(model, dataProfile);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });
+    
+    function itemActive_Tab_Activity(args) {
+        zTabDictionaryWrite("Activity", args.model.selectedItemIndex);
+
+        try {
+            switch(args.model.selectedItemIndex) {
+                case 1:
+                    zGridDataSource("Grid_ActivityRole", "@Url.Action("DataSource", "ActivityRole")");
+                    break;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_Activity", exception));
+        }
+    }
+</script>

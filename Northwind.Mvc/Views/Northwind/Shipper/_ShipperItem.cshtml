@@ -1,0 +1,97 @@
+﻿@model ShipperItemModel
+
+@{
+    string CSHTML = "_ShipperItem.cshtml";
+}
+
+<div id="Item_Shipper">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "Shipper_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "Shipper_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "Shipper_Item_IsSave")
+
+    @{Html.EJ().Tab("Tab_Shipper")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_Shipper")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Shipper_Shipper").Text(ShipperResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
+                
+                <div id="Group_Shipper_ShipperId" class="@AppDefaults.CssClassGroup @Shipper.DataProfile.EditWidthCSSFor("ShipperId")">
+                    @Html.LabelFor(model => model.Shipper.ShipperId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Shipper.ShipperId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Shipper_ShipperId" } })
+                    @* @Html.ValidationMessageFor(model => model.Shipper.ShipperId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_Shipper_CompanyName" class="@AppDefaults.CssClassGroup @Shipper.DataProfile.EditWidthCSSFor("CompanyName")">
+                    @Html.LabelFor(model => model.Shipper.CompanyName, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Shipper.CompanyName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Shipper_CompanyName" } })
+                    @* @Html.ValidationMessageFor(model => model.Shipper.CompanyName, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_Shipper_Phone" class="@AppDefaults.CssClassGroup @Shipper.DataProfile.EditWidthCSSFor("Phone")">
+                    @Html.LabelFor(model => model.Shipper.Phone, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Shipper.Phone, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Shipper_Phone" } })
+                    @* @Html.ValidationMessageFor(model => model.Shipper.Phone, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+            data.Add().ID("TabSheet_Shipper_Orders").Text(OrderResources.EntityPlural).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">    
+                <div id="Ajax_Shipper_Orders"></div>
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_Shipper"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Shipper.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "Orders")) {
+                // Orders
+                zUrlDictionaryWrite("Order", "@Context.Request.Url.AbsoluteUri");
+                ajaxUrl = "@(Html.Raw(Url.Action("Search", "Order", new { MasterControllerAction = Model.ControllerAction, MasterShipVia = Model.Shipper.ShipperId })))";
+                zAjaxLoadSync("Ajax_Shipper_Orders", ajaxUrl);
+            }
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_Shipper_ShipperId").hide();
+            }
+
+            // Associations (FK)
+
+            zOnItemView(model, dataProfile);        
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });    
+
+    function itemActive_Tab_Shipper(args) {
+        zTabDictionaryWrite("Shipper", args.model.selectedItemIndex);
+
+        try {
+            switch(args.model.selectedItemIndex) {
+                case 1:
+                    zGridDataSource("Grid_Order", "@Url.Action("DataSource", "Order")");
+                    break;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_Shipper", exception));
+        }
+    }
+</script>

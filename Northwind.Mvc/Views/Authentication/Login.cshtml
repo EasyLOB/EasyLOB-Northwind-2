@@ -1,0 +1,92 @@
+@model LoginViewModel
+
+@{
+    /*
+    // !?! Multi-Tenant
+    List<SelectListItem> tenants = new List<SelectListItem>();
+    if (MultiTenantHelper.HasTenants)
+    {
+        foreach (AppTenant appTenant in MultiTenantHelper.Tenants)
+        {
+            tenants.Add(new SelectListItem
+            {
+                Text = appTenant.Description,
+                Value = appTenant.Name
+            });
+        }
+        if (tenants.Count > 0)
+        {
+            tenants[0].Selected = true;
+        }
+    }
+     */
+}
+
+<h2>@AuthenticationResources.LogIn</h2>
+<hr />
+
+@using (Html.BeginForm("Login", "Authentication", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    <div class="@AppDefaults.CssClassForm" style="margin-left: 16px;">
+
+        <div class="@AppDefaults.CssClassGroup col-md-3">
+            @Html.LabelFor(model => model.UserName, new { @class = AppDefaults.CssClassLabelRequired })
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+        </div>
+
+        @Html.ZNewLine()
+
+        <div class="@AppDefaults.CssClassGroup col-md-3">
+            @Html.LabelFor(model => model.Password, new { @class = AppDefaults.CssClassLabelRequired })
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, @type = "password" } })
+        </div>
+
+        @Html.ZNewLine()
+
+        @*
+        <div class="@AppDefaults.CssClassGroup col-md-3">
+            @Html.LabelFor(model => model.TenantName, new { @class = AppDefaults.CssClassLabelRequired })
+            @Html.DropDownListFor(model => model.TenantName, tenants, "", new { @class = "form-control" })
+        </div>
+
+        @Html.ZNewLine()
+        *@
+
+    </div>
+
+    <br />
+    <div class="@AppDefaults.CssClassFormButtons" style="margin-left: -16px;">
+        <input type="submit" value="@PresentationResources.OK" class="btn btn-default col-md-3" />
+
+        @Html.ZNewLine()
+
+        <br />
+        @Html.CheckBoxFor(model => model.RememberMe)
+        &nbsp;&nbsp;@Html.LabelFor(model => model.RememberMe)
+
+        <br />
+        @Html.ActionLink(AuthenticationResources.ForgotPassword, "ForgotPassword")
+    </div>
+}
+
+<script>
+
+    $(function () {
+        // !?! Multi-Tenant
+        //var isMultiTenant = @MultiTenantHelper.IsMultiTenant.ToString().ToLower();
+        //var isMultiTenant = false;
+        //if (isMultiTenant)
+        //{
+        //    $("#MultiTenant").show();
+        //}
+        //else
+        //{
+        //    $("#MultiTenant").hide();
+        //}
+    });
+
+</script>

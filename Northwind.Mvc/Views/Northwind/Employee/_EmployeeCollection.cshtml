@@ -1,0 +1,354 @@
+﻿@model EmployeeCollectionModel
+
+@{
+    string CSHTML = "_EmployeeCollection.cshtml";
+
+    string query = "";
+    if (Model.MasterReportsTo != null)
+    {
+        query = String.Format("ej.Query().where(\"ReportsTo\", ej.FilterOperators.equal, {0})", Model.MasterReportsTo);
+    }
+}
+
+<div id="Collection_Employee">
+    @(Html.EJ().Grid<Employee>("Grid_Employee")
+        //.Datasource(datasource => datasource
+        //    .Adaptor(AdaptorType.UrlAdaptor)
+        //    .URL(Url.Action("DataSource", "Employee"))
+        //)
+        .Query(query)        
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowReordering()
+        //.AllowResizeToFit()
+        .AllowResizing()
+        //.AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .AllowTextWrap()
+        .TextWrapSettings(wrap =>
+        {
+            wrap.WrapMode(WrapMode.Both);
+        })                    
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_Employee")
+            .ActionFailure("actionFailure_Grid_Employee")
+            .Load("load_Grid_Employee")
+            .ToolbarClick("toolbarClick_Grid_Employee")
+        )
+        .Columns(column =>
+        {
+            column.Field("EmployeeId")
+                .AllowEditing(false)
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(EmployeeResources.PropertyEmployeeId)
+                .IsIdentity(true)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("EmployeeId"))
+                .Width(Employee.DataProfile.GridWidthFor("EmployeeId"))
+                .Add();
+            column.Field("LastName")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyLastName)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("LastName"))
+                .Width(Employee.DataProfile.GridWidthFor("LastName"))
+                .Add();
+            column.Field("FirstName")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyFirstName)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("FirstName"))
+                .Width(Employee.DataProfile.GridWidthFor("FirstName"))
+                .Add();
+            column.Field("Title")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyTitle)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("Title"))
+                .Width(Employee.DataProfile.GridWidthFor("Title"))
+                .Add();
+            column.Field("TitleOfCourtesy")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyTitleOfCourtesy)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("TitleOfCourtesy"))
+                .Width(Employee.DataProfile.GridWidthFor("TitleOfCourtesy"))
+                .Add();
+            column.Field("BirthDate")
+                .EditType(EditingType.DateTimePicker)
+                .Format(SyncfusionPatternResources.GridFormat_DateTime)
+                .HeaderText(EmployeeResources.PropertyBirthDate)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("BirthDate"))
+                .Width(Employee.DataProfile.GridWidthFor("BirthDate"))
+                .Add();
+            column.Field("HireDate")
+                .EditType(EditingType.DateTimePicker)
+                .Format(SyncfusionPatternResources.GridFormat_DateTime)
+                .HeaderText(EmployeeResources.PropertyHireDate)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("HireDate"))
+                .Width(Employee.DataProfile.GridWidthFor("HireDate"))
+                .Add();
+            column.Field("Address")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyAddress)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("Address"))
+                .Width(Employee.DataProfile.GridWidthFor("Address"))
+                .Add();
+            column.Field("City")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyCity)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("City"))
+                .Width(Employee.DataProfile.GridWidthFor("City"))
+                .Add();
+            column.Field("Region")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyRegion)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("Region"))
+                .Width(Employee.DataProfile.GridWidthFor("Region"))
+                .Add();
+            column.Field("PostalCode")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyPostalCode)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("PostalCode"))
+                .Width(Employee.DataProfile.GridWidthFor("PostalCode"))
+                .Add();
+            column.Field("Country")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyCountry)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("Country"))
+                .Width(Employee.DataProfile.GridWidthFor("Country"))
+                .Add();
+            column.Field("HomePhone")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyHomePhone)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("HomePhone"))
+                .Width(Employee.DataProfile.GridWidthFor("HomePhone"))
+                .Add();
+            column.Field("Extension")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyExtension)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("Extension"))
+                .Width(Employee.DataProfile.GridWidthFor("Extension"))
+                .Add();
+            column.Field("Photo")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyPhoto)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("Photo"))
+                .Width(Employee.DataProfile.GridWidthFor("Photo"))
+                .Add();
+            column.Field("Notes")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyNotes)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("Notes"))
+                .Width(Employee.DataProfile.GridWidthFor("Notes"))
+                .Add();
+            column.Field("ReportsTo")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(EmployeeResources.PropertyReportsTo)
+                .TextAlign(TextAlign.Right)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("ReportsTo"))
+                .Width(Employee.DataProfile.GridWidthFor("ReportsTo"))
+                .Add();
+            column.Field("EmployeeLookupText")
+                .AllowEditing(false)
+                .HeaderText(EmployeeResources.EntitySingular)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("EmployeeLookupText"))
+                .Width(Employee.DataProfile.GridWidthFor("EmployeeLookupText"))
+                .Add();
+            column.Field("PhotoPath")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeResources.PropertyPhotoPath)
+                .Visible(Employee.DataProfile.IsGridVisibleFor("PhotoPath"))
+                .Width(Employee.DataProfile.GridWidthFor("PhotoPath"))
+                .Add();
+        })
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+            .AllowEditOnDblClick(false)
+        )
+        //.EnablePersistence()
+        .IsResponsive()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(AppDefaults.SyncfusionRecordsForFiltering)
+        )
+        //.Mappers(map => map
+        //    .ExportToExcelAction(Url.Content("~/Employee/ExportToExcel"))
+        //    .ExportToPdfAction(Url.Content("~/Employee/ExportToPdf"))
+        //    .ExportToWordAction(Url.Content("~/Employee/ExportToWord"))
+        //)
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        @*
+        .SearchSettings(search =>
+        {
+            search.Fields(field =>
+            {
+                field.Add("EmployeeId");
+                field.Add("LastName");
+                field.Add("FirstName");
+                field.Add("Title");
+                field.Add("TitleOfCourtesy");
+                //field.Add("BirthDate");
+                //field.Add("HireDate");
+                field.Add("Address");
+                field.Add("City");
+                field.Add("Region");
+                field.Add("PostalCode");
+                field.Add("Country");
+                field.Add("HomePhone");
+                field.Add("Extension");
+                //field.Add("Photo");
+                field.Add("Notes");
+                //field.Add("ReportsTo");
+                field.Add("EmployeeLookupText");
+                field.Add("PhotoPath");
+            });
+        })
+        *@
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Grid_Employee_Toolbar" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                //items.AddTool(ToolBarItems.ExcelExport);
+                //items.AddTool(ToolBarItems.PdfExport);
+                //items.AddTool(ToolBarItems.WordExport);
+            })
+        )
+    )
+</div>
+
+<script type="text/x-jsrender" id="Grid_Employee_Toolbar">
+    <div id="Grid_Employee_Toolbar_Refresh" class="e-toolbaricons e-icon e-reload" title="@PresentationResources.Refresh"></div>
+    <div id="Grid_Employee_Toolbar_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            ej.widget.init($("#Collection_Employee"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Employee.DataProfile));
+
+            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Employee")");
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }                
+    });
+    
+    function actionBegin_Grid_Employee(args) {
+        try {
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+    
+            // Associations (FK)
+            var url = "";
+            // Employee
+            if (model.MasterReportsTo != null) {
+                url = url + (url == "" ? "" : "&") + "MasterReportsTo=" + String(model.MasterReportsTo);
+            }
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {
+                    case "searching":
+                        // Search
+                        zSearchDictionaryWrite("Employee", args.keyValue);
+                        break;
+                    case "add":
+                        // Create
+                        if (model.ActivityOperations.IsCreate) {
+                            $("#ZAjax").load("@(Url.Action("Create", "Employee", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.ActivityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Read", "Employee", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;                        
+                    case "beginedit":
+                        // Update
+                        if (model.ActivityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Update", "Employee", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.ActivityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Delete", "Employee", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionBegin_Grid_Employee", exception));
+        }            
+    }
+    
+    function actionFailure_Grid_Employee(args) {
+        try {
+            zAlert(args.error.responseText);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionFailure_Grid_Employee", exception));
+        }
+    }    
+
+    function load_Grid_Employee(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "load_Grid_Employee", exception));
+        }
+    }
+
+    function toolbarClick_Grid_Employee(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var ejGrid = $("#Grid_Employee").data("ejGrid");
+
+            if (toolbar.prop("id") == "Grid_Employee_Toolbar_Refresh") {
+                ejGrid.refreshContent();
+            } else if (toolbar.prop("id") == "Grid_Employee_Toolbar_Read") {
+                var records = ejGrid.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_Employee(args)
+                }
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "toolbarClick_Grid_Employee", exception));
+        }
+    }
+</script>

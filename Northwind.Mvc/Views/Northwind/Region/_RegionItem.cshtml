@@ -1,0 +1,91 @@
+﻿@model RegionItemModel
+
+@{
+    string CSHTML = "_RegionItem.cshtml";
+}
+
+<div id="Item_Region">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "Region_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "Region_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "Region_Item_IsSave")
+
+    @{Html.EJ().Tab("Tab_Region")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_Region")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Region_Region").Text(RegionResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
+                
+                <div id="Group_Region_RegionId" class="@AppDefaults.CssClassGroup @Region.DataProfile.EditWidthCSSFor("RegionId")">
+                    @Html.LabelFor(model => model.Region.RegionId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Region.RegionId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Region_RegionId" } })
+                    @* @Html.ValidationMessageFor(model => model.Region.RegionId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_Region_RegionDescription" class="@AppDefaults.CssClassGroup @Region.DataProfile.EditWidthCSSFor("RegionDescription")">
+                    @Html.LabelFor(model => model.Region.RegionDescription, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Region.RegionDescription, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Region_RegionDescription" } })
+                    @* @Html.ValidationMessageFor(model => model.Region.RegionDescription, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+            data.Add().ID("TabSheet_Region_Territories").Text(TerritoryResources.EntityPlural).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">    
+                <div id="Ajax_Region_Territories"></div>
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_Region"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Region.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "Territories")) {
+                // Territories
+                zUrlDictionaryWrite("Territory", "@Context.Request.Url.AbsoluteUri");
+                ajaxUrl = "@(Html.Raw(Url.Action("Search", "Territory", new { MasterControllerAction = Model.ControllerAction, MasterRegionId = Model.Region.RegionId })))";
+                zAjaxLoadSync("Ajax_Region_Territories", ajaxUrl);
+            }
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_Region_RegionId").hide();
+            }
+
+            // Associations (FK)
+
+            zOnItemView(model, dataProfile);        
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });    
+
+    function itemActive_Tab_Region(args) {
+        zTabDictionaryWrite("Region", args.model.selectedItemIndex);
+
+        try {
+            switch(args.model.selectedItemIndex) {
+                case 1:
+                    zGridDataSource("Grid_Territory", "@Url.Action("DataSource", "Territory")");
+                    break;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_Region", exception));
+        }
+    }
+</script>

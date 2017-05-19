@@ -1,0 +1,157 @@
+﻿body {
+    width:100%;
+    height:100%;
+    margin:0px;
+    font-family:'Segoe UI' !important;
+    background-color:whitesmoke;
+}
+#header{
+    border-bottom:1px solid #282828;
+    background-color:#282828;
+    font-family:'Segoe UI';
+    height:68px;
+    width:100%;
+    min-width:720px;
+}
+#footer{
+    border-top:1px solid #DDDDDD;
+    background-color:#DDDDDD;
+    width:100%;
+    height:5em;
+    padding-bottom:20px;
+    padding-top:20px;
+    display:block;
+    min-width:720px;
+}
+.pull-left{
+    float:left;
+}
+.pull-right{
+    float:right;
+}
+#header-inner {
+    margin-left:auto;
+    margin-right:auto;
+    max-width:728px;
+    width:auto;
+    height:auto;
+    padding-top:15px;
+}
+#footer-inner{
+    margin-left:auto;
+    margin-right:auto;
+    max-width:728px;
+    width:auto;
+    height:auto;
+}
+#header-inner nav a{
+    width:auto;
+    height:20px;
+    float:left;
+    text-decoration:none;
+    margin-left:15px;
+    color:#DDDDDD;
+}
+#header-inner nav a:hover{
+    border-bottom:2px solid #DDDDDD;
+}
+#main{
+    margin-left:auto;
+    margin-right:auto;
+    width:auto;
+    height:auto !important;
+    max-width:900px;
+    min-width:728px;
+    min-height:500px;
+    height:100%;
+}
+.navigation{
+    margin-right:80px;
+}
+.links a{
+    color:gray;
+    float:left;
+    margin-right:20px;
+    text-decoration:none;
+}
+.links a:hover{
+    border-bottom:2px solid gray;
+}
+#viewer-Head{
+    background-color:#282828;
+    width:100%;
+    height:50px;
+    z-index:30;
+}
+.back-btn{
+    margin-top:2px;
+     text-decoration:none;
+     margin-left:6px;
+}
+.back-btn>div{
+    background-color:#DDDDDD;
+    color:gray;
+    width:60px;
+    height:40px;
+    text-decoration:none;
+    text-align:center;
+}
+.field{
+    text-align:left;
+    position:relative;
+    margin:15px 0;
+    clear:both;
+}
+.field-btn{
+    text-align:left;
+    padding-left:305px;
+}
+.input{
+    font-family:'Segoe UI';
+    border:1px solid gray;
+    width:250px;
+    vertical-align:top;
+    height:30px;
+}
+.inline{
+    display:inline-block;
+    
+}
+.btn{
+    border-style:none;
+    background-color:#55b7e9;
+    color:white;
+    min-width:60px;
+    width:auto;
+    height:35px;
+    vertical-align:top;
+    margin-left:10px;
+    text-decoration:none;
+}
+.btn-secondary{
+    color:gray;
+    background-color:#DDDDDD;
+}
+label{
+    color:gray;
+    font-family:'Segoe UI';
+    text-align:right;
+    padding-right:5px;
+    padding-top:2px;
+    width:28%;
+}
+.error-wrapper{
+    border:none;
+    color:#f00;
+    width:auto;
+    height:auto;
+    min-height:30px;
+
+    
+}
+.error{
+    color:#f00;
+}
+.input:focus{
+    border:1px solid #55b7e9;
+}

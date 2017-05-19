@@ -1,0 +1,252 @@
+﻿@model EmployeeTerritoryCollectionModel
+
+@{
+    string CSHTML = "_EmployeeTerritoryCollection.cshtml";
+
+    string query = "";
+    if (Model.MasterEmployeeId != null)
+    {
+        query = String.Format("ej.Query().where(\"EmployeeId\", ej.FilterOperators.equal, {0})", Model.MasterEmployeeId);
+    }
+    else if (Model.MasterTerritoryId != null)
+    {
+        query = String.Format("ej.Query().where(\"TerritoryId\", ej.FilterOperators.equal, \"{0}\")", Model.MasterTerritoryId);
+    }
+}
+
+<div id="Collection_EmployeeTerritory">
+    @(Html.EJ().Grid<EmployeeTerritory>("Grid_EmployeeTerritory")
+        //.Datasource(datasource => datasource
+        //    .Adaptor(AdaptorType.UrlAdaptor)
+        //    .URL(Url.Action("DataSource", "EmployeeTerritory"))
+        //)
+        .Query(query)        
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowReordering()
+        //.AllowResizeToFit()
+        .AllowResizing()
+        //.AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .AllowTextWrap()
+        .TextWrapSettings(wrap =>
+        {
+            wrap.WrapMode(WrapMode.Both);
+        })                    
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_EmployeeTerritory")
+            .ActionFailure("actionFailure_Grid_EmployeeTerritory")
+            .Load("load_Grid_EmployeeTerritory")
+            .ToolbarClick("toolbarClick_Grid_EmployeeTerritory")
+        )
+        .Columns(column =>
+        {
+            column.Field("EmployeeId")
+                .EditType(EditingType.Numeric)
+                .Format(SyncfusionPatternResources.GridFormat_Integer)
+                .HeaderText(EmployeeTerritoryResources.PropertyEmployeeId)
+                .IsPrimaryKey(true)
+                .TextAlign(TextAlign.Right)
+                .Visible(EmployeeTerritory.DataProfile.IsGridVisibleFor("EmployeeId"))
+                .Width(EmployeeTerritory.DataProfile.GridWidthFor("EmployeeId"))
+                .Add();
+            column.Field("EmployeeLookupText")
+                .AllowEditing(false)
+                .HeaderText(EmployeeResources.EntitySingular)
+                .Visible(EmployeeTerritory.DataProfile.IsGridVisibleFor("EmployeeLookupText"))
+                .Width(EmployeeTerritory.DataProfile.GridWidthFor("EmployeeLookupText"))
+                .Add();
+            column.Field("TerritoryId")
+                .EditType(EditingType.String)
+                .HeaderText(EmployeeTerritoryResources.PropertyTerritoryId)
+                .IsPrimaryKey(true)
+                .Visible(EmployeeTerritory.DataProfile.IsGridVisibleFor("TerritoryId"))
+                .Width(EmployeeTerritory.DataProfile.GridWidthFor("TerritoryId"))
+                .Add();
+            column.Field("TerritoryLookupText")
+                .AllowEditing(false)
+                .HeaderText(TerritoryResources.EntitySingular)
+                .Visible(EmployeeTerritory.DataProfile.IsGridVisibleFor("TerritoryLookupText"))
+                .Width(EmployeeTerritory.DataProfile.GridWidthFor("TerritoryLookupText"))
+                .Add();
+        })
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+            .AllowEditOnDblClick(false)
+        )
+        //.EnablePersistence()
+        .IsResponsive()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(AppDefaults.SyncfusionRecordsForFiltering)
+        )
+        //.Mappers(map => map
+        //    .ExportToExcelAction(Url.Content("~/EmployeeTerritory/ExportToExcel"))
+        //    .ExportToPdfAction(Url.Content("~/EmployeeTerritory/ExportToPdf"))
+        //    .ExportToWordAction(Url.Content("~/EmployeeTerritory/ExportToWord"))
+        //)
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        @*
+        .SearchSettings(search =>
+        {
+            search.Fields(field =>
+            {
+                field.Add("EmployeeId");
+                field.Add("EmployeeLookupText");
+                field.Add("TerritoryId");
+                field.Add("TerritoryLookupText");
+            });
+        })
+        *@
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Grid_EmployeeTerritory_Toolbar" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                //items.AddTool(ToolBarItems.ExcelExport);
+                //items.AddTool(ToolBarItems.PdfExport);
+                //items.AddTool(ToolBarItems.WordExport);
+            })
+        )
+    )
+</div>
+
+<script type="text/x-jsrender" id="Grid_EmployeeTerritory_Toolbar">
+    <div id="Grid_EmployeeTerritory_Toolbar_Refresh" class="e-toolbaricons e-icon e-reload" title="@PresentationResources.Refresh"></div>
+    <div id="Grid_EmployeeTerritory_Toolbar_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            ej.widget.init($("#Collection_EmployeeTerritory"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(EmployeeTerritory.DataProfile));
+
+            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "EmployeeTerritory")");
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }                
+    });
+    
+    function actionBegin_Grid_EmployeeTerritory(args) {
+        try {
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+    
+            // Associations (FK)
+            var url = "";
+            // Employee
+            if (model.MasterEmployeeId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterEmployeeId=" + String(model.MasterEmployeeId);
+            }
+            // Territory
+            if (model.MasterTerritoryId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterTerritoryId=" + String(model.MasterTerritoryId);
+            }
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {
+                    case "searching":
+                        // Search
+                        zSearchDictionaryWrite("EmployeeTerritory", args.keyValue);
+                        break;
+                    case "add":
+                        // Create
+                        if (model.ActivityOperations.IsCreate) {
+                            $("#ZAjax").load("@(Url.Action("Create", "EmployeeTerritory", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.ActivityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Read", "EmployeeTerritory", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) + "&TerritoryId=" + String(data.TerritoryId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;                        
+                    case "beginedit":
+                        // Update
+                        if (model.ActivityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Update", "EmployeeTerritory", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) + "&TerritoryId=" + String(data.TerritoryId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.ActivityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Delete", "EmployeeTerritory", null, Request.Url.Scheme))?EmployeeId=" + String(data.EmployeeId) + "&TerritoryId=" + String(data.TerritoryId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionBegin_Grid_EmployeeTerritory", exception));
+        }            
+    }
+    
+    function actionFailure_Grid_EmployeeTerritory(args) {
+        try {
+            zAlert(args.error.responseText);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionFailure_Grid_EmployeeTerritory", exception));
+        }
+    }    
+
+    function load_Grid_EmployeeTerritory(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "load_Grid_EmployeeTerritory", exception));
+        }
+    }
+
+    function toolbarClick_Grid_EmployeeTerritory(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var ejGrid = $("#Grid_EmployeeTerritory").data("ejGrid");
+
+            if (toolbar.prop("id") == "Grid_EmployeeTerritory_Toolbar_Refresh") {
+                ejGrid.refreshContent();
+            } else if (toolbar.prop("id") == "Grid_EmployeeTerritory_Toolbar_Read") {
+                var records = ejGrid.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_EmployeeTerritory(args)
+                }
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "toolbarClick_Grid_EmployeeTerritory", exception));
+        }
+    }
+</script>

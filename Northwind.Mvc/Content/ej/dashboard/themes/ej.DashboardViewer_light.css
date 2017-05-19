@@ -1,0 +1,622 @@
+/*---------------Banner Area--------------------------------------*/
+@font-face {	
+font-family: 'ejDashboardViewerIconFont';	
+src:url('../fonts/ejDashboardViewerIconFont.eot?bfgft8');	
+src:url('../fonts/ejDashboardViewerIconFont.eot?bfgft8#iefix') format('embedded-opentype'),		
+url('../fonts/ejDashboardViewerIconFont.ttf?bfgft8') format('truetype'),		
+url('../fonts/ejDashboardViewerIconFont.woff?bfgft8') format('woff'),		
+url('../fonts/ejDashboardViewerIconFont.svg?bfgft8#ejDashboardViewerIconFont') format('svg');	
+font-weight: normal;
+	font-style: normal;
+
+}
+body{
+    background-color:white;
+}
+.e-menu li.e-list>a>span {
+    top: 9%; 
+}
+
+/*******TITLE*****/
+.e-dynamic-title-moreFilter{
+   color:#161616;
+   font-family: 'ejDashboardViewerIconFont';	
+}
+.e-dynamic-title-moreFilter:hover{
+     font-family: 'ejDashboardViewerIconFont';	
+}
+.e-dynamic-title-moreFilter:before {
+	content: "\e805";
+	font-size:13px;
+}
+.e-dynamic-title-container{
+    float:left;
+    position:relative;
+  padding-top:12px;
+}
+.e-banner-verticalsplitline {
+    border-right: 1px solid #d6d6d6;
+}
+.e-dbrd-fzone{
+    border-bottom:#bbbcbb solid 1px;
+}
+.e-dbrd-fzone-layout {
+    background: #F6F6F6 !important;
+}
+/***********BANNER*******/
+/*.e-dbrd-banner-filter{
+   
+} */
+.e-dbrd-banner-description{
+font-family: 'ejDashboardViewerIconFont';
+color:#161616;
+}
+.e-brd-PdfOrientationforlandscape:before{
+font-family: 'ejDashboardViewerIconFont';
+   content: "\e90c";
+}
+.e-brd-PdfOrientationforportrait:before{
+font-family: 'ejDashboardViewerIconFont';
+   content: "\e908";
+}
+.e-brd-exportPopupWindowClose:before{
+font-family: 'ejDashboardViewerIconFont';
+    content: "\e818";
+	font-size: 12px;
+	position:absolute;
+	margin-top:1px;
+}
+.e-brd-exportPopupWindowClose:hover{
+cursor:pointer;
+}
+.e-dbrd-banner-description:before{
+content: "\e806";
+font-size:16px;
+}
+.e-dbrd-banner-description:hover {
+font-family: 'ejDashboardViewerIconFont';
+color:#3899fc;
+    }
+
+.e-dbrd-banner-infoclick, .e-dbrd-banner-infoclick:hover {
+font-family: 'ejDashboardViewerIconFont';
+color:#177bc6;
+}
+.e-dbrd-banner-infoclick, .e-dbrd-banner-infoclick:before{
+content: "\e806";
+}
+.e-dbrd-banner{
+    background-color:#ffffff;
+    box-shadow:0px 1px 3px 0px rgba(0,0,0,0.15);
+}
+.e-dbrd-banner-title {
+    color: #1c1c1c;
+    font-family:Roboto;
+    font-weight:600;
+}
+.e-dbrd-banner-menu{
+font-family: 'ejDashboardViewerIconFont';
+color:#161616;
+}
+.e-dbrd-banner-menu:before{
+content: "\e808";
+font-size:16px;
+}
+.e-dbrd-banner-menu:hover{
+		font-family: 'ejDashboardViewerIconFont';
+		color:#3899fc;
+}
+.e-dbrd-banner-menu.menuClicked{
+font-family: 'ejDashboardViewerIconFont';
+    color: #177bc6;
+}
+.e-dbrd-banner-menu.menuClicked:before{
+content: "\e808";
+}
+/********DASHBOARD FAVORITE AND UNFAVORITE ICON*********/
+.e-dbrd-dashboardfavIcon{
+ content: "\e90e";
+font-family: 'ejDashboardViewerIconFont';
+font-size: 16px;
+cursor: pointer;
+margin-top: 13px;
+position: relative;
+float: left;
+margin-left: 5px;
+color:#FFAC00;
+}
+.e-dbrd-dashboardunfavIcon{
+content: "\e90f";
+font-family: 'ejDashboardViewerIconFont';
+font-size: 16px;
+cursor: pointer;
+margin-top: 13px;
+position: relative;
+float: left;
+margin-left: 5px;
+}
+.e-dbrd-dashboardfavIcon:before{
+content: "\e90e";
+font-family: 'ejDashboardViewerIconFont';
+font-size: 16px;
+}
+.e-dbrd-dashboardfavIcon:hover{
+		font-family: 'ejDashboardViewerIconFont';		
+        cursor: pointer;		
+}
+.e-dbrd-dashboardunfavIcon:before{
+content: "\e90f";
+font-family: 'ejDashboardViewerIconFont';
+font-size: 16px;
+}
+.e-dbrd-dashboardunfavIcon:hover{
+		font-family: 'ejDashboardViewerIconFont';		
+        cursor: pointer;			
+}
+/********DASHBOARD AND WIDGET COMMENT*********/
+.e-dbrd-banner-dashboardwithcomment{
+content: "\e905";
+font-family: 'ejDashboardViewerIconFont';
+font-size: 16px;
+float: right;
+margin-right: 5px;
+padding: 2px;
+width: 17px;
+height: 17px;
+cursor: pointer;
+margin-top: 13px;
+position: relative;
+right: 0; 
+}
+.e-dbrd-banner-dashboardwithcomment:before{
+content: "\e905";
+font-family: 'ejDashboardViewerIconFont';
+font-size: 16px;
+}
+.e-dbrd-banner-dashboardwithcomment:hover{
+		font-family: 'ejDashboardViewerIconFont';		
+        cursor: pointer;	
+		color:#3782E3;
+}
+.e-dbrd-banner-dashboardwithoutcomment{
+content: "\e906";
+font-family: 'ejDashboardViewerIconFont';
+font-size: 16px;
+float: right;
+margin-right: 5px;
+padding: 2px;
+width: 17px;
+height: 17px;
+cursor: pointer;
+margin-top: 13px;
+position: relative;
+right: 0;
+}
+.e-dbrd-banner-dashboardwithoutcomment:before{
+content: "\e906";
+font-family: 'ejDashboardViewerIconFont';
+font-size: 16px;
+}
+.e-dbrd-banner-dashboardwithoutcomment:hover{
+		font-family: 'ejDashboardViewerIconFont';		
+        cursor: pointer;	
+       color:#3782E3;
+}
+.e-dbrd-banner-widget-withcomments{
+content: "\e905";
+font-family: 'ejDashboardViewerIconFont';
+font-size:16px;
+padding: 2px;
+width: 17px;
+height: 17px;
+cursor: pointer;
+}
+.e-dbrd-banner-widget-withcomments:before{
+content: "\e905";
+font-family: 'ejDashboardViewerIconFont';
+font-size: 16px;
+}
+.e-dbrd-banner-widget-withcomments:hover{
+		font-family: 'ejDashboardViewerIconFont';		
+        cursor: pointer;	
+      color:#3782E3;
+}
+.e-dbrd-banner-widget-withoutcomments{
+content: "\e906";
+font-family: 'ejDashboardViewerIconFont';
+font-size:16px;
+padding: 2px;
+width: 17px;
+height: 17px;
+cursor: pointer;
+}
+.e-dbrd-banner-widget-withoutcomments:before{
+content: "\e906";
+font-family: 'ejDashboardViewerIconFont';
+font-size: 16px;
+}
+.e-dbrd-banner-widget-withoutcomments:hover{
+		font-family: 'ejDashboardViewerIconFont';		
+        cursor: pointer;	
+       color:#3782E3;
+}
+.e-dbrd-banner-widgetcomment{
+content: "\e904";
+font-family: 'ejDashboardViewerIconFont';
+font-size:16px;
+padding: 2px;
+width: 17px;
+height: 17px;
+cursor: pointer;
+}
+.e-dbrd-banner-widgetcomment:before{
+content: "\e904";
+font-family: 'ejDashboardViewerIconFont';
+font-size:16px;
+}
+.e-dbrd-banner-widgetcomment:hover{
+		font-family: 'ejDashboardViewerIconFont';
+		cursor: pointer;		
+       color:#3782E3;
+}
+.e-dbrd-banner-dashboardcomment-menuClicked{
+font-family: 'ejDashboardViewerIconFont';
+     color:#3782E3;
+}
+.e-dbrd-banner-widget-withcomments-menuClicked{
+font-family: 'ejDashboardViewerIconFont';        
+	   color:#3782E3;	  
+}
+.e-dbrd-banner-print {
+    background-position: 0 -1480px;
+}
+.e-dbrd-banner-print:hover {
+background-position: 0 -1392px;
+ 
+}
+/*.e-banner-splitline {
+
+
+    border-top: 1.5px solid #bbbcbb;
+}*/
+
+/****************RESET BUTTON**********/
+    .e-reset-dbrd-btn {
+        background-position: 0 -1724px;
+    }
+        .e-reset-dbrd-btn:hover {
+            background-position: 0 -1792px;
+    }
+	/****************REMOVE-CONTROL*********/
+        .e-remove-control-filter-disable {
+		background: url("Images/clear_filter_disabled.png");
+		 background-repeat:no-repeat;
+		 background-size:14px;
+		
+}
+        .e-remove-control-filter-enable {
+		 background: url("Images/clear_filter.png");
+		 background-repeat:no-repeat;
+		 background-size:14px;
+		
+} 
+/***********Control -Description***/
+    .e-control-description{
+	font-family: 'ejDashboardViewerIconFont';
+	color:#161616;
+        }
+        .e-control-description:hover{
+		font-family: 'ejDashboardViewerIconFont';
+		color:#3899fc;
+            }
+			.e-control-description:before{
+			content:"\e806";
+			font-size:14px;
+			}
+/***********MAXIMIZE******/
+.e-dbrd-maximize {
+font-family: 'ejDashboardViewerIconFont';
+color:#161616;
+}  
+.e-dbrd-maximize:before{
+content: "\e807";
+font-size:14px;
+}
+.e-dbrd-maximize:hover{
+font-family: 'ejDashboardViewerIconFont';
+color:#3899fc;
+}
+/************CONTROL-MENU********/
+.e-dbrd-control-menu{
+font-family: 'ejDashboardViewerIconFont';
+color:#161616;
+}
+.e-dbrd-border{
+padding :2px;
+border :2px solid transparent;
+}
+.e-dbrd-layout-cell{
+padding:0px !important;
+}
+.e-dbrd-control-menu:before{
+content: "\e808";
+font-size:14px;
+}
+.e-dbrd-control-menu:hover{
+font-family: 'ejDashboardViewerIconFont';
+color:#3899fc;
+}
+.e-dbrd-control-small-menu {
+    font-family: 'ejDashboardViewerIconFont';
+    color:#161616;
+    margin-top: -1px;
+  }
+.e-dbrd-control-small-menu:before {
+    content: "\e900";
+    font-size: 14px;
+}
+.e-dbrd-control-small-menu:hover {
+    font-family: 'ejDashboardViewerIconFont';
+    color:#3899fc;
+}
+/************FILTERLIST MENU POPUP********/
+.e-dbrd-filterListMenuPopUp-cancel{
+   background-position: -95px -86px !IMPORTANT;
+}
+.e-dbrd-filterListMenuPopUp-item:hover .e-dbrd-filterListMenuPopUp-cancel{
+background-position: -95px -65px !IMPORTANT;
+}
+.e-list>*:first-child:hover{
+    background:none !important;
+}
+.e-dbrd-inactive-footer {
+      background-color:#ecedee;
+    color:#5c5c5c;
+}
+.e-dbrd-blueWaitingIndcator{
+ 
+       background: url("Images/loader_blue.GIF") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 24px;
+     margin-left: auto;
+    margin-right: auto;
+    margin-top: -12px;
+    position: relative;
+    top: 50%;
+    width: 24px;
+}
+
+/*Dashboard Description*/
+.e-dbrd-report-desc {
+        background-color: white; 
+        border:1px solid #bcbcbc;
+}
+.e-dbrd-report-desc-arrow {
+   /*border-bottom-color: #f9f9f9;*/
+    background: url("Images/white_triangle_arrow.png") no-repeat;
+}
+
+
+/*Dashboard Filter*/
+
+.e-dbrd-report-filter-arrow{
+    /*border-bottom: 12px solid;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;*/
+    /*color:white;*/
+    /*margin-left: -3px;
+    margin-top: -5px;*/
+    width:20px;
+    height:20px;
+    background: url("Images/white_triangle_arrow.png") no-repeat;
+}
+
+.e-dbrd-filterList {
+   background-color:white;
+  border: 0px solid #bcbcbc;
+}
+
+.widget-error-icon
+{
+    background: url("Images/warning.png") no-repeat;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30px;
+}
+.widget-not-configured-icon
+{
+    background: url("Images/not_configured.png") no-repeat;
+    height: 41px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45px;
+}
+.widget-info-icon {
+    background: url("Images/alert.png") no-repeat;
+    height: 41px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45px;
+}
+
+.align-center
+{
+     display: table-cell;
+     vertical-align: middle;
+     background-color: #ffffff;
+}
+
+.e-higher-error-message
+{   
+    margin: 8px;
+    color:#161616;
+    font-size:14px;
+}
+.e-higher-popup
+{
+    display: table;
+    height: 100%;
+    width: 100%;
+    background-color: #f9f9f9 !important;
+    text-align: center;
+    position: absolute;
+    top:0px;
+}
+/**************NOTIFICATION**********/
+	.e-error-notification
+{
+	
+	top:0px;
+    display:block;
+	background-color:rgba(251, 203, 67, 0.85);
+	height:30px;
+	min-width:auto;
+    font-size:12px;
+	padding-right: 90px;
+	text-align: center;
+    vertical-align: middle;
+	
+}
+.e-dbrd-learnMore
+{
+	position:absolute;
+	display:block;
+	width:65px;
+	right:20px;
+	vertical-align:middle;
+	top:6px;
+	color:#996F07;
+	text-decoration:underline;
+}
+.e-dbrd-learnMore:hover{
+	cursor:pointer;
+	color:#704F05;
+}
+.e-close-notification:before {
+	font-family: 'ejDashboardViewerIconFont';
+    content: "\e907";
+}
+.e-brd-ControlImageReset:hover{
+	cursor:pointer;
+}
+.e-error-msg{
+	
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+	max-width:100%;
+	margin-left: 10px;
+    margin-top: 6px;
+    vertical-align: middle;
+	-moz-user-select:text;
+	-webkit-user-select:text;
+	-webkit-touch-callout:text;
+}
+.e-dbrd-learnMore
+{
+	position:absolute;
+	display:block;
+	width:65px;
+	right:20px;
+	vertical-align:middle;
+	top:6px;
+	color:#996F07;
+	text-decoration:underline;
+}
+.e-close-notification{
+	position:absolute;
+	display:block;
+	width:21px;
+	right:0px;
+	top:8px;
+	
+}
+.e-dbrd-learnMore:hover{
+	cursor:pointer;
+	color:#704F05;
+}
+.e-close-notification:hover{
+    cursor:pointer;
+	  		   
+}
+.e-dbrd-control-listbox .e-scrollbar
+{
+width:13px !important;
+}
+
+.e-dbrd-control .e-scrollbar{
+position:absolute;
+right:2px;
+display:none;
+}
+.dashboardGridControl .e-vhandle{
+border-color:#838383 !important
+}
+/********DASHBRD-MENU*****/
+.e-brd-showDashoardMenu-Exportimage {    
+font-family: 'ejDashboardViewerIconFont';
+}
+.e-brd-showDashoardMenu-Exportimage:before {
+    content: "\e803";
+	font-size:14px;
+}
+.e-brd-showDashoardMenu-ExportPdf {    
+font-family: 'ejDashboardViewerIconFont';
+}
+.e-brd-showDashoardMenu-ExportPdf:before {
+    content: "\e90d";
+	font-size:14px;
+}
+.e-brd-showDashoardMenu-UpdateDashboard {    
+font-family: 'ejDashboardViewerIconFont';
+}
+.e-brd-showDashoardMenu-UpdateDashboard:before {
+    content: "\e809";	
+	font-size:14px;
+}
+/*************CONTROL-MENU****/
+.e-brd-showControlMenu-ExportCSV {    
+font-family: 'ejDashboardViewerIconFont';
+}
+.e-brd-showControlMenu-ExportCSV:before {
+content: "\e908";
+font-size:14px;
+}
+.e-brd-showControlMenu-ExportExcel {    
+font-family: 'ejDashboardViewerIconFont';
+}
+.e-brd-showControlMenu-ExportExcel:before {
+content: "\e804";
+font-size:14px;
+}
+.e-brd-showControlMenu-ClearFilter {    
+		 background: url("Images/clear_filter.png");
+		 background-repeat:no-repeat;
+		 background-size:14px;
+		 background-position: 0px 7px;
+		 height: 147px;
+		 width: 16px;		
+}
+.e-brd-showControlMenu-ClearFilterdisable {    
+         background: url("Images/clear_filter_disabled.png");
+		 background-repeat:no-repeat;
+		 background-size:14px;
+		 background-position: 0px 7px;
+		 height: 147px;
+		 width: 16px;
+		
+}
+.e-brd-showControlMenu-Maximize{
+font-family: 'ejDashboardViewerIconFont';
+}
+.e-brd-showControlMenu-Maximize:before {
+content: "\e807";
+font-size:14px;
+}
+/*.e-brd-showControlMenu-Print{
+font-family: 'ejDashboardViewerIconFont';
+}
+.e-brd-showControlMenu-Print:before {
+content: "\e817";
+font-size:14px;
+}*/

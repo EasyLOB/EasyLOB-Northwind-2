@@ -1,0 +1,103 @@
+@model UserClaimItemModel
+
+@{
+    string CSHTML = "_UserClaimItem.cshtml";
+    string userText = Model.UserClaim == null ? "" : (Model.UserClaim.UserLookupText ?? "");
+}
+
+<div id="Item_UserClaim">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "UserClaim_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "UserClaim_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "UserClaim_Item_IsSave")
+    @Html.HiddenFor(model => model.MasterUserId, new { id = "UserClaim_Item_MasterUserId" })
+
+    @{Html.EJ().Tab("Tab_UserClaim")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_UserClaim")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_UserClaim_UserClaim").Text(UserClaimResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
+                
+                <div id="Group_UserClaim_Id" class="@AppDefaults.CssClassGroup @UserClaim.DataProfile.EditWidthCSSFor("Id")">
+                    @Html.LabelFor(model => model.UserClaim.Id, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserClaim.Id, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserClaim_Id" } })
+                    @* @Html.ValidationMessageFor(model => model.UserClaim.Id, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_UserClaim_UserId" class="@AppDefaults.CssClassGroup @UserClaim.DataProfile.EditWidthCSSFor("UserLookupText")">
+                    @Html.LabelFor(model => model.UserClaim.UserId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.UserClaim.UserId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserClaim_UserId" } })
+                    @{
+                        Html.RenderAction("Lookup", "User", new
+                        {
+                            Text = userText,
+                            ValueId = "UserClaim_UserId"
+                        });
+                    }
+                    @* @Html.ValidationMessageFor(model => model.UserClaim.UserId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_UserClaim_ClaimType" class="@AppDefaults.CssClassGroup @UserClaim.DataProfile.EditWidthCSSFor("ClaimType")">
+                    @Html.LabelFor(model => model.UserClaim.ClaimType, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.UserClaim.ClaimType, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserClaim_ClaimType" } })
+                    @* @Html.ValidationMessageFor(model => model.UserClaim.ClaimType, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_UserClaim_ClaimValue" class="@AppDefaults.CssClassGroup @UserClaim.DataProfile.EditWidthCSSFor("ClaimValue")">
+                    @Html.LabelFor(model => model.UserClaim.ClaimValue, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.UserClaim.ClaimValue, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserClaim_ClaimValue" } })
+                    @* @Html.ValidationMessageFor(model => model.UserClaim.ClaimValue, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_UserClaim"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserClaim.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_UserClaim_Id").hide();
+            }
+
+            // Associations (FK)
+            // User
+            if (model.MasterUserId != null) {
+                $("#UserClaim_UserId").val(model.MasterUserId);
+                $("#Group_UserClaim_UserId").hide();
+            }
+
+            zOnItemView(model, dataProfile);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });
+
+    function itemActive_Tab_UserClaim(args) {
+        zTabDictionaryWrite("UserClaim", args.model.selectedItemIndex);
+
+        try {
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_UserClaim", exception));
+        }
+    }
+</script>

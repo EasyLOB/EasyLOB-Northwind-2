@@ -1,0 +1,243 @@
+@model UserLoginCollectionModel
+
+@{
+    string CSHTML = "_UserLoginCollection.cshtml";
+
+    string query = "";
+    if (Model.MasterUserId != null)
+    {
+        query = String.Format("ej.Query().where(\"UserId\", ej.FilterOperators.equal, \"{0}\")", Model.MasterUserId);
+    }
+}
+
+<div id="Collection_UserLogin">
+    @(Html.EJ().Grid<UserLogin>("Grid_UserLogin")
+        //.Datasource(datasource => datasource
+        //    .Adaptor(AdaptorType.UrlAdaptor)
+        //    .URL(Url.Action("DataSource", "UserLogin"))
+        //)
+        .Query(query)
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowReordering()
+        //.AllowResizeToFit()
+        .AllowResizing()
+        //.AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .AllowTextWrap()
+        .TextWrapSettings(wrap =>
+        {
+            wrap.WrapMode(WrapMode.Both);
+        })
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_UserLogin")
+            .ActionFailure("actionFailure_Grid_UserLogin")
+            .Load("load_Grid_UserLogin")
+            .ToolbarClick("toolbarClick_Grid_UserLogin")
+        )
+        .Columns(column =>
+        {
+            column.Field("LoginProvider")
+                .EditType(EditingType.String)
+                .HeaderText(UserLoginResources.PropertyLoginProvider)
+                .IsPrimaryKey(true)
+                .Visible(UserLogin.DataProfile.IsGridVisibleFor("LoginProvider"))
+                .Width(UserLogin.DataProfile.GridWidthFor("LoginProvider"))
+                .Add();
+            column.Field("ProviderKey")
+                .EditType(EditingType.String)
+                .HeaderText(UserLoginResources.PropertyProviderKey)
+                .IsPrimaryKey(true)
+                .Visible(UserLogin.DataProfile.IsGridVisibleFor("ProviderKey"))
+                .Width(UserLogin.DataProfile.GridWidthFor("ProviderKey"))
+                .Add();
+            column.Field("UserId")
+                .EditType(EditingType.String)
+                .HeaderText(UserLoginResources.PropertyUserId)
+                .IsPrimaryKey(true)
+                .Visible(UserLogin.DataProfile.IsGridVisibleFor("UserId"))
+                .Width(UserLogin.DataProfile.GridWidthFor("UserId"))
+                .Add();
+            column.Field("UserLookupText")
+                .AllowEditing(false)
+                .HeaderText(UserResources.EntitySingular)
+                .Visible(UserLogin.DataProfile.IsGridVisibleFor("UserLookupText"))
+                .Width(UserLogin.DataProfile.GridWidthFor("UserLookupText"))
+                .Add();
+        })
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+            .AllowEditOnDblClick(false)
+        )
+        //.EnablePersistence()
+        .IsResponsive(true)
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(AppDefaults.SyncfusionRecordsForFiltering)
+        )
+        //.Mappers(map => map
+        //    .ExportToExcelAction(Url.Content("~/UserLogin/ExportToExcel"))
+        //    .ExportToPdfAction(Url.Content("~/UserLogin/ExportToPdf"))
+        //    .ExportToWordAction(Url.Content("~/UserLogin/ExportToWord"))
+        //)
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        @*
+        .SearchSettings(search =>
+        {
+            search.Fields(field =>
+            {
+                field.Add("LoginProvider");
+                field.Add("ProviderKey");
+                field.Add("UserId");
+                field.Add("UserLookupText");
+            });
+        })
+        *@
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Grid_UserLogin_Toolbar" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                //items.AddTool(ToolBarItems.ExcelExport);
+                //items.AddTool(ToolBarItems.PdfExport);
+                //items.AddTool(ToolBarItems.WordExport);
+            })
+        )
+    )
+</div>
+
+<script type="text/x-jsrender" id="Grid_UserLogin_Toolbar">
+    <div id="Grid_UserLogin_Toolbar_Refresh" class="e-toolbaricons e-icon e-reload" title="@PresentationResources.Refresh"></div>
+    <div id="Grid_UserLogin_Toolbar_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            ej.widget.init($("#Collection_UserLogin"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserLogin.DataProfile));
+
+            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "UserLogin")");
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });
+
+    function actionBegin_Grid_UserLogin(args) {
+        try {
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+
+            // Associations (FK)
+            var url = "";
+            // User
+            if (model.MasterUserId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterUserId=" + String(model.MasterUserId);
+            }
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {
+                    case "searching":
+                        // Search
+                        zSearchDictionaryWrite("UserLogin", args.keyValue);
+                        break;
+                    case "add":
+                        // Create
+                        if (model.ActivityOperations.IsCreate) {
+                            $("#ZAjax").load("@(Url.Action("Create", "UserLogin", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.ActivityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Read", "UserLogin", null, Request.Url.Scheme))?LoginProvider=" + String(data.LoginProvider) + "&ProviderKey=" + String(data.ProviderKey) + "&UserId=" + String(data.UserId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                    case "beginedit":
+                        // Update
+                        if (model.ActivityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Update", "UserLogin", null, Request.Url.Scheme))?LoginProvider=" + String(data.LoginProvider) + "&ProviderKey=" + String(data.ProviderKey) + "&UserId=" + String(data.UserId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.ActivityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Delete", "UserLogin", null, Request.Url.Scheme))?LoginProvider=" + String(data.LoginProvider) + "&ProviderKey=" + String(data.ProviderKey) + "&UserId=" + String(data.UserId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionBegin_Grid_UserLogin", exception));
+        }
+    }
+
+    function actionFailure_Grid_UserLogin(args) {
+        try {
+            zAlert(args.error.responseText);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionFailure_Grid_UserLogin", exception));
+        }
+    }
+
+    function load_Grid_UserLogin(args) {
+        try {
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "load_Grid_UserLogin", exception));
+        }
+    }
+
+    function toolbarClick_Grid_UserLogin(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var ejGrid = zGrid("Grid_UserLogin");
+
+            if (toolbar.prop("id") == "Grid_UserLogin_Toolbar_Refresh") {
+                ejGrid.refreshContent();
+            } else if (toolbar.prop("id") == "Grid_UserLogin_Toolbar_Read") {
+                var records = ejGrid.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_UserLogin(args)
+                }
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "toolbarClick_Grid_UserLogin", exception));
+        }
+    }
+</script>

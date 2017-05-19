@@ -1,0 +1,116 @@
+@model AuditTrailConfigurationItemModel
+
+@{
+    string CSHTML = "_AuditTrailConfiguration.cshtml";
+    // !?!
+    List<SelectListItem> logModeItems = new List<SelectListItem>();
+    logModeItems.Add(new SelectListItem
+    {
+        Text = AuditTrailResources.LogModeNone,
+        Value = "N",
+        Selected = true
+    });
+    logModeItems.Add(new SelectListItem
+    {
+        Text = AuditTrailResources.LogModeKey,
+        Value = "K"
+    });
+    logModeItems.Add(new SelectListItem
+    {
+        Text = AuditTrailResources.LogModeEntity,
+        Value = "E"
+    });
+}
+
+<div id="Item_AuditTrailConfiguration">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "AuditTrailConfiguration_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "AuditTrailConfiguration_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "AuditTrailConfiguration_Item_IsSave")
+
+    @{Html.EJ().Tab("Tab_AuditTrailConfiguration")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_AuditTrailConfiguration")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+        data.Add().ID("TabSheet_AuditTrailConfiguration_AuditTrailConfiguration").Text(AuditTrailConfigurationResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel"> 
+
+            <div id="Group_AuditTrailConfiguration_Id" class="@AppDefaults.CssClassGroup @AuditTrailConfiguration.DataProfile.EditWidthCSSFor("Id")">
+                @Html.LabelFor(model => model.AuditTrailConfiguration.Id, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.AuditTrailConfiguration.Id, new { id = "AuditTrailConfiguration_Id", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @* @Html.ValidationMessageFor(model => model.AuditTrailConfiguration.Id, "", new { @class = AppDefaults.CssClassValidator }) *@
+            </div>
+
+            <div id="Group_AuditTrailConfiguration_Domain" class="@AppDefaults.CssClassGroup @AuditTrailConfiguration.DataProfile.EditWidthCSSFor("Domain")">
+                @Html.LabelFor(model => model.AuditTrailConfiguration.Domain, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.AuditTrailConfiguration.Domain, new { id = "AuditTrailConfiguration_Domain", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @* @Html.ValidationMessageFor(model => model.AuditTrailConfiguration.Domain, "", new { @class = AppDefaults.CssClassValidator }) *@
+            </div>
+
+            <div id="Group_AuditTrailConfiguration_Entity" class="@AppDefaults.CssClassGroup @AuditTrailConfiguration.DataProfile.EditWidthCSSFor("Entity")">
+                @Html.LabelFor(model => model.AuditTrailConfiguration.Entity, new { @class = AppDefaults.CssClassLabelRequired })
+                @Html.EditorFor(model => model.AuditTrailConfiguration.Entity, new { id = "AuditTrailConfiguration_Entity", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @* @Html.ValidationMessageFor(model => model.AuditTrailConfiguration.Entity, "", new { @class = AppDefaults.CssClassValidator }) *@
+            </div>
+
+            @Html.ZNewLine()
+
+            <div id="Group_AuditTrailConfiguration_LogMode" class="@AppDefaults.CssClassGroup @AuditTrailConfiguration.DataProfile.EditWidthCSSFor("LogMode")">
+                @Html.LabelFor(model => model.AuditTrailConfiguration.LogMode, new { @class = AppDefaults.CssClassLabel })
+                @* @Html.EditorFor(model => model.AuditTrailConfiguration.LogMode, new { id = "AuditTrailConfiguration_LogMode", htmlAttributes = new { @class = AppDefaults.CssClassEditor } }) *@
+                @Html.DropDownListFor(model => model.AuditTrailConfiguration.LogMode, logModeItems, AuditTrailConfigurationResources.PropertyLogMode, new { @class = AppDefaults.CssClassEditor })
+                @* @Html.ValidationMessageFor(model => model.AuditTrailConfiguration.LogMode, "", new { @class = AppDefaults.CssClassValidator }) *@
+            </div>
+
+            <div id="Group_AuditTrailConfiguration_LogOperations" class="@AppDefaults.CssClassGroup @AuditTrailConfiguration.DataProfile.EditWidthCSSFor("LogOperations")">
+                @Html.LabelFor(model => model.AuditTrailConfiguration.LogOperations, new { @class = AppDefaults.CssClassLabel })
+                @Html.EditorFor(model => model.AuditTrailConfiguration.LogOperations, new { id = "AuditTrailConfiguration_LogOperations", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
+                @* @Html.ValidationMessageFor(model => model.AuditTrailConfiguration.LogOperations, "", new { @class = AppDefaults.CssClassValidator }) *@
+            </div>
+
+        </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_AuditTrailConfiguration"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(AuditTrailConfiguration.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_AuditTrailConfiguration_Id").hide();
+            }
+
+            // Associations (FK)
+
+            zOnItemView(model, dataProfile);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });
+
+    function itemActive_Tab_AuditTrailConfiguration(args) {
+        zTabDictionaryWrite("AuditTrailConfiguration", args.model.selectedItemIndex);
+
+        try {
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_AuditTrailConfiguration", exception));
+        }
+    }
+</script>

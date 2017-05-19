@@ -1,0 +1,250 @@
+﻿@model CustomerCustomerDemoCollectionModel
+
+@{
+    string CSHTML = "_CustomerCustomerDemoCollection.cshtml";
+
+    string query = "";
+    if (Model.MasterCustomerTypeId != null)
+    {
+        query = String.Format("ej.Query().where(\"CustomerTypeId\", ej.FilterOperators.equal, \"{0}\")", Model.MasterCustomerTypeId);
+    }
+    else if (Model.MasterCustomerId != null)
+    {
+        query = String.Format("ej.Query().where(\"CustomerId\", ej.FilterOperators.equal, \"{0}\")", Model.MasterCustomerId);
+    }
+}
+
+<div id="Collection_CustomerCustomerDemo">
+    @(Html.EJ().Grid<CustomerCustomerDemo>("Grid_CustomerCustomerDemo")
+        //.Datasource(datasource => datasource
+        //    .Adaptor(AdaptorType.UrlAdaptor)
+        //    .URL(Url.Action("DataSource", "CustomerCustomerDemo"))
+        //)
+        .Query(query)        
+        .AllowFiltering()
+        .AllowGrouping()
+        .AllowPaging()
+        .AllowReordering()
+        //.AllowResizeToFit()
+        .AllowResizing()
+        //.AllowScrolling()
+        .AllowSearching()
+        .AllowSorting()
+        .AllowTextWrap()
+        .TextWrapSettings(wrap =>
+        {
+            wrap.WrapMode(WrapMode.Both);
+        })                    
+        .ClientSideEvents(clientEvent => clientEvent
+            .ActionBegin("actionBegin_Grid_CustomerCustomerDemo")
+            .ActionFailure("actionFailure_Grid_CustomerCustomerDemo")
+            .Load("load_Grid_CustomerCustomerDemo")
+            .ToolbarClick("toolbarClick_Grid_CustomerCustomerDemo")
+        )
+        .Columns(column =>
+        {
+            column.Field("CustomerId")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerCustomerDemoResources.PropertyCustomerId)
+                .IsPrimaryKey(true)
+                .Visible(CustomerCustomerDemo.DataProfile.IsGridVisibleFor("CustomerId"))
+                .Width(CustomerCustomerDemo.DataProfile.GridWidthFor("CustomerId"))
+                .Add();
+            column.Field("CustomerLookupText")
+                .AllowEditing(false)
+                .HeaderText(CustomerResources.EntitySingular)
+                .Visible(CustomerCustomerDemo.DataProfile.IsGridVisibleFor("CustomerLookupText"))
+                .Width(CustomerCustomerDemo.DataProfile.GridWidthFor("CustomerLookupText"))
+                .Add();
+            column.Field("CustomerTypeId")
+                .EditType(EditingType.String)
+                .HeaderText(CustomerCustomerDemoResources.PropertyCustomerTypeId)
+                .IsPrimaryKey(true)
+                .Visible(CustomerCustomerDemo.DataProfile.IsGridVisibleFor("CustomerTypeId"))
+                .Width(CustomerCustomerDemo.DataProfile.GridWidthFor("CustomerTypeId"))
+                .Add();
+            column.Field("CustomerDemographicLookupText")
+                .AllowEditing(false)
+                .HeaderText(CustomerDemographicResources.EntitySingular)
+                .Visible(CustomerCustomerDemo.DataProfile.IsGridVisibleFor("CustomerDemographicLookupText"))
+                .Width(CustomerCustomerDemo.DataProfile.GridWidthFor("CustomerDemographicLookupText"))
+                .Add();
+        })
+        .EditSettings(edit => edit
+            .AllowAdding()
+            .AllowDeleting()
+            .AllowEditing()
+            .AllowEditOnDblClick(false)
+        )
+        //.EnablePersistence()
+        .IsResponsive()
+        .FilterSettings(filter => filter
+            .EnableCaseSensitivity(false)
+            .FilterType(FilterType.Excel)
+            .MaxFilterChoices(AppDefaults.SyncfusionRecordsForFiltering)
+        )
+        //.Mappers(map => map
+        //    .ExportToExcelAction(Url.Content("~/CustomerCustomerDemo/ExportToExcel"))
+        //    .ExportToPdfAction(Url.Content("~/CustomerCustomerDemo/ExportToPdf"))
+        //    .ExportToWordAction(Url.Content("~/CustomerCustomerDemo/ExportToWord"))
+        //)
+        .PageSettings(page => page
+            .PageSize(AppDefaults.SyncfusionRecordsByPage)
+        )
+        @*
+        .SearchSettings(search =>
+        {
+            search.Fields(field =>
+            {
+                field.Add("CustomerId");
+                field.Add("CustomerLookupText");
+                field.Add("CustomerTypeId");
+                field.Add("CustomerDemographicLookupText");
+            });
+        })
+        *@
+        .ShowColumnChooser()
+        .ToolbarSettings(toolbar => toolbar
+            .CustomToolbarItems(new List<object>() {
+                new Syncfusion.JavaScript.Models.CustomToolbarItem() { TemplateID = "#Grid_CustomerCustomerDemo_Toolbar" }
+            })
+            .ShowToolbar()
+            .ToolbarItems(items =>
+            {
+                items.AddTool(ToolBarItems.Search);
+                items.AddTool(ToolBarItems.Add);
+                items.AddTool(ToolBarItems.Edit);
+                items.AddTool(ToolBarItems.Delete);
+                //items.AddTool(ToolBarItems.ExcelExport);
+                //items.AddTool(ToolBarItems.PdfExport);
+                //items.AddTool(ToolBarItems.WordExport);
+            })
+        )
+    )
+</div>
+
+<script type="text/x-jsrender" id="Grid_CustomerCustomerDemo_Toolbar">
+    <div id="Grid_CustomerCustomerDemo_Toolbar_Refresh" class="e-toolbaricons e-icon e-reload" title="@PresentationResources.Refresh"></div>
+    <div id="Grid_CustomerCustomerDemo_Toolbar_Read" class="e-toolbaricons e-icon e-document" title="@PresentationResources.Read"></div>
+</script>
+
+<script>
+    $(function () {
+        try {
+            ej.widget.init($("#Collection_CustomerCustomerDemo"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(CustomerCustomerDemo.DataProfile));
+
+            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "CustomerCustomerDemo")");
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }                
+    });
+    
+    function actionBegin_Grid_CustomerCustomerDemo(args) {
+        try {
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var masterControllerAction = model.MasterControllerAction == null ? "" : model.MasterControllerAction.toLowerCase();
+    
+            // Associations (FK)
+            var url = "";
+            // CustomerDemographic
+            if (model.MasterCustomerTypeId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterCustomerTypeId=" + String(model.MasterCustomerTypeId);
+            }
+            // Customer
+            if (model.MasterCustomerId != null) {
+                url = url + (url == "" ? "" : "&") + "MasterCustomerId=" + String(model.MasterCustomerId);
+            }
+
+            if (masterControllerAction == "" || masterControllerAction == "update") {
+                switch(args.requestType) {
+                    case "searching":
+                        // Search
+                        zSearchDictionaryWrite("CustomerCustomerDemo", args.keyValue);
+                        break;
+                    case "add":
+                        // Create
+                        if (model.ActivityOperations.IsCreate) {
+                            $("#ZAjax").load("@(Url.Action("Create", "CustomerCustomerDemo", null, Request.Url.Scheme))" +
+                                (url == "" ? "" : "?") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                        }
+                        break;
+                    case "read":
+                        // Read
+                        if (model.ActivityOperations.IsRead) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Read", "CustomerCustomerDemo", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) + "&CustomerTypeId=" + String(data.CustomerTypeId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;                        
+                    case "beginedit":
+                        // Update
+                        if (model.ActivityOperations.IsUpdate) {
+                            var data = this.model.currentViewData[args.rowIndex];
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Update", "CustomerCustomerDemo", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) + "&CustomerTypeId=" + String(data.CustomerTypeId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                    case "delete":
+                        // Delete
+                        if (model.ActivityOperations.IsDelete) {
+                            var data = args.data;
+                            if (!ej.isNullOrUndefined(data)) {
+                                $("#ZAjax").load("@(Url.Action("Delete", "CustomerCustomerDemo", null, Request.Url.Scheme))?CustomerId=" + String(data.CustomerId) + "&CustomerTypeId=" + String(data.CustomerTypeId) +
+                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                            }
+                        }
+                        break;
+                }
+            }
+
+            if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {
+                args.cancel = true;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionBegin_Grid_CustomerCustomerDemo", exception));
+        }            
+    }
+    
+    function actionFailure_Grid_CustomerCustomerDemo(args) {
+        try {
+            zAlert(args.error.responseText);
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "actionFailure_Grid_CustomerCustomerDemo", exception));
+        }
+    }    
+
+    function load_Grid_CustomerCustomerDemo(args) {
+        try {            
+            var culture = "@System.Globalization.CultureInfo.CurrentCulture.Name";
+            this.model.locale = culture;
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "load_Grid_CustomerCustomerDemo", exception));
+        }
+    }
+
+    function toolbarClick_Grid_CustomerCustomerDemo(sender) {
+        try {
+            var toolbar = $(sender.target);
+            var ejGrid = $("#Grid_CustomerCustomerDemo").data("ejGrid");
+
+            if (toolbar.prop("id") == "Grid_CustomerCustomerDemo_Toolbar_Refresh") {
+                ejGrid.refreshContent();
+            } else if (toolbar.prop("id") == "Grid_CustomerCustomerDemo_Toolbar_Read") {
+                var records = ejGrid.getSelectedRecords();
+                if (records.length == 1) {
+                    var args = { requestType: "read", data: records[0] };
+                    actionBegin_Grid_CustomerCustomerDemo(args)
+                }
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "toolbarClick_Grid_CustomerCustomerDemo", exception));
+        }
+    }
+</script>

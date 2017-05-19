@@ -1,0 +1,109 @@
+﻿@model CategoryItemModel
+
+@{
+    string CSHTML = "_CategoryItem.cshtml";
+    string category_Picture_Base64 = Convert.ToBase64String(new byte[] {});
+    if (Model.Category != null && Model.Category.Picture != null)
+    {
+        category_Picture_Base64 = Convert.ToBase64String(Model.Category.Picture);
+    }
+    string category_Picture_Source = string.Format("data:image/jpg;base64,{0}", category_Picture_Base64);        
+}
+
+<div id="Item_Category">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.ControllerAction, new { id = "Category_Item_ControllerAction" })
+    @Html.ZHiddenFor(model => model.IsReadOnly, "Category_Item_IsReadOnly")
+    @Html.ZHiddenFor(model => model.IsSave, "Category_Item_IsSave")
+
+    @{Html.EJ().Tab("Tab_Category")
+        .ClientSideEvents(clientEvent => clientEvent
+            .ItemActive("itemActive_Tab_Category")
+        )
+        //.EnablePersistence()
+        .Items(data =>
+        {
+            data.Add().ID("TabSheet_Category_Category").Text(CategoryResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
+                
+                <div id="Group_Category_CategoryId" class="@AppDefaults.CssClassGroup @Category.DataProfile.EditWidthCSSFor("CategoryId")">
+                    @Html.LabelFor(model => model.Category.CategoryId, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Category.CategoryId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Category_CategoryId" } })
+                    @* @Html.ValidationMessageFor(model => model.Category.CategoryId, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_Category_CategoryName" class="@AppDefaults.CssClassGroup @Category.DataProfile.EditWidthCSSFor("CategoryName")">
+                    @Html.LabelFor(model => model.Category.CategoryName, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.Category.CategoryName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Category_CategoryName" } })
+                    @* @Html.ValidationMessageFor(model => model.Category.CategoryName, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_Category_Description" class="@AppDefaults.CssClassGroup @Category.DataProfile.EditWidthCSSFor("Description")">
+                    @Html.LabelFor(model => model.Category.Description, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.Category.Description, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Category_Description" } })
+                    @* @Html.ValidationMessageFor(model => model.Category.Description, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                <div id="Group_Category_Picture" class="@AppDefaults.CssClassGroup @Category.DataProfile.EditWidthCSSFor("Picture")">
+                    @Html.LabelFor(model => model.Category.Picture, new { @class = AppDefaults.CssClassLabel })
+                    <img src="@category_Picture_Source" class="z-image" />
+                    @* @Html.ValidationMessageFor(model => model.Category.Picture, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+
+            </div>);
+            data.Add().ID("TabSheet_Category_Products").Text(ProductResources.EntityPlural).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">    
+                <div id="Ajax_Category_Products"></div>
+            </div>);
+        })
+        .Render();
+    }
+</div>
+
+<script>
+    // Validate hidden fields
+    $.validator.setDefaults({ ignore: null });
+    // Parse validators
+    $.validator.unobtrusive.parse($("#ZAjax"));
+
+    $(function () {
+        try {
+            ej.widget.init($("#Item_Category"));
+
+            var model = @Html.Raw(JsonConvert.SerializeObject(Model));
+            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Category.DataProfile));
+            var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
+
+            var ajaxUrl = "";
+            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "Products")) {
+                // Products
+                zUrlDictionaryWrite("Product", "@Context.Request.Url.AbsoluteUri");
+                ajaxUrl = "@(Html.Raw(Url.Action("Search", "Product", new { MasterControllerAction = Model.ControllerAction, MasterCategoryId = Model.Category.CategoryId })))";
+                zAjaxLoadSync("Ajax_Category_Products", ajaxUrl);
+            }
+
+            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+                $("#Group_Category_CategoryId").hide();
+            }
+
+            // Associations (FK)
+
+            zOnItemView(model, dataProfile);        
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "function", exception));
+        }
+    });    
+
+    function itemActive_Tab_Category(args) {
+        zTabDictionaryWrite("Category", args.model.selectedItemIndex);
+
+        try {
+            switch(args.model.selectedItemIndex) {
+                case 1:
+                    zGridDataSource("Grid_Product", "@Url.Action("DataSource", "Product")");
+                    break;
+            }
+        } catch (exception) {
+            zAlert(zExceptionMessage("@CSHTML", "itemActive_Tab_Category", exception));
+        }
+    }
+</script>

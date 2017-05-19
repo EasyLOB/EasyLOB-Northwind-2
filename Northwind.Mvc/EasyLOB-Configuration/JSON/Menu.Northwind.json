@@ -1,0 +1,181 @@
+﻿[
+  {
+    "Text": "Home",
+    "Url": "/Home"
+  },
+  {
+    "Text": "Northwind",
+    "SubMenus": [
+      {
+        "Text": "CategoryResources.EntityPlural",
+        "Url": "/Category"
+      },
+      {
+        "Text": "CustomerCustomerDemoResources.EntityPlural",
+        "Url": "/CustomerCustomerDemo"
+      },
+      {
+        "Text": "CustomerDemographicResources.EntityPlural",
+        "Url": "/CustomerDemographic"
+      },
+      {
+        "Text": "CustomerResources.EntityPlural",
+        "Url": "/Customer"
+      },
+      {
+        "Text": "EmployeeResources.EntityPlural",
+        "Url": "/Employee"
+      },
+      {
+        "Text": "EmployeeTerritoryResources.EntityPlural",
+        "Url": "/EmployeeTerritory"
+      },
+      {
+        "Text": "OrderDetailResources.EntityPlural",
+        "Url": "/OrderDetail"
+      },
+      {
+        "Text": "OrderResources.EntityPlural",
+        "Url": "/Order"
+      },
+      {
+        "Text": "ProductResources.EntityPlural",
+        "Url": "/Product"
+      },
+      {
+        "Text": "RegionResources.EntityPlural",
+        "Url": "/Region"
+      },
+      {
+        "Text": "ShipperResources.EntityPlural",
+        "Url": "/Shipper"
+      },
+      {
+        "Text": "SupplierResources.EntityPlural",
+        "Url": "/Supplier"
+      },
+      {
+        "Text": "TerritoryResources.EntityPlural",
+        "Url": "/Territory"
+      }
+    ]
+  },
+  {
+    "Text": "PresentationResources.Tasks",
+    "SubMenus": [
+      {
+        "Text": "NorthwindPresentationResources.TaskNorthwindAPIIndex",
+        "Url": "/NorthwindTasks/NorthwindAPIIndex"
+      },
+      {
+        "Text": "NorthwindPresentationResources.TaskNorthwindStatus",
+        "Url": "/NorthwindTasks/NorthwindStatus"
+      }
+    ]
+  },
+  {
+    "Text": "MenuResources.System",
+    "SubMenus": [
+      {
+        "Text": "PresentationResources.Language",
+        "SubMenus": [
+          {
+            "Text": "English {en-US}",
+            "Url": "/Globalization/Culture?language=en&locale=US"
+          },
+          {
+            "Text": "Português {pt-BR}",
+            "Url": "/Globalization/Culture?language=pt&locale=BR"
+          }
+        ]
+      },
+      {
+        "Text": "PresentationResources.Tasks",
+        "SubMenus": [
+          {
+            "Text": "PresentationResources.TaskCleanLocalStorage",
+            "Url": "/Tasks/CleanLocalStorage"
+          },
+          {
+            "Text": "PresentationResources.TaskCleanExportImport",
+            "Url": "/Tasks/CleanExportImport"
+          },
+          {
+            "Text": "PresentationResources.TaskStatus",
+            "Url": "/Tasks/Status"
+          },
+          {
+            "Text": "PresentationResources.TaskUrlDictionary",
+            "Url": "/Tasks/UrlDictionary"
+          }
+        ]
+      },
+      {
+        "Text": "AuthenticationResources.ChangePassword",
+        "Url": "/Authentication/ChangePassword"
+      },
+      {
+        "Text": "AuthenticationResources.LogOut",
+        "Url": "/Authentication/Logout"
+      }
+    ]
+  },
+  {
+    "Text": "MenuResources.Administration",
+    "Roles": "*",
+    "SubMenus": [
+      {
+        "Text": "SecurityResources.Security",
+        "SubMenus": [
+          {
+            "Text": "SecurityResources.Authentication",
+            "SubMenus": [
+              {
+                "Text": "RoleResources.EntityPlural",
+                "Url": "/Role"
+              },
+              {
+                "Text": "UserResources.EntityPlural",
+                "Url": "/User"
+              },
+              {
+                "Text": "UserRoleResources.EntityPlural",
+                "Url": "/UserRole"
+              }
+            ]
+          },
+          {
+            "Text": "SecurityResources.Authorization",
+            "SubMenus": [
+              {
+                "Text": "ActivityResources.EntityPlural",
+                "Url": "/Activity"
+              },
+              {
+                "Text": "ActivityRoleResources.EntityPlural",
+                "Url": "/ActivityRole"
+              }
+            ]
+          },
+          {
+            "Text": "AuditTrailResources.AuditTrail",
+            "SubMenus": [
+              {
+                "Text": "AuditTrailConfigurationResources.EntityPlural",
+                "Url": "/AuditTrailConfiguration"
+              },
+              {
+                "Text": "AuditTrailLogResources.EntityPlural",
+                "Url": "/AuditTrailLog"
+              }
+            ]
+          },
+          {
+            "Text": "SecurityResources.TaskExportSecurity",
+            "Url": "/Tasks/ExportSecurity"
+          }
+        ]
+      }
+    ]
+  }
+]
