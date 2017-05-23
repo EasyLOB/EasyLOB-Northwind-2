@@ -23,19 +23,15 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 .e-datewidget {
     height: 30px !important;
     margin-top: 4px !important;
+}
+
+.e-datetime-wrap {
+    height: 30px !important;
+    margin-top: 4px !important;
 } 
 
 .e-grid .e-alt_row { 
     background-color: #eaeaea;
-}
-
-/* Z ??? Z */
-
-a img {
-    border: none !important;
-}
-
-a img:hover {
 }
 
 /* Button */

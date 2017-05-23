@@ -417,8 +417,10 @@ function zOnItemView(model, dataProfile) {
     // https://github.com/haggen/readonly
     readonly('select', readOnly);
     $("textarea").prop("readonly", readOnly);
-    $("input[name*='_Lookup']").prop("readonly", true);
+    $("input[name*='_Lookup'][type!='checkbox']").prop("readonly", true);
     if (readOnly) {
+        $("input[type='checkbox']").prop("disabled", true);
+
         $("input[data-role='ejdatepicker']").each(function() {
             $(this).data("ejDatePicker").disable();
         });
@@ -446,10 +448,18 @@ function zOnItemView(model, dataProfile) {
     var readOnlyPropertiesLength = readOnlyProperties.length;
     for (i = 0; i < readOnlyPropertiesLength; i++) {
         $("#" + dataProfile.Class.Name + "_" + readOnlyProperties[i]).prop("readonly", true);
-        var lookupButton = $("#" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "_LookupButton");
-        if (lookupButton.length > 0) {
-            lookupButton.hide();
-        }
+
+        $("#" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "_LookupButton").hide();
+
+        $("input[type='checkbox'][id='" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "']").removeProp("readonly");
+        $("input[type='checkbox'][id='" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "']").prop("disabled", true);
+
+        $("input[data-role='ejdatepicker'][id='" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "']").each(function () {
+            $(this).data("ejDatePicker").disable();
+        });
+        $("input[data-role='ejdatetimepicker'][id='" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "']").each(function () {
+            $(this).data("ejDateTimePicker").disable();
+        });
     }
 
     var id;
