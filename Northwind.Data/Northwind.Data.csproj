@@ -55,7 +55,7 @@
     <Compile Include="DataProfiles\CustomerCustomerDemoProfile.cs" />
     <Compile Include="DataProfiles\CustomerDemographicProfile.cs" />
     <Compile Include="DataProfiles\CustomerProfile.cs" />
-    <Compile Include="DataProfiles\EmployeeProfile.cs" />
+    <Compile Include="DataProfiles-Custom\EmployeeProfile.cs" />
     <Compile Include="DataProfiles\EmployeeTerritoryProfile.cs" />
     <Compile Include="DataProfiles\OrderDetailProfile.cs" />
     <Compile Include="DataProfiles\OrderProfile.cs" />
@@ -160,7 +160,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataModels-Custom\" />
-    <Folder Include="DataProfiles-Custom\" />
     <Folder Include="DTOs-Custom\" />
   </ItemGroup>
   <ItemGroup>

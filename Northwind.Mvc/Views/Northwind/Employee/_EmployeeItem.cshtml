@@ -146,11 +146,9 @@
                 </div>
 
             </div>);
-            @* !!!
             data.Add().ID("TabSheet_Employee_Employees").Text(EmployeeResources.EntityPlural).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">    
                 <div id="Ajax_Employee_Employees"></div>
             </div>);
-            *@
             data.Add().ID("TabSheet_Employee_EmployeeTerritories").Text(EmployeeTerritoryResources.EntityPlural).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">    
                 <div id="Ajax_Employee_EmployeeTerritories"></div>
             </div>);
@@ -177,15 +175,13 @@
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
-            @* !!!
             if (controllerAction != "create" && zContains(dataProfile.EditCollections, "Employees")) {
                 // Employees
                 zUrlDictionaryWrite("Employee", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "Employee", new { MasterControllerAction = Model.ControllerAction, MasterReportsTo = Model.Employee.EmployeeId })))";
                 zAjaxLoadSync("Ajax_Employee_Employees", ajaxUrl);
             }
-            *@
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "EmployeeTerritories")) {
+            *@            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "EmployeeTerritories")) {
                 // EmployeeTerritories
                 zUrlDictionaryWrite("EmployeeTerritory", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "EmployeeTerritory", new { MasterControllerAction = Model.ControllerAction, MasterEmployeeId = Model.Employee.EmployeeId })))";
@@ -220,15 +216,13 @@
 
         try {
             switch (args.model.selectedItemIndex) {
-                @* !!!
                 case 1:
                     zGridDataSource("Grid_Employee", "@Url.Action("DataSource", "Employee")");
                     break;
-                *@
-                case 1: // !!!
+                case 2:
                     zGridDataSource("Grid_EmployeeTerritory", "@Url.Action("DataSource", "EmployeeTerritory")");
                     break;
-                case 2: // !!!
+                case 3:
                     zGridDataSource("Grid_Order", "@Url.Action("DataSource", "Order")");
                     break;
             }

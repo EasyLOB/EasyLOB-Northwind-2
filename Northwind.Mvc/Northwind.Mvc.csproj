@@ -1156,7 +1156,7 @@
     <Content Include="Views\Northwind\Employee\Index.cshtml" />
     <Content Include="Views\Northwind\Employee\Search.cshtml" />
     <Content Include="Views\Northwind\Employee\_EmployeeCollection.cshtml" />
-    <Content Include="Views\Northwind-Custom\Employee\_EmployeeItem.cshtml" />
+    <Content Include="Views\Northwind\Employee\_EmployeeItem.cshtml" />
     <Content Include="Views\Northwind\Employee\_EmployeeLookup.cshtml" />
     <Content Include="Views\Northwind\OrderDetail\CRUD.cshtml" />
     <Content Include="Views\Northwind\OrderDetail\Index.cshtml" />

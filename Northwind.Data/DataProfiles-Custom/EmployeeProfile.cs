@@ -25,7 +25,7 @@ namespace Northwind.Data
                         },
                         CollectionsDictionary: new Dictionary<string, bool>
                         {
-                            { "Employees", true },
+                            { "Employees", false }, // !!!
                             { "EmployeeTerritories", true },
                             { "Orders", true }
                         },
