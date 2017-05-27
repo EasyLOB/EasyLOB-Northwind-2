@@ -10,8 +10,7 @@ namespace Northwind.Persistence
         public NorthwindUnitOfWorkEF(IAuthenticationManager authenticationManager)
             : base(new NorthwindDbContext(), authenticationManager)
         {
-            Domain = ""; // ???
-            //Domain = "Northwind";
+            //Domain = "Northwind"; // ???
 
             //NorthwindDbContext context = (NorthwindDbContext)base.context;
         }

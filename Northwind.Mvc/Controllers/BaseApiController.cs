@@ -48,13 +48,6 @@ namespace EasyLOB.WebApi
             AuthorizationManager = DependencyResolver.Current.GetService<IAuthorizationManager>();
         }
 
-        protected virtual bool IsValid(ZOperationResult operationResult, IZValidatableObject entity)
-        {
-            entity.Validate(operationResult);
-
-            return base.IsValid(operationResult, typeof(TEntity).Name);
-        }
-
         #endregion Methods
 
         #region Methods IsActivity

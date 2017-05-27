@@ -297,7 +297,7 @@
     <Compile Include="EasyLOB\Filters\EasyLOBProfileAttribute.cs" />
     <Compile Include="EasyLOB\Mvc\CultureAttribute.cs" />
     <Compile Include="EasyLOB\Mvc\CustomRazorViewEngine.cs" />
-    <Compile Include="EasyLOB\Mvc\LookupModel.cs" />
+    <Compile Include="Models\LookupModel.cs" />
     <Compile Include="EasyLOB\Mvc\ValidateModelStateAttribute.cs" />
     <Compile Include="EasyLOB\Syncfusion\Dashboard\DashboardServiceSerialization.cs" />
     <Compile Include="EasyLOB\Syncfusion\Dashboard\DashboardViewer.cs" />

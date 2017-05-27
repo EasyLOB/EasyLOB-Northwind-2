@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Http;
 
-namespace Northwind.Mvc
+namespace Northwind.WebApi
 {
     public class OrderDetailAPIController : BaseApiControllerApplication<OrderDetailDTO, OrderDetail>
     {
@@ -97,12 +97,9 @@ namespace Northwind.Mvc
 
             try
             {
-                if (IsValid(operationResult, orderDetailDTO))
+                if (Application.Create(operationResult, orderDetailDTO))
                 {
-                    if (Application.Create(operationResult, orderDetailDTO))
-                    {
-                        return CreatedAtRoute("DefaultApi", new { orderDetailDTO.OrderId, orderDetailDTO.ProductId }, orderDetailDTO);
-                    }
+                    return CreatedAtRoute("DefaultApi", new { orderDetailDTO.OrderId, orderDetailDTO.ProductId }, orderDetailDTO);
                 }
             }
             catch (Exception exception)
@@ -121,12 +118,9 @@ namespace Northwind.Mvc
 
             try
             {
-                if (IsValid(operationResult, orderDetailDTO))
+                if (Application.Create(operationResult, orderDetailDTO))
                 {
-                    if (Application.Create(operationResult, orderDetailDTO))
-                    {
-                        return Ok(orderDetailDTO);
-                    }
+                    return Ok(orderDetailDTO);
                 }
             }
             catch (Exception exception)

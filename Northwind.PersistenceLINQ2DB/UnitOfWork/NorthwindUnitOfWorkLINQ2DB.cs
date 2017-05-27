@@ -11,7 +11,7 @@ namespace Northwind.Persistence
         public NorthwindUnitOfWorkLINQ2DB(IAuthenticationManager authenticationManager)
             : base(new NorthwindLINQ2DB(), authenticationManager)
         {
-            Domain = "Northwind";
+            //Domain = "Northwind"; // ???
 
             Repositories.Add(typeof(Category), new NorthwindCategoryRepositoryLINQ2DB(this));            
             Repositories.Add(typeof(CustomerCustomerDemo), new NorthwindCustomerCustomerDemoRepositoryLINQ2DB(this));            

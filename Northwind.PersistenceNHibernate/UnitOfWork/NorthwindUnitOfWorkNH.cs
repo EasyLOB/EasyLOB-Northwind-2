@@ -10,7 +10,7 @@ namespace Northwind.Persistence
         public NorthwindUnitOfWorkNH(IAuthenticationManager authenticationManager)
             : base(NorthwindFactory.Session, authenticationManager)
         {
-            Domain = "Northwind";
+            //Domain = "Northwind"; // ???
 
             //ISession session = base.Session;
         }
