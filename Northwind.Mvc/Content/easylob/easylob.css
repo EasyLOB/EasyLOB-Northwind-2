@@ -22,12 +22,12 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 
 .e-datewidget {
     height: 30px !important;
-    margin-top: 4px !important;
+    margin-top: 2px !important; /* 4px */
 }
 
 .e-datetime-wrap {
     height: 30px !important;
-    margin-top: 4px !important;
+    margin-top: 2px !important; /* 4px */
 } 
 
 .e-grid .e-alt_row { 
@@ -287,7 +287,7 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 
 .z-editor {
     height: 30px;
-    margin-top: 4px; /* !!! */
+    margin-top: 2px; /* !!! */ /* 4px */
 }
 
 /* Z Culture */
@@ -432,22 +432,32 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 }
 
 .z-label {
+    font-weight: bold;
     margin: 0px;
     padding: 0px;
+    /* Truncante Label with ellipsis */
+    margin-bottom: -4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .z-labelRequired {
     color: red;
-    /* font-style: italic; */
     font-weight: bold;
     margin: 0px;
     padding: 0px;
+    /* Truncante Label with ellipsis */
+    margin-bottom: -4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .z-lookup {
     height: 30px;
-    margin-top: 4px;  /* !!! */
-    margin-bottom: 1px;  /* !!! */
+    margin-top: 2px; /* !!! */ /* 4px */
+    margin-bottom: 1px; /* !!! */
 }
 
 .z-lookupButton {
