@@ -1,8 +1,14 @@
-﻿using EasyLOB.Library.Mvc;
+﻿using EasyLOB.Identity;
+using EasyLOB.Library.Mvc;
 using EasyLOB.Resources;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security.DataProtection;
 using Newtonsoft.Json;
 using Syncfusion.JavaScript.Models;
 using System;
+using System.Web;
+using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 
 namespace EasyLOB.Mvc
@@ -49,6 +55,32 @@ namespace EasyLOB.Mvc
                 }
 
                 return _jsonSettings;
+            }
+        }
+
+        private static ApplicationUserManager _userManager;
+
+        public static ApplicationUserManager UserManager
+        {
+            //get
+            //{
+            //    return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); // !?!
+            //}
+            get
+            {
+                if (_userManager == null)
+                {
+                    _userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                    var provider = new DpapiDataProtectionProvider("EasyLOB");
+                    UserManager.UserTokenProvider =
+                        new DataProtectorTokenProvider<EasyLOB.Identity.ApplicationUser, string>(provider.Create("UserToken")) as IUserTokenProvider<EasyLOB.Identity.ApplicationUser, string>;
+                }
+
+                return _userManager;
+            }
+            private set
+            {
+                _userManager = value;
             }
         }
 

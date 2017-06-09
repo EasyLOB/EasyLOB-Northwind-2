@@ -1,4 +1,4 @@
-using EasyLOB.Authentication.Resources;
+﻿using EasyLOB.Authentication.Resources;
 using EasyLOB.Identity;
 using EasyLOB.Library.Syncfusion;
 using EasyLOB.Mvc;
@@ -98,7 +98,6 @@ namespace EasyLOB.Authentication
 
         // GET: /Authentication/ChangePassword
         [EasyLOBProfile]
-        [EasyLOBNorthwindProfile]
         public ActionResult ChangePassword()
         {
             EasyLOB.Security.IAuthenticationManager AuthenticationManager = DependencyResolver.Current.GetService<EasyLOB.Security.IAuthenticationManager>();
@@ -111,7 +110,6 @@ namespace EasyLOB.Authentication
         [HttpPost]
         [ValidateAntiForgeryToken]
         [EasyLOBProfile]
-        [EasyLOBNorthwindProfile]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
             if (!ModelState.IsValid)
@@ -212,7 +210,8 @@ namespace EasyLOB.Authentication
                     return RedirectToLocal(returnUrl);
 
                 case SignInStatus.LockedOut:
-                    return View("Lockout");
+                    ModelState.AddModelError("", AuthenticationResources.UserLocked);
+                    return View(model);
 
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });

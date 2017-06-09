@@ -120,11 +120,14 @@ namespace EasyLOB.Mvc
                 command.CommandText = @"
 SELECT
     UserName UserName,
-    Email email
+    Email EMail,
+    LockoutEnabled Lockout,
+    LockoutEndDateUtc LockoutEndDate
 FROM
     AspNetUsers
 ORDER BY
-    UserName";
+    UserName
+";
 
                 reader = command.ExecuteReader();
 
@@ -134,7 +137,9 @@ ORDER BY
                     int column = 1;
 
                     worksheet.Range[row, column++].Value2 = reader.ToString("UserName");
-                    worksheet.Range[row, column++].Value2 = reader.ToString("email");
+                    worksheet.Range[row, column++].Value2 = reader.ToString("EMail");
+                    worksheet.Range[row, column++].Value2 = reader.ToBoolean("Lockout") ? EasyLOB.Resources.PresentationResources.Yes : EasyLOB.Resources.PresentationResources.No;
+                    SyncfusionHelper.ExcelClearDateTime(worksheet.Range[row, column++], reader.ToDateTimeNullable("LockoutEndDate"));
 
                     row++;
                 }

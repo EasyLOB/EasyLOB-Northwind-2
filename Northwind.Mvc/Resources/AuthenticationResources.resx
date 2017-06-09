@@ -180,4 +180,7 @@
   <data name="UserName" xml:space="preserve">
     <value>User</value>
   </data>
+  <data name="UserLocked" xml:space="preserve">
+    <value>User Locked</value>
+  </data>
 </root>

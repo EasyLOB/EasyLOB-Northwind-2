@@ -76,18 +76,20 @@
                     @Html.EditorFor(model => model.User.TwoFactorEnabled, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_TwoFactorEnabled" } })
                     @* @Html.ValidationMessageFor(model => model.User.TwoFactorEnabled, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
+
+                @Html.ZNewLine() @* !!! *@
+                
+                <div id="Group_User_LockoutEnabled" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("LockoutEnabled")">
+                    @Html.LabelFor(model => model.User.LockoutEnabled, new { @class = AppDefaults.CssClassLabelRequired })
+                    @Html.EditorFor(model => model.User.LockoutEnabled, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_LockoutEnabled" } })
+                    @* @Html.ValidationMessageFor(model => model.User.LockoutEnabled, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
                 
                 <div id="Group_User_LockoutEndDateUtc" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("LockoutEndDateUtc")">
                     @Html.LabelFor(model => model.User.LockoutEndDateUtc, new { @class = AppDefaults.CssClassLabel })
                     @* @Html.EditorFor(model => model.User.LockoutEndDateUtc, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_LockoutEndDateUtc" } }) *@
                     @Html.EJ().DateTimePickerFor(model => model.User.LockoutEndDateUtc, AppHelper.DateTimeModel, new { id = "User_LockoutEndDateUtc" })
                     @* @Html.ValidationMessageFor(model => model.User.LockoutEndDateUtc, "", new { @class = AppDefaults.CssClassValidator }) *@
-                </div>
-                
-                <div id="Group_User_LockoutEnabled" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("LockoutEnabled")">
-                    @Html.LabelFor(model => model.User.LockoutEnabled, new { @class = AppDefaults.CssClassLabelRequired })
-                    @Html.EditorFor(model => model.User.LockoutEnabled, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_LockoutEnabled" } })
-                    @* @Html.ValidationMessageFor(model => model.User.LockoutEnabled, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
                 <div id="Group_User_AccessFailedCount" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("AccessFailedCount")">
