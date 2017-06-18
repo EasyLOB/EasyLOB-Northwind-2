@@ -23,6 +23,7 @@ namespace Northwind.Persistence
                 .HasColumnOrder(1)
                 .HasColumnType("varchar")
                 .HasMaxLength(5)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
         
             this.Property(x => x.CustomerTypeId)
@@ -30,6 +31,7 @@ namespace Northwind.Persistence
                 .HasColumnOrder(2)
                 .HasColumnType("varchar")
                 .HasMaxLength(10)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
 
             #endregion Properties

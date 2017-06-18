@@ -22,6 +22,7 @@ namespace Northwind.Persistence
                 .HasColumnName("EmployeeID")
                 .HasColumnOrder(1)
                 .HasColumnType("int")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
         
             this.Property(x => x.TerritoryId)
@@ -29,6 +30,7 @@ namespace Northwind.Persistence
                 .HasColumnOrder(2)
                 .HasColumnType("varchar")
                 .HasMaxLength(20)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
 
             #endregion Properties

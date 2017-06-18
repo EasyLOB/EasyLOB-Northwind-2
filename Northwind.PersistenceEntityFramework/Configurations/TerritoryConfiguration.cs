@@ -22,6 +22,7 @@ namespace Northwind.Persistence
                 .HasColumnName("TerritoryID")
                 .HasColumnType("varchar")
                 .HasMaxLength(20)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
         
             this.Property(x => x.TerritoryDescription)

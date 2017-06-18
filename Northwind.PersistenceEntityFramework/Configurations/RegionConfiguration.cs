@@ -21,6 +21,7 @@ namespace Northwind.Persistence
             this.Property(x => x.RegionId)
                 .HasColumnName("RegionID")
                 .HasColumnType("int")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
         
             this.Property(x => x.RegionDescription)

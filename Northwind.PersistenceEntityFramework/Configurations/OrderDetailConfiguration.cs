@@ -22,12 +22,14 @@ namespace Northwind.Persistence
                 .HasColumnName("OrderID")
                 .HasColumnOrder(1)
                 .HasColumnType("int")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
         
             this.Property(x => x.ProductId)
                 .HasColumnName("ProductID")
                 .HasColumnOrder(2)
                 .HasColumnType("int")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
         
             this.Property(x => x.UnitPrice)

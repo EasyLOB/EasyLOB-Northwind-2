@@ -22,6 +22,7 @@ namespace Northwind.Persistence
                 .HasColumnName("CustomerID")
                 .HasColumnType("varchar")
                 .HasMaxLength(5)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
         
             this.Property(x => x.CompanyName)
