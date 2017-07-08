@@ -251,19 +251,19 @@
     <Compile Include="Controllers\Northwind-Custom\NorthwindTasks\NorthwindAPIIndex.cs" />
     <Compile Include="Controllers\Northwind-Custom\NorthwindTasks\NorthwindStatus.cs" />
     <Compile Include="Controllers\Northwind-Custom\NorthwindTasks\NorthwindTasksController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\CategoryAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\CustomerAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\CustomerCustomerDemoAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\CustomerDemographicAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\EmployeeAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\EmployeeTerritoryAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\OrderAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\OrderDetailAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\ProductAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\RegionAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\ShipperAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\SupplierAPIController.cs" />
-    <Compile Include="Controllers\NorthwindAPI\TerritoryAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\CategoryAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\CustomerAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\CustomerCustomerDemoAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\CustomerDemographicAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\EmployeeAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\EmployeeTerritoryAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\OrderAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\OrderDetailAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\ProductAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\RegionAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\ShipperAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\SupplierAPIController.cs" />
+    <Compile Include="Controllers\WebAPI-Northwind\TerritoryAPIController.cs" />
     <Compile Include="Controllers\Northwind\CategoryController.cs" />
     <Compile Include="Controllers\Northwind\CustomerController.cs" />
     <Compile Include="Controllers\Northwind\CustomerCustomerDemoController.cs" />
@@ -295,10 +295,10 @@
     <Compile Include="EasyLOB\Filters\EasyLOBNorthwindProfileAttribute.cs" />
     <Compile Include="EasyLOB\Filters\EasyLOBMultiTenantAttribute.cs" />
     <Compile Include="EasyLOB\Filters\EasyLOBProfileAttribute.cs" />
-    <Compile Include="EasyLOB\Mvc\CultureAttribute.cs" />
-    <Compile Include="EasyLOB\Mvc\CustomRazorViewEngine.cs" />
+    <Compile Include="EasyLOB\MVC\CultureAttribute.cs" />
+    <Compile Include="EasyLOB\MVC\CustomRazorViewEngine.cs" />
     <Compile Include="Models\LookupModel.cs" />
-    <Compile Include="EasyLOB\Mvc\ValidateModelStateAttribute.cs" />
+    <Compile Include="EasyLOB\MVC\ValidateModelStateAttribute.cs" />
     <Compile Include="EasyLOB\Syncfusion\Dashboard\DashboardServiceSerialization.cs" />
     <Compile Include="EasyLOB\Syncfusion\Dashboard\DashboardViewer.cs" />
     <Compile Include="EasyLOB\Syncfusion\XlsIOExtensions.cs" />
@@ -311,7 +311,7 @@
     <Compile Include="EasyLOB\Unity\UnityHelperIdentity.cs" />
     <Compile Include="EasyLOB\Unity\UnityHelperLog.cs" />
     <Compile Include="EasyLOB\Unity\UnityHelperNorthwind.cs" />
-    <Compile Include="EasyLOB\WebApi\UnityResolver.cs" />
+    <Compile Include="EasyLOB\WebAPI\UnityResolver.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1381,7 +1381,7 @@
     <Folder Include="Controllers\Activity\" />
     <Folder Include="Controllers\AuditTrail-Custom\" />
     <Folder Include="Controllers\Identity-Custom\" />
-    <Folder Include="Controllers\NorthwindAPI-Custom\" />
+    <Folder Include="Controllers\WebAPI-Northwind-Custom\" />
     <Folder Include="Models\AuditTrail\ViewModels\" />
     <Folder Include="Models\Northwind-Custom\" />
   </ItemGroup>
