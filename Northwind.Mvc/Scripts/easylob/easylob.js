@@ -486,6 +486,9 @@ function zOnItemView(model, dataProfile) {
             //$("#" + id).css("display", "block");
         }
     }
+    if (controllerAction == "create") {
+        zTabDictionaryWrite(dataProfile.Class.Name, 0);
+    }
 
     // ENTER => TAB
     $("input").keydown(function (e) {
