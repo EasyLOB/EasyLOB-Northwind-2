@@ -1,4 +1,4 @@
-@model LookupModel
+﻿@model LookupModel
 
 @*
     @(Model.ValueId)_LookupButton
@@ -129,24 +129,6 @@
                     .PageSettings(page => page
                         .PageSize(AppDefaults.SyncfusionRecordsByPage)
                     )
-                    @*
-                    .SearchSettings(search =>
-                    {
-                        search.Fields(field =>
-                        {
-                            field.Add("Id");
-                            //field.Add("LogDate");
-                            //field.Add("LogTime");
-                            field.Add("LogUserName");
-                            field.Add("LogDomain");
-                            field.Add("LogEntity");
-                            field.Add("LogOperation");
-                            field.Add("LogId");
-                            field.Add("LogEntityBefore");
-                            field.Add("LogEntityAfter");
-                        });
-                    })
-                    *@
                     .ShowColumnChooser()
                     .ToolbarSettings(toolbar => toolbar
                         .CustomToolbarItems(new List<object>() {

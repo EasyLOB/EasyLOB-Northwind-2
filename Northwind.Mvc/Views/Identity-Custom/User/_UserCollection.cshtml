@@ -1,4 +1,4 @@
-@model UserCollectionModel
+﻿@model UserCollectionModel
 
 @{
     string CSHTML = "_UserCollection.cshtml";
@@ -133,26 +133,6 @@
         .PageSettings(page => page
             .PageSize(AppDefaults.SyncfusionRecordsByPage)
         )
-        @*
-        .SearchSettings(search =>
-        {
-            search.Fields(field =>
-            {
-                field.Add("Id");
-                field.Add("Email");
-                //field.Add("EmailConfirmed");
-                field.Add("PasswordHash");
-                field.Add("SecurityStamp");
-                field.Add("PhoneNumber");
-                //field.Add("PhoneNumberConfirmed");
-                //field.Add("TwoFactorEnabled");
-                //field.Add("LockoutEndDateUtc");
-                //field.Add("LockoutEnabled");
-                //field.Add("AccessFailedCount");
-                field.Add("UserName");
-            });
-        })
-        *@
         .ShowColumnChooser()
         .ToolbarSettings(toolbar => toolbar
             .CustomToolbarItems(new List<object>() {

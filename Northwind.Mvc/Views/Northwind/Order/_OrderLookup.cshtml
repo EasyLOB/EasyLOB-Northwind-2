@@ -183,31 +183,6 @@
                     .PageSettings(page => page
                         .PageSize(AppDefaults.SyncfusionRecordsByPage)
                     )
-                    @*
-                    .SearchSettings(search =>
-                    {
-                        search.Fields(field =>
-                        {
-                            field.Add("OrderId");
-                            //field.Add("CustomerId");
-                            //field.Add("CustomerLookupText");
-                            //field.Add("EmployeeId");
-                            //field.Add("EmployeeLookupText");
-                            //field.Add("OrderDate");
-                            //field.Add("RequiredDate");
-                            //field.Add("ShippedDate");
-                            //field.Add("ShipVia");
-                            //field.Add("ShipperLookupText");
-                            //field.Add("Freight");
-                            field.Add("ShipName");
-                            field.Add("ShipAddress");
-                            field.Add("ShipCity");
-                            field.Add("ShipRegion");
-                            field.Add("ShipPostalCode");
-                            field.Add("ShipCountry");
-                        });
-                    })
-                    *@
                     .ShowColumnChooser()
                     .ToolbarSettings(toolbar => toolbar
                         .CustomToolbarItems(new List<object>() {

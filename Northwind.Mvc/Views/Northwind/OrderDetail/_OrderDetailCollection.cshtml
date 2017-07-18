@@ -119,21 +119,6 @@
         .PageSettings(page => page
             .PageSize(AppDefaults.SyncfusionRecordsByPage)
         )
-        @*
-        .SearchSettings(search =>
-        {
-            search.Fields(field =>
-            {
-                field.Add("OrderId");
-                field.Add("OrderLookupText");
-                field.Add("ProductId");
-                field.Add("ProductLookupText");
-                //field.Add("UnitPrice");
-                //field.Add("Quantity");
-                //field.Add("Discount");
-            });
-        })
-        *@
         .ShowColumnChooser()
         .ToolbarSettings(toolbar => toolbar
             .CustomToolbarItems(new List<object>() {

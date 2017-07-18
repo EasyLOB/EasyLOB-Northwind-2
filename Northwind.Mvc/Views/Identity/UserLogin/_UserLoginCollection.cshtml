@@ -1,4 +1,4 @@
-@model UserLoginCollectionModel
+﻿@model UserLoginCollectionModel
 
 @{
     string CSHTML = "_UserLoginCollection.cshtml";
@@ -88,18 +88,6 @@
         .PageSettings(page => page
             .PageSize(AppDefaults.SyncfusionRecordsByPage)
         )
-        @*
-        .SearchSettings(search =>
-        {
-            search.Fields(field =>
-            {
-                field.Add("LoginProvider");
-                field.Add("ProviderKey");
-                field.Add("UserId");
-                field.Add("UserLookupText");
-            });
-        })
-        *@
         .ShowColumnChooser()
         .ToolbarSettings(toolbar => toolbar
             .CustomToolbarItems(new List<object>() {

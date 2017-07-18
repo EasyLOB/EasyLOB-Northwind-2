@@ -1,4 +1,4 @@
-@model LookupModel
+﻿@model LookupModel
 
 @*
     @(Model.ValueId)_LookupButton
@@ -86,17 +86,6 @@
                     .PageSettings(page => page
                         .PageSize(AppDefaults.SyncfusionRecordsByPage)
                     )
-                    @*
-                    .SearchSettings(search =>
-                    {
-                        search.Fields(field =>
-                        {
-                            field.Add("Id");
-                            field.Add("Name");
-                            field.Add("Discriminator");
-                        });
-                    })
-                    *@
                     .ShowColumnChooser()
                     .ToolbarSettings(toolbar => toolbar
                         .CustomToolbarItems(new List<object>() {

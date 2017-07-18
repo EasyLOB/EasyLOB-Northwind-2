@@ -80,17 +80,6 @@
         .PageSettings(page => page
             .PageSize(AppDefaults.SyncfusionRecordsByPage)
         )
-        @*
-        .SearchSettings(search =>
-        {
-            search.Fields(field =>
-            {
-                field.Add("ShipperId");
-                field.Add("CompanyName");
-                field.Add("Phone");
-            });
-        })
-        *@
         .ShowColumnChooser()
         .ToolbarSettings(toolbar => toolbar
             .CustomToolbarItems(new List<object>() {

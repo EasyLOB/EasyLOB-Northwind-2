@@ -1,4 +1,4 @@
-@model ActivityRoleCollectionModel
+﻿@model ActivityRoleCollectionModel
 
 @{
     string CSHTML = "_ActivityRoleCollection.cshtml";
@@ -91,18 +91,6 @@
         .PageSettings(page => page
             .PageSize(AppDefaults.SyncfusionRecordsByPage)
         )
-        @*
-            .SearchSettings(search =>
-            {
-                search.Fields(field =>
-                {
-                    field.Add("ActivityId");
-                    field.Add("ActivityLookupText");
-                    field.Add("RoleName");
-                    field.Add("Operations");
-                });
-            })
-        *@
         .ShowColumnChooser()
         .ToolbarSettings(toolbar => toolbar
             .CustomToolbarItems(new List<object>() {

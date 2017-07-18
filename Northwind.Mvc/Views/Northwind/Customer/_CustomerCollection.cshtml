@@ -124,25 +124,6 @@
         .PageSettings(page => page
             .PageSize(AppDefaults.SyncfusionRecordsByPage)
         )
-        @*
-        .SearchSettings(search =>
-        {
-            search.Fields(field =>
-            {
-                field.Add("CustomerId");
-                field.Add("CompanyName");
-                field.Add("ContactName");
-                field.Add("ContactTitle");
-                field.Add("Address");
-                field.Add("City");
-                field.Add("Region");
-                field.Add("PostalCode");
-                field.Add("Country");
-                field.Add("Phone");
-                field.Add("Fax");
-            });
-        })
-        *@
         .ShowColumnChooser()
         .ToolbarSettings(toolbar => toolbar
             .CustomToolbarItems(new List<object>() {
