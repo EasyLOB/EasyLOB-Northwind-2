@@ -67,7 +67,10 @@ namespace EasyLOB.Mvc
                 .Include("~/Scripts/globalize/cultures/globalize.culture.pt-BR.js")
                 // Readonly.js
                 // https://github.com/haggen/readonly
-                .Include("~/Scripts/easylob/readonly.js");
+                .Include("~/Scripts/easylob/readonly.js")
+                // jQuery.TabStop
+                // https://github.com/HoffmannP/jquery.tabstop
+                .Include("~/Scripts/easylob/jquery.tabstop.min.js");
             bundles.Add(bundle);
 
             // jQuery AJAX

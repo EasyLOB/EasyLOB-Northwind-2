@@ -8,6 +8,7 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     .modal {
         width: 100%;
     }
+
     .modal-dialog {
         margin-left: 10%;
         width: 80%;
@@ -28,9 +29,9 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 .e-datetime-wrap {
     height: 30px !important;
     margin-top: 2px !important; /* 4px */
-} 
+}
 
-.e-grid .e-alt_row { 
+.e-grid .e-alt_row {
     background-color: #eaeaea;
 }
 
@@ -248,7 +249,7 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 
 .z-buttonUp {
     background-color: transparent;
-    background-image: url(../../Images/32/up.png);    
+    background-image: url(../../Images/32/up.png);
     background-repeat: no-repeat;
     border: none;
     height: 32px;
@@ -261,7 +262,7 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 
 .z-buttonUpdate {
     background-color: transparent;
-    background-image: url(../../Images/32/update.png);    
+    background-image: url(../../Images/32/update.png);
     background-repeat: no-repeat;
     border: none;
     height: 32px;
@@ -274,7 +275,7 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 
 .z-buttonUpdateIndex {
     background-color: transparent;
-    background-image: url(../../Images/24/update.png);    
+    background-image: url(../../Images/24/update.png);
     background-repeat: no-repeat;
     border: none;
     height: 24px;
@@ -407,6 +408,9 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 .z-editorLookup {
 }
 
+.z-form {
+}
+
 .z-formButtons {
     clear: both;
     margin-top: 4px;
@@ -462,6 +466,10 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 
 .z-lookupButton {
     height: 30px;
+}
+
+.z-newLine {
+    clear: both;
 }
 
 .z-panel {

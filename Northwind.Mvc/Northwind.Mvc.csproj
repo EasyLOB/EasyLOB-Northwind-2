@@ -627,6 +627,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\easylob\easylob.dictionary.js" />
     <Content Include="Scripts\easylob\easylob.js" />
+    <Content Include="Scripts\easylob\jquery.tabstop.js" />
+    <Content Include="Scripts\easylob\jquery.tabstop.min.js" />
     <Content Include="Scripts\easylob\jquery.validate.globalize.js" />
     <Content Include="Scripts\easylob\readonly.js" />
     <Content Include="Scripts\ej\ej.globalize.js" />

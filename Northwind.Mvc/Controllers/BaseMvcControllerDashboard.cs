@@ -1,8 +1,5 @@
-using System.Web.Mvc;
-
 namespace EasyLOB.Mvc
 {
-    [Authorize]
     public class BaseMvcControllerDashboard : BaseMvcController
     {
         #region Methods

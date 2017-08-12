@@ -1,4 +1,4 @@
-using EasyLOB.Library;
+﻿using EasyLOB.Library;
 using EasyLOB.Library.Syncfusion;
 using EasyLOB.Security;
 using Syncfusion.EJ.Export;
@@ -6,11 +6,7 @@ using Syncfusion.JavaScript.Models;
 using Syncfusion.XlsIO;
 using System.Collections;
 using System.IO;
-using System.Net;
 using System.Web.Mvc;
-
-// Newtonsoft.JsonResult
-// https://github.com/kemmis/Newtonsoft.JsonResult
 
 namespace EasyLOB.Mvc
 {
@@ -44,99 +40,6 @@ namespace EasyLOB.Mvc
         }
 
         #endregion Methods
-
-        #region Methods Controller
-
-        protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
-        {
-            return new Newtonsoft.JsonResult.JsonResult
-            {
-                Data = data,
-                ContentType = contentType,
-                ContentEncoding = contentEncoding,
-                JsonRequestBehavior = behavior
-            };
-        }
-
-        #endregion Methods Controller
-
-        #region Methods JsonResult
-
-        // Failure
-
-        protected JsonResult JsonResultFailure(ZOperationResult operationResult)
-        {
-            return JsonResultSuccess(new { OperationResult = operationResult });
-        }
-
-        protected JsonResult JsonResultFailure(object data = null)
-        {
-            Response.StatusCode = (int)HttpStatusCode.BadRequest;
-            if (data != null)
-            {
-                return new JsonResult()
-                {
-                    Data = data,
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                };
-            }
-            else
-            {
-                return new JsonResult()
-                {
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                };
-            }
-        }
-
-        // Success
-
-        protected JsonResult JsonResultSuccess(ZOperationResult operationResult)
-        {
-            return JsonResultSuccess(new { OperationResult = operationResult, Controller = ControllerContext.RouteData.Values["controller"].ToString() });
-            //return JsonResultSuccess(new { OperationResult = operationResult, Url = ReadUrlDictionary() });
-        }
-
-        protected JsonResult JsonResultSuccess(ZOperationResult operationResult, string url)
-        {
-            return JsonResultSuccess(new { OperationResult = operationResult, Url = url });
-        }
-
-        protected JsonResult JsonResultSuccess(object data = null)
-        {
-            Response.StatusCode = (int)HttpStatusCode.OK;
-            if (data != null)
-            {
-                return new JsonResult()
-                {
-                    Data = data,
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                };
-            }
-            else
-            {
-                return new JsonResult()
-                {
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                };
-            }
-        }
-
-        // ZOperationResult
-
-        protected JsonResult JsonResultOperationResult(ZOperationResult operationResult)
-        {
-            if (operationResult.Ok)
-            {
-                return JsonResultSuccess(new { OperationResult = operationResult });
-            }
-            else
-            {
-                return JsonResultFailure(new { OperationResult = operationResult });
-            }
-        }
-
-        #endregion Methods JsonResult
 
         #region Methods Syncfusion
 

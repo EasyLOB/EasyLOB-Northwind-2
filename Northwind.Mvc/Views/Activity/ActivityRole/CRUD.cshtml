@@ -21,7 +21,7 @@
     </div>
 
     <div class="@AppDefaults.CssClassFormButtons">
-        @Ajax.ZImageLink("Button_Cancel", Url.Action("Search", "ActivityRole"), "ZAjax", "z-buttonCancel", PresentationResources.Cancel)
+        @Ajax.ZImageLink("Button_Cancel", Url.Action("Search", "ActivityRole"), "ZAjax", "btn z-buttonCancel", PresentationResources.Cancel)
         @Html.ZImageInput("Button_Save", "btn z-buttonSave", PresentationResources.Save, "$('#ActivityRole_Item_IsSave').val('True');")
         @Html.ZImageInput("Button_OK", "btn z-buttonOk", controllerActionResource)        
     </div> 
