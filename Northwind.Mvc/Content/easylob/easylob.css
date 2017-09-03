@@ -8,7 +8,6 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     .modal {
         width: 100%;
     }
-
     .modal-dialog {
         margin-left: 10%;
         width: 80%;
@@ -29,9 +28,9 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 .e-datetime-wrap {
     height: 30px !important;
     margin-top: 2px !important; /* 4px */
-}
+} 
 
-.e-grid .e-alt_row {
+.e-grid .e-alt_row { 
     background-color: #eaeaea;
 }
 
@@ -44,10 +43,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonCancel {
@@ -57,10 +60,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonClear {
@@ -70,10 +77,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonCreate {
@@ -83,10 +94,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonCreateIndex {
@@ -96,10 +111,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonDelete {
@@ -109,10 +128,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonDeleteIndex {
@@ -122,10 +145,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonDown {
@@ -135,10 +162,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonHome {
@@ -148,10 +179,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonLookup {
@@ -161,10 +196,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 16px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 16px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonOk {
@@ -175,10 +214,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     cursor: pointer;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonRead {
@@ -188,10 +231,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonReadIndex {
@@ -201,10 +248,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonSave {
@@ -215,10 +266,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     cursor: pointer;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonSearch {
@@ -228,10 +283,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonSearchIndex {
@@ -241,10 +300,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonUp {
@@ -254,10 +317,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonUpdate {
@@ -267,10 +334,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 32px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 32px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-buttonUpdateIndex {
@@ -280,10 +351,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    padding: 0px;
-    text-indent: -99999px;
+    padding: 0;
+    /* text-indent: -99999px; */
     vertical-align: bottom;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-editor {
@@ -300,9 +375,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    text-indent: -99999px;
-    vertical-align: middle;
+    /* text-indent: -99999px; */
     width: 24px;
+    /* alt="@CultureInfo.CurrentCulture.Name" */
+    /*
+    text-indent: 200%;
+    overflow: hidden;
+    white-space: nowrap;
+    */
 }
 
 .z-culture-pt-BR {
@@ -312,9 +392,14 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    text-indent: -99999px;
-    vertical-align: middle;
+    /* text-indent: -99999px; */
     width: 24px;
+    /* alt="@CultureInfo.CurrentCulture.Name" */
+    /*
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    */
 }
 
 /* Z File */
@@ -326,9 +411,13 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    text-indent: -99999px;
+    /* text-indent: -99999px; */
     vertical-align: middle;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-fileExcel {
@@ -338,9 +427,13 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    text-indent: -99999px;
+    /* text-indent: -99999px; */
     vertical-align: middle;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-fileImage {
@@ -350,9 +443,13 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    text-indent: -99999px;
+    /* text-indent: -99999px; */
     vertical-align: middle;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-filePDF {
@@ -362,9 +459,13 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    text-indent: -99999px;
+    /* text-indent: -99999px; */
     vertical-align: middle;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-fileVideo {
@@ -374,9 +475,13 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    text-indent: -99999px;
+    /* text-indent: -99999px; */
     vertical-align: middle;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-fileWord {
@@ -386,9 +491,13 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    text-indent: -99999px;
+    /* text-indent: -99999px; */
     vertical-align: middle;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .z-fileUnknown {
@@ -398,9 +507,13 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
     border: none;
     height: 24px;
     outline: none;
-    text-indent: -99999px;
+    /* text-indent: -99999px; */
     vertical-align: middle;
     width: 24px;
+    /* alt */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 /* Z Form */
@@ -419,17 +532,17 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 
 .z-group {
     height: 55px; /* !!! */
-    margin: 0px;
+    margin: 0;
     margin-left: 8px;
     margin-top: 2px;
-    padding: 0px;
+    padding: 0;
 }
 
 .z-groupTextArea {
-    margin: 0px;
+    margin: 0;
     margin-left: 8px;
     margin-top: 2px;
-    padding: 0px;
+    padding: 0;
 }
 
 .z-image {
@@ -437,8 +550,8 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 
 .z-label {
     font-weight: bold;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     /* Truncante Label with ellipsis */
     margin-bottom: -4px;
     overflow: hidden;
@@ -449,8 +562,8 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 .z-labelRequired {
     color: red;
     font-weight: bold;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     /* Truncante Label with ellipsis */
     margin-bottom: -4px;
     overflow: hidden;
@@ -473,8 +586,8 @@ http://coolestguidesontheplanet.com/bootstrap/modal.php
 }
 
 .z-panel {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 .z-validator {
