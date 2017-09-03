@@ -128,7 +128,7 @@ namespace Northwind.Mvc
                                 categoryItemModel.OperationResult.StatusMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(categoryItemModel.OperationResult,
-                                    Url.Content(String.Format("~/Category/Update?CategoryId={0}", categoryDTO.CategoryId)));
+                                    Url.Action("Update", "Category", new { CategoryId = categoryDTO.CategoryId }, Request.Url.Scheme));
                             }
                             else
                             {
@@ -219,7 +219,7 @@ namespace Northwind.Mvc
                             if (categoryItemModel.IsSave)
                             {
                                 return JsonResultSuccess(categoryItemModel.OperationResult,
-                                    Url.Content(String.Format("~/Category/Update?CategoryId={0}", categoryDTO.CategoryId)));
+                                    Url.Action("Update", "Category", new { CategoryId = categoryDTO.CategoryId }, Request.Url.Scheme));
                             }
                             else
                             {

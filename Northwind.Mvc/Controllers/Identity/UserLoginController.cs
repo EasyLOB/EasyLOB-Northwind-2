@@ -1,4 +1,4 @@
-using EasyLOB.Identity;
+﻿using EasyLOB.Identity;
 using EasyLOB.Identity.Data;
 using EasyLOB.Identity.Data.Resources;
 using EasyLOB;
@@ -128,7 +128,7 @@ namespace EasyLOB.Identity.Mvc
                                 userLoginItemModel.OperationResult.StatusMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(userLoginItemModel.OperationResult,
-                                    Url.Content(String.Format("~/UserLogin/Update?LoginProvider={0}&ProviderKey={1}&UserId={2}", userLoginDTO.LoginProvider, userLoginDTO.ProviderKey, userLoginDTO.UserId)));
+                                    Url.Action("Update", "UserLogin", new { LoginProvider = userLoginDTO.LoginProvider, ProviderKey = userLoginDTO.ProviderKey, UserId = userLoginDTO.UserId }, Request.Url.Scheme));
                             }
                             else
                             {
@@ -219,7 +219,7 @@ namespace EasyLOB.Identity.Mvc
                             if (userLoginItemModel.IsSave)
                             {
                                 return JsonResultSuccess(userLoginItemModel.OperationResult,
-                                    Url.Content(String.Format("~/UserLogin/Update?LoginProvider={0}&ProviderKey={1}&UserId={2}", userLoginDTO.LoginProvider, userLoginDTO.ProviderKey, userLoginDTO.UserId)));
+                                    Url.Action("Update", "UserLogin", new { LoginProvider = userLoginDTO.LoginProvider, ProviderKey = userLoginDTO.ProviderKey, UserId = userLoginDTO.UserId }, Request.Url.Scheme));
                             }
                             else
                             {

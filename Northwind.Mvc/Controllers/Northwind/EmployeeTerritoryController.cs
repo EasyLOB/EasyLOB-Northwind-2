@@ -128,7 +128,7 @@ namespace Northwind.Mvc
                                 employeeTerritoryItemModel.OperationResult.StatusMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(employeeTerritoryItemModel.OperationResult,
-                                    Url.Content(String.Format("~/EmployeeTerritory/Update?EmployeeId={0}&TerritoryId={1}", employeeTerritoryDTO.EmployeeId, employeeTerritoryDTO.TerritoryId)));
+                                    Url.Action("Update", "EmployeeTerritory", new { EmployeeId = employeeTerritoryDTO.EmployeeId, TerritoryId = employeeTerritoryDTO.TerritoryId }, Request.Url.Scheme));
                             }
                             else
                             {
@@ -219,7 +219,7 @@ namespace Northwind.Mvc
                             if (employeeTerritoryItemModel.IsSave)
                             {
                                 return JsonResultSuccess(employeeTerritoryItemModel.OperationResult,
-                                    Url.Content(String.Format("~/EmployeeTerritory/Update?EmployeeId={0}&TerritoryId={1}", employeeTerritoryDTO.EmployeeId, employeeTerritoryDTO.TerritoryId)));
+                                    Url.Action("Update", "EmployeeTerritory", new { EmployeeId = employeeTerritoryDTO.EmployeeId, TerritoryId = employeeTerritoryDTO.TerritoryId }, Request.Url.Scheme));
                             }
                             else
                             {

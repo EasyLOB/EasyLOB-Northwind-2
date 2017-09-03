@@ -128,7 +128,7 @@ namespace Northwind.Mvc
                                 regionItemModel.OperationResult.StatusMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(regionItemModel.OperationResult,
-                                    Url.Content(String.Format("~/Region/Update?RegionId={0}", regionDTO.RegionId)));
+                                    Url.Action("Update", "Region", new { RegionId = regionDTO.RegionId }, Request.Url.Scheme));
                             }
                             else
                             {
@@ -219,7 +219,7 @@ namespace Northwind.Mvc
                             if (regionItemModel.IsSave)
                             {
                                 return JsonResultSuccess(regionItemModel.OperationResult,
-                                    Url.Content(String.Format("~/Region/Update?RegionId={0}", regionDTO.RegionId)));
+                                    Url.Action("Update", "Region", new { RegionId = regionDTO.RegionId }, Request.Url.Scheme));
                             }
                             else
                             {

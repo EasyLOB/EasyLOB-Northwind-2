@@ -128,7 +128,7 @@ namespace Northwind.Mvc
                                 employeeItemModel.OperationResult.StatusMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(employeeItemModel.OperationResult,
-                                    Url.Content(String.Format("~/Employee/Update?EmployeeId={0}", employeeDTO.EmployeeId)));
+                                    Url.Action("Update", "Employee", new { EmployeeId = employeeDTO.EmployeeId }, Request.Url.Scheme));
                             }
                             else
                             {
@@ -219,7 +219,7 @@ namespace Northwind.Mvc
                             if (employeeItemModel.IsSave)
                             {
                                 return JsonResultSuccess(employeeItemModel.OperationResult,
-                                    Url.Content(String.Format("~/Employee/Update?EmployeeId={0}", employeeDTO.EmployeeId)));
+                                    Url.Action("Update", "Employee", new { EmployeeId = employeeDTO.EmployeeId }, Request.Url.Scheme));
                             }
                             else
                             {

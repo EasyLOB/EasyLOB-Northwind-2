@@ -1,4 +1,4 @@
-using EasyLOB.AuditTrail;
+﻿using EasyLOB.AuditTrail;
 using EasyLOB.AuditTrail.Data;
 using EasyLOB.AuditTrail.Data.Resources;
 using EasyLOB;
@@ -128,7 +128,7 @@ namespace EasyLOB.AuditTrail.Mvc
                                 auditTrailConfigurationItemModel.OperationResult.StatusMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(auditTrailConfigurationItemModel.OperationResult,
-                                    Url.Content(String.Format("~/AuditTrailConfiguration/Update?Id={0}", auditTrailConfigurationDTO.Id)));
+                                    Url.Action("Update", "AuditTrailConfiguration", new { Id = auditTrailConfigurationDTO.Id }, Request.Url.Scheme));
                             }
                             else
                             {
@@ -219,7 +219,7 @@ namespace EasyLOB.AuditTrail.Mvc
                             if (auditTrailConfigurationItemModel.IsSave)
                             {
                                 return JsonResultSuccess(auditTrailConfigurationItemModel.OperationResult,
-                                    Url.Content(String.Format("~/AuditTrailConfiguration/Update?Id={0}", auditTrailConfigurationDTO.Id)));
+                                    Url.Action("Update", "AuditTrailConfiguration", new { Id = auditTrailConfigurationDTO.Id }, Request.Url.Scheme));
                             }
                             else
                             {

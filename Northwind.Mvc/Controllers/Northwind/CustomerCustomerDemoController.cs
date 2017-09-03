@@ -128,7 +128,7 @@ namespace Northwind.Mvc
                                 customerCustomerDemoItemModel.OperationResult.StatusMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(customerCustomerDemoItemModel.OperationResult,
-                                    Url.Content(String.Format("~/CustomerCustomerDemo/Update?CustomerId={0}&CustomerTypeId={1}", customerCustomerDemoDTO.CustomerId, customerCustomerDemoDTO.CustomerTypeId)));
+                                    Url.Action("Update", "CustomerCustomerDemo", new { CustomerId = customerCustomerDemoDTO.CustomerId, CustomerTypeId = customerCustomerDemoDTO.CustomerTypeId }, Request.Url.Scheme));
                             }
                             else
                             {
@@ -219,7 +219,7 @@ namespace Northwind.Mvc
                             if (customerCustomerDemoItemModel.IsSave)
                             {
                                 return JsonResultSuccess(customerCustomerDemoItemModel.OperationResult,
-                                    Url.Content(String.Format("~/CustomerCustomerDemo/Update?CustomerId={0}&CustomerTypeId={1}", customerCustomerDemoDTO.CustomerId, customerCustomerDemoDTO.CustomerTypeId)));
+                                    Url.Action("Update", "CustomerCustomerDemo", new { CustomerId = customerCustomerDemoDTO.CustomerId, CustomerTypeId = customerCustomerDemoDTO.CustomerTypeId }, Request.Url.Scheme));
                             }
                             else
                             {

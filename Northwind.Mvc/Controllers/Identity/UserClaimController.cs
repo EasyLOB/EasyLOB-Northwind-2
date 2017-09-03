@@ -1,4 +1,4 @@
-using EasyLOB.Identity;
+﻿using EasyLOB.Identity;
 using EasyLOB.Identity.Data;
 using EasyLOB.Identity.Data.Resources;
 using EasyLOB;
@@ -128,7 +128,7 @@ namespace EasyLOB.Identity.Mvc
                                 userClaimItemModel.OperationResult.StatusMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(userClaimItemModel.OperationResult,
-                                    Url.Content(String.Format("~/UserClaim/Update?Id={0}", userClaimDTO.Id)));
+                                    Url.Action("Update", "UserClaim", new { Id = userClaimDTO.Id }, Request.Url.Scheme));
                             }
                             else
                             {
@@ -219,7 +219,7 @@ namespace EasyLOB.Identity.Mvc
                             if (userClaimItemModel.IsSave)
                             {
                                 return JsonResultSuccess(userClaimItemModel.OperationResult,
-                                    Url.Content(String.Format("~/UserClaim/Update?Id={0}", userClaimDTO.Id)));
+                                    Url.Action("Update", "UserClaim", new { Id = userClaimDTO.Id }, Request.Url.Scheme));
                             }
                             else
                             {

@@ -1,4 +1,4 @@
-using EasyLOB.Activity;
+﻿using EasyLOB.Activity;
 using EasyLOB.Activity.Data;
 using EasyLOB.Activity.Data.Resources;
 using EasyLOB;
@@ -128,7 +128,7 @@ namespace EasyLOB.Activity.Mvc
                                 activityRoleItemModel.OperationResult.StatusMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(activityRoleItemModel.OperationResult,
-                                    Url.Content(String.Format("~/ActivityRole/Update?ActivityId={0}&RoleName={1}", activityRoleDTO.ActivityId, activityRoleDTO.RoleName)));
+                                    Url.Action("Update", "ActivityRole", new { ActivityId = activityRoleDTO.ActivityId, RoleName = activityRoleDTO.RoleName }, Request.Url.Scheme));
                             }
                             else
                             {
@@ -219,7 +219,7 @@ namespace EasyLOB.Activity.Mvc
                             if (activityRoleItemModel.IsSave)
                             {
                                 return JsonResultSuccess(activityRoleItemModel.OperationResult,
-                                    Url.Content(String.Format("~/ActivityRole/Update?ActivityId={0}&RoleName={1}", activityRoleDTO.ActivityId, activityRoleDTO.RoleName)));
+                                    Url.Action("Update", "ActivityRole", new { ActivityId = activityRoleDTO.ActivityId, RoleName = activityRoleDTO.RoleName }, Request.Url.Scheme));
                             }
                             else
                             {

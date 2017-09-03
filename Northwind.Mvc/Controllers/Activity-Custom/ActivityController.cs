@@ -1,4 +1,4 @@
-using EasyLOB.Activity;
+﻿using EasyLOB.Activity;
 using EasyLOB.Activity.Data;
 using EasyLOB.Activity.Data.Resources;
 using EasyLOB;
@@ -128,7 +128,7 @@ namespace EasyLOB.Activity.Mvc
                                 activityItemModel.OperationResult.StatusMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(activityItemModel.OperationResult,
-                                    Url.Content(String.Format("~/Activity/Update?Id={0}", activityDTO.Id)));
+                                    Url.Action("Update", "Activity", new { Id = activityDTO.Id }, Request.Url.Scheme));
                             }
                             else
                             {
@@ -219,7 +219,7 @@ namespace EasyLOB.Activity.Mvc
                             if (activityItemModel.IsSave)
                             {
                                 return JsonResultSuccess(activityItemModel.OperationResult,
-                                    Url.Content(String.Format("~/Activity/Update?Id={0}", activityDTO.Id)));
+                                    Url.Action("Update", "Activity", new { Id = activityDTO.Id }, Request.Url.Scheme));
                             }
                             else
                             {
