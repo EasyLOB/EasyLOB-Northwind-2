@@ -1,6 +1,6 @@
 ﻿@model UserItemModel
 
-@* !!! EasyLOB.Identity.Data. *@
+@* !?! EasyLOB.Identity.Data. *@
 
 @{
     string CSHTML = "_UserItem.cshtml";
@@ -77,7 +77,7 @@
                     @* @Html.ValidationMessageFor(model => model.User.TwoFactorEnabled, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
 
-                @Html.ZNewLine() @* !!! *@
+                @Html.ZNewLine() @* !?! *@
                 
                 <div id="Group_User_LockoutEnabled" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("LockoutEnabled")">
                     @Html.LabelFor(model => model.User.LockoutEnabled, new { @class = AppDefaults.CssClassLabelRequired })

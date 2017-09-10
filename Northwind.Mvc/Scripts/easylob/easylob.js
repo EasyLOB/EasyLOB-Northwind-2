@@ -47,6 +47,54 @@ function zOne(value) {
     return !value || value < 1 ? 1 : value;
 }
 
+function zParseFloat(value) {
+    var result;
+
+    try {
+        var result = parseFloat(value);
+        if (!result || !(typeof result === "number")) {
+            result = null;
+        }
+    }
+    catch (exception) {
+        result = null;
+    }
+
+    return result;
+}
+
+function zParseInt(value) {
+    var result;
+
+    try {
+        var result = parseInt(value);
+        if (!result || !(typeof result === "number")) {
+            result = null;
+        }
+    }
+    catch (exception) {
+        result = null;
+    }
+
+    return result;
+}
+
+function zParseJSON(json) {
+    var result;
+
+    try {
+        var result = JSON.parse(json);
+        if (!result || !(typeof result === "object")) {
+            result = null;
+        }
+    }
+    catch (exception) {
+        result = null;
+    }
+
+    return result;
+}
+
 function zReplaceAll(string, find, replace) {
     return string.replace(new RegExp(find, 'g'), replace);
 }
@@ -64,6 +112,8 @@ function zNotZero(value) {
 }
 
 // AJAX
+
+// jqXHR = jQuery XMLHttpRequest
 
 /*
 done data
@@ -111,7 +161,6 @@ fail jqXHR
 */
 
 function zAjaxError(jqXHR) {
-    // jqXHR = jQuery XMLHttpRequest
     var error = "";
 
     if (jqXHR) {
@@ -122,11 +171,9 @@ function zAjaxError(jqXHR) {
                 error = jqXHR.responseJSON;
             }
         } else if (jqXHR.responseText) {
-            if (jqXHR.responseText.indexOf("OperationResult") !== -1) {
-                var response = JSON.parse(jqXHR.responseText);
-                if (response) {
-                    error = response.OperationResult.Html;
-                }
+            var response = zParseJSON(jqXHR.responseText);
+            if (response && response.OperationResult) {
+                error = response.OperationResult.Html;
             } else {
                 error = jqXHR.responseText;
             }
@@ -140,6 +187,10 @@ function zAjaxError(jqXHR) {
 
 function zAjaxFailure(jqXHR, textStatus, errorThrown) {
     try {
+        if (jqXHR && jqXHR.responseJSON && jqXHR.responseJSON.Url) {
+            window.location.replace(jqXHR.responseJSON.Url);
+        }
+
         zAlert(zAjaxError(jqXHR));
     } catch (exception) {
         zExceptionMessage("", "zAjaxFailure", exception.message);
@@ -161,6 +212,11 @@ function zAjaxLoadSync(id, ajaxUrl) {
 
 function zAjaxLoadComplete(responseText, textStatus, jqXHR) {
     try {
+        var response = zParseJSON(jqXHR.responseText);
+        if (response && response.Url) {
+            window.location.replace(response.Url);
+        }
+
         if (textStatus === "error") {
             zAlert(zAjaxError(jqXHR));
         }
@@ -390,20 +446,22 @@ function zOnCollectionView(model, dataProfile, dataSourceUrl) {
 function zOnCRUDView(model) {
     var controllerAction = model.ControllerAction ? model.ControllerAction.toLowerCase() : "";
     var isMasterDetail = model.IsMasterDetail ? model.IsMasterDetail : false;
+    var customButtonSave = model.CustomButtonSave ? model.CustomButtonSave : false;
+    var customButtonOK = model.CustomButtonOK ? model.CustomButtonOK : false;
 
     $("#Button_Save").hide();
     $("#Button_OK").hide();
 
-    if (controllerAction === "create" || controllerAction === "update" || controllerAction === "delete") {
-        $("#Button_OK").show();
-    }
-
-    if (controllerAction === "create" || controllerAction === "update") {
+    if (controllerAction === "create" || controllerAction === "update" || customButtonSave) {
         $("#Button_Save").show();
     }
 
     if (isMasterDetail) {
         $("#Button_Save").hide();
+    }
+
+    if (controllerAction === "create" || controllerAction === "update" || controllerAction === "delete" || customButtonOK) {
+        $("#Button_OK").show();
     }
 }
 

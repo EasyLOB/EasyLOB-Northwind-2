@@ -64,8 +64,8 @@
     "Text": "PresentationResources.Tasks",
     "SubMenus": [
       {
-        "Text": "NorthwindPresentationResources.TaskNorthwindAPIIndex",
-        "Url": "/NorthwindTasks/NorthwindAPIIndex"
+        "Text": "NorthwindPresentationResources.TaskNorthwindHelp",
+        "Url": "/NorthwindTasks/NorthwindHelp"
       },
       {
         "Text": "NorthwindPresentationResources.TaskNorthwindStatus",

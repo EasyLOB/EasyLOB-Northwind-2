@@ -6,9 +6,9 @@ namespace Northwind.Mvc
     {
         #region Methods
 
-        // GET: NorthwindTasks/NorthwindAPIIndex
+        // GET: NorthwindTasks/NorthwindHelp
         [HttpGet]
-        public ActionResult NorthwindAPIIndex()
+        public ActionResult NorthwindHelp()
         {
             return View();
         }

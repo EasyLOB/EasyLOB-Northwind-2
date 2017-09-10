@@ -1,9 +1,6 @@
-using EasyLOB.Application;
+﻿using EasyLOB.Application;
 using EasyLOB.Authentication;
 using Microsoft.Practices.Unity;
-
-// UnityDependencyResolver :: ASP.NET MVC
-// UnityHierarchicalDependencyResolver :: ASP.NET Web API
 
 namespace EasyLOB
 {
@@ -13,9 +10,6 @@ namespace EasyLOB
 
         public static LifetimeManager AppLifetimeManager
         {
-            // A new object for every HttpRequest
-            get { return new HttpRequestLifetimeManager(); }
-
             // Just one Singleton for ALL connections leads to EF errors
             //get { return new ContainerControlledLifetimeManager(); }
 
@@ -27,8 +21,7 @@ namespace EasyLOB
             // Although the PerRequestLifetimeManager class works correctly
             // and can help you to work with stateful or thread-unsafe dependencies within the scope of an HTTP request,
             // it is generally not a good idea to use it if you can avoid it.
-            // ...not a good idea to use...
-            //get { return new PerRequestLifetimeManager(); }
+            get { return new PerRequestLifetimeManager(); }
 
             // Just one Singleton (Single IIS Thread) for ALL connections leads to EF errors
             //get { return new PerThreadLifetimeManager(); }
@@ -37,44 +30,29 @@ namespace EasyLOB
             //get { return new TransientLifetimeManager(); }
         }
 
-        private static IUnityContainer _container;
-
-        public static IUnityContainer Container
-        {
-            get
-            {
-                if (_container == null)
-                {
-                    _container = new UnityContainer();
-                }
-
-                return _container;
-            }
-        }
-
         #endregion Properties
 
         #region Methods
 
-        public static void RegisterMappings()
+        public static void RegisterMappings(IUnityContainer container)
         {
-            Container.RegisterType(typeof(IDIManager), typeof(DIManager), UnityHelper.AppLifetimeManager,
-                new InjectionConstructor(Container));
+            container.RegisterType(typeof(IDIManager), typeof(DIManager), UnityHelper.AppLifetimeManager,
+                new InjectionConstructor(container));
 
-            UnityHelperNorthwind.RegisterMappings(Container);
+            UnityHelperNorthwind.RegisterMappings(container);
 
-            UnityHelperActivity.RegisterMappings(Container);
-            UnityHelperAuditTrail.RegisterMappings(Container);
-            UnityHelperIdentity.RegisterMappings(Container);
-            UnityHelperLog.RegisterMappings(Container);
+            UnityHelperActivity.RegisterMappings(container);
+            UnityHelperAuditTrail.RegisterMappings(container);
+            UnityHelperIdentity.RegisterMappings(container);
+            UnityHelperLog.RegisterMappings(container);
 
             // Extensions
 
-            UnityHelperExtensions.RegisterMappings(Container);
+            UnityHelperExtensions.RegisterMappings(container);
 
             // Authentication
 
-            Container.RegisterType<AuthenticationController>(new InjectionConstructor());
+            container.RegisterType<AuthenticationController>(new InjectionConstructor());
         }
 
         #endregion Methods

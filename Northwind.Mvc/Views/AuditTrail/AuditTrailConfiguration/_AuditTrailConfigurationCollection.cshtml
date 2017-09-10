@@ -139,50 +139,55 @@
             // Associations (FK)
             var url = "";
 
-            if (masterControllerAction == "" || masterControllerAction == "update") {
-                switch(args.requestType) {
-                    case "searching":
-                        // Search
+            var isSearch = !model.IsMasterDetail;
+            var isCreate = masterControllerAction == "" || masterControllerAction == "update";
+            var isRead = masterControllerAction == "" || masterControllerAction == "read" || masterControllerAction == "update" || masterControllerAction == "delete";
+            var isUpdate = masterControllerAction == "" || masterControllerAction == "update";
+            var isDelete = masterControllerAction == "" || masterControllerAction == "update" || masterControllerAction == "delete";
+            switch(args.requestType) {
+                case "searching":
+                    // Search
+                    if (isSearch) {
                         zSearchDictionaryWrite("AuditTrailConfiguration", args.keyValue);
-                        break;
-                    case "add":
-                        // Create
-                        if (model.ActivityOperations.IsCreate) {
-                            $("#ZAjax").load("@(Url.Action("Create", "AuditTrailConfiguration", null, Request.Url.Scheme))" +
-                                (url == "" ? "" : "?") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                    }
+                    break;
+                case "add":
+                    // Create
+                    if (model.ActivityOperations.IsCreate && isCreate) {
+                        $("#ZAjax").load("@(Url.Action("Create", "AuditTrailConfiguration", null, Request.Url.Scheme))" +
+                            (url == "" ? "" : "?") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
+                    }
+                    break;
+                case "read":
+                    // Read
+                    if (model.ActivityOperations.IsRead && isRead) {
+                        var data = args.data;
+                        if (!ej.isNullOrUndefined(data)) {
+                            $("#ZAjax").load("@(Url.Action("Read", "AuditTrailConfiguration", null, Request.Url.Scheme))?Id=" + String(data.Id) +
+                                (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
                         }
-                        break;
-                    case "read":
-                        // Read
-                        if (model.ActivityOperations.IsRead) {
-                            var data = args.data;
-                            if (!ej.isNullOrUndefined(data)) {
-                                $("#ZAjax").load("@(Url.Action("Read", "AuditTrailConfiguration", null, Request.Url.Scheme))?Id=" + String(data.Id) +
-                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
-                            }
+                    }
+                    break;
+                case "beginedit":
+                    // Update
+                    if (model.ActivityOperations.IsUpdate && isUpdate) {
+                        var data = this.model.currentViewData[args.rowIndex];
+                        if (!ej.isNullOrUndefined(data)) {
+                            $("#ZAjax").load("@(Url.Action("Update", "AuditTrailConfiguration", null, Request.Url.Scheme))?Id=" + String(data.Id) +
+                                (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
                         }
-                        break;
-                    case "beginedit":
-                        // Update
-                        if (model.ActivityOperations.IsUpdate) {
-                            var data = this.model.currentViewData[args.rowIndex];
-                            if (!ej.isNullOrUndefined(data)) {
-                                $("#ZAjax").load("@(Url.Action("Update", "AuditTrailConfiguration", null, Request.Url.Scheme))?Id=" + String(data.Id) +
-                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
-                            }
+                    }
+                    break;
+                case "delete":
+                    // Delete
+                    if (model.ActivityOperations.IsDelete && isDelete) {
+                        var data = args.data;
+                        if (!ej.isNullOrUndefined(data)) {
+                            $("#ZAjax").load("@(Url.Action("Delete", "AuditTrailConfiguration", null, Request.Url.Scheme))?Id=" + String(data.Id) +
+                                (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
                         }
-                        break;
-                    case "delete":
-                        // Delete
-                        if (model.ActivityOperations.IsDelete) {
-                            var data = args.data;
-                            if (!ej.isNullOrUndefined(data)) {
-                                $("#ZAjax").load("@(Url.Action("Delete", "AuditTrailConfiguration", null, Request.Url.Scheme))?Id=" + String(data.Id) +
-                                    (url == "" ? "" : "&") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
-                            }
-                        }
-                        break;
-                }
+                    }
+                    break;
             }
 
             if (args.requestType == "add" || args.requestType == "beginedit" || args.requestType == "delete") {

@@ -61,11 +61,11 @@ namespace Northwind.Mvc.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Northwind API Index.
+        ///   Looks up a localized string similar to Northwind Help.
         /// </summary>
-        public static string TaskNorthwindAPIIndex {
+        public static string TaskNorthwindHelp {
             get {
-                return ResourceManager.GetString("TaskNorthwindAPIIndex", resourceCulture);
+                return ResourceManager.GetString("TaskNorthwindHelp", resourceCulture);
             }
         }
         

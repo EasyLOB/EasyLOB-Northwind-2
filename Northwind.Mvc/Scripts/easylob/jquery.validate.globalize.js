@@ -1,4 +1,4 @@
-// /Scripts/globalize/cultures/globalize.culture.pt-BR.js
+﻿// /Scripts/globalize/cultures/globalize.culture.pt-BR.js
 
 // jQuery Globalize
 // A monkey patch for jquery.validate.js that allows validation to be internationalised
@@ -36,7 +36,7 @@
 
     $.validator.methods.date = function (value, element) {
         // !!!
-        val = Globalize.parseDate(value);
+        var val = Globalize.parseDate(value);
 
         // yyyy-MM-dd Razor EditorFor
         if (!val) {

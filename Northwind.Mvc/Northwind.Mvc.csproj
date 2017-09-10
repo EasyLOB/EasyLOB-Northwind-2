@@ -103,6 +103,9 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.4.0.1\lib\net45\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
@@ -194,9 +197,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Mvc5, Version=1.2.3.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.Mvc5.1.2.3\lib\net45\Unity.Mvc5.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -219,6 +221,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Unity.Mvc\UnityConfig.cs" />
+    <Compile Include="App_Start\Unity.Mvc\UnityMvcActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Activity-Custom\ActivityController.cs" />
     <Compile Include="Controllers\Activity-Custom\ActivityRoleController.cs" />
@@ -248,7 +252,7 @@
     <Compile Include="Controllers\Identity\UserController.cs" />
     <Compile Include="Controllers\Identity\UserLoginController.cs" />
     <Compile Include="Controllers\Identity\UserRoleController.cs" />
-    <Compile Include="Controllers\Northwind-Custom\NorthwindTasks\NorthwindAPIIndex.cs" />
+    <Compile Include="Controllers\Northwind-Custom\NorthwindTasks\NorthwindHelp.cs" />
     <Compile Include="Controllers\Northwind-Custom\NorthwindTasks\NorthwindStatus.cs" />
     <Compile Include="Controllers\Northwind-Custom\NorthwindTasks\NorthwindTasksController.cs" />
     <Compile Include="Controllers\WebAPI-Northwind\CategoryAPIController.cs" />
@@ -295,8 +299,10 @@
     <Compile Include="EasyLOB\Filters\EasyLOBNorthwindProfileAttribute.cs" />
     <Compile Include="EasyLOB\Filters\EasyLOBMultiTenantAttribute.cs" />
     <Compile Include="EasyLOB\Filters\EasyLOBProfileAttribute.cs" />
+    <Compile Include="EasyLOB\MVC\AppHelper.cs" />
     <Compile Include="EasyLOB\MVC\CultureAttribute.cs" />
     <Compile Include="EasyLOB\MVC\CustomRazorViewEngine.cs" />
+    <Compile Include="EasyLOB\WebAPI\AppHelper.cs" />
     <Compile Include="Models\Activity-Custom\ActivityRole\ActivityRoleCollectionModel.cs" />
     <Compile Include="Models\Activity-Custom\ActivityRole\ActivityRoleItemModel.cs" />
     <Compile Include="Models\Activity-Custom\Activity\ActivityViewModel.cs" />
@@ -330,7 +336,6 @@
     <Compile Include="EasyLOB\Syncfusion\Dashboard\DashboardViewer.cs" />
     <Compile Include="EasyLOB\Syncfusion\XlsIOExtensions.cs" />
     <Compile Include="EasyLOB\Syncfusion\XlsResult.cs" />
-    <Compile Include="EasyLOB\Unity\HttpRequestLifetimeManager.cs" />
     <Compile Include="EasyLOB\Unity\UnityHelper.cs" />
     <Compile Include="EasyLOB\Unity\UnityHelperActivity.cs" />
     <Compile Include="EasyLOB\Unity\UnityHelperAuditTrail.cs" />
@@ -1197,7 +1202,7 @@
     <Content Include="Views\Northwind\Territory\_TerritoryCollection.cshtml" />
     <Content Include="Views\Northwind\Territory\_TerritoryItem.cshtml" />
     <Content Include="Views\Northwind\Territory\_TerritoryLookup.cshtml" />
-    <Content Include="Views\Northwind-Custom\NorthwindTasks\NorthwindAPIIndex.cshtml" />
+    <Content Include="Views\Northwind-Custom\NorthwindTasks\NorthwindHelp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\ValidationResources.pt-BR.resx">
