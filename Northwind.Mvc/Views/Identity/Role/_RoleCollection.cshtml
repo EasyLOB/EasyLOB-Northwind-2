@@ -210,7 +210,7 @@
                 var records = ejGrid.getSelectedRecords();
                 if (records.length == 1) {
                     var args = { requestType: "read", data: records[0] };
-                    actionBegin_Grid_Role(args)
+                    actionBegin_Grid_Role(args);
                 }
             }
         } catch (exception) {

@@ -23,8 +23,8 @@ namespace EasyLOB.Identity.Mvc
             Application = application;            
         }
 
-        #endregion
-        
+        #endregion Methods
+
         #region Methods SCRUD
 
         // GET: Role

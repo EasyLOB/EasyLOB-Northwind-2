@@ -23,8 +23,8 @@ namespace EasyLOB.Activity.Mvc
             Application = application;            
         }
 
-        #endregion
-        
+        #endregion Methods
+
         #region Methods SCRUD
 
         // GET: ActivityRole

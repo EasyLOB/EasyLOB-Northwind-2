@@ -214,7 +214,7 @@
                 var records = ejGrid.getSelectedRecords();
                 if (records.length == 1) {
                     var args = { requestType: "read", data: records[0] };
-                    actionBegin_Grid_Shipper(args)
+                    actionBegin_Grid_Shipper(args);
                 }
             }
         } catch (exception) {

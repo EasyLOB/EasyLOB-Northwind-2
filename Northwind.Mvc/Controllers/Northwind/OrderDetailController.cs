@@ -23,8 +23,8 @@ namespace Northwind.Mvc
             Application = application;            
         }
 
-        #endregion
-        
+        #endregion Methods
+
         #region Methods SCRUD
 
         // GET: OrderDetail
