@@ -299,6 +299,7 @@
     <Compile Include="EasyLOB\Filters\EasyLOBNorthwindProfileAttribute.cs" />
     <Compile Include="EasyLOB\Filters\EasyLOBMultiTenantAttribute.cs" />
     <Compile Include="EasyLOB\Filters\EasyLOBProfileAttribute.cs" />
+    <Compile Include="EasyLOB\Identity\AppHelper.cs" />
     <Compile Include="EasyLOB\MVC\AppHelper.cs" />
     <Compile Include="EasyLOB\MVC\CultureAttribute.cs" />
     <Compile Include="EasyLOB\MVC\CustomRazorViewEngine.cs" />

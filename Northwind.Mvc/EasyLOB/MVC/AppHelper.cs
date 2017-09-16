@@ -1,4 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using EasyLOB.Identity;
+using EasyLOB.Library.Mvc;
+using EasyLOB.Resources;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security.DataProtection;
+using Syncfusion.JavaScript.Models;
+using System;
+using System.Web;
+using System.Web.Mvc.Ajax;
 
 namespace EasyLOB.Mvc
 {
@@ -6,25 +15,95 @@ namespace EasyLOB.Mvc
     {
         #region Properties
 
-        public static JsonSerializerSettings _jsonSettings;
+        private static AjaxOptions _ajaxOptions;
 
-        public static JsonSerializerSettings JsonSettings
+        public static AjaxOptions AjaxOptions
         {
             get
             {
-                if (_jsonSettings == null)
+                if (_ajaxOptions == null)
                 {
-                    _jsonSettings = new JsonSerializerSettings
+                    _ajaxOptions = new AjaxOptions()
                     {
-                        Formatting = Formatting.None,
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        HttpMethod = "POST",
+                        InsertionMode = InsertionMode.Replace,
+                        OnFailure = "zAjaxFailure",
+                        OnSuccess = "zAjaxSuccess",
+                        UpdateTargetId = "Ajax"
                     };
                 }
 
-                return _jsonSettings;
+                return _ajaxOptions;
             }
         }
 
-        #endregion Properties    
+        #endregion Properties
+
+        #region Properties Syncfusion
+
+        public static DatePickerProperties DateModel
+        {
+            get
+            {
+                DatePickerProperties dateModel = new DatePickerProperties();
+                dateModel.DateFormat = PatternResources.Format_Date;
+                dateModel.Locale = System.Globalization.CultureInfo.CurrentCulture.Name;
+                //dateModel.Width = "120";
+                dateModel.Width = "180";
+
+                return dateModel;
+            }
+        }
+
+        public static DateTimePickerProperties DateTimeModel
+        {
+            get
+            {
+                DateTimePickerProperties dateTimeModel = new DateTimePickerProperties();
+                dateTimeModel.DateTimeFormat = PatternResources.Format_DateTime;
+                dateTimeModel.Locale = System.Globalization.CultureInfo.CurrentCulture.Name;
+                dateTimeModel.Width = "180";
+
+                return dateTimeModel;
+            }
+        }
+
+        #endregion Properties Syncfusion
+
+        #region Methods
+
+        public static string DocumentTitle(string pageTitle, bool isMasterDetail = false)
+        {
+            return AppDefaults.AppName +
+                (!String.IsNullOrEmpty(AppDefaults.AppVersion) ? " " + AppDefaults.AppVersion : "") +
+                (!String.IsNullOrEmpty(pageTitle) ? AppDefaults.TitleSeparator + pageTitle : "");
+        }
+
+        public static void Login()
+        {
+        }
+
+        public static void Logout()
+        {
+            SessionHelper.Abandon();
+        }
+
+        public static string PageTitle(string entity, string action, string actionResource, bool isMasterDetail = false)
+        {
+            string result = "";
+
+            if (action == "search" && isMasterDetail)
+            {
+                result = entity;
+            }
+            else
+            {
+                result = entity + AppDefaults.TitleSeparator + actionResource;
+            }
+
+            return result;
+        }
+
+        #endregion Methods
     }
 }
