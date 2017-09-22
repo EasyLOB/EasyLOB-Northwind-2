@@ -3,7 +3,7 @@ using EasyLOB.AuditTrail;
 using EasyLOB.Extensions.Edm;
 using EasyLOB.Identity;
 using EasyLOB.Library;
-using EasyLOB.Library.Mvc;
+using EasyLOB.Library.Web;
 using EasyLOB.Log;
 using EasyLOB.Resources;
 using EasyLOB.Security;
@@ -52,13 +52,13 @@ namespace EasyLOB.Mvc
             // EasyLOB
 
             result.Append("<br /><b>Directory</b>");
-            result.Append("<br />:: Configuration: " + MvcHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Directory.Configuration")));
-            result.Append("<br />:: Export: " + MvcHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Directory.Export")));
-            result.Append("<br />:: Import: " + MvcHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Directory.Import")));
-            result.Append("<br />:: Template: " + MvcHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Directory.Template")));
+            result.Append("<br />:: Configuration: " + WebHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Directory.Configuration")));
+            result.Append("<br />:: Export: " + WebHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Directory.Export")));
+            result.Append("<br />:: Import: " + WebHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Directory.Import")));
+            result.Append("<br />:: Template: " + WebHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Directory.Template")));
             result.Append("<br /><b>Report</b>");
             result.Append("<br />:: RDL: " + ConfigurationHelper.AppSettings<string>("Report.RDL.Url"));
-            result.Append("<br />:: RDLC: " + MvcHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Report.RDLC.Directory")));
+            result.Append("<br />:: RDLC: " + WebHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Report.RDLC.Directory")));
 
             result.Append("<br />");
 
@@ -74,11 +74,11 @@ namespace EasyLOB.Mvc
             result.Append("<br />:: ILogManager: " + (DependencyResolver.Current.GetService<ILogManager>()).GetType().ToString());
 
             result.Append("<br /><b>MVC</b>");
-            result.Append("<br />:: Application Directory: " + MvcHelper.ApplicationBaseDirectory);
-            result.Append("<br />:: Web Url: " + MvcHelper.WebUrl);
-            result.Append("<br />:: Web Path: " + MvcHelper.WebPath);
-            result.Append("<br />:: Web Domain: " + MvcHelper.WebDomain);
-            result.Append("<br />:: Web SubDomain: " + MvcHelper.WebSubDomain);
+            result.Append("<br />:: Application Directory: " + WebHelper.ApplicationBaseDirectory);
+            result.Append("<br />:: Web Url: " + WebHelper.WebUrl);
+            result.Append("<br />:: Web Path: " + WebHelper.WebPath);
+            result.Append("<br />:: Web Domain: " + WebHelper.WebDomain);
+            result.Append("<br />:: Web SubDomain: " + WebHelper.WebSubDomain);
 
             AppTenant tenant = MultiTenantHelper.Tenant;
             result.Append("<br /><b>Multi-Tenant</b>");

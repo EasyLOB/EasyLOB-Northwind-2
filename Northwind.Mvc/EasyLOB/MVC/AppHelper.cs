@@ -1,12 +1,7 @@
-﻿using EasyLOB.Identity;
-using EasyLOB.Library.Mvc;
+﻿using EasyLOB.Library.Web;
 using EasyLOB.Resources;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security.DataProtection;
 using Syncfusion.JavaScript.Models;
 using System;
-using System.Web;
 using System.Web.Mvc.Ajax;
 
 namespace EasyLOB.Mvc
