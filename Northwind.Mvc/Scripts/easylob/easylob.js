@@ -99,8 +99,34 @@ function zReplaceAll(string, find, replace) {
     return string.replace(new RegExp(find, 'g'), replace);
 }
 
-function zRound(value, digits) {
-    return Number(Math.round(value + 'e' + digits) + 'e-' + digits);
+function zRound(value, exp) {
+
+    // Formatting a number with exactly two decimals in JavaScript
+    // https://stackoverflow.com/questions/1726630/formatting-a-number-with-exactly-two-decimals-in-javascript
+    // round(1.275, 2); // 1.28
+    // round(1.27499, 2); // 1.27
+    // round(1234.5678, -2); // 1200
+    // round(1.2345678e+2, 2); // 123.46
+    // round("123.45"); // 123
+
+    if (typeof exp === 'undefined' || +exp === 0) {
+        return Math.round(value);
+    }
+
+    value = +value;
+    exp = +exp;
+
+    if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+        return NaN;
+    }
+
+    // Shift
+    value = value.toString().split('e');
+    value = Math.round(+(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp)));
+
+    // Shift Back
+    value = value.toString().split('e');
+    return +(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp));
 }
 
 function zZero(value) {
@@ -410,7 +436,7 @@ function zOnCollectionView(model, dataProfile, dataSourceUrl) {
             allowGrouping: false,
             toolbarSettings: {
                 toolbarItems: [
-                    //ej.Grid.ToolBarItems.Search,
+                    ej.Grid.ToolBarItems.Search,
                     ej.Grid.ToolBarItems.Add,
                     ej.Grid.ToolBarItems.Edit,
                     ej.Grid.ToolBarItems.Delete

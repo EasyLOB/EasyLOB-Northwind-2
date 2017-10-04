@@ -303,7 +303,7 @@ namespace EasyLOB.Identity.Mvc
             int countAll = 0;
             ZOperationResult operationResult = new ZOperationResult();
 
-            if (IsSearch())
+            if (IsSearch(operationResult))
             {
                 try
                 {
@@ -323,11 +323,11 @@ namespace EasyLOB.Identity.Mvc
                 {
                     operationResult.ParseException(exception);
                 }
+            }
 
-                if (!operationResult.Ok)
-                {
-                    throw new InvalidOperationException(operationResult.Text);
-                }
+            if (!operationResult.Ok)
+            {
+                throw new InvalidOperationException(operationResult.Text);
             }
 
             return Json(JsonConvert.SerializeObject(new { result = data, count = countAll }), JsonRequestBehavior.AllowGet);

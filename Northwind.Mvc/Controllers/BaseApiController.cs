@@ -52,13 +52,6 @@ namespace EasyLOB.WebApi
 
         #region Methods IsActivity
 
-        protected virtual bool IsSearch()
-        {
-            ZOperationResult operationResult = new ZOperationResult();
-
-            return AuthorizationManager.IsSearch(ActivityOperations, operationResult);
-        }
-
         protected virtual bool IsSearch(ZOperationResult operationResult)
         {
             return AuthorizationManager.IsSearch(ActivityOperations, operationResult);

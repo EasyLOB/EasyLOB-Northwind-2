@@ -1,4 +1,4 @@
-using EasyLOB.Data;
+﻿using EasyLOB.Data;
 using EasyLOB.Security;
 
 namespace EasyLOB.Mvc
@@ -51,23 +51,9 @@ namespace EasyLOB.Mvc
             return AuthorizationManager.IsOperation(ActivityOperations, operationResult);
         }
 
-        protected virtual bool IsSearch()
-        {
-            ZOperationResult operationResult = new ZOperationResult();
-
-            return IsSearch(operationResult);
-        }
-
         protected virtual bool IsSearch(ZOperationResult operationResult)
         {
             return AuthorizationManager.IsSearch(ActivityOperations, operationResult);
-        }
-
-        protected virtual bool IsCreate()
-        {
-            ZOperationResult operationResult = new ZOperationResult();
-
-            return IsCreate(operationResult);
         }
 
         protected virtual bool IsCreate(ZOperationResult operationResult)
@@ -75,35 +61,14 @@ namespace EasyLOB.Mvc
             return AuthorizationManager.IsCreate(ActivityOperations, operationResult);
         }
 
-        protected virtual bool IsRead()
-        {
-            ZOperationResult operationResult = new ZOperationResult();
-
-            return IsRead(operationResult);
-        }
-
         protected virtual bool IsRead(ZOperationResult operationResult)
         {
             return AuthorizationManager.IsRead(ActivityOperations, operationResult);
         }
 
-        protected virtual bool IsUpdate()
-        {
-            ZOperationResult operationResult = new ZOperationResult();
-
-            return IsUpdate(operationResult);
-        }
-
         protected virtual bool IsUpdate(ZOperationResult operationResult)
         {
             return AuthorizationManager.IsUpdate(ActivityOperations, operationResult);
-        }
-
-        protected virtual bool IsDelete()
-        {
-            ZOperationResult operationResult = new ZOperationResult();
-
-            return IsDelete(operationResult);
         }
 
         protected virtual bool IsDelete(ZOperationResult operationResult)
@@ -135,26 +100,12 @@ namespace EasyLOB.Mvc
             return AuthorizationManager.IsImport(ActivityOperations, operationResult);
         }
 
-        protected virtual bool IsExecute()
-        {
-            ZOperationResult operationResult = new ZOperationResult();
-
-            return IsExecute(operationResult);
-        }
-
         protected virtual bool IsExecute(ZOperationResult operationResult)
         {
             return AuthorizationManager.IsExecute(ActivityOperations, operationResult);
         }
 
-        protected bool IsTask(string task)
-        {
-            ZOperationResult operationResult = new ZOperationResult();
-
-            return IsTask(task, operationResult);
-        }
-
-        protected bool IsTask(string task, ZOperationResult operationResult)
+        protected virtual bool IsTask(string task, ZOperationResult operationResult)
         {
             return AuthorizationManager.IsTask(Domain, task, operationResult);
         }
