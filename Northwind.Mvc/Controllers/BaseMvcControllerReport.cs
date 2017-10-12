@@ -1,4 +1,4 @@
-namespace EasyLOB.Mvc
+﻿namespace EasyLOB.Mvc
 {
     public class BaseMvcControllerReport : BaseMvcController
     {
@@ -10,7 +10,7 @@ namespace EasyLOB.Mvc
 
         #endregion Methods
 
-        #region Methods IsActivity
+        #region Methods Authorization
 
         protected bool IsReport(string reportDirectory, string reportName)
         {
@@ -24,6 +24,6 @@ namespace EasyLOB.Mvc
             return AuthorizationManager.IsReport(Domain, reportDirectory, reportName, operationResult);
         }
 
-        #endregion Methods IsActivity
+        #endregion Methods Authorization
     }
 }

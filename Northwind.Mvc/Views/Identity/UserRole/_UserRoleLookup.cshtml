@@ -57,6 +57,7 @@
                     .Columns(column =>
                     {
                         column.Field("UserId")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(UserRoleResources.PropertyUserId)
                             .IsPrimaryKey(true)
@@ -65,11 +66,13 @@
                             .Add();
                         column.Field("UserLookupText")
                             .AllowEditing(false)
+                            .Type("string")
                             .HeaderText(UserResources.EntitySingular)
                             .Visible(UserRole.DataProfile.IsGridVisibleFor("UserLookupText"))
                             .Width(UserRole.DataProfile.GridWidthFor("UserLookupText"))
                             .Add();
                         column.Field("RoleId")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(UserRoleResources.PropertyRoleId)
                             .IsPrimaryKey(true)
@@ -78,6 +81,7 @@
                             .Add();
                         column.Field("RoleLookupText")
                             .AllowEditing(false)
+                            .Type("string")
                             .HeaderText(RoleResources.EntitySingular)
                             .Visible(UserRole.DataProfile.IsGridVisibleFor("RoleLookupText"))
                             .Width(UserRole.DataProfile.GridWidthFor("RoleLookupText"))

@@ -58,6 +58,7 @@
                     {
                         column.Field("Id")
                             .AllowEditing(false)
+                            .Type("number")
                             .EditType(EditingType.Numeric)
                             .HeaderText(UserClaimResources.PropertyId)
                             .IsIdentity(true)
@@ -66,6 +67,7 @@
                             .Width(UserClaim.DataProfile.GridWidthFor("Id"))
                             .Add();
                         column.Field("UserId")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(UserClaimResources.PropertyUserId)
                             .Visible(UserClaim.DataProfile.IsGridVisibleFor("UserId"))
@@ -73,17 +75,20 @@
                             .Add();
                         column.Field("UserLookupText")
                             .AllowEditing(false)
+                            .Type("string")
                             .HeaderText(UserResources.EntitySingular)
                             .Visible(UserClaim.DataProfile.IsGridVisibleFor("UserLookupText"))
                             .Width(UserClaim.DataProfile.GridWidthFor("UserLookupText"))
                             .Add();
                         column.Field("ClaimType")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(UserClaimResources.PropertyClaimType)
                             .Visible(UserClaim.DataProfile.IsGridVisibleFor("ClaimType"))
                             .Width(UserClaim.DataProfile.GridWidthFor("ClaimType"))
                             .Add();
                         column.Field("ClaimValue")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(UserClaimResources.PropertyClaimValue)
                             .Visible(UserClaim.DataProfile.IsGridVisibleFor("ClaimValue"))

@@ -58,6 +58,7 @@
                     {
                         column.Field("ShipperId")
                             .AllowEditing(false)
+                            .Type("number")
                             .EditType(EditingType.Numeric)
                             .Format(SyncfusionPatternResources.GridFormat_Integer)
                             .HeaderText(ShipperResources.PropertyShipperId)
@@ -68,12 +69,14 @@
                             .Width(Shipper.DataProfile.GridWidthFor("ShipperId"))
                             .Add();
                         column.Field("CompanyName")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(ShipperResources.PropertyCompanyName)
                             .Visible(Shipper.DataProfile.IsGridVisibleFor("CompanyName"))
                             .Width(Shipper.DataProfile.GridWidthFor("CompanyName"))
                             .Add();
                         column.Field("Phone")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(ShipperResources.PropertyPhone)
                             .Visible(Shipper.DataProfile.IsGridVisibleFor("Phone"))

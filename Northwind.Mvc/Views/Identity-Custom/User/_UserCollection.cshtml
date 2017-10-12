@@ -36,6 +36,7 @@
         .Columns(column =>
         {
             column.Field("Id")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserResources.PropertyId)
                 .IsPrimaryKey(true)
@@ -43,48 +44,56 @@
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("Id")) // !?!
                 .Add();
             column.Field("Email")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserResources.PropertyEmail)
                 .Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("Email")) // !?!
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("Email")) // !?!
                 .Add();
             column.Field("EmailConfirmed")
+                .Type("boolean")
                 .EditType(EditingType.Boolean)
                 .HeaderText(UserResources.PropertyEmailConfirmed)
                 .Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("EmailConfirmed")) // !?!
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("EmailConfirmed")) // !?!
                 .Add();
             column.Field("PasswordHash")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserResources.PropertyPasswordHash)
                 .Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("PasswordHash")) // !?!
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("PasswordHash")) // !?!
                 .Add();
             column.Field("SecurityStamp")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserResources.PropertySecurityStamp)
                 .Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("SecurityStamp")) // !?!
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("SecurityStamp")) // !?!
                 .Add();
             column.Field("PhoneNumber")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserResources.PropertyPhoneNumber)
                 .Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("PhoneNumber")) // !?!
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("PhoneNumber")) // !?!
                 .Add();
             column.Field("PhoneNumberConfirmed")
+                .Type("boolean")
                 .EditType(EditingType.Boolean)
                 .HeaderText(UserResources.PropertyPhoneNumberConfirmed)
                 .Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("PhoneNumberConfirmed")) // !?!
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("PhoneNumberConfirmed")) // !?!
                 .Add();
             column.Field("TwoFactorEnabled")
+                .Type("boolean")
                 .EditType(EditingType.Boolean)
                 .HeaderText(UserResources.PropertyTwoFactorEnabled)
                 .Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("TwoFactorEnabled")) // !?!
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("TwoFactorEnabled")) // !?!
                 .Add();
             column.Field("LockoutEndDateUtc")
+                .Type("datetime")
                 .EditType(EditingType.DateTimePicker)
                 .Format(SyncfusionPatternResources.GridFormat_DateTime)
                 .HeaderText(UserResources.PropertyLockoutEndDateUtc)
@@ -92,12 +101,14 @@
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("LockoutEndDateUtc")) // !?!
                 .Add();
             column.Field("LockoutEnabled")
+                .Type("boolean")
                 .EditType(EditingType.Boolean)
                 .HeaderText(UserResources.PropertyLockoutEnabled)
                 .Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("LockoutEnabled")) // !?!
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("LockoutEnabled")) // !?!
                 .Add();
             column.Field("AccessFailedCount")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(UserResources.PropertyAccessFailedCount)
@@ -106,6 +117,7 @@
                 .Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("AccessFailedCount")) // !?!
                 .Add();
             column.Field("UserName")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserResources.PropertyUserName)
                 .Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("UserName")) // !?!

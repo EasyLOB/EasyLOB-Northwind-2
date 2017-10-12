@@ -44,6 +44,7 @@
         .Columns(column =>
         {
             column.Field("OrderId")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(OrderDetailResources.PropertyOrderId)
@@ -54,11 +55,13 @@
                 .Add();
             column.Field("OrderLookupText")
                 .AllowEditing(false)
+                .Type("string")
                 .HeaderText(OrderResources.EntitySingular)
                 .Visible(OrderDetail.DataProfile.IsGridVisibleFor("OrderLookupText"))
                 .Width(OrderDetail.DataProfile.GridWidthFor("OrderLookupText"))
                 .Add();
             column.Field("ProductId")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(OrderDetailResources.PropertyProductId)
@@ -69,11 +72,13 @@
                 .Add();
             column.Field("ProductLookupText")
                 .AllowEditing(false)
+                .Type("string")
                 .HeaderText(ProductResources.EntitySingular)
                 .Visible(OrderDetail.DataProfile.IsGridVisibleFor("ProductLookupText"))
                 .Width(OrderDetail.DataProfile.GridWidthFor("ProductLookupText"))
                 .Add();
             column.Field("UnitPrice")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Float)
                 .HeaderText(OrderDetailResources.PropertyUnitPrice)
@@ -82,6 +87,7 @@
                 .Width(OrderDetail.DataProfile.GridWidthFor("UnitPrice"))
                 .Add();
             column.Field("Quantity")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(OrderDetailResources.PropertyQuantity)
@@ -90,6 +96,7 @@
                 .Width(OrderDetail.DataProfile.GridWidthFor("Quantity"))
                 .Add();
             column.Field("Discount")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Float)
                 .HeaderText(OrderDetailResources.PropertyDiscount)

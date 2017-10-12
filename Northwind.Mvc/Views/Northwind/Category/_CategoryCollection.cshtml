@@ -37,6 +37,7 @@
         {
             column.Field("CategoryId")
                 .AllowEditing(false)
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(CategoryResources.PropertyCategoryId)
@@ -47,18 +48,21 @@
                 .Width(Category.DataProfile.GridWidthFor("CategoryId"))
                 .Add();
             column.Field("CategoryName")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CategoryResources.PropertyCategoryName)
                 .Visible(Category.DataProfile.IsGridVisibleFor("CategoryName"))
                 .Width(Category.DataProfile.GridWidthFor("CategoryName"))
                 .Add();
             column.Field("Description")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CategoryResources.PropertyDescription)
                 .Visible(Category.DataProfile.IsGridVisibleFor("Description"))
                 .Width(Category.DataProfile.GridWidthFor("Description"))
                 .Add();
             column.Field("Picture")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CategoryResources.PropertyPicture)
                 .Visible(Category.DataProfile.IsGridVisibleFor("Picture"))

@@ -1,4 +1,4 @@
-using EasyLOB.Data;
+﻿using EasyLOB.Data;
 using EasyLOB.Security;
 
 namespace EasyLOB.Mvc
@@ -36,7 +36,7 @@ namespace EasyLOB.Mvc
 
         #endregion Methods
 
-        #region Methods IsActivity
+        #region Methods Authorization
 
         protected bool IsTask(string task)
         {
@@ -47,9 +47,9 @@ namespace EasyLOB.Mvc
 
         protected bool IsTask(string task, ZOperationResult operationResult)
         {
-            return AuthorizationManager.IsAuthorized(SecurityHelper.TaskActivity(Domain, task), ZOperations.Execute, operationResult);
+            return AuthorizationManager.IsTask(Domain, task, operationResult);
         }
 
-        #endregion Methods IsActivity
+        #endregion Methods Authorization
     }
 }

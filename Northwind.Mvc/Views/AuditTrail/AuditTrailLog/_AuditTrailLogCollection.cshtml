@@ -37,6 +37,7 @@
         {
             column.Field("Id")
                 .AllowEditing(false)
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(AuditTrailLogResources.PropertyId)
@@ -47,6 +48,7 @@
                 .Width(AuditTrailLog.DataProfile.GridWidthFor("Id"))
                 .Add();
             column.Field("LogDate")
+                .Type("datetime")
                 .EditType(EditingType.DateTimePicker)
                 .Format(SyncfusionPatternResources.GridFormat_DateTime)
                 .HeaderText(AuditTrailLogResources.PropertyLogDate)
@@ -54,6 +56,7 @@
                 .Width(AuditTrailLog.DataProfile.GridWidthFor("LogDate"))
                 .Add();
             column.Field("LogTime")
+                .Type("datetime")
                 .EditType(EditingType.DateTimePicker)
                 .Format(SyncfusionPatternResources.GridFormat_DateTime)
                 .HeaderText(AuditTrailLogResources.PropertyLogTime)
@@ -61,42 +64,49 @@
                 .Width(AuditTrailLog.DataProfile.GridWidthFor("LogTime"))
                 .Add();
             column.Field("LogUserName")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogUserName)
                 .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogUserName"))
                 .Width(AuditTrailLog.DataProfile.GridWidthFor("LogUserName"))
                 .Add();
             column.Field("LogDomain")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogDomain)
                 .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogDomain"))
                 .Width(AuditTrailLog.DataProfile.GridWidthFor("LogDomain"))
                 .Add();
             column.Field("LogEntity")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogEntity)
                 .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogEntity"))
                 .Width(AuditTrailLog.DataProfile.GridWidthFor("LogEntity"))
                 .Add();
             column.Field("LogOperation")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogOperation)
                 .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogOperation"))
                 .Width(AuditTrailLog.DataProfile.GridWidthFor("LogOperation"))
                 .Add();
             column.Field("LogId")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogId)
                 .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogId"))
                 .Width(AuditTrailLog.DataProfile.GridWidthFor("LogId"))
                 .Add();
             column.Field("LogEntityBefore")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogEntityBefore)
                 .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogEntityBefore"))
                 .Width(AuditTrailLog.DataProfile.GridWidthFor("LogEntityBefore"))
                 .Add();
             column.Field("LogEntityAfter")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogEntityAfter)
                 .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogEntityAfter"))

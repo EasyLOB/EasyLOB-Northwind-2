@@ -57,6 +57,7 @@
                     .Columns(column =>
                     {
                         column.Field("CustomerId")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(CustomerCustomerDemoResources.PropertyCustomerId)
                             .IsPrimaryKey(true)
@@ -65,11 +66,13 @@
                             .Add();
                         column.Field("CustomerLookupText")
                             .AllowEditing(false)
+                            .Type("string")
                             .HeaderText(CustomerResources.EntitySingular)
                             .Visible(CustomerCustomerDemo.DataProfile.IsGridVisibleFor("CustomerLookupText"))
                             .Width(CustomerCustomerDemo.DataProfile.GridWidthFor("CustomerLookupText"))
                             .Add();
                         column.Field("CustomerTypeId")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(CustomerCustomerDemoResources.PropertyCustomerTypeId)
                             .IsPrimaryKey(true)
@@ -78,6 +81,7 @@
                             .Add();
                         column.Field("CustomerDemographicLookupText")
                             .AllowEditing(false)
+                            .Type("string")
                             .HeaderText(CustomerDemographicResources.EntitySingular)
                             .Visible(CustomerCustomerDemo.DataProfile.IsGridVisibleFor("CustomerDemographicLookupText"))
                             .Width(CustomerCustomerDemo.DataProfile.GridWidthFor("CustomerDemographicLookupText"))

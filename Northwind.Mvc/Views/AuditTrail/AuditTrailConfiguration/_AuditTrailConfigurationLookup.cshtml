@@ -58,6 +58,7 @@
                     {
                         column.Field("Id")
                             .AllowEditing(false)
+                            .Type("number")
                             .EditType(EditingType.Numeric)
                             .HeaderText(AuditTrailConfigurationResources.PropertyId)
                             .IsIdentity(true)
@@ -66,24 +67,28 @@
                             .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("Id"))
                             .Add();
                         column.Field("Domain")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(AuditTrailConfigurationResources.PropertyDomain)
                             .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("Domain"))
                             .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("Domain"))
                             .Add();
                         column.Field("Entity")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(AuditTrailConfigurationResources.PropertyEntity)
                             .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("Entity"))
                             .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("Entity"))
                             .Add();
                         column.Field("LogMode")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(AuditTrailConfigurationResources.PropertyLogMode)
                             .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("LogMode"))
                             .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("LogMode"))
                             .Add();
                         column.Field("LogOperations")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(AuditTrailConfigurationResources.PropertyLogOperations)
                             .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("LogOperations"))

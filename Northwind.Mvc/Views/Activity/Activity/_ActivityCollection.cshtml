@@ -36,6 +36,7 @@
         .Columns(column =>
         {
             column.Field("Id")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(ActivityResources.PropertyId)
                 .IsPrimaryKey(true)
@@ -43,6 +44,7 @@
                 .Width(Activity.DataProfile.GridWidthFor("Id"))
                 .Add();
             column.Field("Name")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(ActivityResources.PropertyName)
                 .Visible(Activity.DataProfile.IsGridVisibleFor("Name"))

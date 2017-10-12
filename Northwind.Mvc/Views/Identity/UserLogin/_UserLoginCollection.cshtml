@@ -40,6 +40,7 @@
         .Columns(column =>
         {
             column.Field("LoginProvider")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserLoginResources.PropertyLoginProvider)
                 .IsPrimaryKey(true)
@@ -47,6 +48,7 @@
                 .Width(UserLogin.DataProfile.GridWidthFor("LoginProvider"))
                 .Add();
             column.Field("ProviderKey")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserLoginResources.PropertyProviderKey)
                 .IsPrimaryKey(true)
@@ -54,6 +56,7 @@
                 .Width(UserLogin.DataProfile.GridWidthFor("ProviderKey"))
                 .Add();
             column.Field("UserId")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserLoginResources.PropertyUserId)
                 .IsPrimaryKey(true)
@@ -62,6 +65,7 @@
                 .Add();
             column.Field("UserLookupText")
                 .AllowEditing(false)
+                .Type("string")
                 .HeaderText(UserResources.EntitySingular)
                 .Visible(UserLogin.DataProfile.IsGridVisibleFor("UserLookupText"))
                 .Width(UserLogin.DataProfile.GridWidthFor("UserLookupText"))

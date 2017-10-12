@@ -44,6 +44,7 @@
         .Columns(column =>
         {
             column.Field("ActivityId")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(ActivityRoleResources.PropertyActivityId)
                 .IsPrimaryKey(true)
@@ -52,11 +53,13 @@
                 .Add();
             column.Field("ActivityLookupText")
                 .AllowEditing(false)
+                .Type("string")
                 .HeaderText(ActivityResources.EntitySingular)
                 .Visible(ActivityRole.DataProfile.IsGridVisibleFor("ActivityLookupText"))
                 .Width(ActivityRole.DataProfile.GridWidthFor("ActivityLookupText"))
                 .Add();
             column.Field("RoleName")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(ActivityRoleResources.PropertyRoleName)
                 .IsPrimaryKey(true)
@@ -64,6 +67,7 @@
                 .Width(ActivityRole.DataProfile.GridWidthFor("RoleName"))
                 .Add();
             column.Field("Operations")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(ActivityRoleResources.PropertyOperations)
                 .Visible(ActivityRole.DataProfile.IsGridVisibleFor("Operations"))

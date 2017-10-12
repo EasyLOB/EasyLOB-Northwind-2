@@ -44,6 +44,7 @@
         .Columns(column =>
         {
             column.Field("EmployeeId")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(EmployeeTerritoryResources.PropertyEmployeeId)
@@ -54,11 +55,13 @@
                 .Add();
             column.Field("EmployeeLookupText")
                 .AllowEditing(false)
+                .Type("string")
                 .HeaderText(EmployeeResources.EntitySingular)
                 .Visible(EmployeeTerritory.DataProfile.IsGridVisibleFor("EmployeeLookupText"))
                 .Width(EmployeeTerritory.DataProfile.GridWidthFor("EmployeeLookupText"))
                 .Add();
             column.Field("TerritoryId")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(EmployeeTerritoryResources.PropertyTerritoryId)
                 .IsPrimaryKey(true)
@@ -67,6 +70,7 @@
                 .Add();
             column.Field("TerritoryLookupText")
                 .AllowEditing(false)
+                .Type("string")
                 .HeaderText(TerritoryResources.EntitySingular)
                 .Visible(EmployeeTerritory.DataProfile.IsGridVisibleFor("TerritoryLookupText"))
                 .Width(EmployeeTerritory.DataProfile.GridWidthFor("TerritoryLookupText"))

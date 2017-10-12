@@ -49,6 +49,7 @@
         {
             column.Field("OrderId")
                 .AllowEditing(false)
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(OrderResources.PropertyOrderId)
@@ -59,6 +60,7 @@
                 .Width(Order.DataProfile.GridWidthFor("OrderId"))
                 .Add();
             column.Field("CustomerId")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(OrderResources.PropertyCustomerId)
                 .Visible(Order.DataProfile.IsGridVisibleFor("CustomerId"))
@@ -66,11 +68,13 @@
                 .Add();
             column.Field("CustomerLookupText")
                 .AllowEditing(false)
+                .Type("string")
                 .HeaderText(CustomerResources.EntitySingular)
                 .Visible(Order.DataProfile.IsGridVisibleFor("CustomerLookupText"))
                 .Width(Order.DataProfile.GridWidthFor("CustomerLookupText"))
                 .Add();
             column.Field("EmployeeId")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(OrderResources.PropertyEmployeeId)
@@ -80,11 +84,13 @@
                 .Add();
             column.Field("EmployeeLookupText")
                 .AllowEditing(false)
+                .Type("string")
                 .HeaderText(EmployeeResources.EntitySingular)
                 .Visible(Order.DataProfile.IsGridVisibleFor("EmployeeLookupText"))
                 .Width(Order.DataProfile.GridWidthFor("EmployeeLookupText"))
                 .Add();
             column.Field("OrderDate")
+                .Type("datetime")
                 .EditType(EditingType.DateTimePicker)
                 .Format(SyncfusionPatternResources.GridFormat_DateTime)
                 .HeaderText(OrderResources.PropertyOrderDate)
@@ -92,6 +98,7 @@
                 .Width(Order.DataProfile.GridWidthFor("OrderDate"))
                 .Add();
             column.Field("RequiredDate")
+                .Type("datetime")
                 .EditType(EditingType.DateTimePicker)
                 .Format(SyncfusionPatternResources.GridFormat_DateTime)
                 .HeaderText(OrderResources.PropertyRequiredDate)
@@ -99,6 +106,7 @@
                 .Width(Order.DataProfile.GridWidthFor("RequiredDate"))
                 .Add();
             column.Field("ShippedDate")
+                .Type("datetime")
                 .EditType(EditingType.DateTimePicker)
                 .Format(SyncfusionPatternResources.GridFormat_DateTime)
                 .HeaderText(OrderResources.PropertyShippedDate)
@@ -106,6 +114,7 @@
                 .Width(Order.DataProfile.GridWidthFor("ShippedDate"))
                 .Add();
             column.Field("ShipVia")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(OrderResources.PropertyShipVia)
@@ -115,11 +124,13 @@
                 .Add();
             column.Field("ShipperLookupText")
                 .AllowEditing(false)
+                .Type("string")
                 .HeaderText(ShipperResources.EntitySingular)
                 .Visible(Order.DataProfile.IsGridVisibleFor("ShipperLookupText"))
                 .Width(Order.DataProfile.GridWidthFor("ShipperLookupText"))
                 .Add();
             column.Field("Freight")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Float)
                 .HeaderText(OrderResources.PropertyFreight)
@@ -128,36 +139,42 @@
                 .Width(Order.DataProfile.GridWidthFor("Freight"))
                 .Add();
             column.Field("ShipName")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(OrderResources.PropertyShipName)
                 .Visible(Order.DataProfile.IsGridVisibleFor("ShipName"))
                 .Width(Order.DataProfile.GridWidthFor("ShipName"))
                 .Add();
             column.Field("ShipAddress")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(OrderResources.PropertyShipAddress)
                 .Visible(Order.DataProfile.IsGridVisibleFor("ShipAddress"))
                 .Width(Order.DataProfile.GridWidthFor("ShipAddress"))
                 .Add();
             column.Field("ShipCity")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(OrderResources.PropertyShipCity)
                 .Visible(Order.DataProfile.IsGridVisibleFor("ShipCity"))
                 .Width(Order.DataProfile.GridWidthFor("ShipCity"))
                 .Add();
             column.Field("ShipRegion")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(OrderResources.PropertyShipRegion)
                 .Visible(Order.DataProfile.IsGridVisibleFor("ShipRegion"))
                 .Width(Order.DataProfile.GridWidthFor("ShipRegion"))
                 .Add();
             column.Field("ShipPostalCode")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(OrderResources.PropertyShipPostalCode)
                 .Visible(Order.DataProfile.IsGridVisibleFor("ShipPostalCode"))
                 .Width(Order.DataProfile.GridWidthFor("ShipPostalCode"))
                 .Add();
             column.Field("ShipCountry")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(OrderResources.PropertyShipCountry)
                 .Visible(Order.DataProfile.IsGridVisibleFor("ShipCountry"))

@@ -1,5 +1,7 @@
 ﻿using EasyLOB.Data;
+using EasyLOB.Identity.Resources;
 using EasyLOB.Security;
+using System;
 
 namespace EasyLOB.Mvc
 {
@@ -44,11 +46,41 @@ namespace EasyLOB.Mvc
 
         #endregion Methods
 
-        #region Methods IsActivity
+        #region Methods Authentication
+
+        protected virtual bool IsUserAdministrator()
+        {
+            return AuthorizationManager.AuthenticationManager.IsAdministrator;
+        }
+
+        protected virtual bool IsUserInRole(string role)
+        {
+            return AuthorizationManager.AuthenticationManager.Roles.Contains(role);
+        }
+
+        protected virtual bool IsUserInRole(ZOperationResult operationResult, string role)
+        {
+            bool result = AuthorizationManager.AuthenticationManager.Roles.Contains(role);
+            operationResult.AddOperationError("",
+                String.Format(SecurityIdentityResources.OperationAuthorizedRole, role));
+
+            return result;
+        }
+
+        #endregion Methods Authentication
+
+        #region Methods Authorization
 
         protected virtual bool IsOperation(ZOperationResult operationResult)
         {
             return AuthorizationManager.IsOperation(ActivityOperations, operationResult);
+        }
+
+        protected virtual bool IsSearch()
+        {
+            ZOperationResult operationResult = new ZOperationResult();
+
+            return IsSearch(operationResult);
         }
 
         protected virtual bool IsSearch(ZOperationResult operationResult)
@@ -105,11 +137,11 @@ namespace EasyLOB.Mvc
             return AuthorizationManager.IsExecute(ActivityOperations, operationResult);
         }
 
-        protected virtual bool IsTask(string task, ZOperationResult operationResult)
+        protected virtual bool IsTask(ZOperationResult operationResult, string task)
         {
             return AuthorizationManager.IsTask(Domain, task, operationResult);
         }
 
-        #endregion Methods IsActivity
+        #endregion Methods Authorization
     }
 }

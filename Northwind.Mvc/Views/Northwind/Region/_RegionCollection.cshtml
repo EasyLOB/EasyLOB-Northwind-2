@@ -36,6 +36,7 @@
         .Columns(column =>
         {
             column.Field("RegionId")
+                .Type("number")
                 .EditType(EditingType.Numeric)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(RegionResources.PropertyRegionId)
@@ -45,6 +46,7 @@
                 .Width(Region.DataProfile.GridWidthFor("RegionId"))
                 .Add();
             column.Field("RegionDescription")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(RegionResources.PropertyRegionDescription)
                 .Visible(Region.DataProfile.IsGridVisibleFor("RegionDescription"))

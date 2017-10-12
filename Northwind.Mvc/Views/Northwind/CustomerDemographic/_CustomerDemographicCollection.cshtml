@@ -36,6 +36,7 @@
         .Columns(column =>
         {
             column.Field("CustomerTypeId")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerDemographicResources.PropertyCustomerTypeId)
                 .IsPrimaryKey(true)
@@ -43,6 +44,7 @@
                 .Width(CustomerDemographic.DataProfile.GridWidthFor("CustomerTypeId"))
                 .Add();
             column.Field("CustomerDesc")
+                .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerDemographicResources.PropertyCustomerDesc)
                 .Visible(CustomerDemographic.DataProfile.IsGridVisibleFor("CustomerDesc"))

@@ -57,6 +57,7 @@
                     .Columns(column =>
                     {
                         column.Field("TerritoryId")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(TerritoryResources.PropertyTerritoryId)
                             .IsPrimaryKey(true)
@@ -64,12 +65,14 @@
                             .Width(Territory.DataProfile.GridWidthFor("TerritoryId"))
                             .Add();
                         column.Field("TerritoryDescription")
+                            .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(TerritoryResources.PropertyTerritoryDescription)
                             .Visible(Territory.DataProfile.IsGridVisibleFor("TerritoryDescription"))
                             .Width(Territory.DataProfile.GridWidthFor("TerritoryDescription"))
                             .Add();
                         column.Field("RegionId")
+                            .Type("number")
                             .EditType(EditingType.Numeric)
                             .Format(SyncfusionPatternResources.GridFormat_Integer)
                             .HeaderText(TerritoryResources.PropertyRegionId)
@@ -79,6 +82,7 @@
                             .Add();
                         column.Field("RegionLookupText")
                             .AllowEditing(false)
+                            .Type("string")
                             .HeaderText(RegionResources.EntitySingular)
                             .Visible(Territory.DataProfile.IsGridVisibleFor("RegionLookupText"))
                             .Width(Territory.DataProfile.GridWidthFor("RegionLookupText"))
