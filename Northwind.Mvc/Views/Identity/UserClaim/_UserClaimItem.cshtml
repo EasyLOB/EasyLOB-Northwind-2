@@ -22,13 +22,13 @@
         {
             data.Add().ID("TabSheet_UserClaim_UserClaim").Text(UserClaimResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_UserClaim_Id" class="@AppDefaults.CssClassGroup @UserClaim.DataProfile.EditWidthCSSFor("Id")">
+                <div id="Group_UserClaim_Id" class="@AppDefaults.CssClassGroup @UserClaim.Profile.EditCSSFor("Id")">
                     @Html.LabelFor(model => model.UserClaim.Id, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.UserClaim.Id, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserClaim_Id" } })
                     @* @Html.ValidationMessageFor(model => model.UserClaim.Id, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_UserClaim_UserId" class="@AppDefaults.CssClassGroup @UserClaim.DataProfile.EditWidthCSSFor("UserLookupText")">
+                <div id="Group_UserClaim_UserId" class="@AppDefaults.CssClassGroup @UserClaim.Profile.EditCSSFor("UserLookupText")">
                     @Html.LabelFor(model => model.UserClaim.UserId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.UserClaim.UserId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserClaim_UserId" } })
                     @{
@@ -41,13 +41,13 @@
                     @* @Html.ValidationMessageFor(model => model.UserClaim.UserId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_UserClaim_ClaimType" class="@AppDefaults.CssClassGroup @UserClaim.DataProfile.EditWidthCSSFor("ClaimType")">
+                <div id="Group_UserClaim_ClaimType" class="@AppDefaults.CssClassGroup @UserClaim.Profile.EditCSSFor("ClaimType")">
                     @Html.LabelFor(model => model.UserClaim.ClaimType, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.UserClaim.ClaimType, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserClaim_ClaimType" } })
                     @* @Html.ValidationMessageFor(model => model.UserClaim.ClaimType, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_UserClaim_ClaimValue" class="@AppDefaults.CssClassGroup @UserClaim.DataProfile.EditWidthCSSFor("ClaimValue")">
+                <div id="Group_UserClaim_ClaimValue" class="@AppDefaults.CssClassGroup @UserClaim.Profile.EditCSSFor("ClaimValue")">
                     @Html.LabelFor(model => model.UserClaim.ClaimValue, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.UserClaim.ClaimValue, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserClaim_ClaimValue" } })
                     @* @Html.ValidationMessageFor(model => model.UserClaim.ClaimValue, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -70,12 +70,12 @@
             ej.widget.init($("#Item_UserClaim"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserClaim.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(UserClaim.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_UserClaim_Id").hide();
             }
 
@@ -86,7 +86,7 @@
                 $("#Group_UserClaim_UserId").hide();
             }
 
-            zOnItemView(model, dataProfile);
+            zOnItemView(model, profile);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

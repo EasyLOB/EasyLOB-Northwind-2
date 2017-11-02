@@ -40,15 +40,15 @@
                 .EditType(EditingType.String)
                 .HeaderText(ActivityResources.PropertyId)
                 .IsPrimaryKey(true)
-                .Visible(Activity.DataProfile.IsGridVisibleFor("Id"))
-                .Width(Activity.DataProfile.GridWidthFor("Id"))
+                .Visible(Activity.Profile.IsGridVisibleFor("Id"))
+                .Width(Activity.Profile.GridWidthFor("Id"))
                 .Add();
             column.Field("Name")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(ActivityResources.PropertyName)
-                .Visible(Activity.DataProfile.IsGridVisibleFor("Name"))
-                .Width(Activity.DataProfile.GridWidthFor("Name"))
+                .Visible(Activity.Profile.IsGridVisibleFor("Name"))
+                .Width(Activity.Profile.GridWidthFor("Name"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -103,9 +103,9 @@
             ej.widget.init($("#Collection_Activity"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Activity.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Activity.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Activity")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "Activity")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

@@ -44,22 +44,22 @@
                 .IsIdentity(true)
                 .IsPrimaryKey(true)
                 .TextAlign(TextAlign.Right)
-                .Visible(Shipper.DataProfile.IsGridVisibleFor("ShipperId"))
-                .Width(Shipper.DataProfile.GridWidthFor("ShipperId"))
+                .Visible(Shipper.Profile.IsGridVisibleFor("ShipperId"))
+                .Width(Shipper.Profile.GridWidthFor("ShipperId"))
                 .Add();
             column.Field("CompanyName")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(ShipperResources.PropertyCompanyName)
-                .Visible(Shipper.DataProfile.IsGridVisibleFor("CompanyName"))
-                .Width(Shipper.DataProfile.GridWidthFor("CompanyName"))
+                .Visible(Shipper.Profile.IsGridVisibleFor("CompanyName"))
+                .Width(Shipper.Profile.GridWidthFor("CompanyName"))
                 .Add();
             column.Field("Phone")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(ShipperResources.PropertyPhone)
-                .Visible(Shipper.DataProfile.IsGridVisibleFor("Phone"))
-                .Width(Shipper.DataProfile.GridWidthFor("Phone"))
+                .Visible(Shipper.Profile.IsGridVisibleFor("Phone"))
+                .Width(Shipper.Profile.GridWidthFor("Phone"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -114,9 +114,9 @@
             ej.widget.init($("#Collection_Shipper"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Shipper.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Shipper.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Shipper")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "Shipper")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }                

@@ -61,30 +61,30 @@
                             .EditType(EditingType.String)
                             .HeaderText(CustomerCustomerDemoResources.PropertyCustomerId)
                             .IsPrimaryKey(true)
-                            .Visible(CustomerCustomerDemo.DataProfile.IsGridVisibleFor("CustomerId"))
-                            .Width(CustomerCustomerDemo.DataProfile.GridWidthFor("CustomerId"))
+                            .Visible(CustomerCustomerDemo.Profile.IsGridVisibleFor("CustomerId"))
+                            .Width(CustomerCustomerDemo.Profile.GridWidthFor("CustomerId"))
                             .Add();
                         column.Field("CustomerLookupText")
                             .AllowEditing(false)
                             .Type("string")
                             .HeaderText(CustomerResources.EntitySingular)
-                            .Visible(CustomerCustomerDemo.DataProfile.IsGridVisibleFor("CustomerLookupText"))
-                            .Width(CustomerCustomerDemo.DataProfile.GridWidthFor("CustomerLookupText"))
+                            .Visible(CustomerCustomerDemo.Profile.IsGridVisibleFor("CustomerLookupText"))
+                            .Width(CustomerCustomerDemo.Profile.GridWidthFor("CustomerLookupText"))
                             .Add();
                         column.Field("CustomerTypeId")
                             .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(CustomerCustomerDemoResources.PropertyCustomerTypeId)
                             .IsPrimaryKey(true)
-                            .Visible(CustomerCustomerDemo.DataProfile.IsGridVisibleFor("CustomerTypeId"))
-                            .Width(CustomerCustomerDemo.DataProfile.GridWidthFor("CustomerTypeId"))
+                            .Visible(CustomerCustomerDemo.Profile.IsGridVisibleFor("CustomerTypeId"))
+                            .Width(CustomerCustomerDemo.Profile.GridWidthFor("CustomerTypeId"))
                             .Add();
                         column.Field("CustomerDemographicLookupText")
                             .AllowEditing(false)
                             .Type("string")
                             .HeaderText(CustomerDemographicResources.EntitySingular)
-                            .Visible(CustomerCustomerDemo.DataProfile.IsGridVisibleFor("CustomerDemographicLookupText"))
-                            .Width(CustomerCustomerDemo.DataProfile.GridWidthFor("CustomerDemographicLookupText"))
+                            .Visible(CustomerCustomerDemo.Profile.IsGridVisibleFor("CustomerDemographicLookupText"))
+                            .Width(CustomerCustomerDemo.Profile.GridWidthFor("CustomerDemographicLookupText"))
                             .Add();
                     })
                     //.EnablePersistence()
@@ -127,7 +127,7 @@
     $(function () {
         try {
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(CustomerCustomerDemo.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(CustomerCustomerDemo.Profile));
 
             $("#@Model.ValueId").hide();
 
@@ -148,7 +148,7 @@
 
             @*
             var ejGrid = zGrid("@(Model.ValueId)_LookupGrid");
-            zOnLookupView(model, dataProfile, ejGrid);
+            zOnLookupView(model, profile, ejGrid);
             *@
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
@@ -181,8 +181,8 @@
             this.model.locale = culture;
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(CustomerCustomerDemo.DataProfile));
-            zOnLookupView(model, dataProfile, this);
+            var profile = @Html.Raw(JsonConvert.SerializeObject(CustomerCustomerDemo.Profile));
+            zOnLookupView(model, profile, this);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "load_@(Model.ValueId)_LookupGrid", exception));
         }

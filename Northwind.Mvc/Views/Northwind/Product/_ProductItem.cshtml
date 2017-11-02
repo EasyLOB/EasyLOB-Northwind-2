@@ -24,19 +24,19 @@
         {
             data.Add().ID("TabSheet_Product_Product").Text(ProductResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_Product_ProductId" class="@AppDefaults.CssClassGroup @Product.DataProfile.EditWidthCSSFor("ProductId")">
+                <div id="Group_Product_ProductId" class="@AppDefaults.CssClassGroup @Product.Profile.EditCSSFor("ProductId")">
                     @Html.LabelFor(model => model.Product.ProductId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Product.ProductId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Product_ProductId" } })
                     @* @Html.ValidationMessageFor(model => model.Product.ProductId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Product_ProductName" class="@AppDefaults.CssClassGroup @Product.DataProfile.EditWidthCSSFor("ProductName")">
+                <div id="Group_Product_ProductName" class="@AppDefaults.CssClassGroup @Product.Profile.EditCSSFor("ProductName")">
                     @Html.LabelFor(model => model.Product.ProductName, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Product.ProductName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Product_ProductName" } })
                     @* @Html.ValidationMessageFor(model => model.Product.ProductName, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Product_SupplierId" class="@AppDefaults.CssClassGroup @Product.DataProfile.EditWidthCSSFor("SupplierLookupText")">
+                <div id="Group_Product_SupplierId" class="@AppDefaults.CssClassGroup @Product.Profile.EditCSSFor("SupplierLookupText")">
                     @Html.LabelFor(model => model.Product.SupplierId, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Product.SupplierId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Product_SupplierId" } })
                     @{
@@ -49,7 +49,7 @@
                     @* @Html.ValidationMessageFor(model => model.Product.SupplierId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Product_CategoryId" class="@AppDefaults.CssClassGroup @Product.DataProfile.EditWidthCSSFor("CategoryLookupText")">
+                <div id="Group_Product_CategoryId" class="@AppDefaults.CssClassGroup @Product.Profile.EditCSSFor("CategoryLookupText")">
                     @Html.LabelFor(model => model.Product.CategoryId, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Product.CategoryId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Product_CategoryId" } })
                     @{
@@ -62,37 +62,37 @@
                     @* @Html.ValidationMessageFor(model => model.Product.CategoryId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Product_QuantityPerUnit" class="@AppDefaults.CssClassGroup @Product.DataProfile.EditWidthCSSFor("QuantityPerUnit")">
+                <div id="Group_Product_QuantityPerUnit" class="@AppDefaults.CssClassGroup @Product.Profile.EditCSSFor("QuantityPerUnit")">
                     @Html.LabelFor(model => model.Product.QuantityPerUnit, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Product.QuantityPerUnit, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Product_QuantityPerUnit" } })
                     @* @Html.ValidationMessageFor(model => model.Product.QuantityPerUnit, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Product_UnitPrice" class="@AppDefaults.CssClassGroup @Product.DataProfile.EditWidthCSSFor("UnitPrice")">
+                <div id="Group_Product_UnitPrice" class="@AppDefaults.CssClassGroup @Product.Profile.EditCSSFor("UnitPrice")">
                     @Html.LabelFor(model => model.Product.UnitPrice, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Product.UnitPrice, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Product_UnitPrice" } })
                     @* @Html.ValidationMessageFor(model => model.Product.UnitPrice, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Product_UnitsInStock" class="@AppDefaults.CssClassGroup @Product.DataProfile.EditWidthCSSFor("UnitsInStock")">
+                <div id="Group_Product_UnitsInStock" class="@AppDefaults.CssClassGroup @Product.Profile.EditCSSFor("UnitsInStock")">
                     @Html.LabelFor(model => model.Product.UnitsInStock, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Product.UnitsInStock, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Product_UnitsInStock" } })
                     @* @Html.ValidationMessageFor(model => model.Product.UnitsInStock, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Product_UnitsOnOrder" class="@AppDefaults.CssClassGroup @Product.DataProfile.EditWidthCSSFor("UnitsOnOrder")">
+                <div id="Group_Product_UnitsOnOrder" class="@AppDefaults.CssClassGroup @Product.Profile.EditCSSFor("UnitsOnOrder")">
                     @Html.LabelFor(model => model.Product.UnitsOnOrder, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Product.UnitsOnOrder, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Product_UnitsOnOrder" } })
                     @* @Html.ValidationMessageFor(model => model.Product.UnitsOnOrder, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Product_ReorderLevel" class="@AppDefaults.CssClassGroup @Product.DataProfile.EditWidthCSSFor("ReorderLevel")">
+                <div id="Group_Product_ReorderLevel" class="@AppDefaults.CssClassGroup @Product.Profile.EditCSSFor("ReorderLevel")">
                     @Html.LabelFor(model => model.Product.ReorderLevel, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Product.ReorderLevel, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Product_ReorderLevel" } })
                     @* @Html.ValidationMessageFor(model => model.Product.ReorderLevel, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Product_Discontinued" class="@AppDefaults.CssClassGroup @Product.DataProfile.EditWidthCSSFor("Discontinued")">
+                <div id="Group_Product_Discontinued" class="@AppDefaults.CssClassGroup @Product.Profile.EditCSSFor("Discontinued")">
                     @Html.LabelFor(model => model.Product.Discontinued, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Product.Discontinued, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Product_Discontinued" } })
                     @* @Html.ValidationMessageFor(model => model.Product.Discontinued, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -118,18 +118,18 @@
             ej.widget.init($("#Item_Product"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Product.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Product.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "OrderDetails")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "OrderDetails")) {
                 // OrderDetails
                 zUrlDictionaryWrite("OrderDetail", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "OrderDetail", new { MasterControllerAction = Model.ControllerAction, MasterProductId = Model.Product.ProductId })))";
                 zAjaxLoadSync("Ajax_Product_OrderDetails", ajaxUrl);
             }
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_Product_ProductId").hide();
             }
 
@@ -145,7 +145,7 @@
                 $("#Group_Product_SupplierId").hide();            
             }
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

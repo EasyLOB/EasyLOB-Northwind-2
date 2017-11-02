@@ -48,30 +48,30 @@
                 .EditType(EditingType.String)
                 .HeaderText(ActivityRoleResources.PropertyActivityId)
                 .IsPrimaryKey(true)
-                .Visible(ActivityRole.DataProfile.IsGridVisibleFor("ActivityId"))
-                .Width(ActivityRole.DataProfile.GridWidthFor("ActivityId"))
+                .Visible(ActivityRole.Profile.IsGridVisibleFor("ActivityId"))
+                .Width(ActivityRole.Profile.GridWidthFor("ActivityId"))
                 .Add();
             column.Field("ActivityLookupText")
                 .AllowEditing(false)
                 .Type("string")
                 .HeaderText(ActivityResources.EntitySingular)
-                .Visible(ActivityRole.DataProfile.IsGridVisibleFor("ActivityLookupText"))
-                .Width(ActivityRole.DataProfile.GridWidthFor("ActivityLookupText"))
+                .Visible(ActivityRole.Profile.IsGridVisibleFor("ActivityLookupText"))
+                .Width(ActivityRole.Profile.GridWidthFor("ActivityLookupText"))
                 .Add();
             column.Field("RoleName")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(ActivityRoleResources.PropertyRoleName)
                 .IsPrimaryKey(true)
-                .Visible(ActivityRole.DataProfile.IsGridVisibleFor("RoleName"))
-                .Width(ActivityRole.DataProfile.GridWidthFor("RoleName"))
+                .Visible(ActivityRole.Profile.IsGridVisibleFor("RoleName"))
+                .Width(ActivityRole.Profile.GridWidthFor("RoleName"))
                 .Add();
             column.Field("Operations")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(ActivityRoleResources.PropertyOperations)
-                .Visible(ActivityRole.DataProfile.IsGridVisibleFor("Operations"))
-                .Width(ActivityRole.DataProfile.GridWidthFor("Operations"))
+                .Visible(ActivityRole.Profile.IsGridVisibleFor("Operations"))
+                .Width(ActivityRole.Profile.GridWidthFor("Operations"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -126,9 +126,9 @@
             ej.widget.init($("#Collection_ActivityRole"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(ActivityRole.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(ActivityRole.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "ActivityRole")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "ActivityRole")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

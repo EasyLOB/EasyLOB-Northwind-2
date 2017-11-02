@@ -44,36 +44,36 @@
                 .IsIdentity(true)
                 .IsPrimaryKey(true)
                 .TextAlign(TextAlign.Right)
-                .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("Id"))
-                .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("Id"))
+                .Visible(AuditTrailConfiguration.Profile.IsGridVisibleFor("Id"))
+                .Width(AuditTrailConfiguration.Profile.GridWidthFor("Id"))
                 .Add();
             column.Field("Domain")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailConfigurationResources.PropertyDomain)
-                .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("Domain"))
-                .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("Domain"))
+                .Visible(AuditTrailConfiguration.Profile.IsGridVisibleFor("Domain"))
+                .Width(AuditTrailConfiguration.Profile.GridWidthFor("Domain"))
                 .Add();
             column.Field("Entity")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailConfigurationResources.PropertyEntity)
-                .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("Entity"))
-                .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("Entity"))
+                .Visible(AuditTrailConfiguration.Profile.IsGridVisibleFor("Entity"))
+                .Width(AuditTrailConfiguration.Profile.GridWidthFor("Entity"))
                 .Add();
             column.Field("LogMode")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailConfigurationResources.PropertyLogMode)
-                .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("LogMode"))
-                .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("LogMode"))
+                .Visible(AuditTrailConfiguration.Profile.IsGridVisibleFor("LogMode"))
+                .Width(AuditTrailConfiguration.Profile.GridWidthFor("LogMode"))
                 .Add();
             column.Field("LogOperations")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailConfigurationResources.PropertyLogOperations)
-                .Visible(AuditTrailConfiguration.DataProfile.IsGridVisibleFor("LogOperations"))
-                .Width(AuditTrailConfiguration.DataProfile.GridWidthFor("LogOperations"))
+                .Visible(AuditTrailConfiguration.Profile.IsGridVisibleFor("LogOperations"))
+                .Width(AuditTrailConfiguration.Profile.GridWidthFor("LogOperations"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -128,9 +128,9 @@
             ej.widget.init($("#Collection_AuditTrailConfiguration"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(AuditTrailConfiguration.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(AuditTrailConfiguration.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "AuditTrailConfiguration")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "AuditTrailConfiguration")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

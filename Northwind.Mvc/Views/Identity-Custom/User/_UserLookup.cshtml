@@ -60,77 +60,77 @@
 							.EditType(EditingType.String)
 							.HeaderText(UserResources.PropertyId)
 							.IsPrimaryKey(true)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("Id")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("Id")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("Id")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("Id")) // !?!
 							.Add();
 						column.Field("Email")
 							.EditType(EditingType.String)
 							.HeaderText(UserResources.PropertyEmail)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("Email")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("Email")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("Email")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("Email")) // !?!
 							.Add();
 						column.Field("EmailConfirmed")
 							.EditType(EditingType.Boolean)
 							.HeaderText(UserResources.PropertyEmailConfirmed)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("EmailConfirmed")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("EmailConfirmed")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("EmailConfirmed")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("EmailConfirmed")) // !?!
 							.Add();
 						column.Field("PasswordHash")
 							.EditType(EditingType.String)
 							.HeaderText(UserResources.PropertyPasswordHash)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("PasswordHash")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("PasswordHash")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("PasswordHash")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("PasswordHash")) // !?!
 							.Add();
 						column.Field("SecurityStamp")
 							.EditType(EditingType.String)
 							.HeaderText(UserResources.PropertySecurityStamp)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("SecurityStamp")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("SecurityStamp")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("SecurityStamp")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("SecurityStamp")) // !?!
 							.Add();
 						column.Field("PhoneNumber")
 							.EditType(EditingType.String)
 							.HeaderText(UserResources.PropertyPhoneNumber)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("PhoneNumber")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("PhoneNumber")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("PhoneNumber")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("PhoneNumber")) // !?!
 							.Add();
 						column.Field("PhoneNumberConfirmed")
 							.EditType(EditingType.Boolean)
 							.HeaderText(UserResources.PropertyPhoneNumberConfirmed)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("PhoneNumberConfirmed")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("PhoneNumberConfirmed")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("PhoneNumberConfirmed")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("PhoneNumberConfirmed")) // !?!
 							.Add();
 						column.Field("TwoFactorEnabled")
 							.EditType(EditingType.Boolean)
 							.HeaderText(UserResources.PropertyTwoFactorEnabled)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("TwoFactorEnabled")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("TwoFactorEnabled")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("TwoFactorEnabled")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("TwoFactorEnabled")) // !?!
 							.Add();
 						column.Field("LockoutEndDateUtc")
 							.EditType(EditingType.DateTimePicker)
 							.Format(SyncfusionPatternResources.GridFormat_DateTime)
 							.HeaderText(UserResources.PropertyLockoutEndDateUtc)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("LockoutEndDateUtc")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("LockoutEndDateUtc")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("LockoutEndDateUtc")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("LockoutEndDateUtc")) // !?!
 							.Add();
 						column.Field("LockoutEnabled")
 							.EditType(EditingType.Boolean)
 							.HeaderText(UserResources.PropertyLockoutEnabled)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("LockoutEnabled")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("LockoutEnabled")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("LockoutEnabled")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("LockoutEnabled")) // !?!
 							.Add();
 						column.Field("AccessFailedCount")
 							.EditType(EditingType.Numeric)
 							.Format(SyncfusionPatternResources.GridFormat_Integer)
 							.HeaderText(UserResources.PropertyAccessFailedCount)
 							.TextAlign(TextAlign.Right)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("AccessFailedCount")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("AccessFailedCount")) // !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("AccessFailedCount")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("AccessFailedCount")) // !?!
 							.Add();
 						column.Field("UserName")
 							.EditType(EditingType.String)
 							.HeaderText(UserResources.PropertyUserName)
-							.Visible(EasyLOB.Identity.Data.User.DataProfile.IsGridVisibleFor("UserName")) // !?!
-							.Width(EasyLOB.Identity.Data.User.DataProfile.GridWidthFor("UserName")) //  !?!
+							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("UserName")) // !?!
+							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("UserName")) //  !?!
 							.Add();
                     })
                     //.EnablePersistence()
@@ -173,7 +173,7 @@
     $(function () {
         try {
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(EasyLOB.Identity.Data.User.DataProfile)); // !?!
+            var profile = @Html.Raw(JsonConvert.SerializeObject(EasyLOB.Identity.Data.User.Profile)); // !?!
 
             $("#@Model.ValueId").hide();
 
@@ -194,7 +194,7 @@
 
             @*
             var ejGrid = zGrid("@(Model.ValueId + "_LookupGrid")");
-            zOnLookupView(model, dataProfile, ejGrid);
+            zOnLookupView(model, profile, ejGrid);
             *@
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
@@ -227,8 +227,8 @@
             this.model.locale = culture;
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(EasyLOB.Identity.Data.User.DataProfile)); // !?!
-            zOnLookupView(model, dataProfile, this);
+            var profile = @Html.Raw(JsonConvert.SerializeObject(EasyLOB.Identity.Data.User.Profile)); // !?!
+            zOnLookupView(model, profile, this);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "load_@(Model.ValueId)_LookupGrid", exception));
         }

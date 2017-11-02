@@ -44,29 +44,29 @@
                 .IsIdentity(true)
                 .IsPrimaryKey(true)
                 .TextAlign(TextAlign.Right)
-                .Visible(Category.DataProfile.IsGridVisibleFor("CategoryId"))
-                .Width(Category.DataProfile.GridWidthFor("CategoryId"))
+                .Visible(Category.Profile.IsGridVisibleFor("CategoryId"))
+                .Width(Category.Profile.GridWidthFor("CategoryId"))
                 .Add();
             column.Field("CategoryName")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CategoryResources.PropertyCategoryName)
-                .Visible(Category.DataProfile.IsGridVisibleFor("CategoryName"))
-                .Width(Category.DataProfile.GridWidthFor("CategoryName"))
+                .Visible(Category.Profile.IsGridVisibleFor("CategoryName"))
+                .Width(Category.Profile.GridWidthFor("CategoryName"))
                 .Add();
             column.Field("Description")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CategoryResources.PropertyDescription)
-                .Visible(Category.DataProfile.IsGridVisibleFor("Description"))
-                .Width(Category.DataProfile.GridWidthFor("Description"))
+                .Visible(Category.Profile.IsGridVisibleFor("Description"))
+                .Width(Category.Profile.GridWidthFor("Description"))
                 .Add();
             column.Field("Picture")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CategoryResources.PropertyPicture)
-                .Visible(Category.DataProfile.IsGridVisibleFor("Picture"))
-                .Width(Category.DataProfile.GridWidthFor("Picture"))
+                .Visible(Category.Profile.IsGridVisibleFor("Picture"))
+                .Width(Category.Profile.GridWidthFor("Picture"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -121,9 +121,9 @@
             ej.widget.init($("#Collection_Category"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Category.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Category.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Category")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "Category")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }                

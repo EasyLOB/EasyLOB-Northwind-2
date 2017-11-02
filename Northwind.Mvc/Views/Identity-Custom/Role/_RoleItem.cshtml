@@ -20,19 +20,19 @@
         {
             data.Add().ID("TabSheet_Role_Role").Text(RoleResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">         
             
-                <div id="Group_Role_Id" class="@AppDefaults.CssClassGroup @Role.DataProfile.EditWidthCSSFor("Id")">
+                <div id="Group_Role_Id" class="@AppDefaults.CssClassGroup @Role.Profile.EditCSSFor("Id")">
                     @Html.LabelFor(model => model.Role.Id, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Role.Id, new { id = "Role_Id", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
                     @* @Html.ValidationMessageFor(model => model.Role.Id, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
             
-                <div id="Group_Role_Name" class="@AppDefaults.CssClassGroup @Role.DataProfile.EditWidthCSSFor("Name")">
+                <div id="Group_Role_Name" class="@AppDefaults.CssClassGroup @Role.Profile.EditCSSFor("Name")">
                     @Html.LabelFor(model => model.Role.Name, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Role.Name, new { id = "Role_Name", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
                     @* @Html.ValidationMessageFor(model => model.Role.Name, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
 
-                <div id="Group_Role_Discriminator" class="@AppDefaults.CssClassGroup @Role.DataProfile.EditWidthCSSFor("Discriminator")">
+                <div id="Group_Role_Discriminator" class="@AppDefaults.CssClassGroup @Role.Profile.EditCSSFor("Discriminator")">
                     @Html.LabelFor(model => model.Role.Discriminator, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Role.Discriminator, new { id = "Role_Discriminator", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
                     @* @Html.ValidationMessageFor(model => model.Role.Discriminator, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -61,7 +61,7 @@
             ej.widget.init($("#Item_Role"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Role.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Role.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
@@ -71,20 +71,20 @@
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "ActivityRole", new { MasterControllerAction = Model.ControllerAction, MasterRoleName = Model.Role.Name })))";
                 zAjaxLoadSync("Ajax_Role_ActivityRoles", ajaxUrl);
             }
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "UserRoles")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "UserRoles")) {
                 // UserRoles
                 zUrlDictionaryWrite("UserRole", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "UserRole", new { MasterControllerAction = Model.ControllerAction, MasterRoleId = Model.Role.Id })))";
                 zAjaxLoadSync("Ajax_Role_UserRoles", ajaxUrl);
             }
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_Role_Id").hide();
             }
 
             // Associations (FK)
 
-            zOnItemView(model, dataProfile);
+            zOnItemView(model, profile);
 
             // !?!
             if (controllerAction == "create") {

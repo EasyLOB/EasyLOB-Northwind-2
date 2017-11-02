@@ -390,8 +390,8 @@ function zLocalStorageSet(item, data) {
 
 // On*View
 
-function zOnCollectionView(model, dataProfile, dataSourceUrl) {
-    var ejGrid = zGrid("Grid_" + dataProfile.Class.Name);
+function zOnCollectionView(model, profile, dataSourceUrl) {
+    var ejGrid = zGrid("Grid_" + profile.Name);
 
     // Master-Detail Filtering & Search
     if (model.IsMasterDetail) {
@@ -409,12 +409,12 @@ function zOnCollectionView(model, dataProfile, dataSourceUrl) {
         }
     }
     else {
-        var search = zSearchDictionaryRead(dataProfile.Class.Name);
+        var search = zSearchDictionaryRead(profile.Name);
         if (search) {
             ejGrid.model.searchSettings.key = search;
         }    
     }
-    ejGrid.model.searchSettings.fields = dataProfile.GridSearchProperties;
+    ejGrid.model.searchSettings.fields = profile.GridSearchProperties;
 
     if (!model.IsMasterDetail) {
         ejGrid.setModel({
@@ -446,24 +446,24 @@ function zOnCollectionView(model, dataProfile, dataSourceUrl) {
     }
 
     // Tooltip
-    $("#Grid_" + dataProfile.Class.Name + "_Grid_" + dataProfile.Class.Name + "_Toolbar").removeAttr("data-content");
+    $("#Grid_" + profile.Name + "_Grid_" + profile.Name + "_Toolbar").removeAttr("data-content");
 
     // DataSource
     if (!model.IsMasterDetail) {
-        zGridDataSource("Grid_" + dataProfile.Class.Name, dataSourceUrl);
+        zGridDataSource("Grid_" + profile.Name, dataSourceUrl);
     }
 
     // <div></div>
     // Search.cshtml                <div style = "display: none;">
     // _EntityCollection.cshtml         <div id="Collection_Entity">
-    $("#Collection_" + dataProfile.Class.Name).parent().show();
+    $("#Collection_" + profile.Name).parent().show();
 
     // Activity
     //if (model.ActivityOperations.IsSearch) {
-    //    $("#Collection_" + dataProfile.Class.Name).css("display", "block");
+    //    $("#Collection_" + profile.Name).css("display", "block");
     //}
     //else {
-    //    $("#Collection_" + dataProfile.Class.Name).css("display", "none");
+    //    $("#Collection_" + profile.Name).css("display", "none");
     //}
 
     zShowOperationResult(model.OperationResult);
@@ -491,7 +491,7 @@ function zOnCRUDView(model) {
     }
 }
 
-function zOnItemView(model, dataProfile) {
+function zOnItemView(model, profile) {
     var controllerAction = model.ControllerAction ? model.ControllerAction.toLowerCase() : "";
 
     // Read-Only
@@ -521,27 +521,27 @@ function zOnItemView(model, dataProfile) {
     var i;
 
     // Hidden
-    var hiddenProperties = dataProfile.EditHiddenProperties;
+    var hiddenProperties = profile.EditHiddenProperties;
     var hiddenPropertiesLength = hiddenProperties.length;
     for (i = 0; i < hiddenPropertiesLength; i++) {
-        $("#Group_" + dataProfile.Class.Name + "_" + hiddenProperties[i]).hide();
+        $("#Group_" + profile.Name + "_" + hiddenProperties[i]).hide();
     }
 
     // Read-Only
-    var readOnlyProperties = dataProfile.EditReadOnlyProperties;
+    var readOnlyProperties = profile.EditReadOnlyProperties;
     var readOnlyPropertiesLength = readOnlyProperties.length;
     for (i = 0; i < readOnlyPropertiesLength; i++) {
-        $("#" + dataProfile.Class.Name + "_" + readOnlyProperties[i]).prop("readonly", true);
+        $("#" + profile.Name + "_" + readOnlyProperties[i]).prop("readonly", true);
 
-        $("#" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "_LookupButton").hide();
+        $("#" + profile.Name + "_" + readOnlyProperties[i] + "_LookupButton").hide();
 
-        $("input[type='checkbox'][id='" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "']").removeProp("readonly");
-        $("input[type='checkbox'][id='" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "']").prop("disabled", true);
+        $("input[type='checkbox'][id='" + profile.Name + "_" + readOnlyProperties[i] + "']").removeProp("readonly");
+        $("input[type='checkbox'][id='" + profile.Name + "_" + readOnlyProperties[i] + "']").prop("disabled", true);
 
-        $("input[data-role='ejdatepicker'][id='" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "']").each(function () {
+        $("input[data-role='ejdatepicker'][id='" + profile.Name + "_" + readOnlyProperties[i] + "']").each(function () {
             $(this).data("ejDatePicker").disable();
         });
-        $("input[data-role='ejdatetimepicker'][id='" + dataProfile.Class.Name + "_" + readOnlyProperties[i] + "']").each(function () {
+        $("input[data-role='ejdatetimepicker'][id='" + profile.Name + "_" + readOnlyProperties[i] + "']").each(function () {
             $(this).data("ejDateTimePicker").disable();
         });
     }
@@ -549,17 +549,17 @@ function zOnItemView(model, dataProfile) {
     var id;
 
     // Collections (PK)
-    var hiddenCollections = dataProfile.EditHiddenCollections;
+    var hiddenCollections = profile.EditHiddenCollections;
     var hiddenCollectionsLength = hiddenCollections.length;
     for (i = 0; i < hiddenCollectionsLength; i++) {
-        id = "TabSheet_" + dataProfile.Class.Name + "_" + hiddenCollections[i];
+        id = "TabSheet_" + profile.Name + "_" + hiddenCollections[i];
         $("a[href='#" + id + "']").css("display", "none");
         $("#" + id).css("display", "none");
     }
-    var collections = dataProfile.EditCollections;
+    var collections = profile.EditCollections;
     var collectionsLength = collections.length;
     for (i = 0; i < collectionsLength; i++) {
-        id = "TabSheet_" + dataProfile.Class.Name + "_" + collections[i];
+        id = "TabSheet_" + profile.Name + "_" + collections[i];
         if (controllerAction === "create") {
             $("a[href='#" + id + "']").css("display", "none");
             $("#" + id).css("display", "none");
@@ -571,7 +571,7 @@ function zOnItemView(model, dataProfile) {
         }
     }
     if (controllerAction == "create") {
-        zTabDictionaryWrite(dataProfile.Class.Name, 0);
+        zTabDictionaryWrite(profile.Name, 0);
     }
 
     // ENTER => TAB
@@ -585,9 +585,9 @@ function zOnItemView(model, dataProfile) {
     });
 
     // Tab
-    var tabIndex = zTabDictionaryRead(dataProfile.Class.Name);
+    var tabIndex = zTabDictionaryRead(profile.Name);
     if (tabIndex && tabIndex >= 0) {
-        var ejTab = zTab("Tab_" + dataProfile.Class.Name);
+        var ejTab = zTab("Tab_" + profile.Name);
         ejTab.setModel({
             selectedItemIndex: tabIndex
         });
@@ -597,14 +597,14 @@ function zOnItemView(model, dataProfile) {
     // CRUD.cshtml                  <div id="Form_Entity" style = "display: none;">
     // CRUD.cshtml                      <div>
     // _EntityItem.cshtml                   <div id="Item_Entity">
-    $("#Item_" + dataProfile.Class.Name).parent().parent().show();
+    $("#Item_" + profile.Name).parent().parent().show();
 
     zShowOperationResult(model.OperationResult);
 }
 
-function zOnLookupView(model, dataProfile, ejGrid) {
+function zOnLookupView(model, profile, ejGrid) {
     // Search
-    ejGrid.model.searchSettings.fields = dataProfile.GridSearchProperties;
+    ejGrid.model.searchSettings.fields = profile.GridSearchProperties;
 
     zShowOperationResult(model.OperationResult);
 }

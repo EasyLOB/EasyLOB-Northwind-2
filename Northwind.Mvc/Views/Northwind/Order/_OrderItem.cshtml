@@ -26,13 +26,13 @@
         {
             data.Add().ID("TabSheet_Order_Order").Text(OrderResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_Order_OrderId" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("OrderId")">
+                <div id="Group_Order_OrderId" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("OrderId")">
                     @Html.LabelFor(model => model.Order.OrderId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Order.OrderId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_OrderId" } })
                     @* @Html.ValidationMessageFor(model => model.Order.OrderId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_CustomerId" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("CustomerLookupText")">
+                <div id="Group_Order_CustomerId" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("CustomerLookupText")">
                     @Html.LabelFor(model => model.Order.CustomerId, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Order.CustomerId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_CustomerId" } })
                     @{
@@ -45,7 +45,7 @@
                     @* @Html.ValidationMessageFor(model => model.Order.CustomerId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_EmployeeId" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("EmployeeLookupText")">
+                <div id="Group_Order_EmployeeId" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("EmployeeLookupText")">
                     @Html.LabelFor(model => model.Order.EmployeeId, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Order.EmployeeId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_EmployeeId" } })
                     @{
@@ -58,28 +58,28 @@
                     @* @Html.ValidationMessageFor(model => model.Order.EmployeeId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_OrderDate" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("OrderDate")">
+                <div id="Group_Order_OrderDate" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("OrderDate")">
                     @Html.LabelFor(model => model.Order.OrderDate, new { @class = AppDefaults.CssClassLabel })
                     @* @Html.EditorFor(model => model.Order.OrderDate, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_OrderDate" } }) *@
                     @Html.EJ().DateTimePickerFor(model => model.Order.OrderDate, AppHelper.DateTimeModel, new { id = "Order_OrderDate" })
                     @* @Html.ValidationMessageFor(model => model.Order.OrderDate, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_RequiredDate" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("RequiredDate")">
+                <div id="Group_Order_RequiredDate" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("RequiredDate")">
                     @Html.LabelFor(model => model.Order.RequiredDate, new { @class = AppDefaults.CssClassLabel })
                     @* @Html.EditorFor(model => model.Order.RequiredDate, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_RequiredDate" } }) *@
                     @Html.EJ().DateTimePickerFor(model => model.Order.RequiredDate, AppHelper.DateTimeModel, new { id = "Order_RequiredDate" })
                     @* @Html.ValidationMessageFor(model => model.Order.RequiredDate, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_ShippedDate" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("ShippedDate")">
+                <div id="Group_Order_ShippedDate" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("ShippedDate")">
                     @Html.LabelFor(model => model.Order.ShippedDate, new { @class = AppDefaults.CssClassLabel })
                     @* @Html.EditorFor(model => model.Order.ShippedDate, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_ShippedDate" } }) *@
                     @Html.EJ().DateTimePickerFor(model => model.Order.ShippedDate, AppHelper.DateTimeModel, new { id = "Order_ShippedDate" })
                     @* @Html.ValidationMessageFor(model => model.Order.ShippedDate, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_ShipVia" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("ShipperLookupText")">
+                <div id="Group_Order_ShipVia" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("ShipperLookupText")">
                     @Html.LabelFor(model => model.Order.ShipVia, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Order.ShipVia, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_ShipVia" } })
                     @{
@@ -92,43 +92,43 @@
                     @* @Html.ValidationMessageFor(model => model.Order.ShipVia, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_Freight" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("Freight")">
+                <div id="Group_Order_Freight" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("Freight")">
                     @Html.LabelFor(model => model.Order.Freight, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Order.Freight, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_Freight" } })
                     @* @Html.ValidationMessageFor(model => model.Order.Freight, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_ShipName" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("ShipName")">
+                <div id="Group_Order_ShipName" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("ShipName")">
                     @Html.LabelFor(model => model.Order.ShipName, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Order.ShipName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_ShipName" } })
                     @* @Html.ValidationMessageFor(model => model.Order.ShipName, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_ShipAddress" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("ShipAddress")">
+                <div id="Group_Order_ShipAddress" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("ShipAddress")">
                     @Html.LabelFor(model => model.Order.ShipAddress, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Order.ShipAddress, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_ShipAddress" } })
                     @* @Html.ValidationMessageFor(model => model.Order.ShipAddress, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_ShipCity" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("ShipCity")">
+                <div id="Group_Order_ShipCity" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("ShipCity")">
                     @Html.LabelFor(model => model.Order.ShipCity, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Order.ShipCity, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_ShipCity" } })
                     @* @Html.ValidationMessageFor(model => model.Order.ShipCity, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_ShipRegion" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("ShipRegion")">
+                <div id="Group_Order_ShipRegion" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("ShipRegion")">
                     @Html.LabelFor(model => model.Order.ShipRegion, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Order.ShipRegion, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_ShipRegion" } })
                     @* @Html.ValidationMessageFor(model => model.Order.ShipRegion, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_ShipPostalCode" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("ShipPostalCode")">
+                <div id="Group_Order_ShipPostalCode" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("ShipPostalCode")">
                     @Html.LabelFor(model => model.Order.ShipPostalCode, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Order.ShipPostalCode, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_ShipPostalCode" } })
                     @* @Html.ValidationMessageFor(model => model.Order.ShipPostalCode, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Order_ShipCountry" class="@AppDefaults.CssClassGroup @Order.DataProfile.EditWidthCSSFor("ShipCountry")">
+                <div id="Group_Order_ShipCountry" class="@AppDefaults.CssClassGroup @Order.Profile.EditCSSFor("ShipCountry")">
                     @Html.LabelFor(model => model.Order.ShipCountry, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Order.ShipCountry, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Order_ShipCountry" } })
                     @* @Html.ValidationMessageFor(model => model.Order.ShipCountry, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -154,18 +154,18 @@
             ej.widget.init($("#Item_Order"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Order.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Order.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "OrderDetails")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "OrderDetails")) {
                 // OrderDetails
                 zUrlDictionaryWrite("OrderDetail", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "OrderDetail", new { MasterControllerAction = Model.ControllerAction, MasterOrderId = Model.Order.OrderId })))";
                 zAjaxLoadSync("Ajax_Order_OrderDetails", ajaxUrl);
             }
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_Order_OrderId").hide();
             }
 
@@ -186,7 +186,7 @@
                 $("#Group_Order_ShipVia").hide();            
             }
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

@@ -22,56 +22,56 @@
         {
             data.Add().ID("TabSheet_User_User").Text(UserResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_User_Id" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("Id")">
+                <div id="Group_User_Id" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("Id")">
                     @Html.LabelFor(model => model.User.Id, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.User.Id, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_Id" } })
                     @* @Html.ValidationMessageFor(model => model.User.Id, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
 
                 @* !?! *@                
-                <div id="Group_User_UserName" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("UserName")">
+                <div id="Group_User_UserName" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("UserName")">
                     @Html.LabelFor(model => model.User.UserName, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.User.UserName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_UserName" } })
                     @* @Html.ValidationMessageFor(model => model.User.UserName, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_User_Email" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("Email")">
+                <div id="Group_User_Email" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("Email")">
                     @Html.LabelFor(model => model.User.Email, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.User.Email, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_Email" } })
                     @* @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_User_EmailConfirmed" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("EmailConfirmed")">
+                <div id="Group_User_EmailConfirmed" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("EmailConfirmed")">
                     @Html.LabelFor(model => model.User.EmailConfirmed, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.User.EmailConfirmed, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_EmailConfirmed" } })
                     @* @Html.ValidationMessageFor(model => model.User.EmailConfirmed, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_User_PasswordHash" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("PasswordHash")">
+                <div id="Group_User_PasswordHash" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("PasswordHash")">
                     @Html.LabelFor(model => model.User.PasswordHash, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.User.PasswordHash, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_PasswordHash", @type = "password" } })
                     @* @Html.ValidationMessageFor(model => model.User.PasswordHash, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_User_SecurityStamp" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("SecurityStamp")">
+                <div id="Group_User_SecurityStamp" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("SecurityStamp")">
                     @Html.LabelFor(model => model.User.SecurityStamp, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.User.SecurityStamp, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_SecurityStamp" } })
                     @* @Html.ValidationMessageFor(model => model.User.SecurityStamp, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_User_PhoneNumber" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("PhoneNumber")">
+                <div id="Group_User_PhoneNumber" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("PhoneNumber")">
                     @Html.LabelFor(model => model.User.PhoneNumber, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.User.PhoneNumber, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_PhoneNumber" } })
                     @* @Html.ValidationMessageFor(model => model.User.PhoneNumber, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_User_PhoneNumberConfirmed" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("PhoneNumberConfirmed")">
+                <div id="Group_User_PhoneNumberConfirmed" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("PhoneNumberConfirmed")">
                     @Html.LabelFor(model => model.User.PhoneNumberConfirmed, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.User.PhoneNumberConfirmed, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_PhoneNumberConfirmed" } })
                     @* @Html.ValidationMessageFor(model => model.User.PhoneNumberConfirmed, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_User_TwoFactorEnabled" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("TwoFactorEnabled")">
+                <div id="Group_User_TwoFactorEnabled" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("TwoFactorEnabled")">
                     @Html.LabelFor(model => model.User.TwoFactorEnabled, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.User.TwoFactorEnabled, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_TwoFactorEnabled" } })
                     @* @Html.ValidationMessageFor(model => model.User.TwoFactorEnabled, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -79,20 +79,20 @@
 
                 @Html.ZNewLine() @* !?! *@
                 
-                <div id="Group_User_LockoutEnabled" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("LockoutEnabled")">
+                <div id="Group_User_LockoutEnabled" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("LockoutEnabled")">
                     @Html.LabelFor(model => model.User.LockoutEnabled, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.User.LockoutEnabled, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_LockoutEnabled" } })
                     @* @Html.ValidationMessageFor(model => model.User.LockoutEnabled, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_User_LockoutEndDateUtc" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("LockoutEndDateUtc")">
+                <div id="Group_User_LockoutEndDateUtc" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("LockoutEndDateUtc")">
                     @Html.LabelFor(model => model.User.LockoutEndDateUtc, new { @class = AppDefaults.CssClassLabel })
                     @* @Html.EditorFor(model => model.User.LockoutEndDateUtc, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_LockoutEndDateUtc" } }) *@
                     @Html.EJ().DateTimePickerFor(model => model.User.LockoutEndDateUtc, AppHelper.DateTimeModel, new { id = "User_LockoutEndDateUtc" })
                     @* @Html.ValidationMessageFor(model => model.User.LockoutEndDateUtc, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_User_AccessFailedCount" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.DataProfile.EditWidthCSSFor("AccessFailedCount")">
+                <div id="Group_User_AccessFailedCount" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("AccessFailedCount")">
                     @Html.LabelFor(model => model.User.AccessFailedCount, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.User.AccessFailedCount, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_AccessFailedCount" } })
                     @* @Html.ValidationMessageFor(model => model.User.AccessFailedCount, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -124,36 +124,36 @@
             ej.widget.init($("#Item_User"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(EasyLOB.Identity.Data.User.DataProfile)); // !?!
+            var profile = @Html.Raw(JsonConvert.SerializeObject(EasyLOB.Identity.Data.User.Profile)); // !?!
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "UserClaims")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "UserClaims")) {
                 // UserClaims
                 zUrlDictionaryWrite("UserClaim", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "UserClaim", new { MasterControllerAction = Model.ControllerAction, MasterUserId = Model.User.Id })))";
                 zAjaxLoadSync("Ajax_User_UserClaims", ajaxUrl);
             }
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "UserLogins")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "UserLogins")) {
                 // UserLogins
                 zUrlDictionaryWrite("UserLogin", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "UserLogin", new { MasterControllerAction = Model.ControllerAction, MasterUserId = Model.User.Id })))";
                 zAjaxLoadSync("Ajax_User_UserLogins", ajaxUrl);
             }
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "UserRoles")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "UserRoles")) {
                 // UserRoles
                 zUrlDictionaryWrite("UserRole", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "UserRole", new { MasterControllerAction = Model.ControllerAction, MasterUserId = Model.User.Id })))";
                 zAjaxLoadSync("Ajax_User_UserRoles", ajaxUrl);
             }
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_User_Id").hide();
             }
 
             // Associations (FK)
 
-            zOnItemView(model, dataProfile);
+            zOnItemView(model, profile);
 
             // !?!
             if (controllerAction != "create") {

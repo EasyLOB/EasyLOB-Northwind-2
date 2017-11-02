@@ -61,30 +61,30 @@
                             .EditType(EditingType.String)
                             .HeaderText(UserRoleResources.PropertyUserId)
                             .IsPrimaryKey(true)
-                            .Visible(UserRole.DataProfile.IsGridVisibleFor("UserId"))
-                            .Width(UserRole.DataProfile.GridWidthFor("UserId"))
+                            .Visible(UserRole.Profile.IsGridVisibleFor("UserId"))
+                            .Width(UserRole.Profile.GridWidthFor("UserId"))
                             .Add();
                         column.Field("UserLookupText")
                             .AllowEditing(false)
                             .Type("string")
                             .HeaderText(UserResources.EntitySingular)
-                            .Visible(UserRole.DataProfile.IsGridVisibleFor("UserLookupText"))
-                            .Width(UserRole.DataProfile.GridWidthFor("UserLookupText"))
+                            .Visible(UserRole.Profile.IsGridVisibleFor("UserLookupText"))
+                            .Width(UserRole.Profile.GridWidthFor("UserLookupText"))
                             .Add();
                         column.Field("RoleId")
                             .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(UserRoleResources.PropertyRoleId)
                             .IsPrimaryKey(true)
-                            .Visible(UserRole.DataProfile.IsGridVisibleFor("RoleId"))
-                            .Width(UserRole.DataProfile.GridWidthFor("RoleId"))
+                            .Visible(UserRole.Profile.IsGridVisibleFor("RoleId"))
+                            .Width(UserRole.Profile.GridWidthFor("RoleId"))
                             .Add();
                         column.Field("RoleLookupText")
                             .AllowEditing(false)
                             .Type("string")
                             .HeaderText(RoleResources.EntitySingular)
-                            .Visible(UserRole.DataProfile.IsGridVisibleFor("RoleLookupText"))
-                            .Width(UserRole.DataProfile.GridWidthFor("RoleLookupText"))
+                            .Visible(UserRole.Profile.IsGridVisibleFor("RoleLookupText"))
+                            .Width(UserRole.Profile.GridWidthFor("RoleLookupText"))
                             .Add();
                     })
                     //.EnablePersistence()
@@ -126,7 +126,7 @@
     $(function () {
         try {
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserRole.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(UserRole.Profile));
 
             $("#@Model.ValueId").hide();
 
@@ -147,7 +147,7 @@
 
             @*
             var ejGrid = zGrid("@(Model.ValueId + "_LookupGrid")");
-            zOnLookupView(model, dataProfile, ejGrid);
+            zOnLookupView(model, profile, ejGrid);
             *@
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
@@ -180,8 +180,8 @@
             this.model.locale = culture;
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserRole.DataProfile));
-            zOnLookupView(model, dataProfile, this);
+            var profile = @Html.Raw(JsonConvert.SerializeObject(UserRole.Profile));
+            zOnLookupView(model, profile, this);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "load_@(Model.ValueId)_LookupGrid", exception));
         }

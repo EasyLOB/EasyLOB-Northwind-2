@@ -20,19 +20,19 @@
         {
             data.Add().ID("TabSheet_Shipper_Shipper").Text(ShipperResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_Shipper_ShipperId" class="@AppDefaults.CssClassGroup @Shipper.DataProfile.EditWidthCSSFor("ShipperId")">
+                <div id="Group_Shipper_ShipperId" class="@AppDefaults.CssClassGroup @Shipper.Profile.EditCSSFor("ShipperId")">
                     @Html.LabelFor(model => model.Shipper.ShipperId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Shipper.ShipperId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Shipper_ShipperId" } })
                     @* @Html.ValidationMessageFor(model => model.Shipper.ShipperId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Shipper_CompanyName" class="@AppDefaults.CssClassGroup @Shipper.DataProfile.EditWidthCSSFor("CompanyName")">
+                <div id="Group_Shipper_CompanyName" class="@AppDefaults.CssClassGroup @Shipper.Profile.EditCSSFor("CompanyName")">
                     @Html.LabelFor(model => model.Shipper.CompanyName, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Shipper.CompanyName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Shipper_CompanyName" } })
                     @* @Html.ValidationMessageFor(model => model.Shipper.CompanyName, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Shipper_Phone" class="@AppDefaults.CssClassGroup @Shipper.DataProfile.EditWidthCSSFor("Phone")">
+                <div id="Group_Shipper_Phone" class="@AppDefaults.CssClassGroup @Shipper.Profile.EditCSSFor("Phone")">
                     @Html.LabelFor(model => model.Shipper.Phone, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Shipper.Phone, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Shipper_Phone" } })
                     @* @Html.ValidationMessageFor(model => model.Shipper.Phone, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -58,24 +58,24 @@
             ej.widget.init($("#Item_Shipper"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Shipper.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Shipper.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "Orders")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "Orders")) {
                 // Orders
                 zUrlDictionaryWrite("Order", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "Order", new { MasterControllerAction = Model.ControllerAction, MasterShipVia = Model.Shipper.ShipperId })))";
                 zAjaxLoadSync("Ajax_Shipper_Orders", ajaxUrl);
             }
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_Shipper_ShipperId").hide();
             }
 
             // Associations (FK)
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

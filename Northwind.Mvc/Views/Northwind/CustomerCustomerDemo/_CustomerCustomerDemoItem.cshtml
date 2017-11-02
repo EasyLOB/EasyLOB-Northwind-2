@@ -24,7 +24,7 @@
         {
             data.Add().ID("TabSheet_CustomerCustomerDemo_CustomerCustomerDemo").Text(CustomerCustomerDemoResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_CustomerCustomerDemo_CustomerId" class="@AppDefaults.CssClassGroup @CustomerCustomerDemo.DataProfile.EditWidthCSSFor("CustomerLookupText")">
+                <div id="Group_CustomerCustomerDemo_CustomerId" class="@AppDefaults.CssClassGroup @CustomerCustomerDemo.Profile.EditCSSFor("CustomerLookupText")">
                     @Html.LabelFor(model => model.CustomerCustomerDemo.CustomerId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.CustomerCustomerDemo.CustomerId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "CustomerCustomerDemo_CustomerId" } })
                     @{
@@ -37,7 +37,7 @@
                     @* @Html.ValidationMessageFor(model => model.CustomerCustomerDemo.CustomerId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_CustomerCustomerDemo_CustomerTypeId" class="@AppDefaults.CssClassGroup @CustomerCustomerDemo.DataProfile.EditWidthCSSFor("CustomerDemographicLookupText")">
+                <div id="Group_CustomerCustomerDemo_CustomerTypeId" class="@AppDefaults.CssClassGroup @CustomerCustomerDemo.Profile.EditCSSFor("CustomerDemographicLookupText")">
                     @Html.LabelFor(model => model.CustomerCustomerDemo.CustomerTypeId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.CustomerCustomerDemo.CustomerTypeId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "CustomerCustomerDemo_CustomerTypeId" } })
                     @{
@@ -67,12 +67,12 @@
             ej.widget.init($("#Item_CustomerCustomerDemo"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(CustomerCustomerDemo.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(CustomerCustomerDemo.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_CustomerCustomerDemo_CustomerId").hide();
                 $("#Group_CustomerCustomerDemo_CustomerTypeId").hide();
             }
@@ -89,7 +89,7 @@
                 $("#Group_CustomerCustomerDemo_CustomerId").hide();            
             }
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

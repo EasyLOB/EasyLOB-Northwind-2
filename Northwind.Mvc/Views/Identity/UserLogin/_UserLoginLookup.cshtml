@@ -61,31 +61,31 @@
                             .EditType(EditingType.String)
                             .HeaderText(UserLoginResources.PropertyLoginProvider)
                             .IsPrimaryKey(true)
-                            .Visible(UserLogin.DataProfile.IsGridVisibleFor("LoginProvider"))
-                            .Width(UserLogin.DataProfile.GridWidthFor("LoginProvider"))
+                            .Visible(UserLogin.Profile.IsGridVisibleFor("LoginProvider"))
+                            .Width(UserLogin.Profile.GridWidthFor("LoginProvider"))
                             .Add();
                         column.Field("ProviderKey")
                             .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(UserLoginResources.PropertyProviderKey)
                             .IsPrimaryKey(true)
-                            .Visible(UserLogin.DataProfile.IsGridVisibleFor("ProviderKey"))
-                            .Width(UserLogin.DataProfile.GridWidthFor("ProviderKey"))
+                            .Visible(UserLogin.Profile.IsGridVisibleFor("ProviderKey"))
+                            .Width(UserLogin.Profile.GridWidthFor("ProviderKey"))
                             .Add();
                         column.Field("UserId")
                             .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(UserLoginResources.PropertyUserId)
                             .IsPrimaryKey(true)
-                            .Visible(UserLogin.DataProfile.IsGridVisibleFor("UserId"))
-                            .Width(UserLogin.DataProfile.GridWidthFor("UserId"))
+                            .Visible(UserLogin.Profile.IsGridVisibleFor("UserId"))
+                            .Width(UserLogin.Profile.GridWidthFor("UserId"))
                             .Add();
                         column.Field("UserLookupText")
                             .AllowEditing(false)
                             .Type("string")
                             .HeaderText(UserResources.EntitySingular)
-                            .Visible(UserLogin.DataProfile.IsGridVisibleFor("UserLookupText"))
-                            .Width(UserLogin.DataProfile.GridWidthFor("UserLookupText"))
+                            .Visible(UserLogin.Profile.IsGridVisibleFor("UserLookupText"))
+                            .Width(UserLogin.Profile.GridWidthFor("UserLookupText"))
                             .Add();
                     })
                     //.EnablePersistence()
@@ -127,7 +127,7 @@
     $(function () {
         try {
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserLogin.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(UserLogin.Profile));
 
             $("#@Model.ValueId").hide();
 
@@ -148,7 +148,7 @@
 
             @*
             var ejGrid = zGrid("@(Model.ValueId + "_LookupGrid")");
-            zOnLookupView(model, dataProfile, ejGrid);
+            zOnLookupView(model, profile, ejGrid);
             *@
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
@@ -181,8 +181,8 @@
             this.model.locale = culture;
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserLogin.DataProfile));
-            zOnLookupView(model, dataProfile, this);
+            var profile = @Html.Raw(JsonConvert.SerializeObject(UserLogin.Profile));
+            zOnLookupView(model, profile, this);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "load_@(Model.ValueId)_LookupGrid", exception));
         }

@@ -20,73 +20,73 @@
         {
             data.Add().ID("TabSheet_Supplier_Supplier").Text(SupplierResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_Supplier_SupplierId" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("SupplierId")">
+                <div id="Group_Supplier_SupplierId" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("SupplierId")">
                     @Html.LabelFor(model => model.Supplier.SupplierId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Supplier.SupplierId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_SupplierId" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.SupplierId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_CompanyName" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("CompanyName")">
+                <div id="Group_Supplier_CompanyName" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("CompanyName")">
                     @Html.LabelFor(model => model.Supplier.CompanyName, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Supplier.CompanyName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_CompanyName" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.CompanyName, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_ContactName" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("ContactName")">
+                <div id="Group_Supplier_ContactName" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("ContactName")">
                     @Html.LabelFor(model => model.Supplier.ContactName, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Supplier.ContactName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_ContactName" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.ContactName, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_ContactTitle" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("ContactTitle")">
+                <div id="Group_Supplier_ContactTitle" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("ContactTitle")">
                     @Html.LabelFor(model => model.Supplier.ContactTitle, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Supplier.ContactTitle, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_ContactTitle" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.ContactTitle, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_Address" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("Address")">
+                <div id="Group_Supplier_Address" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("Address")">
                     @Html.LabelFor(model => model.Supplier.Address, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Supplier.Address, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_Address" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.Address, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_City" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("City")">
+                <div id="Group_Supplier_City" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("City")">
                     @Html.LabelFor(model => model.Supplier.City, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Supplier.City, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_City" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.City, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_Region" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("Region")">
+                <div id="Group_Supplier_Region" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("Region")">
                     @Html.LabelFor(model => model.Supplier.Region, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Supplier.Region, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_Region" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.Region, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_PostalCode" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("PostalCode")">
+                <div id="Group_Supplier_PostalCode" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("PostalCode")">
                     @Html.LabelFor(model => model.Supplier.PostalCode, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Supplier.PostalCode, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_PostalCode" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.PostalCode, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_Country" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("Country")">
+                <div id="Group_Supplier_Country" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("Country")">
                     @Html.LabelFor(model => model.Supplier.Country, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Supplier.Country, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_Country" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.Country, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_Phone" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("Phone")">
+                <div id="Group_Supplier_Phone" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("Phone")">
                     @Html.LabelFor(model => model.Supplier.Phone, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Supplier.Phone, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_Phone" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.Phone, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_Fax" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("Fax")">
+                <div id="Group_Supplier_Fax" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("Fax")">
                     @Html.LabelFor(model => model.Supplier.Fax, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Supplier.Fax, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_Fax" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.Fax, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Supplier_HomePage" class="@AppDefaults.CssClassGroup @Supplier.DataProfile.EditWidthCSSFor("HomePage")">
+                <div id="Group_Supplier_HomePage" class="@AppDefaults.CssClassGroup @Supplier.Profile.EditCSSFor("HomePage")">
                     @Html.LabelFor(model => model.Supplier.HomePage, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Supplier.HomePage, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Supplier_HomePage" } })
                     @* @Html.ValidationMessageFor(model => model.Supplier.HomePage, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -112,24 +112,24 @@
             ej.widget.init($("#Item_Supplier"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Supplier.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Supplier.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "Products")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "Products")) {
                 // Products
                 zUrlDictionaryWrite("Product", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "Product", new { MasterControllerAction = Model.ControllerAction, MasterSupplierId = Model.Supplier.SupplierId })))";
                 zAjaxLoadSync("Ajax_Supplier_Products", ajaxUrl);
             }
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_Supplier_SupplierId").hide();
             }
 
             // Associations (FK)
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

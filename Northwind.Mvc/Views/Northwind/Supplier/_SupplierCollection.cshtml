@@ -44,85 +44,85 @@
                 .IsIdentity(true)
                 .IsPrimaryKey(true)
                 .TextAlign(TextAlign.Right)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("SupplierId"))
-                .Width(Supplier.DataProfile.GridWidthFor("SupplierId"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("SupplierId"))
+                .Width(Supplier.Profile.GridWidthFor("SupplierId"))
                 .Add();
             column.Field("CompanyName")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyCompanyName)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("CompanyName"))
-                .Width(Supplier.DataProfile.GridWidthFor("CompanyName"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("CompanyName"))
+                .Width(Supplier.Profile.GridWidthFor("CompanyName"))
                 .Add();
             column.Field("ContactName")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyContactName)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("ContactName"))
-                .Width(Supplier.DataProfile.GridWidthFor("ContactName"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("ContactName"))
+                .Width(Supplier.Profile.GridWidthFor("ContactName"))
                 .Add();
             column.Field("ContactTitle")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyContactTitle)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("ContactTitle"))
-                .Width(Supplier.DataProfile.GridWidthFor("ContactTitle"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("ContactTitle"))
+                .Width(Supplier.Profile.GridWidthFor("ContactTitle"))
                 .Add();
             column.Field("Address")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyAddress)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("Address"))
-                .Width(Supplier.DataProfile.GridWidthFor("Address"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("Address"))
+                .Width(Supplier.Profile.GridWidthFor("Address"))
                 .Add();
             column.Field("City")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyCity)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("City"))
-                .Width(Supplier.DataProfile.GridWidthFor("City"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("City"))
+                .Width(Supplier.Profile.GridWidthFor("City"))
                 .Add();
             column.Field("Region")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyRegion)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("Region"))
-                .Width(Supplier.DataProfile.GridWidthFor("Region"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("Region"))
+                .Width(Supplier.Profile.GridWidthFor("Region"))
                 .Add();
             column.Field("PostalCode")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyPostalCode)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("PostalCode"))
-                .Width(Supplier.DataProfile.GridWidthFor("PostalCode"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("PostalCode"))
+                .Width(Supplier.Profile.GridWidthFor("PostalCode"))
                 .Add();
             column.Field("Country")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyCountry)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("Country"))
-                .Width(Supplier.DataProfile.GridWidthFor("Country"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("Country"))
+                .Width(Supplier.Profile.GridWidthFor("Country"))
                 .Add();
             column.Field("Phone")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyPhone)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("Phone"))
-                .Width(Supplier.DataProfile.GridWidthFor("Phone"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("Phone"))
+                .Width(Supplier.Profile.GridWidthFor("Phone"))
                 .Add();
             column.Field("Fax")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyFax)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("Fax"))
-                .Width(Supplier.DataProfile.GridWidthFor("Fax"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("Fax"))
+                .Width(Supplier.Profile.GridWidthFor("Fax"))
                 .Add();
             column.Field("HomePage")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(SupplierResources.PropertyHomePage)
-                .Visible(Supplier.DataProfile.IsGridVisibleFor("HomePage"))
-                .Width(Supplier.DataProfile.GridWidthFor("HomePage"))
+                .Visible(Supplier.Profile.IsGridVisibleFor("HomePage"))
+                .Width(Supplier.Profile.GridWidthFor("HomePage"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -177,9 +177,9 @@
             ej.widget.init($("#Collection_Supplier"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Supplier.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Supplier.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Supplier")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "Supplier")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }                

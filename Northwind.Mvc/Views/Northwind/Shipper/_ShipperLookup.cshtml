@@ -65,22 +65,22 @@
                             .IsIdentity(true)
                             .IsPrimaryKey(true)
                             .TextAlign(TextAlign.Right)
-                            .Visible(Shipper.DataProfile.IsGridVisibleFor("ShipperId"))
-                            .Width(Shipper.DataProfile.GridWidthFor("ShipperId"))
+                            .Visible(Shipper.Profile.IsGridVisibleFor("ShipperId"))
+                            .Width(Shipper.Profile.GridWidthFor("ShipperId"))
                             .Add();
                         column.Field("CompanyName")
                             .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(ShipperResources.PropertyCompanyName)
-                            .Visible(Shipper.DataProfile.IsGridVisibleFor("CompanyName"))
-                            .Width(Shipper.DataProfile.GridWidthFor("CompanyName"))
+                            .Visible(Shipper.Profile.IsGridVisibleFor("CompanyName"))
+                            .Width(Shipper.Profile.GridWidthFor("CompanyName"))
                             .Add();
                         column.Field("Phone")
                             .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(ShipperResources.PropertyPhone)
-                            .Visible(Shipper.DataProfile.IsGridVisibleFor("Phone"))
-                            .Width(Shipper.DataProfile.GridWidthFor("Phone"))
+                            .Visible(Shipper.Profile.IsGridVisibleFor("Phone"))
+                            .Width(Shipper.Profile.GridWidthFor("Phone"))
                             .Add();
                     })
                     //.EnablePersistence()
@@ -123,7 +123,7 @@
     $(function () {
         try {
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Shipper.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Shipper.Profile));
 
             $("#@Model.ValueId").hide();
 
@@ -144,7 +144,7 @@
 
             @*
             var ejGrid = zGrid("@(Model.ValueId)_LookupGrid");
-            zOnLookupView(model, dataProfile, ejGrid);
+            zOnLookupView(model, profile, ejGrid);
             *@
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
@@ -177,8 +177,8 @@
             this.model.locale = culture;
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Shipper.DataProfile));
-            zOnLookupView(model, dataProfile, this);
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Shipper.Profile));
+            zOnLookupView(model, profile, this);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "load_@(Model.ValueId)_LookupGrid", exception));
         }

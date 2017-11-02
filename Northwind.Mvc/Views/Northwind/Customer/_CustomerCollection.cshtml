@@ -40,78 +40,78 @@
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyCustomerId)
                 .IsPrimaryKey(true)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("CustomerId"))
-                .Width(Customer.DataProfile.GridWidthFor("CustomerId"))
+                .Visible(Customer.Profile.IsGridVisibleFor("CustomerId"))
+                .Width(Customer.Profile.GridWidthFor("CustomerId"))
                 .Add();
             column.Field("CompanyName")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyCompanyName)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("CompanyName"))
-                .Width(Customer.DataProfile.GridWidthFor("CompanyName"))
+                .Visible(Customer.Profile.IsGridVisibleFor("CompanyName"))
+                .Width(Customer.Profile.GridWidthFor("CompanyName"))
                 .Add();
             column.Field("ContactName")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyContactName)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("ContactName"))
-                .Width(Customer.DataProfile.GridWidthFor("ContactName"))
+                .Visible(Customer.Profile.IsGridVisibleFor("ContactName"))
+                .Width(Customer.Profile.GridWidthFor("ContactName"))
                 .Add();
             column.Field("ContactTitle")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyContactTitle)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("ContactTitle"))
-                .Width(Customer.DataProfile.GridWidthFor("ContactTitle"))
+                .Visible(Customer.Profile.IsGridVisibleFor("ContactTitle"))
+                .Width(Customer.Profile.GridWidthFor("ContactTitle"))
                 .Add();
             column.Field("Address")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyAddress)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("Address"))
-                .Width(Customer.DataProfile.GridWidthFor("Address"))
+                .Visible(Customer.Profile.IsGridVisibleFor("Address"))
+                .Width(Customer.Profile.GridWidthFor("Address"))
                 .Add();
             column.Field("City")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyCity)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("City"))
-                .Width(Customer.DataProfile.GridWidthFor("City"))
+                .Visible(Customer.Profile.IsGridVisibleFor("City"))
+                .Width(Customer.Profile.GridWidthFor("City"))
                 .Add();
             column.Field("Region")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyRegion)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("Region"))
-                .Width(Customer.DataProfile.GridWidthFor("Region"))
+                .Visible(Customer.Profile.IsGridVisibleFor("Region"))
+                .Width(Customer.Profile.GridWidthFor("Region"))
                 .Add();
             column.Field("PostalCode")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyPostalCode)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("PostalCode"))
-                .Width(Customer.DataProfile.GridWidthFor("PostalCode"))
+                .Visible(Customer.Profile.IsGridVisibleFor("PostalCode"))
+                .Width(Customer.Profile.GridWidthFor("PostalCode"))
                 .Add();
             column.Field("Country")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyCountry)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("Country"))
-                .Width(Customer.DataProfile.GridWidthFor("Country"))
+                .Visible(Customer.Profile.IsGridVisibleFor("Country"))
+                .Width(Customer.Profile.GridWidthFor("Country"))
                 .Add();
             column.Field("Phone")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyPhone)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("Phone"))
-                .Width(Customer.DataProfile.GridWidthFor("Phone"))
+                .Visible(Customer.Profile.IsGridVisibleFor("Phone"))
+                .Width(Customer.Profile.GridWidthFor("Phone"))
                 .Add();
             column.Field("Fax")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(CustomerResources.PropertyFax)
-                .Visible(Customer.DataProfile.IsGridVisibleFor("Fax"))
-                .Width(Customer.DataProfile.GridWidthFor("Fax"))
+                .Visible(Customer.Profile.IsGridVisibleFor("Fax"))
+                .Width(Customer.Profile.GridWidthFor("Fax"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -166,9 +166,9 @@
             ej.widget.init($("#Collection_Customer"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Customer.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Customer.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Customer")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "Customer")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }                

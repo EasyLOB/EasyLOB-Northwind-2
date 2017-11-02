@@ -22,19 +22,19 @@
         {
             data.Add().ID("TabSheet_UserLogin_UserLogin").Text(UserLoginResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_UserLogin_LoginProvider" class="@AppDefaults.CssClassGroup @UserLogin.DataProfile.EditWidthCSSFor("LoginProvider")">
+                <div id="Group_UserLogin_LoginProvider" class="@AppDefaults.CssClassGroup @UserLogin.Profile.EditCSSFor("LoginProvider")">
                     @Html.LabelFor(model => model.UserLogin.LoginProvider, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.UserLogin.LoginProvider, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserLogin_LoginProvider" } })
                     @* @Html.ValidationMessageFor(model => model.UserLogin.LoginProvider, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_UserLogin_ProviderKey" class="@AppDefaults.CssClassGroup @UserLogin.DataProfile.EditWidthCSSFor("ProviderKey")">
+                <div id="Group_UserLogin_ProviderKey" class="@AppDefaults.CssClassGroup @UserLogin.Profile.EditCSSFor("ProviderKey")">
                     @Html.LabelFor(model => model.UserLogin.ProviderKey, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.UserLogin.ProviderKey, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserLogin_ProviderKey" } })
                     @* @Html.ValidationMessageFor(model => model.UserLogin.ProviderKey, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_UserLogin_UserId" class="@AppDefaults.CssClassGroup @UserLogin.DataProfile.EditWidthCSSFor("UserLookupText")">
+                <div id="Group_UserLogin_UserId" class="@AppDefaults.CssClassGroup @UserLogin.Profile.EditCSSFor("UserLookupText")">
                     @Html.LabelFor(model => model.UserLogin.UserId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.UserLogin.UserId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "UserLogin_UserId" } })
                     @{
@@ -64,12 +64,12 @@
             ej.widget.init($("#Item_UserLogin"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserLogin.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(UserLogin.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_UserLogin_LoginProvider").hide();
                 $("#Group_UserLogin_ProviderKey").hide();
                 $("#Group_UserLogin_UserId").hide();
@@ -82,7 +82,7 @@
                 $("#Group_UserLogin_UserId").hide();
             }
 
-            zOnItemView(model, dataProfile);
+            zOnItemView(model, profile);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

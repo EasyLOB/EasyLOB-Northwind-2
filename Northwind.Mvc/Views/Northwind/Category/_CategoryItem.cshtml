@@ -26,25 +26,25 @@
         {
             data.Add().ID("TabSheet_Category_Category").Text(CategoryResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_Category_CategoryId" class="@AppDefaults.CssClassGroup @Category.DataProfile.EditWidthCSSFor("CategoryId")">
+                <div id="Group_Category_CategoryId" class="@AppDefaults.CssClassGroup @Category.Profile.EditCSSFor("CategoryId")">
                     @Html.LabelFor(model => model.Category.CategoryId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Category.CategoryId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Category_CategoryId" } })
                     @* @Html.ValidationMessageFor(model => model.Category.CategoryId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Category_CategoryName" class="@AppDefaults.CssClassGroup @Category.DataProfile.EditWidthCSSFor("CategoryName")">
+                <div id="Group_Category_CategoryName" class="@AppDefaults.CssClassGroup @Category.Profile.EditCSSFor("CategoryName")">
                     @Html.LabelFor(model => model.Category.CategoryName, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Category.CategoryName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Category_CategoryName" } })
                     @* @Html.ValidationMessageFor(model => model.Category.CategoryName, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Category_Description" class="@AppDefaults.CssClassGroup @Category.DataProfile.EditWidthCSSFor("Description")">
+                <div id="Group_Category_Description" class="@AppDefaults.CssClassGroup @Category.Profile.EditCSSFor("Description")">
                     @Html.LabelFor(model => model.Category.Description, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Category.Description, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Category_Description" } })
                     @* @Html.ValidationMessageFor(model => model.Category.Description, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Category_Picture" class="@AppDefaults.CssClassGroup @Category.DataProfile.EditWidthCSSFor("Picture")">
+                <div id="Group_Category_Picture" class="@AppDefaults.CssClassGroup @Category.Profile.EditCSSFor("Picture")">
                     @Html.LabelFor(model => model.Category.Picture, new { @class = AppDefaults.CssClassLabel })
                     <img src="@category_Picture_Source" class="z-image" />
                     @* @Html.ValidationMessageFor(model => model.Category.Picture, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -70,24 +70,24 @@
             ej.widget.init($("#Item_Category"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Category.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Category.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "Products")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "Products")) {
                 // Products
                 zUrlDictionaryWrite("Product", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "Product", new { MasterControllerAction = Model.ControllerAction, MasterCategoryId = Model.Category.CategoryId })))";
                 zAjaxLoadSync("Ajax_Category_Products", ajaxUrl);
             }
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_Category_CategoryId").hide();
             }
 
             // Associations (FK)
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

@@ -20,13 +20,13 @@
         {
             data.Add().ID("TabSheet_Region_Region").Text(RegionResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_Region_RegionId" class="@AppDefaults.CssClassGroup @Region.DataProfile.EditWidthCSSFor("RegionId")">
+                <div id="Group_Region_RegionId" class="@AppDefaults.CssClassGroup @Region.Profile.EditCSSFor("RegionId")">
                     @Html.LabelFor(model => model.Region.RegionId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Region.RegionId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Region_RegionId" } })
                     @* @Html.ValidationMessageFor(model => model.Region.RegionId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Region_RegionDescription" class="@AppDefaults.CssClassGroup @Region.DataProfile.EditWidthCSSFor("RegionDescription")">
+                <div id="Group_Region_RegionDescription" class="@AppDefaults.CssClassGroup @Region.Profile.EditCSSFor("RegionDescription")">
                     @Html.LabelFor(model => model.Region.RegionDescription, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Region.RegionDescription, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Region_RegionDescription" } })
                     @* @Html.ValidationMessageFor(model => model.Region.RegionDescription, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -52,24 +52,24 @@
             ej.widget.init($("#Item_Region"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Region.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Region.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "Territories")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "Territories")) {
                 // Territories
                 zUrlDictionaryWrite("Territory", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "Territory", new { MasterControllerAction = Model.ControllerAction, MasterRegionId = Model.Region.RegionId })))";
                 zAjaxLoadSync("Ajax_Region_Territories", ajaxUrl);
             }
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_Region_RegionId").hide();
             }
 
             // Associations (FK)
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

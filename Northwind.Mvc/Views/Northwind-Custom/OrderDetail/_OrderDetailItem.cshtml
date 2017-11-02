@@ -24,7 +24,7 @@
         {
             data.Add().ID("TabSheet_OrderDetail_OrderDetail").Text(OrderDetailResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_OrderDetail_OrderId" class="@AppDefaults.CssClassGroup @OrderDetail.DataProfile.EditWidthCSSFor("OrderLookupText")">
+                <div id="Group_OrderDetail_OrderId" class="@AppDefaults.CssClassGroup @OrderDetail.Profile.EditCSSFor("OrderLookupText")">
                     @Html.LabelFor(model => model.OrderDetail.OrderId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.OrderDetail.OrderId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "OrderDetail_OrderId" } })
                     @{
@@ -37,7 +37,7 @@
                     @* @Html.ValidationMessageFor(model => model.OrderDetail.OrderId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_OrderDetail_ProductId" class="@AppDefaults.CssClassGroup @OrderDetail.DataProfile.EditWidthCSSFor("ProductLookupText")">
+                <div id="Group_OrderDetail_ProductId" class="@AppDefaults.CssClassGroup @OrderDetail.Profile.EditCSSFor("ProductLookupText")">
                     @Html.LabelFor(model => model.OrderDetail.ProductId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.OrderDetail.ProductId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "OrderDetail_ProductId" } })
                     @{
@@ -50,19 +50,19 @@
                     @* @Html.ValidationMessageFor(model => model.OrderDetail.ProductId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_OrderDetail_UnitPrice" class="@AppDefaults.CssClassGroup @OrderDetail.DataProfile.EditWidthCSSFor("UnitPrice")">
+                <div id="Group_OrderDetail_UnitPrice" class="@AppDefaults.CssClassGroup @OrderDetail.Profile.EditCSSFor("UnitPrice")">
                     @Html.LabelFor(model => model.OrderDetail.UnitPrice, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.OrderDetail.UnitPrice, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "OrderDetail_UnitPrice" } })
                     @* @Html.ValidationMessageFor(model => model.OrderDetail.UnitPrice, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_OrderDetail_Quantity" class="@AppDefaults.CssClassGroup @OrderDetail.DataProfile.EditWidthCSSFor("Quantity")">
+                <div id="Group_OrderDetail_Quantity" class="@AppDefaults.CssClassGroup @OrderDetail.Profile.EditCSSFor("Quantity")">
                     @Html.LabelFor(model => model.OrderDetail.Quantity, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.OrderDetail.Quantity, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "OrderDetail_Quantity" } })
                     @* @Html.ValidationMessageFor(model => model.OrderDetail.Quantity, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_OrderDetail_Discount" class="@AppDefaults.CssClassGroup @OrderDetail.DataProfile.EditWidthCSSFor("Discount")">
+                <div id="Group_OrderDetail_Discount" class="@AppDefaults.CssClassGroup @OrderDetail.Profile.EditCSSFor("Discount")">
                     @Html.LabelFor(model => model.OrderDetail.Discount, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.OrderDetail.Discount, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "OrderDetail_Discount" } })
                     @* @Html.ValidationMessageFor(model => model.OrderDetail.Discount, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -88,12 +88,12 @@
             ej.widget.init($("#Item_OrderDetail"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(OrderDetail.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(OrderDetail.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_OrderDetail_OrderId").hide();
                 //$("#Group_OrderDetail_ProductId").hide(); // !!!
             }
@@ -110,7 +110,7 @@
                 $("#Group_OrderDetail_ProductId").hide();            
             }
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

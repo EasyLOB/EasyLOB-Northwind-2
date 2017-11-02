@@ -50,30 +50,30 @@
                 .HeaderText(EmployeeTerritoryResources.PropertyEmployeeId)
                 .IsPrimaryKey(true)
                 .TextAlign(TextAlign.Right)
-                .Visible(EmployeeTerritory.DataProfile.IsGridVisibleFor("EmployeeId"))
-                .Width(EmployeeTerritory.DataProfile.GridWidthFor("EmployeeId"))
+                .Visible(EmployeeTerritory.Profile.IsGridVisibleFor("EmployeeId"))
+                .Width(EmployeeTerritory.Profile.GridWidthFor("EmployeeId"))
                 .Add();
             column.Field("EmployeeLookupText")
                 .AllowEditing(false)
                 .Type("string")
                 .HeaderText(EmployeeResources.EntitySingular)
-                .Visible(EmployeeTerritory.DataProfile.IsGridVisibleFor("EmployeeLookupText"))
-                .Width(EmployeeTerritory.DataProfile.GridWidthFor("EmployeeLookupText"))
+                .Visible(EmployeeTerritory.Profile.IsGridVisibleFor("EmployeeLookupText"))
+                .Width(EmployeeTerritory.Profile.GridWidthFor("EmployeeLookupText"))
                 .Add();
             column.Field("TerritoryId")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(EmployeeTerritoryResources.PropertyTerritoryId)
                 .IsPrimaryKey(true)
-                .Visible(EmployeeTerritory.DataProfile.IsGridVisibleFor("TerritoryId"))
-                .Width(EmployeeTerritory.DataProfile.GridWidthFor("TerritoryId"))
+                .Visible(EmployeeTerritory.Profile.IsGridVisibleFor("TerritoryId"))
+                .Width(EmployeeTerritory.Profile.GridWidthFor("TerritoryId"))
                 .Add();
             column.Field("TerritoryLookupText")
                 .AllowEditing(false)
                 .Type("string")
                 .HeaderText(TerritoryResources.EntitySingular)
-                .Visible(EmployeeTerritory.DataProfile.IsGridVisibleFor("TerritoryLookupText"))
-                .Width(EmployeeTerritory.DataProfile.GridWidthFor("TerritoryLookupText"))
+                .Visible(EmployeeTerritory.Profile.IsGridVisibleFor("TerritoryLookupText"))
+                .Width(EmployeeTerritory.Profile.GridWidthFor("TerritoryLookupText"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -128,9 +128,9 @@
             ej.widget.init($("#Collection_EmployeeTerritory"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(EmployeeTerritory.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(EmployeeTerritory.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "EmployeeTerritory")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "EmployeeTerritory")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }                

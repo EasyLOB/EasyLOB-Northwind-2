@@ -44,15 +44,15 @@
                 .EditType(EditingType.String)
                 .HeaderText(TerritoryResources.PropertyTerritoryId)
                 .IsPrimaryKey(true)
-                .Visible(Territory.DataProfile.IsGridVisibleFor("TerritoryId"))
-                .Width(Territory.DataProfile.GridWidthFor("TerritoryId"))
+                .Visible(Territory.Profile.IsGridVisibleFor("TerritoryId"))
+                .Width(Territory.Profile.GridWidthFor("TerritoryId"))
                 .Add();
             column.Field("TerritoryDescription")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(TerritoryResources.PropertyTerritoryDescription)
-                .Visible(Territory.DataProfile.IsGridVisibleFor("TerritoryDescription"))
-                .Width(Territory.DataProfile.GridWidthFor("TerritoryDescription"))
+                .Visible(Territory.Profile.IsGridVisibleFor("TerritoryDescription"))
+                .Width(Territory.Profile.GridWidthFor("TerritoryDescription"))
                 .Add();
             column.Field("RegionId")
                 .Type("number")
@@ -60,15 +60,15 @@
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(TerritoryResources.PropertyRegionId)
                 .TextAlign(TextAlign.Right)
-                .Visible(Territory.DataProfile.IsGridVisibleFor("RegionId"))
-                .Width(Territory.DataProfile.GridWidthFor("RegionId"))
+                .Visible(Territory.Profile.IsGridVisibleFor("RegionId"))
+                .Width(Territory.Profile.GridWidthFor("RegionId"))
                 .Add();
             column.Field("RegionLookupText")
                 .AllowEditing(false)
                 .Type("string")
                 .HeaderText(RegionResources.EntitySingular)
-                .Visible(Territory.DataProfile.IsGridVisibleFor("RegionLookupText"))
-                .Width(Territory.DataProfile.GridWidthFor("RegionLookupText"))
+                .Visible(Territory.Profile.IsGridVisibleFor("RegionLookupText"))
+                .Width(Territory.Profile.GridWidthFor("RegionLookupText"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -123,9 +123,9 @@
             ej.widget.init($("#Collection_Territory"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Territory.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Territory.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Territory")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "Territory")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }                

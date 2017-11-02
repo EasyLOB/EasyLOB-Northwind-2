@@ -61,30 +61,30 @@
                             .EditType(EditingType.String)
                             .HeaderText(ActivityRoleResources.PropertyActivityId)
                             .IsPrimaryKey(true)
-                            .Visible(ActivityRole.DataProfile.IsGridVisibleFor("ActivityId"))
-                            .Width(ActivityRole.DataProfile.GridWidthFor("ActivityId"))
+                            .Visible(ActivityRole.Profile.IsGridVisibleFor("ActivityId"))
+                            .Width(ActivityRole.Profile.GridWidthFor("ActivityId"))
                             .Add();
                         column.Field("ActivityLookupText")
                             .AllowEditing(false)
                             .Type("string")
                             .HeaderText(ActivityResources.EntitySingular)
-                            .Visible(ActivityRole.DataProfile.IsGridVisibleFor("ActivityLookupText"))
-                            .Width(ActivityRole.DataProfile.GridWidthFor("ActivityLookupText"))
+                            .Visible(ActivityRole.Profile.IsGridVisibleFor("ActivityLookupText"))
+                            .Width(ActivityRole.Profile.GridWidthFor("ActivityLookupText"))
                             .Add();
                         column.Field("RoleName")
                             .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(ActivityRoleResources.PropertyRoleName)
                             .IsPrimaryKey(true)
-                            .Visible(ActivityRole.DataProfile.IsGridVisibleFor("RoleName"))
-                            .Width(ActivityRole.DataProfile.GridWidthFor("RoleName"))
+                            .Visible(ActivityRole.Profile.IsGridVisibleFor("RoleName"))
+                            .Width(ActivityRole.Profile.GridWidthFor("RoleName"))
                             .Add();
                         column.Field("Operations")
                             .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(ActivityRoleResources.PropertyOperations)
-                            .Visible(ActivityRole.DataProfile.IsGridVisibleFor("Operations"))
-                            .Width(ActivityRole.DataProfile.GridWidthFor("Operations"))
+                            .Visible(ActivityRole.Profile.IsGridVisibleFor("Operations"))
+                            .Width(ActivityRole.Profile.GridWidthFor("Operations"))
                             .Add();
                     })
                     //.EnablePersistence()
@@ -126,7 +126,7 @@
     $(function () {
         try {
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(ActivityRole.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(ActivityRole.Profile));
 
             $("#@Model.ValueId").hide();
 
@@ -147,7 +147,7 @@
 
             @*
             var ejGrid = zGrid("@(Model.ValueId + "_LookupGrid")");
-            zOnLookupView(model, dataProfile, ejGrid);
+            zOnLookupView(model, profile, ejGrid);
             *@
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
@@ -180,8 +180,8 @@
             this.model.locale = culture;
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(ActivityRole.DataProfile));
-            zOnLookupView(model, dataProfile, this);
+            var profile = @Html.Raw(JsonConvert.SerializeObject(ActivityRole.Profile));
+            zOnLookupView(model, profile, this);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "load_@(Model.ValueId)_LookupGrid", exception));
         }

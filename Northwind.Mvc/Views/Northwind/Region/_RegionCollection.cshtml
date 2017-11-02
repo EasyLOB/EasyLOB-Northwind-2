@@ -42,15 +42,15 @@
                 .HeaderText(RegionResources.PropertyRegionId)
                 .IsPrimaryKey(true)
                 .TextAlign(TextAlign.Right)
-                .Visible(Region.DataProfile.IsGridVisibleFor("RegionId"))
-                .Width(Region.DataProfile.GridWidthFor("RegionId"))
+                .Visible(Region.Profile.IsGridVisibleFor("RegionId"))
+                .Width(Region.Profile.GridWidthFor("RegionId"))
                 .Add();
             column.Field("RegionDescription")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(RegionResources.PropertyRegionDescription)
-                .Visible(Region.DataProfile.IsGridVisibleFor("RegionDescription"))
-                .Width(Region.DataProfile.GridWidthFor("RegionDescription"))
+                .Visible(Region.Profile.IsGridVisibleFor("RegionDescription"))
+                .Width(Region.Profile.GridWidthFor("RegionDescription"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -105,9 +105,9 @@
             ej.widget.init($("#Collection_Region"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Region.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Region.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Region")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "Region")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }                

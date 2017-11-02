@@ -48,36 +48,36 @@
                 .IsIdentity(true)
                 .IsPrimaryKey(true)
                 .TextAlign(TextAlign.Right)
-                .Visible(UserClaim.DataProfile.IsGridVisibleFor("Id"))
-                .Width(UserClaim.DataProfile.GridWidthFor("Id"))
+                .Visible(UserClaim.Profile.IsGridVisibleFor("Id"))
+                .Width(UserClaim.Profile.GridWidthFor("Id"))
                 .Add();
             column.Field("UserId")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserClaimResources.PropertyUserId)
-                .Visible(UserClaim.DataProfile.IsGridVisibleFor("UserId"))
-                .Width(UserClaim.DataProfile.GridWidthFor("UserId"))
+                .Visible(UserClaim.Profile.IsGridVisibleFor("UserId"))
+                .Width(UserClaim.Profile.GridWidthFor("UserId"))
                 .Add();
             column.Field("UserLookupText")
                 .AllowEditing(false)
                 .Type("string")
                 .HeaderText(UserResources.EntitySingular)
-                .Visible(UserClaim.DataProfile.IsGridVisibleFor("UserLookupText"))
-                .Width(UserClaim.DataProfile.GridWidthFor("UserLookupText"))
+                .Visible(UserClaim.Profile.IsGridVisibleFor("UserLookupText"))
+                .Width(UserClaim.Profile.GridWidthFor("UserLookupText"))
                 .Add();
             column.Field("ClaimType")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserClaimResources.PropertyClaimType)
-                .Visible(UserClaim.DataProfile.IsGridVisibleFor("ClaimType"))
-                .Width(UserClaim.DataProfile.GridWidthFor("ClaimType"))
+                .Visible(UserClaim.Profile.IsGridVisibleFor("ClaimType"))
+                .Width(UserClaim.Profile.GridWidthFor("ClaimType"))
                 .Add();
             column.Field("ClaimValue")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(UserClaimResources.PropertyClaimValue)
-                .Visible(UserClaim.DataProfile.IsGridVisibleFor("ClaimValue"))
-                .Width(UserClaim.DataProfile.GridWidthFor("ClaimValue"))
+                .Visible(UserClaim.Profile.IsGridVisibleFor("ClaimValue"))
+                .Width(UserClaim.Profile.GridWidthFor("ClaimValue"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -132,9 +132,9 @@
             ej.widget.init($("#Collection_UserClaim"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(UserClaim.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(UserClaim.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "UserClaim")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "UserClaim")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

@@ -20,27 +20,27 @@
         {
             data.Add().ID("TabSheet_AuditTrailLog_AuditTrailLog").Text(AuditTrailLogResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_AuditTrailLog_Id" class="@AppDefaults.CssClassGroup @AuditTrailLog.DataProfile.EditWidthCSSFor("Id")">
+                <div id="Group_AuditTrailLog_Id" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("Id")">
                     @Html.LabelFor(model => model.AuditTrailLog.Id, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.AuditTrailLog.Id, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_Id" } })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.Id, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_AuditTrailLog_LogDate" class="@AppDefaults.CssClassGroup @AuditTrailLog.DataProfile.EditWidthCSSFor("LogDate")">
+                <div id="Group_AuditTrailLog_LogDate" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogDate")">
                     @Html.LabelFor(model => model.AuditTrailLog.LogDate, new { @class = AppDefaults.CssClassLabel })
                     @* @Html.EditorFor(model => model.AuditTrailLog.LogDate, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogDate" } }) *@
                     @Html.EJ().DateTimePickerFor(model => model.AuditTrailLog.LogDate, AppHelper.DateTimeModel, new { id = "AuditTrailLog_LogDate" })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogDate, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_AuditTrailLog_LogTime" class="@AppDefaults.CssClassGroup @AuditTrailLog.DataProfile.EditWidthCSSFor("LogTime")">
+                <div id="Group_AuditTrailLog_LogTime" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogTime")">
                     @Html.LabelFor(model => model.AuditTrailLog.LogTime, new { @class = AppDefaults.CssClassLabel })
                     @* @Html.EditorFor(model => model.AuditTrailLog.LogTime, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogTime" } }) *@
                     @Html.EJ().DateTimePickerFor(model => model.AuditTrailLog.LogTime, AppHelper.DateTimeModel, new { id = "AuditTrailLog_LogTime" })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogTime, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_AuditTrailLog_LogUserName" class="@AppDefaults.CssClassGroup @AuditTrailLog.DataProfile.EditWidthCSSFor("LogUserName")">
+                <div id="Group_AuditTrailLog_LogUserName" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogUserName")">
                     @Html.LabelFor(model => model.AuditTrailLog.LogUserName, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.AuditTrailLog.LogUserName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogUserName" } })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogUserName, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -48,13 +48,13 @@
 
                 @Html.ZNewLine()
                 
-                <div id="Group_AuditTrailLog_LogDomain" class="@AppDefaults.CssClassGroup @AuditTrailLog.DataProfile.EditWidthCSSFor("LogDomain")">
+                <div id="Group_AuditTrailLog_LogDomain" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogDomain")">
                     @Html.LabelFor(model => model.AuditTrailLog.LogDomain, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.AuditTrailLog.LogDomain, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogDomain" } })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogDomain, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_AuditTrailLog_LogEntity" class="@AppDefaults.CssClassGroup @AuditTrailLog.DataProfile.EditWidthCSSFor("LogEntity")">
+                <div id="Group_AuditTrailLog_LogEntity" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogEntity")">
                     @Html.LabelFor(model => model.AuditTrailLog.LogEntity, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.AuditTrailLog.LogEntity, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogEntity" } })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntity, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -62,13 +62,13 @@
 
                 @Html.ZNewLine()
                 
-                <div id="Group_AuditTrailLog_LogOperation" class="@AppDefaults.CssClassGroup @AuditTrailLog.DataProfile.EditWidthCSSFor("LogOperation")">
+                <div id="Group_AuditTrailLog_LogOperation" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogOperation")">
                     @Html.LabelFor(model => model.AuditTrailLog.LogOperation, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.AuditTrailLog.LogOperation, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogOperation" } })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogOperation, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_AuditTrailLog_LogId" class="@AppDefaults.CssClassGroup @AuditTrailLog.DataProfile.EditWidthCSSFor("LogId")">
+                <div id="Group_AuditTrailLog_LogId" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogId")">
                     @Html.LabelFor(model => model.AuditTrailLog.LogId, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.AuditTrailLog.LogId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogId" } })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogId, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -76,7 +76,7 @@
                 
                 @Html.ZNewLine()
 
-                <div id="Group_AuditTrailLog_LogEntityBefore" class="@AppDefaults.CssClassGroup @AuditTrailLog.DataProfile.EditWidthCSSFor("LogEntityBefore")">
+                <div id="Group_AuditTrailLog_LogEntityBefore" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogEntityBefore")">
                     @Html.LabelFor(model => model.AuditTrailLog.LogEntityBefore, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.AuditTrailLog.LogEntityBefore, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogEntityBefore" } })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntityBefore, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -84,7 +84,7 @@
                 
                 @Html.ZNewLine()
 
-                <div id="Group_AuditTrailLog_LogEntityAfter" class="@AppDefaults.CssClassGroup @AuditTrailLog.DataProfile.EditWidthCSSFor("LogEntityAfter")">
+                <div id="Group_AuditTrailLog_LogEntityAfter" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogEntityAfter")">
                     @Html.LabelFor(model => model.AuditTrailLog.LogEntityAfter, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.AuditTrailLog.LogEntityAfter, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogEntityAfter" } })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntityAfter, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -107,18 +107,18 @@
             ej.widget.init($("#Item_AuditTrailLog"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(AuditTrailLog.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(AuditTrailLog.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_AuditTrailLog_Id").hide();
             }
 
             // Associations (FK)
 
-            zOnItemView(model, dataProfile);
+            zOnItemView(model, profile);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

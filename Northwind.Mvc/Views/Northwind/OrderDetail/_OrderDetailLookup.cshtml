@@ -63,15 +63,15 @@
                             .HeaderText(OrderDetailResources.PropertyOrderId)
                             .IsPrimaryKey(true)
                             .TextAlign(TextAlign.Right)
-                            .Visible(OrderDetail.DataProfile.IsGridVisibleFor("OrderId"))
-                            .Width(OrderDetail.DataProfile.GridWidthFor("OrderId"))
+                            .Visible(OrderDetail.Profile.IsGridVisibleFor("OrderId"))
+                            .Width(OrderDetail.Profile.GridWidthFor("OrderId"))
                             .Add();
                         column.Field("OrderLookupText")
                             .AllowEditing(false)
                             .Type("string")
                             .HeaderText(OrderResources.EntitySingular)
-                            .Visible(OrderDetail.DataProfile.IsGridVisibleFor("OrderLookupText"))
-                            .Width(OrderDetail.DataProfile.GridWidthFor("OrderLookupText"))
+                            .Visible(OrderDetail.Profile.IsGridVisibleFor("OrderLookupText"))
+                            .Width(OrderDetail.Profile.GridWidthFor("OrderLookupText"))
                             .Add();
                         column.Field("ProductId")
                             .Type("number")
@@ -80,15 +80,15 @@
                             .HeaderText(OrderDetailResources.PropertyProductId)
                             .IsPrimaryKey(true)
                             .TextAlign(TextAlign.Right)
-                            .Visible(OrderDetail.DataProfile.IsGridVisibleFor("ProductId"))
-                            .Width(OrderDetail.DataProfile.GridWidthFor("ProductId"))
+                            .Visible(OrderDetail.Profile.IsGridVisibleFor("ProductId"))
+                            .Width(OrderDetail.Profile.GridWidthFor("ProductId"))
                             .Add();
                         column.Field("ProductLookupText")
                             .AllowEditing(false)
                             .Type("string")
                             .HeaderText(ProductResources.EntitySingular)
-                            .Visible(OrderDetail.DataProfile.IsGridVisibleFor("ProductLookupText"))
-                            .Width(OrderDetail.DataProfile.GridWidthFor("ProductLookupText"))
+                            .Visible(OrderDetail.Profile.IsGridVisibleFor("ProductLookupText"))
+                            .Width(OrderDetail.Profile.GridWidthFor("ProductLookupText"))
                             .Add();
                         column.Field("UnitPrice")
                             .Type("number")
@@ -96,8 +96,8 @@
                             .Format(SyncfusionPatternResources.GridFormat_Float)
                             .HeaderText(OrderDetailResources.PropertyUnitPrice)
                             .TextAlign(TextAlign.Right)
-                            .Visible(OrderDetail.DataProfile.IsGridVisibleFor("UnitPrice"))
-                            .Width(OrderDetail.DataProfile.GridWidthFor("UnitPrice"))
+                            .Visible(OrderDetail.Profile.IsGridVisibleFor("UnitPrice"))
+                            .Width(OrderDetail.Profile.GridWidthFor("UnitPrice"))
                             .Add();
                         column.Field("Quantity")
                             .Type("number")
@@ -105,8 +105,8 @@
                             .Format(SyncfusionPatternResources.GridFormat_Integer)
                             .HeaderText(OrderDetailResources.PropertyQuantity)
                             .TextAlign(TextAlign.Right)
-                            .Visible(OrderDetail.DataProfile.IsGridVisibleFor("Quantity"))
-                            .Width(OrderDetail.DataProfile.GridWidthFor("Quantity"))
+                            .Visible(OrderDetail.Profile.IsGridVisibleFor("Quantity"))
+                            .Width(OrderDetail.Profile.GridWidthFor("Quantity"))
                             .Add();
                         column.Field("Discount")
                             .Type("number")
@@ -114,8 +114,8 @@
                             .Format(SyncfusionPatternResources.GridFormat_Float)
                             .HeaderText(OrderDetailResources.PropertyDiscount)
                             .TextAlign(TextAlign.Right)
-                            .Visible(OrderDetail.DataProfile.IsGridVisibleFor("Discount"))
-                            .Width(OrderDetail.DataProfile.GridWidthFor("Discount"))
+                            .Visible(OrderDetail.Profile.IsGridVisibleFor("Discount"))
+                            .Width(OrderDetail.Profile.GridWidthFor("Discount"))
                             .Add();
                     })
                     //.EnablePersistence()
@@ -158,7 +158,7 @@
     $(function () {
         try {
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(OrderDetail.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(OrderDetail.Profile));
 
             $("#@Model.ValueId").hide();
 
@@ -179,7 +179,7 @@
 
             @*
             var ejGrid = zGrid("@(Model.ValueId)_LookupGrid");
-            zOnLookupView(model, dataProfile, ejGrid);
+            zOnLookupView(model, profile, ejGrid);
             *@
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
@@ -212,8 +212,8 @@
             this.model.locale = culture;
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(OrderDetail.DataProfile));
-            zOnLookupView(model, dataProfile, this);
+            var profile = @Html.Raw(JsonConvert.SerializeObject(OrderDetail.Profile));
+            zOnLookupView(model, profile, this);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "load_@(Model.ValueId)_LookupGrid", exception));
         }

@@ -24,7 +24,7 @@
         {
             data.Add().ID("TabSheet_EmployeeTerritory_EmployeeTerritory").Text(EmployeeTerritoryResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_EmployeeTerritory_EmployeeId" class="@AppDefaults.CssClassGroup @EmployeeTerritory.DataProfile.EditWidthCSSFor("EmployeeLookupText")">
+                <div id="Group_EmployeeTerritory_EmployeeId" class="@AppDefaults.CssClassGroup @EmployeeTerritory.Profile.EditCSSFor("EmployeeLookupText")">
                     @Html.LabelFor(model => model.EmployeeTerritory.EmployeeId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.EmployeeTerritory.EmployeeId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "EmployeeTerritory_EmployeeId" } })
                     @{
@@ -37,7 +37,7 @@
                     @* @Html.ValidationMessageFor(model => model.EmployeeTerritory.EmployeeId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_EmployeeTerritory_TerritoryId" class="@AppDefaults.CssClassGroup @EmployeeTerritory.DataProfile.EditWidthCSSFor("TerritoryLookupText")">
+                <div id="Group_EmployeeTerritory_TerritoryId" class="@AppDefaults.CssClassGroup @EmployeeTerritory.Profile.EditCSSFor("TerritoryLookupText")">
                     @Html.LabelFor(model => model.EmployeeTerritory.TerritoryId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.EmployeeTerritory.TerritoryId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "EmployeeTerritory_TerritoryId" } })
                     @{
@@ -67,12 +67,12 @@
             ej.widget.init($("#Item_EmployeeTerritory"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(EmployeeTerritory.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(EmployeeTerritory.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_EmployeeTerritory_EmployeeId").hide();
                 $("#Group_EmployeeTerritory_TerritoryId").hide();
             }
@@ -89,7 +89,7 @@
                 $("#Group_EmployeeTerritory_TerritoryId").hide();            
             }
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

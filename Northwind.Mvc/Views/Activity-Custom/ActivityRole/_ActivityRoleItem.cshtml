@@ -23,7 +23,7 @@
         {
             data.Add().ID("TabSheet_ActivityRole_ActivityRole").Text(ActivityRoleResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">         
                 
-                <div id="Group_ActivityRole_ActivityId" class="@AppDefaults.CssClassGroup @ActivityRole.DataProfile.EditWidthCSSFor("ActivityId")">
+                <div id="Group_ActivityRole_ActivityId" class="@AppDefaults.CssClassGroup @ActivityRole.Profile.EditCSSFor("ActivityId")">
                     @Html.LabelFor(model => model.ActivityRole.ActivityId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.ActivityRole.ActivityId, new { id = "ActivityRole_ActivityId", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })                    
                     @{
@@ -53,7 +53,7 @@
                     @* @Html.ValidationMessageFor(model => model.ActivityRole.RoleName, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
 
-                <div id="Group_ActivityRole_Operations" class="@AppDefaults.CssClassGroup @ActivityRole.DataProfile.EditWidthCSSFor("Operations")">
+                <div id="Group_ActivityRole_Operations" class="@AppDefaults.CssClassGroup @ActivityRole.Profile.EditCSSFor("Operations")">
                     @Html.LabelFor(model => model.ActivityRole.Operations, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.ActivityRole.Operations, new { id = "ActivityRole_Operations", htmlAttributes = new { @class = AppDefaults.CssClassEditor } })
                     @* @Html.ValidationMessageFor(model => model.ActivityRole.Operations, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -76,12 +76,12 @@
             ej.widget.init($("#Item_ActivityRole"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(ActivityRole.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(ActivityRole.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_ActivityRole_ActivityId").hide();
                 $("#Group_ActivityRole_RoleName").hide();
             }
@@ -98,7 +98,7 @@
                 $("#Group_ActivityRole_RoleName").hide();
             }
 
-            zOnItemView(model, dataProfile);
+            zOnItemView(model, profile);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

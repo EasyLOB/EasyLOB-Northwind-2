@@ -44,73 +44,73 @@
                 .IsIdentity(true)
                 .IsPrimaryKey(true)
                 .TextAlign(TextAlign.Right)
-                .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("Id"))
-                .Width(AuditTrailLog.DataProfile.GridWidthFor("Id"))
+                .Visible(AuditTrailLog.Profile.IsGridVisibleFor("Id"))
+                .Width(AuditTrailLog.Profile.GridWidthFor("Id"))
                 .Add();
             column.Field("LogDate")
                 .Type("datetime")
                 .EditType(EditingType.DateTimePicker)
                 .Format(SyncfusionPatternResources.GridFormat_DateTime)
                 .HeaderText(AuditTrailLogResources.PropertyLogDate)
-                .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogDate"))
-                .Width(AuditTrailLog.DataProfile.GridWidthFor("LogDate"))
+                .Visible(AuditTrailLog.Profile.IsGridVisibleFor("LogDate"))
+                .Width(AuditTrailLog.Profile.GridWidthFor("LogDate"))
                 .Add();
             column.Field("LogTime")
                 .Type("datetime")
                 .EditType(EditingType.DateTimePicker)
                 .Format(SyncfusionPatternResources.GridFormat_DateTime)
                 .HeaderText(AuditTrailLogResources.PropertyLogTime)
-                .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogTime"))
-                .Width(AuditTrailLog.DataProfile.GridWidthFor("LogTime"))
+                .Visible(AuditTrailLog.Profile.IsGridVisibleFor("LogTime"))
+                .Width(AuditTrailLog.Profile.GridWidthFor("LogTime"))
                 .Add();
             column.Field("LogUserName")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogUserName)
-                .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogUserName"))
-                .Width(AuditTrailLog.DataProfile.GridWidthFor("LogUserName"))
+                .Visible(AuditTrailLog.Profile.IsGridVisibleFor("LogUserName"))
+                .Width(AuditTrailLog.Profile.GridWidthFor("LogUserName"))
                 .Add();
             column.Field("LogDomain")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogDomain)
-                .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogDomain"))
-                .Width(AuditTrailLog.DataProfile.GridWidthFor("LogDomain"))
+                .Visible(AuditTrailLog.Profile.IsGridVisibleFor("LogDomain"))
+                .Width(AuditTrailLog.Profile.GridWidthFor("LogDomain"))
                 .Add();
             column.Field("LogEntity")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogEntity)
-                .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogEntity"))
-                .Width(AuditTrailLog.DataProfile.GridWidthFor("LogEntity"))
+                .Visible(AuditTrailLog.Profile.IsGridVisibleFor("LogEntity"))
+                .Width(AuditTrailLog.Profile.GridWidthFor("LogEntity"))
                 .Add();
             column.Field("LogOperation")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogOperation)
-                .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogOperation"))
-                .Width(AuditTrailLog.DataProfile.GridWidthFor("LogOperation"))
+                .Visible(AuditTrailLog.Profile.IsGridVisibleFor("LogOperation"))
+                .Width(AuditTrailLog.Profile.GridWidthFor("LogOperation"))
                 .Add();
             column.Field("LogId")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogId)
-                .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogId"))
-                .Width(AuditTrailLog.DataProfile.GridWidthFor("LogId"))
+                .Visible(AuditTrailLog.Profile.IsGridVisibleFor("LogId"))
+                .Width(AuditTrailLog.Profile.GridWidthFor("LogId"))
                 .Add();
             column.Field("LogEntityBefore")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogEntityBefore)
-                .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogEntityBefore"))
-                .Width(AuditTrailLog.DataProfile.GridWidthFor("LogEntityBefore"))
+                .Visible(AuditTrailLog.Profile.IsGridVisibleFor("LogEntityBefore"))
+                .Width(AuditTrailLog.Profile.GridWidthFor("LogEntityBefore"))
                 .Add();
             column.Field("LogEntityAfter")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(AuditTrailLogResources.PropertyLogEntityAfter)
-                .Visible(AuditTrailLog.DataProfile.IsGridVisibleFor("LogEntityAfter"))
-                .Width(AuditTrailLog.DataProfile.GridWidthFor("LogEntityAfter"))
+                .Visible(AuditTrailLog.Profile.IsGridVisibleFor("LogEntityAfter"))
+                .Width(AuditTrailLog.Profile.GridWidthFor("LogEntityAfter"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -165,9 +165,9 @@
             ej.widget.init($("#Collection_AuditTrailLog"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(AuditTrailLog.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(AuditTrailLog.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "AuditTrailLog")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "AuditTrailLog")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

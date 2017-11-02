@@ -61,15 +61,15 @@
                             .EditType(EditingType.String)
                             .HeaderText(CustomerDemographicResources.PropertyCustomerTypeId)
                             .IsPrimaryKey(true)
-                            .Visible(CustomerDemographic.DataProfile.IsGridVisibleFor("CustomerTypeId"))
-                            .Width(CustomerDemographic.DataProfile.GridWidthFor("CustomerTypeId"))
+                            .Visible(CustomerDemographic.Profile.IsGridVisibleFor("CustomerTypeId"))
+                            .Width(CustomerDemographic.Profile.GridWidthFor("CustomerTypeId"))
                             .Add();
                         column.Field("CustomerDesc")
                             .Type("string")
                             .EditType(EditingType.String)
                             .HeaderText(CustomerDemographicResources.PropertyCustomerDesc)
-                            .Visible(CustomerDemographic.DataProfile.IsGridVisibleFor("CustomerDesc"))
-                            .Width(CustomerDemographic.DataProfile.GridWidthFor("CustomerDesc"))
+                            .Visible(CustomerDemographic.Profile.IsGridVisibleFor("CustomerDesc"))
+                            .Width(CustomerDemographic.Profile.GridWidthFor("CustomerDesc"))
                             .Add();
                     })
                     //.EnablePersistence()
@@ -112,7 +112,7 @@
     $(function () {
         try {
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(CustomerDemographic.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(CustomerDemographic.Profile));
 
             $("#@Model.ValueId").hide();
 
@@ -133,7 +133,7 @@
 
             @*
             var ejGrid = zGrid("@(Model.ValueId)_LookupGrid");
-            zOnLookupView(model, dataProfile, ejGrid);
+            zOnLookupView(model, profile, ejGrid);
             *@
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
@@ -166,8 +166,8 @@
             this.model.locale = culture;
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(CustomerDemographic.DataProfile));
-            zOnLookupView(model, dataProfile, this);
+            var profile = @Html.Raw(JsonConvert.SerializeObject(CustomerDemographic.Profile));
+            zOnLookupView(model, profile, this);
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "load_@(Model.ValueId)_LookupGrid", exception));
         }

@@ -22,19 +22,19 @@
         {
             data.Add().ID("TabSheet_Territory_Territory").Text(TerritoryResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_Territory_TerritoryId" class="@AppDefaults.CssClassGroup @Territory.DataProfile.EditWidthCSSFor("TerritoryId")">
+                <div id="Group_Territory_TerritoryId" class="@AppDefaults.CssClassGroup @Territory.Profile.EditCSSFor("TerritoryId")">
                     @Html.LabelFor(model => model.Territory.TerritoryId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Territory.TerritoryId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Territory_TerritoryId" } })
                     @* @Html.ValidationMessageFor(model => model.Territory.TerritoryId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Territory_TerritoryDescription" class="@AppDefaults.CssClassGroup @Territory.DataProfile.EditWidthCSSFor("TerritoryDescription")">
+                <div id="Group_Territory_TerritoryDescription" class="@AppDefaults.CssClassGroup @Territory.Profile.EditCSSFor("TerritoryDescription")">
                     @Html.LabelFor(model => model.Territory.TerritoryDescription, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Territory.TerritoryDescription, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Territory_TerritoryDescription" } })
                     @* @Html.ValidationMessageFor(model => model.Territory.TerritoryDescription, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Territory_RegionId" class="@AppDefaults.CssClassGroup @Territory.DataProfile.EditWidthCSSFor("RegionLookupText")">
+                <div id="Group_Territory_RegionId" class="@AppDefaults.CssClassGroup @Territory.Profile.EditCSSFor("RegionLookupText")">
                     @Html.LabelFor(model => model.Territory.RegionId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Territory.RegionId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Territory_RegionId" } })
                     @{
@@ -67,18 +67,18 @@
             ej.widget.init($("#Item_Territory"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Territory.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Territory.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "EmployeeTerritories")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "EmployeeTerritories")) {
                 // EmployeeTerritories
                 zUrlDictionaryWrite("EmployeeTerritory", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "EmployeeTerritory", new { MasterControllerAction = Model.ControllerAction, MasterTerritoryId = Model.Territory.TerritoryId })))";
                 zAjaxLoadSync("Ajax_Territory_EmployeeTerritories", ajaxUrl);
             }
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_Territory_TerritoryId").hide();
             }
 
@@ -89,7 +89,7 @@
                 $("#Group_Territory_RegionId").hide();            
             }
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

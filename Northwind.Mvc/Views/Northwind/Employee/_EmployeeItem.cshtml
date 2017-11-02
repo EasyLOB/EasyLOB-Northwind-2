@@ -28,105 +28,105 @@
         {
             data.Add().ID("TabSheet_Employee_Employee").Text(EmployeeResources.EntitySingular).ContentTemplate(@<div class="@AppDefaults.CssClassPanel">
                 
-                <div id="Group_Employee_EmployeeId" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("EmployeeId")">
+                <div id="Group_Employee_EmployeeId" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("EmployeeId")">
                     @Html.LabelFor(model => model.Employee.EmployeeId, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Employee.EmployeeId, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_EmployeeId" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.EmployeeId, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_LastName" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("LastName")">
+                <div id="Group_Employee_LastName" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("LastName")">
                     @Html.LabelFor(model => model.Employee.LastName, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Employee.LastName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_LastName" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.LastName, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_FirstName" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("FirstName")">
+                <div id="Group_Employee_FirstName" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("FirstName")">
                     @Html.LabelFor(model => model.Employee.FirstName, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.Employee.FirstName, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_FirstName" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.FirstName, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_Title" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("Title")">
+                <div id="Group_Employee_Title" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("Title")">
                     @Html.LabelFor(model => model.Employee.Title, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.Title, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_Title" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.Title, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_TitleOfCourtesy" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("TitleOfCourtesy")">
+                <div id="Group_Employee_TitleOfCourtesy" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("TitleOfCourtesy")">
                     @Html.LabelFor(model => model.Employee.TitleOfCourtesy, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.TitleOfCourtesy, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_TitleOfCourtesy" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.TitleOfCourtesy, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_BirthDate" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("BirthDate")">
+                <div id="Group_Employee_BirthDate" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("BirthDate")">
                     @Html.LabelFor(model => model.Employee.BirthDate, new { @class = AppDefaults.CssClassLabel })
                     @* @Html.EditorFor(model => model.Employee.BirthDate, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_BirthDate" } }) *@
                     @Html.EJ().DateTimePickerFor(model => model.Employee.BirthDate, AppHelper.DateTimeModel, new { id = "Employee_BirthDate" })
                     @* @Html.ValidationMessageFor(model => model.Employee.BirthDate, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_HireDate" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("HireDate")">
+                <div id="Group_Employee_HireDate" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("HireDate")">
                     @Html.LabelFor(model => model.Employee.HireDate, new { @class = AppDefaults.CssClassLabel })
                     @* @Html.EditorFor(model => model.Employee.HireDate, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_HireDate" } }) *@
                     @Html.EJ().DateTimePickerFor(model => model.Employee.HireDate, AppHelper.DateTimeModel, new { id = "Employee_HireDate" })
                     @* @Html.ValidationMessageFor(model => model.Employee.HireDate, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_Address" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("Address")">
+                <div id="Group_Employee_Address" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("Address")">
                     @Html.LabelFor(model => model.Employee.Address, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.Address, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_Address" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.Address, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_City" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("City")">
+                <div id="Group_Employee_City" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("City")">
                     @Html.LabelFor(model => model.Employee.City, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.City, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_City" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.City, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_Region" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("Region")">
+                <div id="Group_Employee_Region" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("Region")">
                     @Html.LabelFor(model => model.Employee.Region, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.Region, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_Region" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.Region, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_PostalCode" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("PostalCode")">
+                <div id="Group_Employee_PostalCode" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("PostalCode")">
                     @Html.LabelFor(model => model.Employee.PostalCode, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.PostalCode, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_PostalCode" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.PostalCode, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_Country" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("Country")">
+                <div id="Group_Employee_Country" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("Country")">
                     @Html.LabelFor(model => model.Employee.Country, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.Country, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_Country" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.Country, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_HomePhone" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("HomePhone")">
+                <div id="Group_Employee_HomePhone" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("HomePhone")">
                     @Html.LabelFor(model => model.Employee.HomePhone, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.HomePhone, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_HomePhone" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.HomePhone, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_Extension" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("Extension")">
+                <div id="Group_Employee_Extension" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("Extension")">
                     @Html.LabelFor(model => model.Employee.Extension, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.Extension, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_Extension" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.Extension, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_Photo" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("Photo")">
+                <div id="Group_Employee_Photo" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("Photo")">
                     @Html.LabelFor(model => model.Employee.Photo, new { @class = AppDefaults.CssClassLabel })
                     <img src="@employee_Photo_Source" class="z-image" />
                     @* @Html.ValidationMessageFor(model => model.Employee.Photo, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_Notes" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("Notes")">
+                <div id="Group_Employee_Notes" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("Notes")">
                     @Html.LabelFor(model => model.Employee.Notes, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.Notes, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_Notes" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.Notes, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_ReportsTo" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("EmployeeLookupText")">
+                <div id="Group_Employee_ReportsTo" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("EmployeeLookupText")">
                     @Html.LabelFor(model => model.Employee.ReportsTo, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.ReportsTo, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_ReportsTo" } })
                     @{
@@ -139,7 +139,7 @@
                     @* @Html.ValidationMessageFor(model => model.Employee.ReportsTo, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
                 
-                <div id="Group_Employee_PhotoPath" class="@AppDefaults.CssClassGroup @Employee.DataProfile.EditWidthCSSFor("PhotoPath")">
+                <div id="Group_Employee_PhotoPath" class="@AppDefaults.CssClassGroup @Employee.Profile.EditCSSFor("PhotoPath")">
                     @Html.LabelFor(model => model.Employee.PhotoPath, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.Employee.PhotoPath, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "Employee_PhotoPath" } })
                     @* @Html.ValidationMessageFor(model => model.Employee.PhotoPath, "", new { @class = AppDefaults.CssClassValidator }) *@
@@ -171,30 +171,30 @@
             ej.widget.init($("#Item_Employee"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Employee.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Employee.Profile));
             var controllerAction = model.ControllerAction == null ? "" : model.ControllerAction.toLowerCase();
 
             var ajaxUrl = "";
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "Employees")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "Employees")) {
                 // Employees
                 zUrlDictionaryWrite("Employee", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "Employee", new { MasterControllerAction = Model.ControllerAction, MasterReportsTo = Model.Employee.EmployeeId })))";
                 zAjaxLoadSync("Ajax_Employee_Employees", ajaxUrl);
             }
-            *@            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "EmployeeTerritories")) {
+            *@            if (controllerAction != "create" && zContains(profile.EditCollections, "EmployeeTerritories")) {
                 // EmployeeTerritories
                 zUrlDictionaryWrite("EmployeeTerritory", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "EmployeeTerritory", new { MasterControllerAction = Model.ControllerAction, MasterEmployeeId = Model.Employee.EmployeeId })))";
                 zAjaxLoadSync("Ajax_Employee_EmployeeTerritories", ajaxUrl);
             }
-            if (controllerAction != "create" && zContains(dataProfile.EditCollections, "Orders")) {
+            if (controllerAction != "create" && zContains(profile.EditCollections, "Orders")) {
                 // Orders
                 zUrlDictionaryWrite("Order", "@Context.Request.Url.AbsoluteUri");
                 ajaxUrl = "@(Html.Raw(Url.Action("Search", "Order", new { MasterControllerAction = Model.ControllerAction, MasterEmployeeId = Model.Employee.EmployeeId })))";
                 zAjaxLoadSync("Ajax_Employee_Orders", ajaxUrl);
             }
 
-            if (controllerAction != "create" || dataProfile.Class.IsIdentity) {
+            if (controllerAction != "create" || profile.IsIdentity) {
                 $("#Group_Employee_EmployeeId").hide();
             }
 
@@ -205,7 +205,7 @@
                 $("#Group_Employee_ReportsTo").hide();            
             }
 
-            zOnItemView(model, dataProfile);        
+            zOnItemView(model, profile);        
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }

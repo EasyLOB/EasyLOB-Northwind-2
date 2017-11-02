@@ -40,22 +40,22 @@
                 .EditType(EditingType.String)
                 .HeaderText(RoleResources.PropertyId)
                 .IsPrimaryKey(true)
-                .Visible(Role.DataProfile.IsGridVisibleFor("Id"))
-                .Width(Role.DataProfile.GridWidthFor("Id"))
+                .Visible(Role.Profile.IsGridVisibleFor("Id"))
+                .Width(Role.Profile.GridWidthFor("Id"))
                 .Add();
             column.Field("Name")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(RoleResources.PropertyName)
-                .Visible(Role.DataProfile.IsGridVisibleFor("Name"))
-                .Width(Role.DataProfile.GridWidthFor("Name"))
+                .Visible(Role.Profile.IsGridVisibleFor("Name"))
+                .Width(Role.Profile.GridWidthFor("Name"))
                 .Add();
             column.Field("Discriminator")
                 .Type("string")
                 .EditType(EditingType.String)
                 .HeaderText(RoleResources.PropertyDiscriminator)
-                .Visible(Role.DataProfile.IsGridVisibleFor("Discriminator"))
-                .Width(Role.DataProfile.GridWidthFor("Discriminator"))
+                .Visible(Role.Profile.IsGridVisibleFor("Discriminator"))
+                .Width(Role.Profile.GridWidthFor("Discriminator"))
                 .Add();
         })
         .EditSettings(edit => edit
@@ -110,9 +110,9 @@
             ej.widget.init($("#Collection_Role"));
 
             var model = @Html.Raw(JsonConvert.SerializeObject(Model));
-            var dataProfile = @Html.Raw(JsonConvert.SerializeObject(Role.DataProfile));
+            var profile = @Html.Raw(JsonConvert.SerializeObject(Role.Profile));
 
-            zOnCollectionView(model, dataProfile, "@Url.Action("DataSource", "Role")");
+            zOnCollectionView(model, profile, "@Url.Action("DataSource", "Role")");
         } catch (exception) {
             zAlert(zExceptionMessage("@CSHTML", "function", exception));
         }                
