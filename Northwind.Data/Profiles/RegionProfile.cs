@@ -11,11 +11,11 @@ namespace Northwind.Data
         (
             Name: "Region",
             IsIdentity: false,
-            Keys: new string[] { "RegionId" },
+            Keys: new List<string> { "RegionId" },
             Lookup: "RegionDescription",
             LINQOrderBy: "RegionDescription",
             LINQWhere: "RegionId == @0",
-            Associations: new string[] { },
+            Associations: new List<string> { },
             Collections: new Dictionary<string, bool>
             {
                     { "Territories", true },

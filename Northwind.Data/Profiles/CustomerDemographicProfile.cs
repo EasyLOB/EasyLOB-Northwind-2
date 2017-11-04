@@ -11,11 +11,11 @@ namespace Northwind.Data
         (
             Name: "CustomerDemographic",
             IsIdentity: false,
-            Keys: new string[] { "CustomerTypeId" },
+            Keys: new List<string> { "CustomerTypeId" },
             Lookup: "CustomerDesc",
             LINQOrderBy: "CustomerDesc",
             LINQWhere: "CustomerTypeId == @0",
-            Associations: new string[] { },
+            Associations: new List<string> { },
             Collections: new Dictionary<string, bool>
             {
                     { "CustomerCustomerDemos", true },

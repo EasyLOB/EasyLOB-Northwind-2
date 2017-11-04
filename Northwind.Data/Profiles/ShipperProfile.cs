@@ -11,11 +11,11 @@ namespace Northwind.Data
         (
             Name: "Shipper",
             IsIdentity: true,
-            Keys: new string[] { "ShipperId" },
+            Keys: new List<string> { "ShipperId" },
             Lookup: "CompanyName",
             LINQOrderBy: "CompanyName",
             LINQWhere: "ShipperId == @0",
-            Associations: new string[] { },
+            Associations: new List<string> { },
             Collections: new Dictionary<string, bool>
             {
                     { "Orders", true },
