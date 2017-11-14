@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 @{
     string imageAJAX = Url.Content("~/Images/ajax.gif");
@@ -49,7 +49,7 @@
             <div id="Layout_Menu" class="container z-layoutMenu">
 
                 @(Html.EJ().Menu("ZMenu")
-                    .IsResponsive(true)
+                    .IsResponsive()
                     .MenuFields(menuFields => menuFields
                         .Datasource((IEnumerable<AppMenu>)ViewBag.Menu)
                         .Id("Id")
