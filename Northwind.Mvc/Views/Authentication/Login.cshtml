@@ -4,9 +4,9 @@
     /*
     // !?! Multi-Tenant
     List<SelectListItem> tenants = new List<SelectListItem>();
-    if (MultiTenantHelper.HasTenants)
+    if (EasyLOB.Library.App.MultiTenantHelper.HasTenants)
     {
-        foreach (AppTenant appTenant in MultiTenantHelper.Tenants)
+        foreach (AppTenant appTenant in EasyLOB.Library.App.MultiTenantHelper.Tenants)
         {
             tenants.Add(new SelectListItem
             {
@@ -77,7 +77,7 @@
 
     $(function () {
         // !?! Multi-Tenant
-        //var isMultiTenant = @MultiTenantHelper.IsMultiTenant.ToString().ToLower();
+        //var isMultiTenant = @EasyLOB.Library.App.MultiTenantHelper.IsMultiTenant.ToString().ToLower();
         //var isMultiTenant = false;
         //if (isMultiTenant)
         //{

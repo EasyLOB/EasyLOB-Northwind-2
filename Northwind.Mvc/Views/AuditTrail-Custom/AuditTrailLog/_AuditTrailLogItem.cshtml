@@ -76,18 +76,18 @@
                 
                 @Html.ZNewLine()
 
-                <div id="Group_AuditTrailLog_LogEntityBefore" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogEntityBefore")">
-                    @Html.LabelFor(model => model.AuditTrailLog.LogEntityBefore, new { @class = AppDefaults.CssClassLabel })
-                    @Html.EditorFor(model => model.AuditTrailLog.LogEntityBefore, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogEntityBefore" } })
-                    @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntityBefore, "", new { @class = AppDefaults.CssClassValidator }) *@
-                </div>
-                
-                @Html.ZNewLine()
-
                 <div id="Group_AuditTrailLog_LogEntityAfter" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogEntityAfter")">
                     @Html.LabelFor(model => model.AuditTrailLog.LogEntityAfter, new { @class = AppDefaults.CssClassLabel })
                     @Html.EditorFor(model => model.AuditTrailLog.LogEntityAfter, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogEntityAfter" } })
                     @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntityAfter, "", new { @class = AppDefaults.CssClassValidator }) *@
+                </div>
+                
+                @Html.ZNewLine()
+
+                <div id="Group_AuditTrailLog_LogEntityBefore" class="@AppDefaults.CssClassGroup @AuditTrailLog.Profile.EditCSSFor("LogEntityBefore")">
+                    @Html.LabelFor(model => model.AuditTrailLog.LogEntityBefore, new { @class = AppDefaults.CssClassLabel })
+                    @Html.EditorFor(model => model.AuditTrailLog.LogEntityBefore, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "AuditTrailLog_LogEntityBefore" } })
+                    @* @Html.ValidationMessageFor(model => model.AuditTrailLog.LogEntityBefore, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
 
             </div>);

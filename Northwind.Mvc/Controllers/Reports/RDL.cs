@@ -1,4 +1,4 @@
-using EasyLOB.Library.Web;
+﻿using EasyLOB.Library.App;
 using EasyLOB.Resources;
 using Syncfusion.JavaScript.Models.ReportViewer;
 using System;

@@ -3,6 +3,7 @@ using EasyLOB.AuditTrail;
 using EasyLOB.Extensions.Edm;
 using EasyLOB.Identity;
 using EasyLOB.Library;
+using EasyLOB.Library.App;
 using EasyLOB.Library.Web;
 using EasyLOB.Log;
 using EasyLOB.Resources;
@@ -85,22 +86,31 @@ namespace EasyLOB.Mvc
             result.Append("<br />:: Name: " + tenant.Name);
             result.Append("<br />:: Description: " + tenant.Name);
             result.Append("<br />:: Connections: " + tenant.Connections.Count.ToString());
-            
-            //AppProfile profile = ProfileHelper.Profile(DependencyResolver.Current.GetService<IAuthenticationManager>());
-            //result.Append("<br /><b>Profile</b>");
-            //result.Append("<br />:: User Name: " + profile.UserName);
-            //result.Append("<br />:: Role Name(s): " + String.Join(",", profile.Roles.ToArray()));
-            //result.Append("<br />:: Is Administrator ? " + profile.IsAdministrator.ToString());
-            //result.Append("<br />:: Is Authenticated ? " + profile.IsAuthenticated.ToString());
+
+            AppProfile profile = ProfileHelper.Profile;
+            result.Append("<br /><b>Profile</b>");
+            result.Append("<br />:: User Name: " + profile.UserName);
+            result.Append("<br />:: Role Name(s): " + String.Join(",", profile.Roles.ToArray()));
+            result.Append("<br />:: Is Administrator ? " + profile.IsAdministrator.ToString());
+            result.Append("<br />:: Is Authenticated ? " + profile.IsAuthenticated.ToString());
+            result.Append("<br />:: Audit Trail");
+            foreach (AppProfileAuditTrail auditTrail in profile.AuditTrail)
+            {
+                string domainEntity = (String.IsNullOrEmpty(auditTrail.Domain) ? "" : auditTrail.Domain + ".") +
+                    auditTrail.Entity;
+                result.Append("<br />&nbsp;&nbsp;&nbsp;" + domainEntity + " " +
+                    auditTrail.LogOperations.Trim() + " " +
+                    auditTrail.LogMode);
+            }
 
             result.Append("<br /><b>Security - Authentication</b>");
             result.Append("<br />:: IAuthenticationManager: " + (DependencyResolver.Current.GetService<IAuthenticationManager>()).GetType().ToString());
             result.Append("<br />:: IIdentityUnitOfWork: " + (DependencyResolver.Current.GetService<IIdentityUnitOfWork>()).GetType().ToString());
-            IAuthenticationManager authenticationManager = DependencyResolver.Current.GetService<IAuthenticationManager>();
-            result.Append("<br />:: User Name: " + authenticationManager.UserName);
-            result.Append("<br />:: Role Name(s): " + String.Join(",", authenticationManager.Roles.ToArray()));
-            result.Append("<br />:: Is Administrator ? " + authenticationManager.IsAdministrator.ToString());
-            result.Append("<br />:: Is Authenticated ? " + authenticationManager.IsAuthenticated.ToString());
+            //IAuthenticationManager authenticationManager = DependencyResolver.Current.GetService<IAuthenticationManager>();
+            //result.Append("<br />:: User Name: " + authenticationManager.UserName);
+            //result.Append("<br />:: Role Name(s): " + String.Join(",", authenticationManager.Roles.ToArray()));
+            //result.Append("<br />:: Is Administrator ? " + authenticationManager.IsAdministrator.ToString());
+            //result.Append("<br />:: Is Authenticated ? " + authenticationManager.IsAuthenticated.ToString());
 
             result.Append("<br /><b>Security - Authorization</b>");
             result.Append("<br />:: IAuthorizationManager: " + (DependencyResolver.Current.GetService<IAuthorizationManager>()).GetType().ToString());

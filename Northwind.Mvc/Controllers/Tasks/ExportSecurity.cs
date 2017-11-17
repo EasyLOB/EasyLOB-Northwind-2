@@ -1,6 +1,6 @@
 ﻿using EasyLOB.Data;
 using EasyLOB.Library;
-using EasyLOB.Library.Web;
+using EasyLOB.Library.App;
 using EasyLOB.Library.Syncfusion;
 using EasyLOB.Persistence;
 using EasyLOB.Security.Resources;
