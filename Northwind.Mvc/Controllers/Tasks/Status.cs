@@ -99,8 +99,8 @@ namespace EasyLOB.Mvc
                 string domainEntity = (String.IsNullOrEmpty(auditTrail.Domain) ? "" : auditTrail.Domain + ".") +
                     auditTrail.Entity;
                 result.Append("<br />&nbsp;&nbsp;&nbsp;" + domainEntity + " " +
-                    auditTrail.LogOperations.Trim() + " " +
-                    auditTrail.LogMode);
+                    auditTrail.LogMode + " " +
+                    auditTrail.LogOperations.Trim());
             }
 
             result.Append("<br /><b>Security - Authentication</b>");
