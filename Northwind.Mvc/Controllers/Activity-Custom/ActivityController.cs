@@ -299,8 +299,9 @@ namespace EasyLOB.Activity.Mvc
         [HttpPost]
         public ActionResult DataSource(DataManager dataManager)
         {
-            IEnumerable data = new List<ActivityViewModel>();
-            int countAll = 0;
+            SyncfusionDataResult dataResult = new SyncfusionDataResult();
+            dataResult.result = new List<ActivityViewModel>();
+
             ZOperationResult operationResult = new ZOperationResult();
 
             if (IsSearch(operationResult))
@@ -312,11 +313,11 @@ namespace EasyLOB.Activity.Mvc
                     string where = syncfusionGrid.ToLinqWhere(dataManager.Search, dataManager.Where, args);
                     string orderBy = syncfusionGrid.ToLinqOrderBy(dataManager.Sorted);        
                     int take = (dataManager.Skip == 0 && dataManager.Take == 0) ? AppDefaults.SyncfusionRecordsBySearch : dataManager.Take; // Excel Filtering
-                    data = ZViewHelper<ActivityViewModel, ActivityDTO, EasyLOB.Activity.Data.Activity>.ToViewList(Application.Select(operationResult, where, args.ToArray(), orderBy, dataManager.Skip, take)); // !?!
+                    dataResult.result = ZViewHelper<ActivityViewModel, ActivityDTO, EasyLOB.Activity.Data.Activity>.ToViewList(Application.Select(operationResult, where, args.ToArray(), orderBy, dataManager.Skip, take)); // !?!
         
                     if (dataManager.RequiresCounts)
                     {
-                        countAll = Application.Count(where, args.ToArray());
+                        dataResult.count = Application.Count(where, args.ToArray());
                     }
                 }
                 catch (Exception exception)
@@ -330,7 +331,7 @@ namespace EasyLOB.Activity.Mvc
                 throw new InvalidOperationException(operationResult.Text);
             }
 
-            return Json(JsonConvert.SerializeObject(new { result = data, count = countAll }), JsonRequestBehavior.AllowGet);
+            return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);
         } 
 
         // POST: Activity/ExportToExcel

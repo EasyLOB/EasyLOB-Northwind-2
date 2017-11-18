@@ -510,6 +510,7 @@
     <Content Include="Images\16\info.png" />
     <Content Include="Images\16\mail.png" />
     <Content Include="Images\16\ok.png" />
+    <Content Include="Images\16\print.png" />
     <Content Include="Images\16\read.png" />
     <Content Include="Images\16\save.png" />
     <Content Include="Images\16\search.png" />
@@ -528,6 +529,7 @@
     <Content Include="Images\24\info.png" />
     <Content Include="Images\24\mail.png" />
     <Content Include="Images\24\ok.png" />
+    <Content Include="Images\24\print.png" />
     <Content Include="Images\24\read.png" />
     <Content Include="Images\24\save.png" />
     <Content Include="Images\24\search.png" />
@@ -546,6 +548,7 @@
     <Content Include="Images\32\info.png" />
     <Content Include="Images\32\mail.png" />
     <Content Include="Images\32\ok.png" />
+    <Content Include="Images\32\print.png" />
     <Content Include="Images\32\read.png" />
     <Content Include="Images\32\save.png" />
     <Content Include="Images\32\search.png" />

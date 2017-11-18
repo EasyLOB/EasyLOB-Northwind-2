@@ -95,6 +95,32 @@ function zParseJSON(json) {
     return result;
 }
 
+function zReadOnly(parentId) {
+    var parentId = "#" + parentId;
+    var readOnly = true;
+    $(parentId + " input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").prop("readonly", readOnly);
+    // ReadOnly.js
+    // https://github.com/haggen/readonly
+    readonly('select', readOnly);
+    $(parentId + " textarea").prop("readonly", readOnly);
+    $(parentId + " input[name*='_Lookup'][type!='checkbox']").prop("readonly", true);
+    if (readOnly) {
+        $(parentId + " input[type='checkbox']").prop("disabled", true);
+
+        $(parentId + " input[data-role='ejdatepicker']").each(function () {
+            $(this).data("ejDatePicker").disable();
+        });
+        $(parentId + " input[data-role='ejdatetimepicker']").each(function () {
+            $(this).data("ejDateTimePicker").disable();
+        });
+
+        $(parentId + " img.z-buttonLookup").hide();
+    }
+    else {
+        $(parentId + " img.z-buttonLookup").show();
+    }
+}
+
 function zReplaceAll(string, find, replace) {
     return string.replace(new RegExp(find, 'g'), replace);
 }
@@ -467,6 +493,47 @@ function zOnCollectionView(model, profile, dataSourceUrl) {
     //}
 
     zShowOperationResult(model.OperationResult);
+}
+
+function zOnCollectionViewRead(model, profile) {
+    if (!model.IsMasterDetail) {
+        var gridName = "Grid_" + profile.Name;
+        var ejGrid = zGrid(gridName);
+        var refresh = false;
+
+        var filterSettings = JSON.parse(zLocalStorageGet("$easylob$" + gridName + "_Filter"));
+        if (filterSettings) {
+            ejGrid.model.filterSettings = filterSettings;
+            refresh = true;
+        }
+
+        var searchSettings = JSON.parse(zLocalStorageGet("$easylob$" + gridName + "_Search"));
+        if (searchSettings) {
+            ejGrid.model.searchSettings = searchSettings;
+            $("#" + gridName + "_searchbar").val(searchSettings.key);
+            refresh = true;
+        }
+
+        if (refresh) {
+            ejGrid.refreshContent();
+        }
+    }
+}
+
+function zOnCollectionViewWrite(model, profile, requestType) {
+    if (!model.IsMasterDetail) {
+        var gridName = "Grid_" + profile.Name;
+        var ejGrid = zGrid(gridName);
+
+        switch (requestType) {
+            case "filtering":
+                zLocalStorageSet("$easylob$" + gridName + "_Filter", JSON.stringify(ejGrid.model.filterSettings));
+                break;
+            case "searching":
+                zLocalStorageSet("$easylob$" + gridName + "_Search", JSON.stringify(ejGrid.model.searchSettings));
+                break;
+        }
+    }
 }
 
 function zOnCRUDView(model) {
