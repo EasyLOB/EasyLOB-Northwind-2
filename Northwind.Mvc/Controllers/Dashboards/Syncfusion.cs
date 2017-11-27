@@ -1,4 +1,4 @@
-using EasyLOB.Library;
+﻿using EasyLOB.Library;
 using EasyLOB.Library.Syncfusion;
 using System;
 using System.IO;
@@ -43,7 +43,8 @@ namespace EasyLOB.Mvc
             catch (Exception exception)
             {
                 operationResult.ParseException(exception);
-                return View("OperationResult", new OperationResultModel(operationResult));
+
+                return View("OperationResult", new OperationResultViewModel(operationResult));
             }
         }
     }

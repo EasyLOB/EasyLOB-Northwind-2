@@ -16,21 +16,21 @@ namespace EasyLOB.Mvc
         [HttpGet]
         public ActionResult RDLC(string reportDirectory, string reportName)
         {
-            OperationResultModel operationResultModel = new OperationResultModel();
+            OperationResultViewModel viewModel = new OperationResultViewModel();
 
             try
             {
                 if (String.IsNullOrEmpty(reportName))
                 {
-                    operationResultModel.OperationResult.ErrorMessage = ErrorResources.RDL_Parameters;
+                    viewModel.OperationResult.ErrorMessage = ErrorResources.RDL_Parameters;
 
-                    return View("OperationResult", operationResultModel);
+                    return View("OperationResult", viewModel);
                 }
                 else
                 {
-                    if (!IsReport(reportDirectory, reportName, operationResultModel.OperationResult))
+                    if (!IsReport(reportDirectory, reportName, viewModel.OperationResult))
                     {
-                        return View("OperationResult", operationResultModel);
+                        return View("OperationResult", viewModel);
                     }
                     else
                     {
@@ -62,10 +62,10 @@ namespace EasyLOB.Mvc
             }
             catch (Exception exception)
             {
-                operationResultModel.OperationResult.ParseException(exception);
+                viewModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", operationResultModel);
+            return View("OperationResult", viewModel);
         }
     }
 }

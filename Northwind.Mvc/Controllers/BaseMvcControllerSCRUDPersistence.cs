@@ -1,4 +1,4 @@
-using EasyLOB.Data;
+﻿using EasyLOB.Data;
 using EasyLOB.Library.Syncfusion;
 using EasyLOB.Persistence;
 using EasyLOB.Resources;

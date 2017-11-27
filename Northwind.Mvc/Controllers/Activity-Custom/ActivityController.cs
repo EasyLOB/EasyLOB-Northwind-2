@@ -36,14 +36,17 @@ namespace EasyLOB.Activity.Mvc
 
             try
             {
-                IsOperation(activityCollectionModel.OperationResult);
+                if (IsIndex(activityCollectionModel.OperationResult))
+                {
+                    return View(activityCollectionModel);
+                }
             }
             catch (Exception exception)
             {
                 activityCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View(activityCollectionModel);
+            return View("OperationResult", new OperationResultViewModel(activityCollectionModel.OperationResult));
         }        
 
         // GET & POST: Activity/Search
@@ -324,11 +327,11 @@ namespace EasyLOB.Activity.Mvc
                 {
                     operationResult.ParseException(exception);
                 }
-            }
 
-            if (!operationResult.Ok)
-            {
-                throw new InvalidOperationException(operationResult.Text);
+                if (!operationResult.Ok)
+                {
+                    throw new InvalidOperationException(operationResult.Text);
+                }
             }
 
             return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);

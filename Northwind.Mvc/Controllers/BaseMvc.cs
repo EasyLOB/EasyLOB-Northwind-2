@@ -97,7 +97,18 @@ namespace EasyLOB.Mvc
 
         protected JsonResult JsonResultFailure(ZOperationResult operationResult)
         {
-            return JsonResultSuccess(new { OperationResult = operationResult });
+            return JsonResultSuccess(new {
+                OperationResult = operationResult
+            });
+        }
+
+        protected JsonResult JsonResultFailure(ZOperationResult operationResult, string url)
+        {
+            return JsonResultFailure(new
+            {
+                OperationResult = operationResult,
+                Url = url
+            });
         }
 
         protected JsonResult JsonResultFailure(object data = null)
@@ -127,13 +138,22 @@ namespace EasyLOB.Mvc
 
         protected JsonResult JsonResultSuccess(ZOperationResult operationResult)
         {
-            return JsonResultSuccess(new { OperationResult = operationResult, Controller = ControllerContext.RouteData.Values["controller"].ToString() });
-            //return JsonResultSuccess(new { OperationResult = operationResult, Url = ReadUrlDictionary() });
+            return JsonResultSuccess(new {
+                OperationResult = operationResult,
+                Controller = ControllerContext.RouteData.Values["controller"].ToString() }
+            );
+            //return JsonResultSuccess(new {
+            //    OperationResult = operationResult,
+            //    Url = ReadUrlDictionary()
+            //});
         }
 
         protected JsonResult JsonResultSuccess(ZOperationResult operationResult, string url)
         {
-            return JsonResultSuccess(new { OperationResult = operationResult, Url = url });
+            return JsonResultSuccess(new {
+                OperationResult = operationResult,
+                Url = url
+            });
         }
 
         protected JsonResult JsonResultSuccess(object data = null)

@@ -36,14 +36,17 @@ namespace EasyLOB.AuditTrail.Mvc
 
             try
             {
-                IsOperation(auditTrailConfigurationCollectionModel.OperationResult);
+                if (IsIndex(auditTrailConfigurationCollectionModel.OperationResult))
+                {
+                    return View(auditTrailConfigurationCollectionModel);
+                }
             }
             catch (Exception exception)
             {
                 auditTrailConfigurationCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View(auditTrailConfigurationCollectionModel);
+            return View("OperationResult", new OperationResultViewModel(auditTrailConfigurationCollectionModel.OperationResult));
         }        
 
         // GET & POST: AuditTrailConfiguration/Search
@@ -324,11 +327,11 @@ namespace EasyLOB.AuditTrail.Mvc
                 {
                     operationResult.ParseException(exception);
                 }
-            }
 
-            if (!operationResult.Ok)
-            {
-                throw new InvalidOperationException(operationResult.Text);
+                if (!operationResult.Ok)
+                {
+                    throw new InvalidOperationException(operationResult.Text);
+                }
             }
 
             return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);

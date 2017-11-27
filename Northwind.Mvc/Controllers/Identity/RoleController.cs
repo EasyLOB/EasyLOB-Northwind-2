@@ -36,14 +36,17 @@ namespace EasyLOB.Identity.Mvc
 
             try
             {
-                IsOperation(roleCollectionModel.OperationResult);
+                if (IsIndex(roleCollectionModel.OperationResult))
+                {
+                    return View(roleCollectionModel);
+                }
             }
             catch (Exception exception)
             {
                 roleCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View(roleCollectionModel);
+            return View("OperationResult", new OperationResultViewModel(roleCollectionModel.OperationResult));
         }        
 
         // GET & POST: Role/Search
@@ -324,11 +327,11 @@ namespace EasyLOB.Identity.Mvc
                 {
                     operationResult.ParseException(exception);
                 }
-            }
 
-            if (!operationResult.Ok)
-            {
-                throw new InvalidOperationException(operationResult.Text);
+                if (!operationResult.Ok)
+                {
+                    throw new InvalidOperationException(operationResult.Text);
+                }
             }
 
             return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);

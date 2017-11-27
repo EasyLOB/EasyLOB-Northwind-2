@@ -36,14 +36,17 @@ namespace Northwind.Mvc
 
             try
             {
-                IsOperation(employeeTerritoryCollectionModel.OperationResult);
+                if (IsIndex(employeeTerritoryCollectionModel.OperationResult))
+                {
+                    return View(employeeTerritoryCollectionModel);
+                }
             }
             catch (Exception exception)
             {
                 employeeTerritoryCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View(employeeTerritoryCollectionModel);
+            return View("OperationResult", new OperationResultViewModel(employeeTerritoryCollectionModel.OperationResult));
         }        
 
         // GET & POST: EmployeeTerritory/Search

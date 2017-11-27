@@ -36,14 +36,17 @@ namespace EasyLOB.Identity.Mvc
 
             try
             {
-                IsOperation(userLoginCollectionModel.OperationResult);
+                if (IsIndex(userLoginCollectionModel.OperationResult))
+                {
+                    return View(userLoginCollectionModel);
+                }
             }
             catch (Exception exception)
             {
                 userLoginCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View(userLoginCollectionModel);
+            return View("OperationResult", new OperationResultViewModel(userLoginCollectionModel.OperationResult));
         }        
 
         // GET & POST: UserLogin/Search
@@ -324,11 +327,11 @@ namespace EasyLOB.Identity.Mvc
                 {
                     operationResult.ParseException(exception);
                 }
-            }
 
-            if (!operationResult.Ok)
-            {
-                throw new InvalidOperationException(operationResult.Text);
+                if (!operationResult.Ok)
+                {
+                    throw new InvalidOperationException(operationResult.Text);
+                }
             }
 
             return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);

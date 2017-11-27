@@ -36,14 +36,17 @@ namespace Northwind.Mvc
 
             try
             {
-                IsOperation(categoryCollectionModel.OperationResult);
+                if (IsIndex(categoryCollectionModel.OperationResult))
+                {
+                    return View(categoryCollectionModel);
+                }
             }
             catch (Exception exception)
             {
                 categoryCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View(categoryCollectionModel);
+            return View("OperationResult", new OperationResultViewModel(categoryCollectionModel.OperationResult));
         }        
 
         // GET & POST: Category/Search
