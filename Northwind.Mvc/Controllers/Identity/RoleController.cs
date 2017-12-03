@@ -316,7 +316,7 @@ namespace EasyLOB.Identity.Mvc
                     string where = syncfusionGrid.ToLinqWhere(dataManager.Search, dataManager.Where, args);
                     string orderBy = syncfusionGrid.ToLinqOrderBy(dataManager.Sorted);        
                     int take = (dataManager.Skip == 0 && dataManager.Take == 0) ? AppDefaults.SyncfusionRecordsBySearch : dataManager.Take; // Excel Filtering
-                    dataResult.result = ZViewHelper<RoleViewModel, RoleDTO, Role>.ToViewList(Application.Select(operationResult, where, args.ToArray(), orderBy, dataManager.Skip, take));
+                    dataResult.result = ZViewHelper<RoleViewModel, RoleDTO, Role>.ToViewList(Application.Search(operationResult, where, args.ToArray(), orderBy, dataManager.Skip, take));
         
                     if (dataManager.RequiresCounts)
                     {

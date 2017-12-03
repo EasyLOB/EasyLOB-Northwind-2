@@ -37,7 +37,7 @@ namespace EasyLOB.Mvc
             {
                 if (IsExport(operationResult))
                 {
-                    IEnumerable data = Application.SelectAll(operationResult);
+                    IEnumerable data = Application.SearchAll(operationResult);
                     if (operationResult.Ok)
                     {
                         SyncfusionGrid.ExportToExcel(gridModel, data, fileName, AppDefaults.SyncfusionTheme);
@@ -64,7 +64,7 @@ namespace EasyLOB.Mvc
             {
                 if (IsExport(operationResult))
                 {
-                    IEnumerable data = Application.SelectAll(operationResult);
+                    IEnumerable data = Application.SearchAll(operationResult);
                     if (operationResult.Ok)
                     {
                         SyncfusionGrid.ExportToPdf(gridModel, data, fileName, AppDefaults.SyncfusionTheme);
@@ -91,7 +91,7 @@ namespace EasyLOB.Mvc
             {
                 if (IsExport(operationResult))
                 {
-                    IEnumerable data = Application.SelectAll(operationResult);
+                    IEnumerable data = Application.SearchAll(operationResult);
                     if (operationResult.Ok)
                     {
                         SyncfusionGrid.ExportToWord(gridModel, data, fileName, AppDefaults.SyncfusionTheme);

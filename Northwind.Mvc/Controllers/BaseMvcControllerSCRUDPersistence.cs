@@ -38,7 +38,7 @@ namespace EasyLOB.Mvc
             {
                 if (IsExport(operationResult) && IsSearch(operationResult))
                 {
-                    IEnumerable data = Repository.SelectAll();
+                    IEnumerable data = Repository.SearchAll();
                     SyncfusionGrid.ExportToExcel(gridModel, data, fileName, AppDefaults.SyncfusionTheme);
                 }
             }
@@ -62,7 +62,7 @@ namespace EasyLOB.Mvc
             {
                 if (IsExport(operationResult) && IsSearch(operationResult))
                 {
-                    IEnumerable data = Repository.SelectAll();
+                    IEnumerable data = Repository.SearchAll();
                     SyncfusionGrid.ExportToPdf(gridModel, data, fileName, AppDefaults.SyncfusionTheme);
                 }
             }
@@ -86,7 +86,7 @@ namespace EasyLOB.Mvc
             {
                 if (IsExport(operationResult) && IsSearch(operationResult))
                 {
-                    IEnumerable data = Repository.SelectAll();
+                    IEnumerable data = Repository.SearchAll();
                     SyncfusionGrid.ExportToWord(gridModel, data, fileName, AppDefaults.SyncfusionTheme);
                 }
             }

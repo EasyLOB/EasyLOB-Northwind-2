@@ -56,7 +56,7 @@ namespace Northwind.WebApi
 
             try
             {
-                return Ok<IEnumerable<TerritoryDTO>>(Application.Select(operationResult,
+                return Ok<IEnumerable<TerritoryDTO>>(Application.Search(operationResult,
                     null, null, (null as int?), AppDefaults.SyncfusionRecordsBySearch));
                 //return Ok<IEnumerable<TerritoryDTO>>(Application.SelectAll(operationResult));
             }
