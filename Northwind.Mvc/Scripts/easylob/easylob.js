@@ -1,5 +1,13 @@
 ﻿
 // JavaScript
+// AJAX
+// EDM
+// Errors & Exceptions
+// Local Storage
+// Session Storage
+// Syncfusion
+
+// JavaScript
 
 /*
 if (!value)
@@ -30,8 +38,60 @@ function zAlert(message) {
     }
 }
 
+// items.sort(compareValues("property"));
+// items.sort(compareValues("property", "desc"));
+function zCompareValues(key, order = "asc") {
+    return function (a, b) {
+        if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+            return 0;
+        }
+
+        const varA = (typeof a[key] === "string") ? a[key].toUpperCase() : a[key];
+        const varB = (typeof b[key] === "string") ? b[key].toUpperCase() : b[key];
+
+        let comparison = 0;
+        if (varA > varB) {
+            comparison = 1;
+        } else if (varA < varB) {
+            comparison = -1;
+        }
+
+        return ((order == "desc") ? (comparison * -1) : comparison);
+    };
+}
+
+function zConsole(message) {
+    //console.error(message);
+    console.info(message);
+    //console.log(message);
+    //console.warn(message);
+}
+
 function zContains(array, value) {
     return array.indexOf(value) >= 0;
+}
+
+function zDateAddDay(date, n) {
+    return new Date(date.setDay(date.getMonth() + n));
+}
+
+function zDateAddMonth(date, n) {
+    return new Date(date.setMonth(date.getMonth() + n));
+}
+
+function zDateAddYear(date, n) {
+    return new Date(date.setYear(date.getMonth() + n));
+}
+
+function zEnter2Tab() {
+    $("input").keydown(function (e) {
+        var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+        if (key === 13) {
+            e.preventDefault();
+            var inputs = $(this).closest("form").find(":input:visible");
+            inputs.eq(inputs.index(this) + 1).focus();
+        }
+    });
 }
 
 function zFormat(string, args) {
@@ -41,6 +101,35 @@ function zFormat(string, args) {
     });
 
     return string;
+}
+
+function zGUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
+function zISODate(value) {
+    return value ? new Date(value) : value;
+}
+
+function zIsValue(value) {
+    /*
+        null
+        undefined
+        NaN
+        ""
+        0
+        false
+    */
+    var result = false;
+
+    if (value) {
+        result = true;
+    }
+
+    return result;
 }
 
 function zOne(value) {
@@ -95,9 +184,8 @@ function zParseJSON(json) {
     return result;
 }
 
-function zReadOnly(parentId) {
+function zReadOnly(parentId, readOnly = true) {
     var parentId = "#" + parentId;
-    var readOnly = true;
     $(parentId + " input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").prop("readonly", readOnly);
     // ReadOnly.js
     // https://github.com/haggen/readonly
@@ -642,14 +730,15 @@ function zOnItemView(model, profile) {
     }
 
     // ENTER => TAB
-    $("input").keydown(function (e) {
-        var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
-        if (key === 13) {
-            e.preventDefault();
-            var inputs = $(this).closest("form").find(":input:visible");
-            inputs.eq(inputs.index(this) + 1).focus();
-        }
-    });
+    zEnter2Tab();
+    //$("input").keydown(function (e) {
+    //    var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+    //    if (key === 13) {
+    //        e.preventDefault();
+    //        var inputs = $(this).closest("form").find(":input:visible");
+    //        inputs.eq(inputs.index(this) + 1).focus();
+    //    }
+    //});
 
     // Tab
     var tabIndex = zTabDictionaryRead(profile.Name);
