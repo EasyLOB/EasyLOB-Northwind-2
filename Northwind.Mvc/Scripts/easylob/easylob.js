@@ -189,7 +189,7 @@ function zReadOnly(parentId, readOnly = true) {
     $(parentId + " input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").prop("readonly", readOnly);
     // ReadOnly.js
     // https://github.com/haggen/readonly
-    readonly('select', readOnly);
+    readonly(parentId + " select", readOnly);
     $(parentId + " textarea").prop("readonly", readOnly);
     $(parentId + " input[name*='_Lookup'][type!='checkbox']").prop("readonly", true);
     if (readOnly) {
