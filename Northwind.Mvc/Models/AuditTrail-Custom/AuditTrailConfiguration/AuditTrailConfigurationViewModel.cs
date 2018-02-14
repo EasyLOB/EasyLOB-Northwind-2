@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using EasyLOB.AuditTrail.Data;
 using EasyLOB.AuditTrail.Data.Resources;
 using EasyLOB.Data;
 using EasyLOB.Library;
+using EasyLOB.Resources;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
-namespace EasyLOB.AuditTrail.Data
+namespace EasyLOB.AuditTrail.Mvc
 {
     public partial class AuditTrailConfigurationViewModel : ZViewBase<AuditTrailConfigurationViewModel, AuditTrailConfigurationDTO, AuditTrailConfiguration>
     {

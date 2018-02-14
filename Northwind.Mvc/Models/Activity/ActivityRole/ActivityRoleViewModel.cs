@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using EasyLOB.Activity.Data;
 using EasyLOB.Activity.Data.Resources;
 using EasyLOB.Data;
 using EasyLOB.Library;
+using EasyLOB.Resources;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
-namespace EasyLOB.Activity.Data
+namespace EasyLOB.Activity.Mvc
 {
     public partial class ActivityRoleViewModel : ZViewBase<ActivityRoleViewModel, ActivityRoleDTO, ActivityRole>
     {

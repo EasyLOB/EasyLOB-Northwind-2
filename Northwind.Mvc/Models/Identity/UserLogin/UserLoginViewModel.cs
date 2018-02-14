@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using EasyLOB.Identity.Data;
 using EasyLOB.Identity.Data.Resources;
 using EasyLOB.Data;
 using EasyLOB.Library;
+using EasyLOB.Resources;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
-namespace EasyLOB.Identity.Data
+namespace EasyLOB.Identity.Mvc
 {
     public partial class UserLoginViewModel : ZViewBase<UserLoginViewModel, UserLoginDTO, UserLogin>
     {

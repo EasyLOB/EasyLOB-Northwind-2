@@ -1,6 +1,5 @@
 ﻿using EasyLOB;
 using EasyLOB.Mvc;
-using EasyLOB.Identity.Data;
 
 namespace EasyLOB.Identity.Mvc
 {

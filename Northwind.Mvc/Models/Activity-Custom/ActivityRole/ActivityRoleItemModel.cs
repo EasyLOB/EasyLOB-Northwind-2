@@ -1,6 +1,5 @@
 ﻿using EasyLOB;
 using EasyLOB.Mvc;
-using EasyLOB.Activity.Data;
 
 namespace EasyLOB.Activity.Mvc
 {

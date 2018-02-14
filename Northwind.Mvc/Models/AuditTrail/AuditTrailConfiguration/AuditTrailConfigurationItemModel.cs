@@ -1,6 +1,5 @@
 ﻿using EasyLOB;
 using EasyLOB.Mvc;
-using EasyLOB.AuditTrail.Data;
 
 namespace EasyLOB.AuditTrail.Mvc
 {
