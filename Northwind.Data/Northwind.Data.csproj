@@ -57,7 +57,6 @@
     <Compile Include="Profiles\CustomerDemographicProfile.cs" />
     <Compile Include="Profiles\CustomerProfile.cs" />
     <Compile Include="Profiles-Custom\EmployeeProfile.cs" />
-    <Compile Include="Profiles\EmployeeTerritorieProfile.cs" />
     <Compile Include="Profiles\EmployeeTerritoryProfile.cs" />
     <Compile Include="Profiles\OrderDetailProfile.cs" />
     <Compile Include="Profiles\OrderProfile.cs" />
