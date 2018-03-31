@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1068,7 +1069,6 @@
     <Content Include="Views\Reports\RDLC.cshtml" />
     <Content Include="Views\Identity\Role\Index.cshtml" />
     <Content Include="Views\Identity\Role\_RoleCollection.cshtml" />
-    <Content Include="Views\Identity\Role\_RoleItem.cshtml" />
     <Content Include="Views\Identity\Role\_RoleLookup.cshtml" />
     <Content Include="Views\Identity\UserClaim\Index.cshtml" />
     <Content Include="Views\Identity\UserClaim\_UserClaimCollection.cshtml" />
