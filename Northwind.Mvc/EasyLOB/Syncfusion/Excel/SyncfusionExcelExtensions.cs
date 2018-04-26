@@ -9,6 +9,7 @@
 #endregion Copyright
 
 using Syncfusion.XlsIO;
+using System;
 using System.Web;
 
 //string file = "Excel.xlsx";
@@ -17,15 +18,28 @@ using System.Web;
 
 namespace EasyLOB.Library.Syncfusion
 {
-    public static class XlsIOExtensions
+    public static class SyncfusionExcelExtensions
     {
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="_workbook"></param>
-        /// <param name="filename"></param>
-        /// <param name="response"></param>
-        /// <returns></returns>
+        public static void AutoAlign(this IWorksheet worksheet, int startColumn, int columns)
+        {
+            for (int column = startColumn; column <= startColumn + columns - 1; column++)
+            {
+                worksheet.AutofitColumn(column);
+            }
+        }
+
+        public static void ClearDateTime(this IRange range, DateTime? value)
+        {
+            if (value == new DateTime(1, 1, 1))
+            {
+                range.Clear();
+            }
+            else
+            {
+                range.Value2 = value;
+            }
+        }
+
         public static XlsResult SaveAsActionResult(this ExcelEngine _engine, IWorkbook _workbook, string filename, HttpResponse response)
         {
             ExcelHttpContentType contentType = ExcelHttpContentType.Excel2007;

@@ -140,7 +140,7 @@ ORDER BY
                     worksheet.Range[row, column++].Value2 = reader.ToString("UserName");
                     worksheet.Range[row, column++].Value2 = reader.ToString("EMail");
                     worksheet.Range[row, column++].Value2 = reader.ToBoolean("Lockout") ? EasyLOB.Resources.PresentationResources.Yes : EasyLOB.Resources.PresentationResources.No;
-                    SyncfusionHelper.ExcelClearDateTime(worksheet.Range[row, column++], reader.ToDateTimeNullable("LockoutEndDate"));
+                    worksheet.Range[row, column++].ClearDateTime(reader.ToDateTimeNullable("LockoutEndDate"));
 
                     row++;
                 }
