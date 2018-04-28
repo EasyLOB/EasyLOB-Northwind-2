@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace EasyLOB.Library.Syncfusion
+namespace EasyLOB
 {
     public class DashboardServiceSerialization
     {

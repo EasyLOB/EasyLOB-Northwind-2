@@ -3,7 +3,6 @@ using Northwind.Data;
 using Northwind.Data.Resources;
 using EasyLOB;
 using EasyLOB.Data;
-using EasyLOB.Library.Syncfusion;
 using EasyLOB.Mvc;
 using Newtonsoft.Json;
 using Syncfusion.JavaScript;

@@ -1,6 +1,5 @@
 ﻿using EasyLOB.Application;
 using EasyLOB.Data;
-using EasyLOB.Library.Syncfusion;
 using EasyLOB.Resources;
 using System;
 using System.Collections;

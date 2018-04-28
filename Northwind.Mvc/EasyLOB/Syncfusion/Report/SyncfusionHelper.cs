@@ -1,4 +1,5 @@
-﻿using EasyLOB.Library.App;
+﻿using EasyLOB.Library;
+using EasyLOB.Library.App;
 using EasyLOB.Persistence;
 using Syncfusion.EJ.ReportWriter;
 using Syncfusion.Reports.EJ; // DataSourceCredentials
@@ -13,7 +14,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace EasyLOB.Library.Syncfusion
+namespace EasyLOB
 {
     public static partial class SyncfusionHelper
     {

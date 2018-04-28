@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace EasyLOB.Library.Syncfusion
+namespace EasyLOB
 {
     public class AppMenu
     {

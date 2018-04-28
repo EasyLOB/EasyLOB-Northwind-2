@@ -1,5 +1,4 @@
 ﻿using EasyLOB.Library;
-using EasyLOB.Library.Syncfusion;
 using Syncfusion.RDL.DOM;
 using System;
 using System.Collections.Generic;

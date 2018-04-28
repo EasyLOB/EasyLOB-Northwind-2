@@ -1,6 +1,5 @@
 ﻿using EasyLOB.Authentication.Resources;
 using EasyLOB.Identity;
-using EasyLOB.Library.Syncfusion;
 using EasyLOB.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;

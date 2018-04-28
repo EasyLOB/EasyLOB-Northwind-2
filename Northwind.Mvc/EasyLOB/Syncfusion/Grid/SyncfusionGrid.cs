@@ -1,4 +1,5 @@
 ﻿using EasyLOB.Data;
+using EasyLOB.Library;
 using EasyLOB.Persistence;
 using Syncfusion.EJ.Export;
 using Syncfusion.JavaScript;
@@ -10,7 +11,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Script.Serialization;
 
-namespace EasyLOB.Library.Syncfusion
+namespace EasyLOB
 {
     public partial class SyncfusionGrid
     {

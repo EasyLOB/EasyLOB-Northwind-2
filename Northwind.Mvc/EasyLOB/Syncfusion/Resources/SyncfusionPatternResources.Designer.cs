@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EasyLOB.Library.Syncfusion.Resources {
+namespace EasyLOB.Resources {
     using System;
     
     

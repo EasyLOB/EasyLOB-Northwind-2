@@ -1,4 +1,5 @@
-﻿using EasyLOB.Library.App;
+﻿using EasyLOB.Library;
+using EasyLOB.Library.App;
 using EasyLOB.Library.Web;
 using EasyLOB.Security;
 using Newtonsoft.Json;
@@ -10,7 +11,7 @@ using System.Linq;
 // How to apply url, htmlAttribute, imageUrl, linkAttribute for Menu Items?
 // https://www.syncfusion.com/kb/3008/how-to-apply-url-htmlattribute-imageurl-linkattribute-for-menu-items
 
-namespace EasyLOB.Library.Syncfusion
+namespace EasyLOB
 {
     public static partial class MenuHelper
     {

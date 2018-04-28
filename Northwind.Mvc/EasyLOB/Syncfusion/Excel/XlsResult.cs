@@ -13,7 +13,7 @@ using System;
 using System.Web;
 using System.Web.Mvc;
 
-namespace EasyLOB.Library.Syncfusion
+namespace EasyLOB
 {
     public class XlsResult : ActionResult
     {

@@ -16,7 +16,7 @@ using System.Web;
 //return excelEngine.SaveAsActionResult(workbook, file, HttpContext.ApplicationInstance.Response, ExcelDownloadType.PromptDialog, ExcelHttpContentType.Excel2013);
 //return excelEngine.SaveAsActionResult(excelEngine.Excel.Workbooks[0], file, HttpContext.ApplicationInstance.Response, ExcelDownloadType.PromptDialog, ExcelHttpContentType.Excel2013);
 
-namespace EasyLOB.Library.Syncfusion
+namespace EasyLOB
 {
     public static class SyncfusionExcelExtensions
     {
