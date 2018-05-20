@@ -58,7 +58,7 @@
                     {
                         column.Field("CustomerId")
                             .Type("string")
-                            .EditType(EditingType.String)
+                            .EditType(EditingType.StringEdit)
                             .HeaderText(CustomerCustomerDemoResources.PropertyCustomerId)
                             .IsPrimaryKey(true)
                             .Visible(CustomerCustomerDemo.Profile.IsGridVisibleFor("CustomerId"))
@@ -73,7 +73,7 @@
                             .Add();
                         column.Field("CustomerTypeId")
                             .Type("string")
-                            .EditType(EditingType.String)
+                            .EditType(EditingType.StringEdit)
                             .HeaderText(CustomerCustomerDemoResources.PropertyCustomerTypeId)
                             .IsPrimaryKey(true)
                             .Visible(CustomerCustomerDemo.Profile.IsGridVisibleFor("CustomerTypeId"))

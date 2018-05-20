@@ -45,7 +45,7 @@
         {
             column.Field("ActivityId")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(ActivityRoleResources.PropertyActivityId)
                 .IsPrimaryKey(true)
                 .Visible(ActivityRole.Profile.IsGridVisibleFor("ActivityId"))
@@ -60,7 +60,7 @@
                 .Add();
             column.Field("RoleName")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(ActivityRoleResources.PropertyRoleName)
                 .IsPrimaryKey(true)
                 .Visible(ActivityRole.Profile.IsGridVisibleFor("RoleName"))
@@ -68,7 +68,7 @@
                 .Add();
             column.Field("Operations")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(ActivityRoleResources.PropertyOperations)
                 .Visible(ActivityRole.Profile.IsGridVisibleFor("Operations"))
                 .Width(ActivityRole.Profile.GridWidthFor("Operations"))

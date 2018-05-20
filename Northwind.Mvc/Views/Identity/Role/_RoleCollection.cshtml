@@ -37,7 +37,7 @@
         {
             column.Field("Id")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(RoleResources.PropertyId)
                 .IsPrimaryKey(true)
                 .Visible(Role.Profile.IsGridVisibleFor("Id"))
@@ -45,14 +45,14 @@
                 .Add();
             column.Field("Name")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(RoleResources.PropertyName)
                 .Visible(Role.Profile.IsGridVisibleFor("Name"))
                 .Width(Role.Profile.GridWidthFor("Name"))
                 .Add();
             column.Field("Discriminator")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(RoleResources.PropertyDiscriminator)
                 .Visible(Role.Profile.IsGridVisibleFor("Discriminator"))
                 .Width(Role.Profile.GridWidthFor("Discriminator"))

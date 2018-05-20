@@ -37,7 +37,7 @@
         {
             column.Field("Id")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(ActivityResources.PropertyId)
                 .IsPrimaryKey(true)
                 .Visible(Activity.Profile.IsGridVisibleFor("Id"))
@@ -45,7 +45,7 @@
                 .Add();
             column.Field("Name")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(ActivityResources.PropertyName)
                 .Visible(Activity.Profile.IsGridVisibleFor("Name"))
                 .Width(Activity.Profile.GridWidthFor("Name"))

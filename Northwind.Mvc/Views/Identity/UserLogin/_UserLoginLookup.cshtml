@@ -58,7 +58,7 @@
                     {
                         column.Field("LoginProvider")
                             .Type("string")
-                            .EditType(EditingType.String)
+                            .EditType(EditingType.StringEdit)
                             .HeaderText(UserLoginResources.PropertyLoginProvider)
                             .IsPrimaryKey(true)
                             .Visible(UserLogin.Profile.IsGridVisibleFor("LoginProvider"))
@@ -66,7 +66,7 @@
                             .Add();
                         column.Field("ProviderKey")
                             .Type("string")
-                            .EditType(EditingType.String)
+                            .EditType(EditingType.StringEdit)
                             .HeaderText(UserLoginResources.PropertyProviderKey)
                             .IsPrimaryKey(true)
                             .Visible(UserLogin.Profile.IsGridVisibleFor("ProviderKey"))
@@ -74,7 +74,7 @@
                             .Add();
                         column.Field("UserId")
                             .Type("string")
-                            .EditType(EditingType.String)
+                            .EditType(EditingType.StringEdit)
                             .HeaderText(UserLoginResources.PropertyUserId)
                             .IsPrimaryKey(true)
                             .Visible(UserLogin.Profile.IsGridVisibleFor("UserId"))

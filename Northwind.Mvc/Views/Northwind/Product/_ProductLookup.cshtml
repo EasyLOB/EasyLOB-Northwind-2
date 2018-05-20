@@ -59,7 +59,7 @@
                         column.Field("ProductId")
                             .AllowEditing(false)
                             .Type("number")
-                            .EditType(EditingType.Numeric)
+                            .EditType(EditingType.NumericEdit)
                             .Format(SyncfusionPatternResources.GridFormat_Integer)
                             .HeaderText(ProductResources.PropertyProductId)
                             .IsIdentity(true)
@@ -70,14 +70,14 @@
                             .Add();
                         column.Field("ProductName")
                             .Type("string")
-                            .EditType(EditingType.String)
+                            .EditType(EditingType.StringEdit)
                             .HeaderText(ProductResources.PropertyProductName)
                             .Visible(Product.Profile.IsGridVisibleFor("ProductName"))
                             .Width(Product.Profile.GridWidthFor("ProductName"))
                             .Add();
                         column.Field("SupplierId")
                             .Type("number")
-                            .EditType(EditingType.Numeric)
+                            .EditType(EditingType.NumericEdit)
                             .Format(SyncfusionPatternResources.GridFormat_Integer)
                             .HeaderText(ProductResources.PropertySupplierId)
                             .TextAlign(TextAlign.Right)
@@ -93,7 +93,7 @@
                             .Add();
                         column.Field("CategoryId")
                             .Type("number")
-                            .EditType(EditingType.Numeric)
+                            .EditType(EditingType.NumericEdit)
                             .Format(SyncfusionPatternResources.GridFormat_Integer)
                             .HeaderText(ProductResources.PropertyCategoryId)
                             .TextAlign(TextAlign.Right)
@@ -109,14 +109,14 @@
                             .Add();
                         column.Field("QuantityPerUnit")
                             .Type("string")
-                            .EditType(EditingType.String)
+                            .EditType(EditingType.StringEdit)
                             .HeaderText(ProductResources.PropertyQuantityPerUnit)
                             .Visible(Product.Profile.IsGridVisibleFor("QuantityPerUnit"))
                             .Width(Product.Profile.GridWidthFor("QuantityPerUnit"))
                             .Add();
                         column.Field("UnitPrice")
                             .Type("number")
-                            .EditType(EditingType.Numeric)
+                            .EditType(EditingType.NumericEdit)
                             .Format(SyncfusionPatternResources.GridFormat_Float)
                             .HeaderText(ProductResources.PropertyUnitPrice)
                             .TextAlign(TextAlign.Right)
@@ -125,7 +125,7 @@
                             .Add();
                         column.Field("UnitsInStock")
                             .Type("number")
-                            .EditType(EditingType.Numeric)
+                            .EditType(EditingType.NumericEdit)
                             .Format(SyncfusionPatternResources.GridFormat_Integer)
                             .HeaderText(ProductResources.PropertyUnitsInStock)
                             .TextAlign(TextAlign.Right)
@@ -134,7 +134,7 @@
                             .Add();
                         column.Field("UnitsOnOrder")
                             .Type("number")
-                            .EditType(EditingType.Numeric)
+                            .EditType(EditingType.NumericEdit)
                             .Format(SyncfusionPatternResources.GridFormat_Integer)
                             .HeaderText(ProductResources.PropertyUnitsOnOrder)
                             .TextAlign(TextAlign.Right)
@@ -143,7 +143,7 @@
                             .Add();
                         column.Field("ReorderLevel")
                             .Type("number")
-                            .EditType(EditingType.Numeric)
+                            .EditType(EditingType.NumericEdit)
                             .Format(SyncfusionPatternResources.GridFormat_Integer)
                             .HeaderText(ProductResources.PropertyReorderLevel)
                             .TextAlign(TextAlign.Right)
@@ -152,7 +152,7 @@
                             .Add();
                         column.Field("Discontinued")
                             .Type("boolean")
-                            .EditType(EditingType.Boolean)
+                            .EditType(EditingType.BooleanEdit)
                             .HeaderText(ProductResources.PropertyDiscontinued)
                             .Visible(Product.Profile.IsGridVisibleFor("Discontinued"))
                             .Width(Product.Profile.GridWidthFor("Discontinued"))

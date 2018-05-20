@@ -58,7 +58,7 @@
                     {
                         column.Field("UserId")
                             .Type("string")
-                            .EditType(EditingType.String)
+                            .EditType(EditingType.StringEdit)
                             .HeaderText(UserRoleResources.PropertyUserId)
                             .IsPrimaryKey(true)
                             .Visible(UserRole.Profile.IsGridVisibleFor("UserId"))
@@ -73,7 +73,7 @@
                             .Add();
                         column.Field("RoleId")
                             .Type("string")
-                            .EditType(EditingType.String)
+                            .EditType(EditingType.StringEdit)
                             .HeaderText(UserRoleResources.PropertyRoleId)
                             .IsPrimaryKey(true)
                             .Visible(UserRole.Profile.IsGridVisibleFor("RoleId"))

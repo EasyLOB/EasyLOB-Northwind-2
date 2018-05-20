@@ -37,7 +37,7 @@
         {
             column.Field("CustomerTypeId")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(CustomerDemographicResources.PropertyCustomerTypeId)
                 .IsPrimaryKey(true)
                 .Visible(CustomerDemographic.Profile.IsGridVisibleFor("CustomerTypeId"))
@@ -45,7 +45,7 @@
                 .Add();
             column.Field("CustomerDesc")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(CustomerDemographicResources.PropertyCustomerDesc)
                 .Visible(CustomerDemographic.Profile.IsGridVisibleFor("CustomerDesc"))
                 .Width(CustomerDemographic.Profile.GridWidthFor("CustomerDesc"))

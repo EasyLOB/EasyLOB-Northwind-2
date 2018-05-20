@@ -41,7 +41,7 @@
         {
             column.Field("TerritoryId")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(TerritoryResources.PropertyTerritoryId)
                 .IsPrimaryKey(true)
                 .Visible(Territory.Profile.IsGridVisibleFor("TerritoryId"))
@@ -49,14 +49,14 @@
                 .Add();
             column.Field("TerritoryDescription")
                 .Type("string")
-                .EditType(EditingType.String)
+                .EditType(EditingType.StringEdit)
                 .HeaderText(TerritoryResources.PropertyTerritoryDescription)
                 .Visible(Territory.Profile.IsGridVisibleFor("TerritoryDescription"))
                 .Width(Territory.Profile.GridWidthFor("TerritoryDescription"))
                 .Add();
             column.Field("RegionId")
                 .Type("number")
-                .EditType(EditingType.Numeric)
+                .EditType(EditingType.NumericEdit)
                 .Format(SyncfusionPatternResources.GridFormat_Integer)
                 .HeaderText(TerritoryResources.PropertyRegionId)
                 .TextAlign(TextAlign.Right)

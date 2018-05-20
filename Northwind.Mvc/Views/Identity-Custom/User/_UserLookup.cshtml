@@ -57,50 +57,50 @@
                     .Columns(column =>
                     {
 						column.Field("Id")
-							.EditType(EditingType.String)
+							.EditType(EditingType.StringEdit)
 							.HeaderText(UserResources.PropertyId)
 							.IsPrimaryKey(true)
 							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("Id")) // !?!
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("Id")) // !?!
 							.Add();
 						column.Field("Email")
-							.EditType(EditingType.String)
+							.EditType(EditingType.StringEdit)
 							.HeaderText(UserResources.PropertyEmail)
 							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("Email")) // !?!
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("Email")) // !?!
 							.Add();
 						column.Field("EmailConfirmed")
-							.EditType(EditingType.Boolean)
+							.EditType(EditingType.BooleanEdit)
 							.HeaderText(UserResources.PropertyEmailConfirmed)
 							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("EmailConfirmed")) // !?!
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("EmailConfirmed")) // !?!
 							.Add();
 						column.Field("PasswordHash")
-							.EditType(EditingType.String)
+							.EditType(EditingType.StringEdit)
 							.HeaderText(UserResources.PropertyPasswordHash)
 							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("PasswordHash")) // !?!
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("PasswordHash")) // !?!
 							.Add();
 						column.Field("SecurityStamp")
-							.EditType(EditingType.String)
+							.EditType(EditingType.StringEdit)
 							.HeaderText(UserResources.PropertySecurityStamp)
 							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("SecurityStamp")) // !?!
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("SecurityStamp")) // !?!
 							.Add();
 						column.Field("PhoneNumber")
-							.EditType(EditingType.String)
+							.EditType(EditingType.StringEdit)
 							.HeaderText(UserResources.PropertyPhoneNumber)
 							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("PhoneNumber")) // !?!
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("PhoneNumber")) // !?!
 							.Add();
 						column.Field("PhoneNumberConfirmed")
-							.EditType(EditingType.Boolean)
+							.EditType(EditingType.BooleanEdit)
 							.HeaderText(UserResources.PropertyPhoneNumberConfirmed)
 							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("PhoneNumberConfirmed")) // !?!
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("PhoneNumberConfirmed")) // !?!
 							.Add();
 						column.Field("TwoFactorEnabled")
-							.EditType(EditingType.Boolean)
+							.EditType(EditingType.BooleanEdit)
 							.HeaderText(UserResources.PropertyTwoFactorEnabled)
 							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("TwoFactorEnabled")) // !?!
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("TwoFactorEnabled")) // !?!
@@ -113,13 +113,13 @@
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("LockoutEndDateUtc")) // !?!
 							.Add();
 						column.Field("LockoutEnabled")
-							.EditType(EditingType.Boolean)
+							.EditType(EditingType.BooleanEdit)
 							.HeaderText(UserResources.PropertyLockoutEnabled)
 							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("LockoutEnabled")) // !?!
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("LockoutEnabled")) // !?!
 							.Add();
 						column.Field("AccessFailedCount")
-							.EditType(EditingType.Numeric)
+							.EditType(EditingType.NumericEdit)
 							.Format(SyncfusionPatternResources.GridFormat_Integer)
 							.HeaderText(UserResources.PropertyAccessFailedCount)
 							.TextAlign(TextAlign.Right)
@@ -127,7 +127,7 @@
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("AccessFailedCount")) // !?!
 							.Add();
 						column.Field("UserName")
-							.EditType(EditingType.String)
+							.EditType(EditingType.StringEdit)
 							.HeaderText(UserResources.PropertyUserName)
 							.Visible(EasyLOB.Identity.Data.User.Profile.IsGridVisibleFor("UserName")) // !?!
 							.Width(EasyLOB.Identity.Data.User.Profile.GridWidthFor("UserName")) //  !?!
