@@ -196,10 +196,10 @@ function zReadOnly(parentId, readOnly = true) {
         $(parentId + " input[type='checkbox']").prop("disabled", true);
 
         $(parentId + " input[data-role='ejdatepicker']").each(function () {
-            $(this).data("ejDatePicker").disable();
+            $(this).data("ejDatePicker").option("readOnly", true);
         });
         $(parentId + " input[data-role='ejdatetimepicker']").each(function () {
-            $(this).data("ejDateTimePicker").disable();
+            $(this).data("ejDateTimePicker").option("readOnly", true);
         });
 
         $(parentId + " img.z-buttonLookup").hide();
@@ -661,10 +661,10 @@ function zOnItemView(model, profile) {
         $("input[type='checkbox']").prop("disabled", true);
 
         $("input[data-role='ejdatepicker']").each(function() {
-            $(this).data("ejDatePicker").disable();
+            $(this).data("ejDatePicker").option("readOnly", true);
         });
         $("input[data-role='ejdatetimepicker']").each(function() {
-            $(this).data("ejDateTimePicker").disable();
+            $(this).data("ejDateTimePicker").option("readOnly", true);
         });
 
         $("img.z-buttonLookup").hide();
@@ -694,10 +694,10 @@ function zOnItemView(model, profile) {
         $("input[type='checkbox'][id='" + profile.Name + "_" + readOnlyProperties[i] + "']").prop("disabled", true);
 
         $("input[data-role='ejdatepicker'][id='" + profile.Name + "_" + readOnlyProperties[i] + "']").each(function () {
-            $(this).data("ejDatePicker").disable();
+            $(this).data("ejDatePicker").option("readOnly", true);
         });
         $("input[data-role='ejdatetimepicker'][id='" + profile.Name + "_" + readOnlyProperties[i] + "']").each(function () {
-            $(this).data("ejDateTimePicker").disable();
+            $(this).data("ejDateTimePicker").option("readOnly", true);
         });
     }
 
