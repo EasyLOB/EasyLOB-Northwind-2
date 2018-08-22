@@ -4,10 +4,11 @@
 // EDM
 // Errors & Exceptions
 // Local Storage
+// On*View
 // Session Storage
 // Syncfusion
 
-// JavaScript
+//// JavaScript
 
 /*
 if (!value)
@@ -251,7 +252,7 @@ function zNotZero(value) {
     return !value ? 0 : value;
 }
 
-// AJAX
+//// AJAX
 
 // jqXHR = jQuery XMLHttpRequest
 
@@ -391,7 +392,7 @@ function zAjaxSuccess(data, textStatus, jqXHR) {
 }
 
 
-// EDM
+//// EDM
 
 function zEDMCssClass(fileAcronym) {
     var cssClass = "";
@@ -431,7 +432,7 @@ function zEDMCssClass(fileAcronym) {
 }
 
 
-// Errors & Exceptions
+//// Errors & Exceptions
 
 function zExceptionMessage(fileName, functionName, exception) {
     fileName = fileName ? fileName : "";
@@ -483,7 +484,7 @@ function zShowOperationResult(operationResult) {
 }
 
 
-// Local Storage
+//// Local Storage
 
 function zLocalStorageClear() {
     window.localStorage.clear();
@@ -502,7 +503,7 @@ function zLocalStorageSet(item, data) {
 }
 
 
-// On*View
+//// On*View
 
 function zOnCollectionView(model, profile, dataSourceUrl) {
     var ejGrid = zGrid("Grid_" + profile.Name);
@@ -563,8 +564,10 @@ function zOnCollectionView(model, profile, dataSourceUrl) {
     $("#Grid_" + profile.Name + "_Grid_" + profile.Name + "_Toolbar").removeAttr("data-content");
 
     // DataSource
-    if (!model.IsMasterDetail) {
-        zGridDataSource("Grid_" + profile.Name, dataSourceUrl);
+    if (dataSourceUrl) {
+        if (!model.IsMasterDetail) {
+            zGridDataSource("Grid_" + profile.Name, dataSourceUrl);
+        }
     }
 
     // <div></div>
@@ -766,7 +769,7 @@ function zOnLookupView(model, profile, ejGrid) {
 }
 
 
-// Session Storage
+//// Session Storage
 
 function zSessionStorageClear() {
     window.sessionStorage.clear();
@@ -785,7 +788,7 @@ function zSessionStorageSet(item, data) {
 }
 
 
-// Syncfusion
+//// Syncfusion
 
 function zGrid(gridId) {
     var ejGrid = $("#" + gridId).data("ejGrid");
@@ -795,6 +798,30 @@ function zGrid(gridId) {
     }
 
     return ejGrid;
+}
+
+function zGridDataManager(gridId, dataSourceUrl, functionBeforeSend, isRefresh) {
+    if ($("#" + gridId).length) {
+        if (!isRefresh) {
+            isRefresh = false;
+        }
+
+        var ejGrid = zGrid(gridId);
+
+        if (!ejGrid.model.dataSource) {
+            var customAdaptor = new ej.UrlAdaptor().extend({
+                beforeSend: functionBeforeSend
+            });
+            ejGrid.dataSource(ej.DataManager({
+                adaptor: new customAdaptor(),
+                url: dataSourceUrl
+            }));
+        }
+
+        if (isRefresh) {
+            ejGrid.refreshContent();
+        }
+    }
 }
 
 function zGridDataSource(gridId, dataSourceUrl, isRefresh) {
