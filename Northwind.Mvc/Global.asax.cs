@@ -1,4 +1,5 @@
-﻿using EasyLOB.Mvc;
+﻿using EasyLOB;
+//using EasyLOB.Mvc;
 //using EasyLOB.Persistence; // EF 6.0 Log
 using Newtonsoft.Json;
 using System;

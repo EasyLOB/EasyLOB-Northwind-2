@@ -1,12 +1,13 @@
-﻿using Microsoft.Practices.Unity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Http.Dependencies;
+using Unity;
+using Unity.Exceptions;
 
 // Dependency Injection in ASP.NET Web API 2
 // http://www.asp.net/web-api/overview/advanced/dependency-injection
 
-namespace EasyLOB.WebApi
+namespace EasyLOB
 {
     #region Methods
 

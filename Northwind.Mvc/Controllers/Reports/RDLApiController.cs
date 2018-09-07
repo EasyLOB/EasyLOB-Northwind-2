@@ -1,5 +1,5 @@
 ﻿using EasyLOB.Library;
-using EasyLOB.Library.Mvc;
+using EasyLOB.Library.AspNet;
 using EasyLOB.Persistence;
 using Syncfusion.EJ.ReportViewer;
 using Syncfusion.Reports.EJ; // DataSourceCredentials

@@ -36,7 +36,7 @@
                 </div>
                 
                 <div id="Group_User_Email" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("Email")">
-                    @Html.LabelFor(model => model.User.Email, new { @class = AppDefaults.CssClassLabel })
+                    @Html.LabelFor(model => model.User.Email, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.User.Email, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_Email" } })
                     @* @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>
@@ -48,7 +48,7 @@
                 </div>
                 
                 <div id="Group_User_PasswordHash" class="@AppDefaults.CssClassGroup @EasyLOB.Identity.Data.User.Profile.EditCSSFor("PasswordHash")">
-                    @Html.LabelFor(model => model.User.PasswordHash, new { @class = AppDefaults.CssClassLabel })
+                    @Html.LabelFor(model => model.User.PasswordHash, new { @class = AppDefaults.CssClassLabelRequired })
                     @Html.EditorFor(model => model.User.PasswordHash, new { htmlAttributes = new { @class = AppDefaults.CssClassEditor, id = "User_PasswordHash", @type = "password" } })
                     @* @Html.ValidationMessageFor(model => model.User.PasswordHash, "", new { @class = AppDefaults.CssClassValidator }) *@
                 </div>

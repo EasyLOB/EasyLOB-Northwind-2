@@ -22,6 +22,7 @@ namespace EasyLOB.Identity.Mvc
         
         [Display(Name = "PropertyEmail", ResourceType = typeof(UserResources))]
         [StringLength(256)]
+        [Required] // !?!
         public virtual string Email { get; set; }
         
         [Display(Name = "PropertyEmailConfirmed", ResourceType = typeof(UserResources))]
@@ -30,6 +31,7 @@ namespace EasyLOB.Identity.Mvc
         
         [Display(Name = "PropertyPasswordHash", ResourceType = typeof(UserResources))]
         [StringLength(1024)]
+        [Required] // !?!
         public virtual string PasswordHash { get; set; }
         
         [Display(Name = "PropertySecurityStamp", ResourceType = typeof(UserResources))]

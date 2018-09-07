@@ -2,7 +2,7 @@
 using Northwind.Application;
 using Northwind.Data;
 using EasyLOB;
-using EasyLOB.Library.WebApi;
+using EasyLOB.Library.AspNet;
 using EasyLOB.Mvc;
 using EasyLOB.WebApi;
 using System;

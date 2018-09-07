@@ -1,7 +1,6 @@
-﻿using EasyLOB.WebApi;
-using System.Web.Http;
+﻿using System.Web.Http;
 
-namespace EasyLOB.Mvc
+namespace EasyLOB
 {
     public static class WebApiConfig
     {
@@ -39,7 +38,7 @@ namespace EasyLOB.Mvc
 
             // Dependency Injection
             // Unity.Mvc
-            config.DependencyResolver = new UnityResolver(UnityConfig.GetConfiguredContainer());
+            config.DependencyResolver = new UnityResolver(UnityConfig.Container);
         }
     }
 }

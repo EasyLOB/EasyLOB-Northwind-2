@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Web.Mvc;
 
-namespace EasyLOB.Mvc
+namespace EasyLOB
 {
     public class ValidateModelStateAttribute : ActionFilterAttribute
     {

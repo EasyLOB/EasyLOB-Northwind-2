@@ -7,7 +7,7 @@ using System.Web.Mvc;
 // How to Easily Manage Different Languages ​​on a Website: a Complete Tutorial With ASP.NET MVC
 // http://www.spiria.com/en/blog/web-applications/how-easily-manage-different-languages-website-complete-tutorial-aspnet-mvc
 
-namespace EasyLOB.Mvc
+namespace EasyLOB
 {
     public class CultureAttribute : ActionFilterAttribute // ???
     {

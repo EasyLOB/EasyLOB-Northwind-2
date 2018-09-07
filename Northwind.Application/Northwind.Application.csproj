@@ -30,9 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Base, Version=16.1450.0.37, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Web.FileFormatsBase45.16.1.0.37\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
@@ -91,6 +90,10 @@
     <ProjectReference Include="..\..\EasyLOB-2\EasyLOB.Data\EasyLOB.Data\EasyLOB.Data.csproj">
       <Project>{1f89f104-c08b-4537-a9a8-5c51c53376f0}</Project>
       <Name>EasyLOB.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyLOB-2\EasyLOB.DI\EasyLOB.DIUnity\EasyLOB.DIUnity.csproj">
+      <Project>{7b6433b4-6151-4bf5-af3f-9bb76ce96d75}</Project>
+      <Name>EasyLOB.DIUnity</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\EasyLOB-2\EasyLOB.Library\EasyLOB.Library\EasyLOB.Library.csproj">
       <Project>{55b7716b-36a3-442d-9e9e-9caab7db592e}</Project>

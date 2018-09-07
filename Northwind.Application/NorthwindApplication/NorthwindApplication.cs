@@ -1,4 +1,4 @@
-﻿using EasyLOB.Application;
+﻿using EasyLOB;
 using System;
 
 namespace Northwind.Application

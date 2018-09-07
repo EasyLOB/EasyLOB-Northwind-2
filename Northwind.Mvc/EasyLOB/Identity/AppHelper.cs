@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security.DataProtection;
 using System.Web;
 
-namespace EasyLOB.Mvc
+namespace EasyLOB
 {
     public static partial class AppHelper
     {

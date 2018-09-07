@@ -1,10 +1,10 @@
-﻿using EasyLOB.Library.Web;
+﻿using EasyLOB.Library.AspNet;
 using EasyLOB.Resources;
 using Syncfusion.JavaScript.Models;
 using System;
 using System.Web.Mvc.Ajax;
 
-namespace EasyLOB.Mvc
+namespace EasyLOB
 {
     public static partial class AppHelper
     {
@@ -33,37 +33,6 @@ namespace EasyLOB.Mvc
         }
 
         #endregion Properties
-
-        #region Properties Syncfusion
-
-        public static DatePickerProperties DateModel
-        {
-            get
-            {
-                DatePickerProperties dateModel = new DatePickerProperties();
-                dateModel.DateFormat = PatternResources.Format_Date;
-                dateModel.Locale = System.Globalization.CultureInfo.CurrentCulture.Name;
-                //dateModel.Width = "120";
-                dateModel.Width = "180";
-
-                return dateModel;
-            }
-        }
-
-        public static DateTimePickerProperties DateTimeModel
-        {
-            get
-            {
-                DateTimePickerProperties dateTimeModel = new DateTimePickerProperties();
-                dateTimeModel.DateTimeFormat = PatternResources.Format_DateTime;
-                dateTimeModel.Locale = System.Globalization.CultureInfo.CurrentCulture.Name;
-                dateTimeModel.Width = "180";
-
-                return dateTimeModel;
-            }
-        }
-
-        #endregion Properties Syncfusion
 
         #region Methods
 

@@ -2,7 +2,7 @@ using System;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace EasyLOB.Mvc
+namespace EasyLOB
 {
     public class EasyLOBNorthwindProfileAttribute : ActionFilterAttribute
     {

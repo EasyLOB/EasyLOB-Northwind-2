@@ -1,5 +1,4 @@
-﻿using EasyLOB;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -58,7 +57,7 @@ FileExtensions
 // Leon Amarant
 // http://www.leonamarant.com/2011/02/17/adding-a-custom-directory-to-razor-view-engine-partial-view-locations-in-asp-net-mvc3
 
-namespace EasyLOB.Mvc
+namespace EasyLOB
 {
     public class CustomRazorViewEngine : RazorViewEngine
     {

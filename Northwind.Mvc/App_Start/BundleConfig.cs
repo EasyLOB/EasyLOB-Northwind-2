@@ -1,7 +1,7 @@
-﻿using EasyLOB.Library.Mvc;
+﻿using EasyLOB.Library.AspNet;
 using System.Web.Optimization;
 
-namespace EasyLOB.Mvc
+namespace EasyLOB
 {
     public class BundleConfig
     {

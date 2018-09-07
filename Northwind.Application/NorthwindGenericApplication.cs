@@ -1,4 +1,5 @@
 ﻿using Northwind.Persistence;
+using EasyLOB;
 using EasyLOB.Application;
 using EasyLOB.Data;
 
