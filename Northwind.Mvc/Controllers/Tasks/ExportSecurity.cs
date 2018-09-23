@@ -299,7 +299,7 @@ ORDER BY
             }
             catch (Exception exception)
             {
-                (operationResult as ZOperationResult).ParseException(exception);
+                operationResult.ParseException(exception);
             }
             finally
             {
