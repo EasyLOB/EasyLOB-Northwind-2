@@ -20,7 +20,7 @@ namespace EasyLOB.Mvc
         {
             try
             {
-                if (IsTask("ExportSecurity", OperationResult))
+                if (IsTask(OperationResult, "ExportSecurity"))
                 {
                     TaskViewModel viewModel = new TaskViewModel("Tasks", "ExportSecurity", SecurityResources.TaskExportSecurity);
 
@@ -43,7 +43,7 @@ namespace EasyLOB.Mvc
 
             try
             {
-                if (IsTask("ExportSecurity", viewModel.OperationResult))
+                if (IsTask(viewModel.OperationResult, "ExportSecurity"))
                 {
                     if (IsValid(viewModel.OperationResult, viewModel))
                     {

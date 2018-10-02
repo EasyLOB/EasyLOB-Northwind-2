@@ -42,10 +42,10 @@ namespace EasyLOB.Mvc
         {
             ZOperationResult operationResult = new ZOperationResult();
 
-            return IsTask(task, operationResult);
+            return IsTask(operationResult, task);
         }
 
-        protected bool IsTask(string task, ZOperationResult operationResult)
+        protected bool IsTask(ZOperationResult operationResult, string task)
         {
             return AuthorizationManager.IsTask(Domain, task, operationResult);
         }
