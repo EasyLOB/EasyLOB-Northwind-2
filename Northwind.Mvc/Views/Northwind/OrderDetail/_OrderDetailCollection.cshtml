@@ -181,11 +181,6 @@
                 url = url + (url == "" ? "" : "&") + "MasterProductId=" + String(model.MasterProductId);
             }
 
-            var isSearch = !model.IsMasterDetail;
-            var isCreate = masterControllerAction == "" || masterControllerAction == "update";
-            var isRead = masterControllerAction == "" || masterControllerAction == "read" || masterControllerAction == "update" || masterControllerAction == "delete";
-            var isUpdate = masterControllerAction == "" || masterControllerAction == "update";
-            var isDelete = masterControllerAction == "" || masterControllerAction == "update" || masterControllerAction == "delete";
             switch(args.requestType) {
                 case "searching":
                     // Search
