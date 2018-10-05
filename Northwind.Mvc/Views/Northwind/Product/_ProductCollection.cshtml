@@ -221,31 +221,28 @@
                 url = url + (url == "" ? "" : "&") + "MasterSupplierId=" + String(model.MasterSupplierId);
             }
 
-            //var isSearch = !model.IsMasterDetail;
-            //var isCreate = masterControllerAction == "" || masterControllerAction == "update";
-            //var isRead = masterControllerAction == "" || masterControllerAction == "read" || masterControllerAction == "update" || masterControllerAction == "delete";
-            //var isUpdate = masterControllerAction == "" || masterControllerAction == "update";
-            //var isDelete = masterControllerAction == "" || masterControllerAction == "update" || masterControllerAction == "delete";
+            var isSearch = !model.IsMasterDetail;
+            var isCreate = masterControllerAction == "" || masterControllerAction == "update";
+            var isRead = masterControllerAction == "" || masterControllerAction == "read" || masterControllerAction == "update" || masterControllerAction == "delete";
+            var isUpdate = masterControllerAction == "" || masterControllerAction == "update";
+            var isDelete = masterControllerAction == "" || masterControllerAction == "update" || masterControllerAction == "delete";
             switch(args.requestType) {
                 case "searching":
                     // Search
-                    //if (isSearch) {
-                    if (zIsOperation("search", model.ActivityOperations.IsCreate, model.IsMasterDetail, masterControllerAction)) {
+                    if (isSearch) {
                         zSearchDictionaryWrite("Product", args.keyValue);
                     }
                     break;
                 case "add":
                     // Create
-                    //if (model.ActivityOperations.IsCreate && isCreate) {
-                    if (zIsOperation("create", model.ActivityOperations.IsCreate, model.IsMasterDetail, masterControllerAction)) {
+                    if (model.ActivityOperations.IsCreate && isCreate) {
                         $("#ZAjax").load("@(Url.Action("Create", "Product", null, Request.Url.Scheme))" +
                             (url == "" ? "" : "?") + url, function (responseText, textStatus, jqXHR) { zAjaxLoadComplete(responseText, textStatus, jqXHR); });
                     }
                     break;
                 case "read":
                     // Read
-                    //if (model.ActivityOperations.IsRead && isRead) {
-                    if (zIsOperation("read", model.ActivityOperations.IsRead, model.IsMasterDetail, masterControllerAction)) {
+                    if (model.ActivityOperations.IsRead && isRead) {
                         var data = args.data;
                         if (!ej.isNullOrUndefined(data)) {
                             $("#ZAjax").load("@(Url.Action("Read", "Product", null, Request.Url.Scheme))?ProductId=" + String(data.ProductId) +
@@ -255,8 +252,7 @@
                     break;                        
                 case "beginedit":
                     // Update
-                    //if (model.ActivityOperations.IsUpdate && isUpdate) {
-                    if (zIsOperation("update", model.ActivityOperations.IsUpdate, model.IsMasterDetail, masterControllerAction)) {
+                    if (model.ActivityOperations.IsUpdate && isUpdate) {
                         var data = this.model.currentViewData[args.rowIndex];
                         if (!ej.isNullOrUndefined(data)) {
                             $("#ZAjax").load("@(Url.Action("Update", "Product", null, Request.Url.Scheme))?ProductId=" + String(data.ProductId) +
@@ -266,8 +262,7 @@
                     break;
                 case "delete":
                     // Delete
-                    //if (model.ActivityOperations.IsDelete && isDelete) {
-                    if (zIsOperation("delete", model.ActivityOperations.IsDelete, model.IsMasterDetail, masterControllerAction)) {
+                    if (model.ActivityOperations.IsDelete && isDelete) {
                         var data = args.data;
                         if (!ej.isNullOrUndefined(data)) {
                             $("#ZAjax").load("@(Url.Action("Delete", "Product", null, Request.Url.Scheme))?ProductId=" + String(data.ProductId) +

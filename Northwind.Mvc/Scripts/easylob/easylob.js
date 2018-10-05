@@ -111,32 +111,6 @@ function zGUID() {
     });
 }
 
-function zIsOperation(operation, isOperation, isMasterDetail, action)
-{
-    var result = isOperation;
-
-    operation = operation.toLowerCase();
-    switch (operation) {
-        case "search":
-            result = isOperation && !isMasterDetail;
-            break;
-        //case "create":
-        //    result = isOperation; // && (action == "" || action == "update");
-        //    break;
-        //case "read":
-        //    result = isOperation; // && (action == "" || action == "read" || action == "update" || action == "delete");
-        //    break;
-        //case "update":
-        //    result = isOperation; // && (action == "" || action == "update");
-        //    break;
-        //case "delete":
-        //    result = isOperation; // && (action == "" || action == "update" || action == "delete");
-        //    break;
-    }
-
-    return result;
-}
-
 function zISODate(value) {
     return value ? new Date(value) : value;
 }
