@@ -13,9 +13,9 @@ namespace EasyLOB.Mvc
         {
             //if (IsTask("CleanExportImport", OperationResult))
             //{
-                TaskViewModel viewModel = new TaskViewModel("Tasks", "CleanExportImport", PresentationResources.TaskCleanExportImport);
+                TaskModel taskModel = new TaskModel("Tasks", "CleanExportImport", PresentationResources.TaskCleanExportImport);
 
-                return View("TaskAjax", viewModel);
+                return View("TaskAjax", taskModel);
             //}
 
             //return View("OperationResult", new OperationResultModel(OperationResult));
@@ -23,9 +23,9 @@ namespace EasyLOB.Mvc
 
         // POST: Tasks/CleanExportImport
         [HttpPost]
-        public ActionResult CleanExportImport(TaskViewModel viewModel)
+        public ActionResult CleanExportImport(TaskModel taskModel)
         {
-            viewModel.OperationResult.Clear();
+            taskModel.OperationResult.Clear();
 
             try
             {
@@ -35,28 +35,28 @@ namespace EasyLOB.Mvc
                 //    {
                         // Z-Export
 
-                        if (viewModel.OperationResult.Ok)
+                        if (taskModel.OperationResult.Ok)
                         {
-                            LibraryHelper.CleanDirectory(viewModel.OperationResult, Server.MapPath(ConfigurationHelper.AppSettings<string>("Directory.Export")));
+                            LibraryHelper.CleanDirectory(taskModel.OperationResult, Server.MapPath(ConfigurationHelper.AppSettings<string>("Directory.Export")));
                         }
 
                         // Z-Import
 
-                        if (viewModel.OperationResult.Ok)
+                        if (taskModel.OperationResult.Ok)
                         {
-                            LibraryHelper.CleanDirectory(viewModel.OperationResult, Server.MapPath(ConfigurationHelper.AppSettings<string>("Directory.Import")));
+                            LibraryHelper.CleanDirectory(taskModel.OperationResult, Server.MapPath(ConfigurationHelper.AppSettings<string>("Directory.Import")));
                         }
 
-                        viewModel.OperationResult.StatusMessage = String.Format(ErrorResources.Successful, PresentationResources.TaskCleanExportImport);
+                        taskModel.OperationResult.StatusMessage = String.Format(ErrorResources.Successful, PresentationResources.TaskCleanExportImport);
                 //    }
                 //}
             }
             catch (Exception exception)
             {
-                viewModel.OperationResult.ParseException(exception);
+                taskModel.OperationResult.ParseException(exception);
             }
 
-            return JsonResultOperationResult(viewModel.OperationResult);
+            return JsonResultOperationResult(taskModel.OperationResult);
         }
     }
 }

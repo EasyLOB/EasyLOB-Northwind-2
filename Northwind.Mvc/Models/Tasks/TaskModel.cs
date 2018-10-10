@@ -1,10 +1,10 @@
-using EasyLOB.Data;
+﻿using EasyLOB.Data;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace EasyLOB.Mvc
 {
-    public class TaskViewModel : IValidatableObject, IZValidatableObject
+    public class TaskModel : IValidatableObject, IZValidatableObject
     {
         #region Properties
 
@@ -20,12 +20,12 @@ namespace EasyLOB.Mvc
 
         #region Methods
 
-        public TaskViewModel()
+        public TaskModel()
         {
             OperationResult = new ZOperationResult();
         }
 
-        public TaskViewModel(string controller, string action, string task)
+        public TaskModel(string controller, string action, string task)
             : this()
         {
             Controller = controller;

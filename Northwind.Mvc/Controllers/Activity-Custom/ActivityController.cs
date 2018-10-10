@@ -45,7 +45,7 @@ namespace EasyLOB.Activity.Mvc
                 activityCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultViewModel(activityCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultModel(activityCollectionModel.OperationResult));
         }        
 
         // GET & POST: Activity/Search

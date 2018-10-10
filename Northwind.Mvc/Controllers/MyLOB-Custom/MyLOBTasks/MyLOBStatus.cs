@@ -1,25 +1,25 @@
-using EasyLOB.Library.AspNet;
+﻿using EasyLOB.Library.AspNet;
 using EasyLOB.Mvc;
-using Northwind.Mvc.Resources;
+using MyLOB.Mvc.Resources;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.SessionState;
 
-namespace Northwind.Mvc
+namespace MyLOB.Mvc
 {
-    public partial class NorthwindTasksController
+    public partial class MyLOBTasksController
     {
         #region Methods
 
-        // GET: NorthwindTasks/NorthwindStatus
+        // GET: MyLOBTasks/MyLOBStatus
         [HttpGet]
-        public ActionResult NorthwindStatus()
+        public ActionResult MyLOBStatus()
         {
             StringBuilder result = new StringBuilder();
 
-            NorthwindTenant tenant = NorthwindMultiTenantHelper.Tenant;
-            result.Append("<br /><b>Multi-Tenant Northwind</b>");
-            result.Append("<br />:: URL: " + tenant.URL);
+            MyLOBTenant tenant = MyLOBMultiTenantHelper.Tenant;
+            result.Append("<br /><b>Multi-Tenant MyLOB</b>");
+            result.Append("<br />:: Name: " + tenant.Name);
 
             HttpSessionState session = SessionHelper.Session;
             result.Append("<br />");
@@ -32,8 +32,8 @@ namespace Northwind.Mvc
                 string value = session[i].ToString();
                 switch (session.Keys[i])
                 {
-                    case "EasyLOB.NorthwindMultiTenant":
-                        //value = JsonConvert.SerializeObject((List<NorthwindTenant>)session[i]);
+                    case "EasyLOB.MyLOBMultiTenant":
+                        //value = JsonConvert.SerializeObject((List<MyLOBTenant>)session[i]);
                         break;
                 }
 
@@ -42,9 +42,9 @@ namespace Northwind.Mvc
 
             ViewBag.Status = result.ToString();
 
-            TaskModel taskModel = new TaskModel("NorthwindTasks", "NorthwindStatus", NorthwindPresentationResources.TaskNorthwindStatus);
+            TaskModel viewModel = new TaskModel("MyLOBTasks", "MyLOBStatus", MyLOBPresentationResources.TaskMyLOBStatus);
 
-            return View(taskModel);
+            return View(viewModel);
         }
 
         #endregion Methods

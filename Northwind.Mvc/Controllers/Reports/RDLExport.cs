@@ -11,7 +11,7 @@ namespace EasyLOB.Mvc
         [HttpGet]
         public ActionResult RDLExport(string exportFormat, string reportDirectory, string reportName)
         {
-            OperationResultViewModel viewModel = new OperationResultViewModel();
+            OperationResultModel operationResultModel = new OperationResultModel();
 
             string exportPath = Path.Combine(Server.MapPath(ConfigurationHelper.AppSettings<string>("Directory.Export")),
                 reportName + String.Format(".{0:yyyyMMdd.HHmmss.fff}", DateTime.Now));
@@ -26,7 +26,7 @@ namespace EasyLOB.Mvc
                 }
             }
 
-            if (SyncfusionHelper.ExportRDL(viewModel.OperationResult, ref exportPath, exportFormat,
+            if (SyncfusionHelper.ExportRDL(operationResultModel.OperationResult, ref exportPath, exportFormat,
                 reportDirectory, reportName, reportParameters))
             {
                 byte[] file = System.IO.File.ReadAllBytes(exportPath);
@@ -35,7 +35,7 @@ namespace EasyLOB.Mvc
                     Path.GetFileName(exportPath));
             }
 
-            return View("OperationResult", viewModel);
+            return View("OperationResult", operationResultModel);
         }
     }
 }

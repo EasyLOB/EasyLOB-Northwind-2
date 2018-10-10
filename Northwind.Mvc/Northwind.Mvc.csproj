@@ -426,7 +426,7 @@
     <Compile Include="Models\Northwind\Territory\TerritoryViewModel.cs" />
     <Compile Include="Models\Reports\ReportModelRDL.cs" />
     <Compile Include="Models\Reports\ReportModelRDLC.cs" />
-    <Compile Include="Models\Tasks\TaskViewModel.cs" />
+    <Compile Include="Models\Tasks\TaskModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AuthenticationResources.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -3,7 +3,7 @@ using EasyLOB.Security;
 using System.Net;
 using System.Web.Mvc;
 
-// JsonNETResult
+// ZJsonResultMvc
 // https://github.com/kemmis/Newtonsoft.JsonResult
 
 namespace EasyLOB.Mvc
@@ -33,7 +33,7 @@ namespace EasyLOB.Mvc
 
         //protected override JsonResult Json(object data)
         //{
-        //    return new JsonNETResult
+        //    return new ZJsonResultMvc
         //    {
         //        Data = data
         //    };
@@ -41,7 +41,7 @@ namespace EasyLOB.Mvc
 
         //protected override JsonResult Json(object data, JsonRequestBehavior behavior)
         //{
-        //    return new JsonNETResult
+        //    return new ZJsonResultMvc
         //    {
         //        Data = data,
         //        JsonRequestBehavior = behavior
@@ -50,7 +50,7 @@ namespace EasyLOB.Mvc
 
         //protected override JsonResult Json(object data, string contentType)
         //{
-        //    return new JsonNETResult
+        //    return new ZJsonResultMvc
         //    {
         //        Data = data,
         //        ContentType = contentType
@@ -59,7 +59,7 @@ namespace EasyLOB.Mvc
 
         //protected override JsonResult Json(object data, string contentType, JsonRequestBehavior behavior)
         //{
-        //    return new JsonNETResult
+        //    return new ZJsonResultMvc
         //    {
         //        Data = data,
         //        ContentType = contentType,
@@ -69,7 +69,7 @@ namespace EasyLOB.Mvc
 
         protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding)
         {
-            return new JsonNETResult
+            return new ZJsonResultMvc
             {
                 Data = data,
                 ContentType = contentType,
@@ -79,7 +79,7 @@ namespace EasyLOB.Mvc
 
         protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
         {
-            return new JsonNETResult
+            return new ZJsonResultMvc
             {
                 Data = data,
                 ContentType = contentType,
@@ -116,7 +116,7 @@ namespace EasyLOB.Mvc
             if (data != null)
             {
                 //return new JsonResult()
-                return new JsonNETResult()
+                return new ZJsonResultMvc()
                 {
                     Data = data,
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet
@@ -125,7 +125,7 @@ namespace EasyLOB.Mvc
             else
             {
                 //return new JsonResult()
-                return new JsonNETResult()
+                return new ZJsonResultMvc()
                 {
                     Data = false, // ???
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet
@@ -161,7 +161,7 @@ namespace EasyLOB.Mvc
             if (data != null)
             {
                 //return new JsonResult()
-                return new JsonNETResult()
+                return new ZJsonResultMvc()
                 {
                     Data = data,
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet
@@ -170,7 +170,7 @@ namespace EasyLOB.Mvc
             else
             {
                 //return new JsonResult()
-                return new JsonNETResult()
+                return new ZJsonResultMvc()
                 {
                     Data = true, // ???
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet

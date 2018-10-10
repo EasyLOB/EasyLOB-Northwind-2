@@ -45,7 +45,7 @@ namespace Northwind.Mvc
                 employeeCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultViewModel(employeeCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultModel(employeeCollectionModel.OperationResult));
         }        
 
         // GET & POST: Employee/Search
