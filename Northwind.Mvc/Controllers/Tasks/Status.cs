@@ -74,7 +74,7 @@ namespace EasyLOB.Mvc
             result.Append("<br />:: ILogManager: " + (DependencyResolver.Current.GetService<ILogManager>()).GetType().ToString());
 
             result.Append("<br /><b>MVC</b>");
-            result.Append("<br />:: Application Directory: " + WebHelper.ApplicationBaseDirectory);
+            result.Append("<br />:: Application Directory: " + WebHelper.ApplicationDirectory);
             result.Append("<br />:: Web Url: " + WebHelper.WebUrl);
             result.Append("<br />:: Web Path: " + WebHelper.WebPath);
             result.Append("<br />:: Web Domain: " + WebHelper.WebDomain);
