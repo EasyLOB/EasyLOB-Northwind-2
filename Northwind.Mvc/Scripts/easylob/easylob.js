@@ -215,7 +215,8 @@ function zReadOnly(parentId, readOnly = true) {
     $(parentId + " input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").prop("readonly", readOnly);
     // ReadOnly.js
     // https://github.com/haggen/readonly
-    readonly(parentId + " select", readOnly);
+    $(parentId + " select").readonly(readOnly);
+    //readonly(parentId + " select", readOnly);
     $(parentId + " textarea").prop("readonly", readOnly);
     $(parentId + " input[name*='_Lookup'][type!='checkbox']").prop("readonly", true);
     if (readOnly) {
@@ -682,7 +683,8 @@ function zOnItemView(model, profile) {
     $("input.form-control").not(":input[type=button], :input[type=image], :input[type=reset], :input[type=submit]").prop("readonly", readOnly);
     // ReadOnly.js
     // https://github.com/haggen/readonly
-    readonly('select', readOnly);
+    $("select").readonly(readOnly);
+    //readonly("select", readOnly);
     $("textarea").prop("readonly", readOnly);
     $("input[name*='_Lookup'][type!='checkbox']").prop("readonly", true);
     if (readOnly) {
@@ -716,7 +718,9 @@ function zOnItemView(model, profile) {
     for (i = 0; i < readOnlyPropertiesLength; i++) {
         $("#" + profile.Name + "_" + readOnlyProperties[i]).prop("readonly", true);
 
-        $("#" + profile.Name + "_" + readOnlyProperties[i] + "_LookupButton").hide();
+        $("select#" + profile.Name + "_" + readOnlyProperties[i]).readonly(true);
+
+        $("textarea#" + profile.Name + "_" + readOnlyProperties[i]).prop("readonly", true);
 
         $("input[type='checkbox'][id='" + profile.Name + "_" + readOnlyProperties[i] + "']").removeProp("readonly");
         $("input[type='checkbox'][id='" + profile.Name + "_" + readOnlyProperties[i] + "']").prop("disabled", true);
@@ -727,6 +731,8 @@ function zOnItemView(model, profile) {
         $("input[data-role='ejdatetimepicker'][id='" + profile.Name + "_" + readOnlyProperties[i] + "']").each(function () {
             $(this).data("ejDateTimePicker").option("readOnly", true);
         });
+
+        $("#" + profile.Name + "_" + readOnlyProperties[i] + "_LookupButton").hide();
     }
 
     var id;
