@@ -120,8 +120,14 @@
   <data name="GridFormat_Date" xml:space="preserve">
     <value>{0:dd/MM/yyyy}</value>
   </data>
+  <data name="GridFormat_Date2" xml:space="preserve">
+    <value>{0:dd/MM/yy}</value>
+  </data>
   <data name="GridFormat_DateTime" xml:space="preserve">
     <value>{0:dd/MM/yyyy HH:mm:ss}</value>
+  </data>
+  <data name="GridFormat_DateTime2" xml:space="preserve">
+    <value>{0:dd/MM/yy HH:mm:ss}</value>
   </data>
   <data name="GridFormat_Float" xml:space="preserve">
     <value>{0:n2}</value>

@@ -39,7 +39,7 @@ namespace EasyLOB.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Northwind.Mvc.EasyLOB.Syncfusion.Resources.SyncfusionPatternResources", typeof(SyncfusionPatternResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("iMPX.Mvc.EasyLOB.Syncfusion.Resources.SyncfusionPatternResources", typeof(SyncfusionPatternResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,11 +70,29 @@ namespace EasyLOB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0:MM/dd/yy}.
+        /// </summary>
+        public static string GridFormat_Date2 {
+            get {
+                return ResourceManager.GetString("GridFormat_Date2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0:MM/dd/yyyy HH:mm:ss}.
         /// </summary>
         public static string GridFormat_DateTime {
             get {
                 return ResourceManager.GetString("GridFormat_DateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:MM/dd/yy HH:mm:ss}.
+        /// </summary>
+        public static string GridFormat_DateTime2 {
+            get {
+                return ResourceManager.GetString("GridFormat_DateTime2", resourceCulture);
             }
         }
         
