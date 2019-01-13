@@ -92,10 +92,11 @@
                 //ej.serverTimeZoneOffset = serverTimeZoneDifference + clientSideTimeZoneDifference;
 
                 // ENTER => TAB
-                $('input').keypress(function(e) {
-                    if (e.which == 13) {
-                        $(this).next('input').focus();
-                        e.preventDefault();
+                $('input').keypress(function (event) {
+                    if (event.which == 13) {
+                        //$(this).next('input').focus();
+                        $(this).tabStop(1).focus();
+                        event.preventDefault();
                     }
                 });
 
