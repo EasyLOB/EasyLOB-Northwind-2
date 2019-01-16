@@ -167,8 +167,10 @@ function zParseFloat(value) {
 
     try {
         var result = parseFloat(value);
-        if (!result || !(typeof result === "number")) {
-            result = null;
+        if (result != 0) {
+            if (!result || !(typeof result === "number")) {
+                result = null;
+            }
         }
     }
     catch (exception) {
@@ -183,8 +185,10 @@ function zParseInt(value) {
 
     try {
         var result = parseInt(value);
-        if (!result || !(typeof result === "number")) {
-            result = null;
+        if (result != 0) {
+            if (!result || !(typeof result === "number")) {
+                result = null;
+            }
         }
     }
     catch (exception) {
