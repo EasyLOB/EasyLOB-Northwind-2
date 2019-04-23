@@ -45,7 +45,7 @@ namespace EasyLOB.AuditTrail.Mvc
                 auditTrailConfigurationCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(auditTrailConfigurationCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(auditTrailConfigurationCollectionModel.OperationResult));
         }        
 
         // GET & POST: AuditTrailConfiguration/Search
@@ -127,7 +127,7 @@ namespace EasyLOB.AuditTrail.Mvc
                         {
                             if (auditTrailConfigurationItemModel.IsSave)
                             {
-                                auditTrailConfigurationItemModel.OperationResult.StatusMessage =
+                                auditTrailConfigurationItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(auditTrailConfigurationItemModel.OperationResult,
                                     Url.Action("Update", "AuditTrailConfiguration", new { Id = auditTrailConfigurationDTO.Id }, Request.Url.Scheme));
@@ -329,7 +329,7 @@ namespace EasyLOB.AuditTrail.Mvc
 
                 if (!operationResult.Ok)
                 {
-                    throw new InvalidOperationException(operationResult.Text);
+                    throw operationResult.Exception;
                 }
             }
 

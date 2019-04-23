@@ -18,7 +18,7 @@ namespace EasyLOB.Mvc
                 return View("TaskAjax", taskModel);
             //}
 
-            //return View("OperationResult", new OperationResultModel(OperationResult));
+            //return View("OperationResult", new OperationResultViewModel(OperationResult));
         }
 
         // POST: Tasks/CleanExportImport
@@ -47,7 +47,7 @@ namespace EasyLOB.Mvc
                             LibraryHelper.CleanDirectory(taskModel.OperationResult, Server.MapPath(ConfigurationHelper.AppSettings<string>("Directory.Import")));
                         }
 
-                        taskModel.OperationResult.StatusMessage = String.Format(ErrorResources.Successful, PresentationResources.TaskCleanExportImport);
+                        taskModel.OperationResult.InformationMessage = String.Format(ErrorResources.Successful, PresentationResources.TaskCleanExportImport);
                 //    }
                 //}
             }

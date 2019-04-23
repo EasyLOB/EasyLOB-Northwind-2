@@ -45,7 +45,7 @@ namespace EasyLOB.Identity.Mvc
                 userClaimCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(userClaimCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(userClaimCollectionModel.OperationResult));
         }        
 
         // GET & POST: UserClaim/Search
@@ -127,7 +127,7 @@ namespace EasyLOB.Identity.Mvc
                         {
                             if (userClaimItemModel.IsSave)
                             {
-                                userClaimItemModel.OperationResult.StatusMessage =
+                                userClaimItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(userClaimItemModel.OperationResult,
                                     Url.Action("Update", "UserClaim", new { Id = userClaimDTO.Id }, Request.Url.Scheme));
@@ -329,7 +329,7 @@ namespace EasyLOB.Identity.Mvc
 
                 if (!operationResult.Ok)
                 {
-                    throw new InvalidOperationException(operationResult.Text);
+                    throw operationResult.Exception;
                 }
             }
 

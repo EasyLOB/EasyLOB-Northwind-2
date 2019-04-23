@@ -45,7 +45,7 @@ namespace Northwind.Mvc
                 customerCustomerDemoCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(customerCustomerDemoCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(customerCustomerDemoCollectionModel.OperationResult));
         }        
 
         // GET & POST: CustomerCustomerDemo/Search
@@ -127,7 +127,7 @@ namespace Northwind.Mvc
                         {
                             if (customerCustomerDemoItemModel.IsSave)
                             {
-                                customerCustomerDemoItemModel.OperationResult.StatusMessage =
+                                customerCustomerDemoItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(customerCustomerDemoItemModel.OperationResult,
                                     Url.Action("Update", "CustomerCustomerDemo", new { CustomerId = customerCustomerDemoDTO.CustomerId, CustomerTypeId = customerCustomerDemoDTO.CustomerTypeId }, Request.Url.Scheme));
@@ -330,7 +330,7 @@ namespace Northwind.Mvc
 
             if (!operationResult.Ok)
             {
-                throw new InvalidOperationException(operationResult.Text);
+                throw operationResult.Exception;
             }
 
             return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);

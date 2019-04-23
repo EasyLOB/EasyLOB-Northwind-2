@@ -45,7 +45,7 @@ namespace Northwind.Mvc
                 orderCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(orderCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(orderCollectionModel.OperationResult));
         }        
 
         // GET & POST: Order/Search
@@ -127,7 +127,7 @@ namespace Northwind.Mvc
                         {
                             if (orderItemModel.IsSave)
                             {
-                                orderItemModel.OperationResult.StatusMessage =
+                                orderItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(orderItemModel.OperationResult,
                                     Url.Action("Update", "Order", new { OrderId = orderDTO.OrderId }, Request.Url.Scheme));
@@ -330,7 +330,7 @@ namespace Northwind.Mvc
 
             if (!operationResult.Ok)
             {
-                throw new InvalidOperationException(operationResult.Text);
+                throw operationResult.Exception;
             }
 
             return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);

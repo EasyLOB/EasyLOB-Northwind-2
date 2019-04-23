@@ -17,7 +17,7 @@ namespace EasyLOB.Mvc
     {
         public ActionResult RDLCExport(string exportFormat, string reportDirectory, string reportName)
         {
-            OperationResultModel operationResultModel = new OperationResultModel();
+            OperationResultViewModel viewModel = new OperationResultViewModel();
 
             try
             {
@@ -36,7 +36,7 @@ namespace EasyLOB.Mvc
                     }
                 }
 
-                if (SyncfusionHelper.ExportRDLC(operationResultModel.OperationResult, ref exportPath, exportFormat,
+                if (SyncfusionHelper.ExportRDLC(viewModel.OperationResult, ref exportPath, exportFormat,
                     rdlcDirectory, reportDirectory, reportName, reportParameters))
                 {
                     byte[] file = System.IO.File.ReadAllBytes(exportPath);
@@ -47,10 +47,10 @@ namespace EasyLOB.Mvc
             }
             catch (Exception exception)
             {
-                operationResultModel.OperationResult.ParseException(exception);
+                viewModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", operationResultModel);
+            return View("OperationResult", viewModel);
         }
 
         private ReportDefinition DeSerializeReport(string reportPath)

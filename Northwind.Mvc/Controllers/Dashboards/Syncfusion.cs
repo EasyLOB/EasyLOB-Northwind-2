@@ -43,7 +43,7 @@ namespace EasyLOB.Mvc
             {
                 operationResult.ParseException(exception);
 
-                return View("OperationResult", new OperationResultModel(operationResult));
+                return View("OperationResult", new OperationResultViewModel(operationResult));
             }
         }
     }

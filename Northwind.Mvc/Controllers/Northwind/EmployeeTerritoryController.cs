@@ -45,7 +45,7 @@ namespace Northwind.Mvc
                 employeeTerritoryCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(employeeTerritoryCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(employeeTerritoryCollectionModel.OperationResult));
         }        
 
         // GET & POST: EmployeeTerritory/Search
@@ -127,7 +127,7 @@ namespace Northwind.Mvc
                         {
                             if (employeeTerritoryItemModel.IsSave)
                             {
-                                employeeTerritoryItemModel.OperationResult.StatusMessage =
+                                employeeTerritoryItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(employeeTerritoryItemModel.OperationResult,
                                     Url.Action("Update", "EmployeeTerritory", new { EmployeeId = employeeTerritoryDTO.EmployeeId, TerritoryId = employeeTerritoryDTO.TerritoryId }, Request.Url.Scheme));
@@ -330,7 +330,7 @@ namespace Northwind.Mvc
 
             if (!operationResult.Ok)
             {
-                throw new InvalidOperationException(operationResult.Text);
+                throw operationResult.Exception;
             }
 
             return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);

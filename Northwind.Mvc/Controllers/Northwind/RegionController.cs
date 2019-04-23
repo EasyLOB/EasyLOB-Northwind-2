@@ -45,7 +45,7 @@ namespace Northwind.Mvc
                 regionCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(regionCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(regionCollectionModel.OperationResult));
         }        
 
         // GET & POST: Region/Search
@@ -127,7 +127,7 @@ namespace Northwind.Mvc
                         {
                             if (regionItemModel.IsSave)
                             {
-                                regionItemModel.OperationResult.StatusMessage =
+                                regionItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(regionItemModel.OperationResult,
                                     Url.Action("Update", "Region", new { RegionId = regionDTO.RegionId }, Request.Url.Scheme));
@@ -330,7 +330,7 @@ namespace Northwind.Mvc
 
             if (!operationResult.Ok)
             {
-                throw new InvalidOperationException(operationResult.Text);
+                throw operationResult.Exception;
             }
 
             return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);

@@ -45,7 +45,7 @@ namespace EasyLOB.Identity.Mvc
                 roleCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(roleCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(roleCollectionModel.OperationResult));
         }        
 
         // GET & POST: Role/Search
@@ -127,7 +127,7 @@ namespace EasyLOB.Identity.Mvc
                         {
                             if (roleItemModel.IsSave)
                             {
-                                roleItemModel.OperationResult.StatusMessage =
+                                roleItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(roleItemModel.OperationResult,
                                     Url.Action("Update", "Role", new { Id = roleDTO.Id }, Request.Url.Scheme));
@@ -329,7 +329,7 @@ namespace EasyLOB.Identity.Mvc
 
                 if (!operationResult.Ok)
                 {
-                    throw new InvalidOperationException(operationResult.Text);
+                    throw operationResult.Exception;
                 }
             }
 

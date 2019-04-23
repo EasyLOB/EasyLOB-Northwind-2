@@ -100,7 +100,7 @@ namespace EasyLOB
                 reportWriter.Save(fileStream, writerFormat);
                 fileStream.Close();
 
-                operationResult.StatusMessage = exportPath;
+                operationResult.InformationMessage = exportPath;
             }
             catch (Exception exception)
             {
@@ -248,7 +248,7 @@ namespace EasyLOB
                     reportWriter.Save(fileStream, writerFormat);
                     fileStream.Close();
 
-                    operationResult.StatusMessage = exportPath;
+                    operationResult.InformationMessage = exportPath;
                 }
             }
             catch (Exception exception)

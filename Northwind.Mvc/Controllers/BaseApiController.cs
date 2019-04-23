@@ -67,8 +67,10 @@ namespace EasyLOB.WebApi
         protected virtual bool IsUserInRole(ZOperationResult operationResult, string role)
         {
             bool result = AuthorizationManager.AuthenticationManager.Roles.Contains(role);
-            operationResult.AddOperationError("",
+            operationResult.AddOperationWarning("",
                 String.Format(SecurityIdentityResources.OperationAuthorizedRole, role));
+            //operationResult.AddOperationError("",
+            //    String.Format(SecurityIdentityResources.OperationAuthorizedRole, role));
 
             return result;
         }

@@ -45,7 +45,7 @@ namespace EasyLOB.Activity.Mvc
                 activityCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(activityCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(activityCollectionModel.OperationResult));
         }        
 
         // GET & POST: Activity/Search
@@ -127,7 +127,7 @@ namespace EasyLOB.Activity.Mvc
                         {
                             if (activityItemModel.IsSave)
                             {
-                                activityItemModel.OperationResult.StatusMessage =
+                                activityItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(activityItemModel.OperationResult,
                                     Url.Action("Update", "Activity", new { Id = activityDTO.Id }, Request.Url.Scheme));
@@ -329,7 +329,7 @@ namespace EasyLOB.Activity.Mvc
 
                 if (!operationResult.Ok)
                 {
-                    throw new InvalidOperationException(operationResult.Text);
+                    throw operationResult.Exception;
                 }
             }
 

@@ -45,7 +45,7 @@ namespace EasyLOB.Identity.Mvc
                 userLoginCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(userLoginCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(userLoginCollectionModel.OperationResult));
         }        
 
         // GET & POST: UserLogin/Search
@@ -127,7 +127,7 @@ namespace EasyLOB.Identity.Mvc
                         {
                             if (userLoginItemModel.IsSave)
                             {
-                                userLoginItemModel.OperationResult.StatusMessage =
+                                userLoginItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(userLoginItemModel.OperationResult,
                                     Url.Action("Update", "UserLogin", new { LoginProvider = userLoginDTO.LoginProvider, ProviderKey = userLoginDTO.ProviderKey, UserId = userLoginDTO.UserId }, Request.Url.Scheme));
@@ -329,7 +329,7 @@ namespace EasyLOB.Identity.Mvc
 
                 if (!operationResult.Ok)
                 {
-                    throw new InvalidOperationException(operationResult.Text);
+                    throw operationResult.Exception;
                 }
             }
 

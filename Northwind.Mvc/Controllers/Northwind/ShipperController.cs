@@ -45,7 +45,7 @@ namespace Northwind.Mvc
                 shipperCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(shipperCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(shipperCollectionModel.OperationResult));
         }        
 
         // GET & POST: Shipper/Search
@@ -127,7 +127,7 @@ namespace Northwind.Mvc
                         {
                             if (shipperItemModel.IsSave)
                             {
-                                shipperItemModel.OperationResult.StatusMessage =
+                                shipperItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(shipperItemModel.OperationResult,
                                     Url.Action("Update", "Shipper", new { ShipperId = shipperDTO.ShipperId }, Request.Url.Scheme));
@@ -330,7 +330,7 @@ namespace Northwind.Mvc
 
             if (!operationResult.Ok)
             {
-                throw new InvalidOperationException(operationResult.Text);
+                throw operationResult.Exception;
             }
 
             return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);

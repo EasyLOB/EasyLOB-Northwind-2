@@ -45,7 +45,7 @@ namespace Northwind.Mvc
                 employeeCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(employeeCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(employeeCollectionModel.OperationResult));
         }        
 
         // GET & POST: Employee/Search
@@ -127,7 +127,7 @@ namespace Northwind.Mvc
                         {
                             if (employeeItemModel.IsSave)
                             {
-                                employeeItemModel.OperationResult.StatusMessage =
+                                employeeItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(employeeItemModel.OperationResult,
                                     Url.Action("Update", "Employee", new { EmployeeId = employeeDTO.EmployeeId }, Request.Url.Scheme));
@@ -330,7 +330,7 @@ namespace Northwind.Mvc
 
             if (!operationResult.Ok)
             {
-                throw new InvalidOperationException(operationResult.Text);
+                throw operationResult.Exception;
             }
 
             return Json(JsonConvert.SerializeObject(dataResult), JsonRequestBehavior.AllowGet);

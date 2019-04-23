@@ -45,7 +45,7 @@ namespace EasyLOB.Activity.Mvc
                 activityRoleCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultModel(activityRoleCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultViewModel(activityRoleCollectionModel.OperationResult));
         }
 
         // GET & POST: ActivityRole/Search
@@ -127,7 +127,7 @@ namespace EasyLOB.Activity.Mvc
                         {
                             if (activityRoleItemModel.IsSave)
                             {
-                                activityRoleItemModel.OperationResult.StatusMessage =
+                                activityRoleItemModel.OperationResult.InformationMessage =
                                     EasyLOB.Resources.PresentationResources.CreateToUpdate;
                                 return JsonResultSuccess(activityRoleItemModel.OperationResult,
                                     Url.Action("Update", "ActivityRole", new { ActivityId = activityRoleDTO.ActivityId, RoleName = activityRoleDTO.RoleName }, Request.Url.Scheme));
@@ -329,7 +329,7 @@ namespace EasyLOB.Activity.Mvc
 
                 if (!operationResult.Ok)
                 {
-                    throw new InvalidOperationException(operationResult.Text);
+                    throw operationResult.Exception;
                 }
             }
 
