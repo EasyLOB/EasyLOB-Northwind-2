@@ -323,7 +323,7 @@
     <Compile Include="EasyLOB\DIUnity\AppDIUnityHelperIdentity.cs" />
     <Compile Include="EasyLOB\DIUnity\AppDIUnityHelperLog.cs" />
     <Compile Include="EasyLOB\DIUnity\AppDIUnityHelperNorthwind.cs" />
-    <Compile Include="EasyLOB\Filters\EasyLOBNorthwindProfileAttribute.cs" />
+    <Compile Include="EasyLOB\Filters\NorthwindProfileAttribute.cs" />
     <Compile Include="EasyLOB\Filters\EasyLOBMultiTenantAttribute.cs" />
     <Compile Include="EasyLOB\Filters\EasyLOBProfileAttribute.cs" />
     <Compile Include="EasyLOB\Identity\AppHelper.cs" />
