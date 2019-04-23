@@ -45,7 +45,7 @@ namespace EasyLOB.AuditTrail.Mvc
                 auditTrailLogCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultViewModel(auditTrailLogCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultModel(auditTrailLogCollectionModel.OperationResult));
         }        
 
         // GET & POST: AuditTrailLog/Search

@@ -45,7 +45,7 @@ namespace EasyLOB.Identity.Mvc
                 userCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultViewModel(userCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultModel(userCollectionModel.OperationResult));
         }        
 
         // GET & POST: User/Search

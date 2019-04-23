@@ -45,7 +45,7 @@ namespace Northwind.Mvc
                 shipperCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultViewModel(shipperCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultModel(shipperCollectionModel.OperationResult));
         }        
 
         // GET & POST: Shipper/Search

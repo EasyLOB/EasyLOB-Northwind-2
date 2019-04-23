@@ -45,7 +45,7 @@ namespace Northwind.Mvc
                 customerCustomerDemoCollectionModel.OperationResult.ParseException(exception);
             }
 
-            return View("OperationResult", new OperationResultViewModel(customerCustomerDemoCollectionModel.OperationResult));
+            return View("OperationResult", new OperationResultModel(customerCustomerDemoCollectionModel.OperationResult));
         }        
 
         // GET & POST: CustomerCustomerDemo/Search

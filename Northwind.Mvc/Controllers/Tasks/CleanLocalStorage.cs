@@ -16,7 +16,7 @@ namespace EasyLOB.Mvc
                 return View(taskModel);
             //}
 
-            //return View("OperationResult", new OperationResultViewModel(OperationResult));
+            //return View("OperationResult", new OperationResultModel(OperationResult));
         }
     }
 }
