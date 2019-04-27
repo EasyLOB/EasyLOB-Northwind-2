@@ -69,7 +69,7 @@ namespace EasyLOB.WebApi
             bool result = AuthorizationManager.AuthenticationManager.Roles.Contains(role);
             operationResult.AddOperationWarning("",
                 String.Format(SecurityIdentityResources.OperationAuthorizedRole, role));
-            //operationResult.AddOperationError("",
+            //operationResult.AddOperationWarning("",
             //    String.Format(SecurityIdentityResources.OperationAuthorizedRole, role));
 
             return result;

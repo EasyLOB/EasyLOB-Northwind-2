@@ -63,7 +63,7 @@ namespace EasyLOB.Mvc
             bool result = AuthorizationManager.AuthenticationManager.Roles.Contains(role);
             operationResult.AddOperationWarning("",
                 String.Format(SecurityIdentityResources.OperationAuthorizedRole, role));
-            //operationResult.AddOperationError("",
+            //operationResult.AddOperationWarning("",
             //    String.Format(SecurityIdentityResources.OperationAuthorizedRole, role));
 
             return result;
@@ -178,10 +178,10 @@ namespace EasyLOB.Mvc
         {
             ZOperationResult operationResult = new ZOperationResult();
 
-            return IsTask(operationResult, task);
+            return IsTask(task, operationResult);
         }
 
-        protected virtual bool IsTask(ZOperationResult operationResult, string task)
+        protected virtual bool IsTask(string task, ZOperationResult operationResult)
         {
             return AuthorizationManager.IsTask(Domain, task, operationResult);
         }
