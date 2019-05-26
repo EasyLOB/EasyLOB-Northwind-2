@@ -27,7 +27,7 @@ namespace Northwind
                 {
                     try
                     {
-                        string filePath = Path.Combine(MultiTenantHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Directory.Configuration")),
+                        string filePath = Path.Combine(WebHelper.WebDirectory(ConfigurationHelper.AppSettings<string>("Directory.Configuration")),
                             "JSON/NorthwindMultiTenant.json");
                         string json = File.ReadAllText(filePath);
                         tenants = JsonConvert.DeserializeObject<List<NorthwindTenant>>(json);
